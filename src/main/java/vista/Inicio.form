@@ -216,7 +216,6 @@
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtnombreMousePressed"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtnombreActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -255,7 +254,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Registrarse"/>
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xf3;n para registra nuevo usuario"/>
-            <Property name="actionCommand" type="java.lang.String" value="Registrarse"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 49]"/>
             </Property>
@@ -571,6 +569,9 @@
               <Image iconType="3" name="/png/reino-unido.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlreinoUnido1MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlespana">
           <Properties>
@@ -579,6 +580,9 @@
               <Image iconType="3" name="/png/espana.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jlespanaMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

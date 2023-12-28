@@ -13,9 +13,12 @@ import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
@@ -25,6 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class Inicio extends javax.swing.JFrame {
      int xMouse, yMouse;
+     private Locale idiomaOriginal;
    
 
     /**
@@ -33,6 +37,7 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         //setLocationRelativeTo(null);
+         idiomaOriginal = Locale.getDefault();
         
         
        
@@ -180,11 +185,6 @@ public class Inicio extends javax.swing.JFrame {
                 jtnombreMousePressed(evt);
             }
         });
-        jtnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtnombreActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanelNombreLayout = new javax.swing.GroupLayout(jPanelNombre);
         jPanelNombre.setLayout(jPanelNombreLayout);
@@ -220,7 +220,6 @@ public class Inicio extends javax.swing.JFrame {
         jbregistrarse.setForeground(new java.awt.Color(255, 255, 255));
         jbregistrarse.setText("Registrarse");
         jbregistrarse.setToolTipText("Botón para registra nuevo usuario");
-        jbregistrarse.setActionCommand("Registrarse");
         jbregistrarse.setPreferredSize(new java.awt.Dimension(124, 49));
 
         jlo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -409,9 +408,19 @@ public class Inicio extends javax.swing.JFrame {
 
         jlreinoUnido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlreinoUnido1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/reino-unido.png"))); // NOI18N
+        jlreinoUnido1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlreinoUnido1MouseClicked(evt);
+            }
+        });
 
         jlespana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlespana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/espana.png"))); // NOI18N
+        jlespana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlespanaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRoundBarraFondoLayout = new javax.swing.GroupLayout(panelRoundBarraFondo);
         panelRoundBarraFondo.setLayout(panelRoundBarraFondoLayout);
@@ -484,10 +493,6 @@ public class Inicio extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelRoundBarraFondoMousePressed
-
-    private void jtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtnombreActionPerformed
     /** Metodo visulaizacion del jTextField nombre*/
     private void jtnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMousePressed
        if ( jtnombre.getText().equals("Nombre")){
@@ -541,6 +546,29 @@ public class Inicio extends javax.swing.JFrame {
           jtnombre.setForeground(new Color (0,0,0)); 
       }  
     }//GEN-LAST:event_jtcontrasenaMousePressed
+
+    private void jlreinoUnido1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlreinoUnido1MouseClicked
+       
+      // Cargar el idioma inglés
+    Locale englishLocale = new Locale("en");
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", englishLocale);
+
+
+    // Obtener cadenas de texto en inglés
+    String greeting = resourceBundle.getString("Nombre");
+
+
+    // Establecer el texto en jltitulo1
+    jltitulo1.setText(greeting);
+
+
+    }//GEN-LAST:event_jlreinoUnido1MouseClicked
+
+    private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
+      
+         Locale idiomaOriginal1 = idiomaOriginal;
+
+    }//GEN-LAST:event_jlespanaMouseClicked
 
     /**
      * @param args the command line arguments
