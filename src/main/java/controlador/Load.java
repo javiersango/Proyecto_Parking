@@ -4,6 +4,8 @@
  */
 package controlador;
 
+import javax.swing.JPanel;
+
 
 
 
@@ -18,6 +20,7 @@ public class Load {
           l.setVisible(true);
           vista.Inicio p= new vista.Inicio();
           p.setVisible(false);
+      
     
                 try{
                 for(int x=0;x<=100;x++){
@@ -27,14 +30,16 @@ public class Load {
               l.jPBarraProgreso.setValue(x);
             
                  if(x==100){
+                     
+                  
                    p.setVisible(true);
                    l.setVisible(false);
                  
             }
                      }
                    } 
-                 catch (Exception e) 
-                 {
+                 catch (Exception e){
+                     e.printStackTrace();
                  }
       }
  

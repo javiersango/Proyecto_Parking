@@ -107,60 +107,28 @@ public class Loading extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRoundFondo.setBackground(new java.awt.Color(249, 251, 255));
-        panelRoundFondo.setMaximumSize(null);
         panelRoundFondo.setPreferredSize(new java.awt.Dimension(428, 800));
         panelRoundFondo.setRoundBottomLeft(30);
         panelRoundFondo.setRoundBottomRight(30);
+        panelRoundFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLPorciento.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLPorciento.setForeground(new java.awt.Color(86, 125, 244));
         jLPorciento.setText("0%");
+        panelRoundFondo.add(jLPorciento, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 383, -1, -1));
 
         jPBarraProgreso.setForeground(new java.awt.Color(86, 125, 244));
+        panelRoundFondo.add(jPBarraProgreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 433, 337, 22));
 
         jLcoche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoCar.png"))); // NOI18N
-        jLcoche.setText("jLabel1");
+        panelRoundFondo.add(jLcoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 430, 319));
 
         jLTitulo.setFont(new java.awt.Font("Stencil", 1, 32)); // NOI18N
         jLTitulo.setForeground(new java.awt.Color(0, 0, 0));
         jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTitulo.setText(" APP PARKING");
         jLTitulo.setPreferredSize(new java.awt.Dimension(273, 30));
-
-        javax.swing.GroupLayout panelRoundFondoLayout = new javax.swing.GroupLayout(panelRoundFondo);
-        panelRoundFondo.setLayout(panelRoundFondoLayout);
-        panelRoundFondoLayout.setHorizontalGroup(
-            panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundFondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLPorciento)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelRoundFondoLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jPBarraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelRoundFondoLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelRoundFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLcoche, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelRoundFondoLayout.setVerticalGroup(
-            panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundFondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLcoche, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jLPorciento)
-                .addGap(18, 18, 18)
-                .addComponent(jPBarraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jLTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(310, 310, 310))
-        );
+        panelRoundFondo.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 506, -1, 34));
 
         getContentPane().add(panelRoundFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, -1, 850));
 
@@ -239,13 +207,13 @@ public class Loading extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundBarraFondoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLtime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLiconoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addComponent(jLiconoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLporcentajeBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelRoundFondoCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
