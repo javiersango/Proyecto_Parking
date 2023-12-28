@@ -8,7 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
-import java.awt.Font;
+
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
@@ -16,9 +16,8 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -26,28 +25,38 @@ import javax.swing.border.EmptyBorder;
  */
 public class Inicio extends javax.swing.JFrame {
      int xMouse, yMouse;
+   
 
     /**
      * Creates new form Incio
      */
     public Inicio() {
         initComponents();
+        //setLocationRelativeTo(null);
+        
+        
+       
+     
    
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
-        
+        // Poner jTexfield y jBotton
         jtnombre.putClientProperty("FlatLaf.style","arc: 15");
         jtcontrasena.putClientProperty("FlatLaf.style","arc: 15");
         jbiniciar.putClientProperty("FlatLaf.style","arc: 15");
         jbrecuperar.putClientProperty("FlatLaf.style","arc: 15");
         jbregistrarse.putClientProperty("FlatLaf.style","arc: 15");
+        
+        //jltitulo1.setFont(new java.awt.Font("Stencyl",Font.PLAIN, 23)); // NOI18N
+        //jltitulo1.putClientProperty("FlatLaf.styleClass", "h0");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
+        jlo.putClientProperty("FlatLaf.styleClass", "h2");
       
-        //jLTitulo1.putClientProperty("FlatLaf.styleClass", "h0");
-      
-       //jLTitulo1.setFont(new java.awt.Font("Stencyl",Font.PLAIN, 23)); // NOI18N
-       jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/user.svg" ) );
-        jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/contraseña.png" ) );
+       
+        jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
+        jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candado2.svg" ) );
+        
         
         
          //Configuracion reloj 
@@ -100,18 +109,18 @@ public class Inicio extends javax.swing.JFrame {
 
         panelRoundFondo = new vista.PanelRound();
         jLlogoParking = new javax.swing.JLabel();
-        jLTitulo1 = new javax.swing.JLabel();
-        jLTitulo3 = new javax.swing.JLabel();
+        jltitulo1 = new javax.swing.JLabel();
+        jltitulo2 = new javax.swing.JLabel();
         jPanelNombre = new javax.swing.JPanel();
         jlnombre = new javax.swing.JLabel();
         jtnombre = new javax.swing.JTextField();
         jbiniciar = new javax.swing.JButton();
         jbregistrarse = new javax.swing.JButton();
-        jLtituloContrasena1 = new javax.swing.JLabel();
+        jlo = new javax.swing.JLabel();
         jbrecuperar = new javax.swing.JButton();
         jpanelContrasena = new javax.swing.JPanel();
         jlcontrasena = new javax.swing.JLabel();
-        jtcontrasena = new javax.swing.JTextField();
+        jtcontrasena = new javax.swing.JPasswordField();
         panelRoundBarraFondo = new vista.PanelRound();
         jLporcentajeBateria = new javax.swing.JLabel();
         jLsignal = new javax.swing.JLabel();
@@ -120,6 +129,9 @@ public class Inicio extends javax.swing.JFrame {
         panelRoundFondoCierre = new vista.PanelRound();
         jLcierre = new javax.swing.JLabel();
         jLtime = new javax.swing.JLabel();
+        jlchina = new javax.swing.JLabel();
+        jlreinoUnido1 = new javax.swing.JLabel();
+        jlespana = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
@@ -135,17 +147,17 @@ public class Inicio extends javax.swing.JFrame {
         jLlogoParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
         jLlogoParking.setText("jLabel1");
 
-        jLTitulo1.setFont(new java.awt.Font("Stencil", 0, 23)); // NOI18N
-        jLTitulo1.setForeground(new java.awt.Color(39, 59, 244));
-        jLTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLTitulo1.setText("¿BUSCAS PLAZAS DE APARCAMIENTO?");
-        jLTitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
+        jltitulo1.setFont(new java.awt.Font("Stencil", 0, 23)); // NOI18N
+        jltitulo1.setForeground(new java.awt.Color(39, 59, 244));
+        jltitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltitulo1.setText("¿BUSCAS PLAZAS DE APARCAMIENTO?");
+        jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jLTitulo3.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
-        jLTitulo3.setForeground(new java.awt.Color(25, 35, 66));
-        jLTitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLTitulo3.setText("Inicie sesión o regístrese");
-        jLTitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
+        jltitulo2.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jltitulo2.setForeground(new java.awt.Color(25, 35, 66));
+        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltitulo2.setText("Inicie sesión o regístrese");
+        jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jPanelNombre.setBackground(new java.awt.Color(249, 251, 255));
         jPanelNombre.setPreferredSize(new java.awt.Dimension(335, 82));
@@ -160,9 +172,14 @@ public class Inicio extends javax.swing.JFrame {
         jtnombre.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jtnombre.setForeground(new java.awt.Color(153, 153, 153));
         jtnombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jtnombre.setText("Introduce tu nombre");
-        jtnombre.setToolTipText("Introduce tu contraseña");
+        jtnombre.setText("Nombre");
+        jtnombre.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
         jtnombre.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtnombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jtnombreMousePressed(evt);
+            }
+        });
         jtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtnombreActionPerformed(evt);
@@ -190,25 +207,33 @@ public class Inicio extends javax.swing.JFrame {
         jbiniciar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbiniciar.setForeground(new java.awt.Color(255, 255, 255));
         jbiniciar.setText("Iniciar sesión");
+        jbiniciar.setToolTipText("Boton incia sesion aplicacion");
         jbiniciar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbiniciarActionPerformed(evt);
+            }
+        });
 
         jbregistrarse.setBackground(new java.awt.Color(39, 59, 244));
         jbregistrarse.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbregistrarse.setForeground(new java.awt.Color(255, 255, 255));
         jbregistrarse.setText("Registrarse");
+        jbregistrarse.setToolTipText("Botón para registra nuevo usuario");
         jbregistrarse.setActionCommand("Registrarse");
         jbregistrarse.setPreferredSize(new java.awt.Dimension(124, 49));
 
-        jLtituloContrasena1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLtituloContrasena1.setForeground(new java.awt.Color(0, 0, 0));
-        jLtituloContrasena1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLtituloContrasena1.setText("O");
-        jLtituloContrasena1.setPreferredSize(new java.awt.Dimension(24, 27));
+        jlo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlo.setForeground(new java.awt.Color(0, 0, 0));
+        jlo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlo.setText("o");
+        jlo.setPreferredSize(new java.awt.Dimension(24, 27));
 
         jbrecuperar.setBackground(new java.awt.Color(39, 59, 244));
         jbrecuperar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbrecuperar.setForeground(new java.awt.Color(255, 255, 255));
         jbrecuperar.setText("Recuperar contraseña");
+        jbrecuperar.setToolTipText("Botón para recuparar contraseña ");
         jbrecuperar.setActionCommand("Registrarse");
         jbrecuperar.setPreferredSize(new java.awt.Dimension(124, 49));
 
@@ -225,31 +250,42 @@ public class Inicio extends javax.swing.JFrame {
         jtcontrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jtcontrasena.setForeground(new java.awt.Color(153, 153, 153));
         jtcontrasena.setText("********");
-        jtcontrasena.setToolTipText("Introuce tu contraseña");
+        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
         jtcontrasena.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtcontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jtcontrasenaMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpanelContrasenaLayout = new javax.swing.GroupLayout(jpanelContrasena);
         jpanelContrasena.setLayout(jpanelContrasenaLayout);
         jpanelContrasenaLayout.setHorizontalGroup(
             jpanelContrasenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelContrasenaLayout.createSequentialGroup()
-                .addComponent(jlcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jtcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpanelContrasenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpanelContrasenaLayout.createSequentialGroup()
+                        .addComponent(jlcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelContrasenaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jpanelContrasenaLayout.setVerticalGroup(
             jpanelContrasenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelContrasenaLayout.createSequentialGroup()
                 .addComponent(jlcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelRoundFondoLayout = new javax.swing.GroupLayout(panelRoundFondo);
         panelRoundFondo.setLayout(panelRoundFondoLayout);
         panelRoundFondoLayout.setHorizontalGroup(
             panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLTitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jltitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRoundFondoLayout.createSequentialGroup()
                 .addGroup(panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRoundFondoLayout.createSequentialGroup()
@@ -257,7 +293,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jLlogoParking, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRoundFondoLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jLTitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRoundFondoLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +304,7 @@ public class Inicio extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRoundFondoLayout.createSequentialGroup()
                                     .addComponent(jbiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLtituloContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jbregistrarse, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))))))
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -277,11 +313,11 @@ public class Inicio extends javax.swing.JFrame {
             panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundFondoLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLlogoParking, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLTitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -290,7 +326,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbregistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLtituloContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbrecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -368,6 +404,15 @@ public class Inicio extends javax.swing.JFrame {
         jLtime.setForeground(new java.awt.Color(0, 0, 0));
         jLtime.setPreferredSize(new java.awt.Dimension(17, 13));
 
+        jlchina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlchina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/china.png"))); // NOI18N
+
+        jlreinoUnido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlreinoUnido1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/reino-unido.png"))); // NOI18N
+
+        jlespana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlespana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/espana.png"))); // NOI18N
+
         javax.swing.GroupLayout panelRoundBarraFondoLayout = new javax.swing.GroupLayout(panelRoundBarraFondo);
         panelRoundBarraFondo.setLayout(panelRoundBarraFondoLayout);
         panelRoundBarraFondoLayout.setHorizontalGroup(
@@ -375,7 +420,13 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundBarraFondoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLtime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
+                .addComponent(jlespana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlreinoUnido1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlchina)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,15 +441,20 @@ public class Inicio extends javax.swing.JFrame {
             panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelRoundFondoCierre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRoundBarraFondoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(7, 7, 7)
                 .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLporcentajeBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLiconoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(jlespana, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlreinoUnido1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jlchina, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLporcentajeBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLiconoBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelRoundBarraFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 41));
@@ -432,6 +488,59 @@ public class Inicio extends javax.swing.JFrame {
     private void jtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtnombreActionPerformed
+    /** Metodo visulaizacion del jTextField nombre*/
+    private void jtnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMousePressed
+       if ( jtnombre.getText().equals("Nombre")){
+        
+          jtnombre.setText("");
+          jtnombre.setForeground(Color.black);
+          
+      }
+      if (String.valueOf(jtcontrasena.getPassword()).isEmpty()){
+          jtcontrasena.setText("********");
+          jtcontrasena.setForeground(Color.gray);
+      }   
+    }//GEN-LAST:event_jtnombreMousePressed
+
+   /** Metodo comprobacion que no estan vacios los campos datos nombre y contraseña*/
+    private void jbiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiniciarActionPerformed
+       String nombre = jtnombre.getText();
+       String contraseña = String.valueOf(jtcontrasena.getPassword());
+
+    if (nombre.isEmpty() || nombre.equals("Nombre") || contraseña.isEmpty() || contraseña.equals("********")) {
+        JOptionPane.showMessageDialog(null, "No pueden haber campos vacíos", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if (!validarNombre(nombre)) {
+        JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if (!validarContraseña(contraseña)) {
+        JOptionPane.showMessageDialog(null, "La contraseña debe contener entre 8 y 10 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
+    } else {
+        jtnombre.setText("");
+         jtnombre.setEnabled(false);
+         jtcontrasena.setText("");
+        jtcontrasena.setEnabled(false);
+        JOptionPane.showMessageDialog(null, "Se han introducido los datos", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        
+    } 
+
+
+    }//GEN-LAST:event_jbiniciarActionPerformed
+
+    private void jtcontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMousePressed
+    if ( String.valueOf(jtcontrasena.getPassword()).equals("********")){
+          jtcontrasena.setText("");
+          jtcontrasena.setForeground(Color.black);
+          
+      } else {
+          jtcontrasena.setForeground(new Color (0,0,0)); 
+      }
+          
+      if (jtnombre.getText().isEmpty()){
+          jtnombre.setText("Nombre");
+          jtnombre.setForeground(Color.gray);
+      } else {
+          jtnombre.setForeground(new Color (0,0,0)); 
+      }  
+    }//GEN-LAST:event_jtcontrasenaMousePressed
 
     /**
      * @param args the command line arguments
@@ -469,26 +578,38 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
     }
+    /**Metodo  verifica que el nombre tenga al menos tres letras*/
+    private boolean validarNombre(String nombre) {
+    return nombre.length() >= 3;
+}
+    /**Metodo verifica que la contraseña tenga al menos 8 caracteres y como máximo 10 caracteres*/
+    private boolean validarContraseña(String contraseña) {
+    return contraseña.length() >= 8 && contraseña.length() <= 10;
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLTitulo1;
-    private javax.swing.JLabel jLTitulo3;
     private javax.swing.JLabel jLcierre;
     private javax.swing.JLabel jLiconoBateria;
     private javax.swing.JLabel jLlogoParking;
     private javax.swing.JLabel jLporcentajeBateria;
     private javax.swing.JLabel jLsignal;
     private javax.swing.JLabel jLtime;
-    private javax.swing.JLabel jLtituloContrasena1;
     private javax.swing.JLabel jLwifi;
     private javax.swing.JPanel jPanelNombre;
     private javax.swing.JButton jbiniciar;
     private javax.swing.JButton jbrecuperar;
     private javax.swing.JButton jbregistrarse;
+    private javax.swing.JLabel jlchina;
     private javax.swing.JLabel jlcontrasena;
+    private javax.swing.JLabel jlespana;
     private javax.swing.JLabel jlnombre;
+    private javax.swing.JLabel jlo;
+    private javax.swing.JLabel jlreinoUnido1;
+    private javax.swing.JLabel jltitulo1;
+    private javax.swing.JLabel jltitulo2;
     private javax.swing.JPanel jpanelContrasena;
-    private javax.swing.JTextField jtcontrasena;
+    private javax.swing.JPasswordField jtcontrasena;
     private javax.swing.JTextField jtnombre;
     private vista.PanelRound panelRoundBarraFondo;
     private vista.PanelRound panelRoundFondo;

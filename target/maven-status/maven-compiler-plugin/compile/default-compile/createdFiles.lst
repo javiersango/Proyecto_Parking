@@ -1,3 +1,4 @@
+vista\Inicio$9.class
 modelo\Historial.class
 vista\Loading$6.class
 vista\PantallAlta.class
@@ -6,6 +7,7 @@ vista\Inicio$2.class
 vista\PantallAlta$1.class
 vista\Inicio$6.class
 vista\Inicio$7.class
+vista\Inicio$10.class
 controlador\Load.class
 vista\Inicio$4.class
 vista\Loading$3.class
@@ -19,6 +21,7 @@ vista\Inicio$5.class
 vista\Loading$2.class
 modelo\Reserva.class
 modelo\Vehiculo.class
+vista\Inicio$8.class
 vista\Loading$4.class
 controlador\MetodosBarra.class
 vista\PanelRound.class
