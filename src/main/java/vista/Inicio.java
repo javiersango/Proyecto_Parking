@@ -18,8 +18,10 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.swing.JLabel;
+
 import javax.swing.JOptionPane;
+
+
 
 
 /**
@@ -28,7 +30,7 @@ import javax.swing.JOptionPane;
  */
 public class Inicio extends javax.swing.JFrame {
      int xMouse, yMouse;
-     private Locale idiomaOriginal;
+    
    
 
     /**
@@ -36,13 +38,8 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        //setLocationRelativeTo(null);
-         idiomaOriginal = Locale.getDefault();
+        setLocationRelativeTo(null);
         
-        
-       
-     
-   
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
@@ -63,7 +60,6 @@ public class Inicio extends javax.swing.JFrame {
         jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candado2.svg" ) );
         
         
-        
          //Configuracion reloj 
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String horaActual = sdf.format(new Date());
@@ -76,11 +72,9 @@ public class Inicio extends javax.swing.JFrame {
             public void run() {
                 updateBatteryLevel();
             }
-        }, 0, 1000); // Actualiza cada segundo (1000 ms)
+        }, 0, 10000); // Actualiza cada segundo (1000 ms)
         
     }
-    
-    
     
        private void updateBatteryLevel() {
         // Lógica para obtener el nivel de la batería (simulado aquí)
@@ -96,12 +90,6 @@ public class Inicio extends javax.swing.JFrame {
         AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
         return atomicBatteryLevel.get();
     }
-    
-        
-        
-    
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,8 +122,7 @@ public class Inicio extends javax.swing.JFrame {
         panelRoundFondoCierre = new vista.PanelRound();
         jLcierre = new javax.swing.JLabel();
         jLtime = new javax.swing.JLabel();
-        jlchina = new javax.swing.JLabel();
-        jlreinoUnido1 = new javax.swing.JLabel();
+        jlingles = new javax.swing.JLabel();
         jlespana = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -152,7 +139,7 @@ public class Inicio extends javax.swing.JFrame {
         jLlogoParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
         jLlogoParking.setText("jLabel1");
 
-        jltitulo1.setFont(new java.awt.Font("Stencil", 0, 23)); // NOI18N
+        jltitulo1.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jltitulo1.setForeground(new java.awt.Color(39, 59, 244));
         jltitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo1.setText("¿BUSCAS PLAZAS DE APARCAMIENTO?");
@@ -235,6 +222,11 @@ public class Inicio extends javax.swing.JFrame {
         jbrecuperar.setToolTipText("Botón para recuparar contraseña ");
         jbrecuperar.setActionCommand("Registrarse");
         jbrecuperar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbrecuperar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbrecuperarActionPerformed(evt);
+            }
+        });
 
         jpanelContrasena.setBackground(new java.awt.Color(249, 251, 255));
         jpanelContrasena.setPreferredSize(new java.awt.Dimension(335, 82));
@@ -315,8 +307,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLlogoParking, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -328,7 +320,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbrecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelRoundFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, 760));
@@ -403,14 +395,11 @@ public class Inicio extends javax.swing.JFrame {
         jLtime.setForeground(new java.awt.Color(0, 0, 0));
         jLtime.setPreferredSize(new java.awt.Dimension(17, 13));
 
-        jlchina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlchina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/china.png"))); // NOI18N
-
-        jlreinoUnido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlreinoUnido1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/reino-unido.png"))); // NOI18N
-        jlreinoUnido1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlingles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlingles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/reino-unido.png"))); // NOI18N
+        jlingles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlreinoUnido1MouseClicked(evt);
+                jlinglesMouseClicked(evt);
             }
         });
 
@@ -432,10 +421,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jlespana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlreinoUnido1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlchina)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jlingles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,9 +440,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlespana, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlreinoUnido1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jlchina, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlingles, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRoundBarraFondoLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
                         .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLporcentajeBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelRoundBarraFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -478,7 +465,7 @@ public class Inicio extends javax.swing.JFrame {
     private void jLcierreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLcierreMouseClicked
-
+    
     private void jLcierreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseExited
         panelRoundFondoCierre.setBackground(Color.WHITE);
     }//GEN-LAST:event_jLcierreMouseExited
@@ -488,7 +475,7 @@ public class Inicio extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_panelRoundBarraFondoMouseDragged
-
+    /** Evento en el que devuelve la posicion cada vez que se mueve y se establece */
     private void panelRoundBarraFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRoundBarraFondoMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
@@ -527,9 +514,8 @@ public class Inicio extends javax.swing.JFrame {
         
     } 
 
-
     }//GEN-LAST:event_jbiniciarActionPerformed
-
+    /** Evento cuanto se selecciona el texto se pone en negrita y si no esta selecciado lo deja como estaba al inicio */
     private void jtcontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMousePressed
     if ( String.valueOf(jtcontrasena.getPassword()).equals("********")){
           jtcontrasena.setText("");
@@ -547,28 +533,75 @@ public class Inicio extends javax.swing.JFrame {
       }  
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
-    private void jlreinoUnido1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlreinoUnido1MouseClicked
+    private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
+      // Cargar el idioma ingles
+      Locale englishLocale = new Locale("en");
+      ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", englishLocale);
+
+      // Obtener las cadenas de texto en ingles
+      String titulo1 = resourceBundle.getString("buscasPlazasDeAparcamiento");
+      String titulo2 = resourceBundle.getString("InicieSesionOregistrarse");
+      String lNombre = resourceBundle.getString("nombre");
+      String lContrasena = resourceBundle.getString("contrasena");
+
+      String bInciar = resourceBundle.getString("iniciarSesion");
+      String bRegistro = resourceBundle.getString("registrarse");
+      String bRecuperar = resourceBundle.getString("recuperarContrasena");
+
+      // Establecer el texto en los componentes
+      jltitulo1.setText(titulo1);
+      jltitulo2.setText(titulo2);
+      jlnombre.setText(lNombre);
+      jlcontrasena.setText(lContrasena);
+      jbiniciar.setText(bInciar);
+      jbregistrarse.setText(bRegistro);
+      jbrecuperar.setText(bRecuperar);
+
+
        
-      // Cargar el idioma inglés
-    Locale englishLocale = new Locale("en");
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", englishLocale);
-
-
-    // Obtener cadenas de texto en inglés
-    String greeting = resourceBundle.getString("Nombre");
-
-
-    // Establecer el texto en jltitulo1
-    jltitulo1.setText(greeting);
-
-
-    }//GEN-LAST:event_jlreinoUnido1MouseClicked
+        
+    }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
       
-         Locale idiomaOriginal1 = idiomaOriginal;
+        // Cargar el idioma español
+      Locale spanishLocale = new Locale("es");
+      ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", spanishLocale);
+
+      // Obtener las traducciones en español de las cadenas de texto en ingles
+      String titulo1 = resourceBundle.getString("AreYouLookingForParkingSpaces?");
+      String titulo2 = resourceBundle.getString("LogInOrRegister");
+      String lNombre = resourceBundle.getString("Name");
+      String lContrasena = resourceBundle.getString("Password");
+      String bInciar = resourceBundle.getString("LogIn");
+      String bRegistro = resourceBundle.getString("Register");
+      String bRecuperar = resourceBundle.getString("RecoverPassword");
+
+      // Establecer el texto en los componentes
+      jltitulo1.setText(titulo1);
+      jltitulo2.setText(titulo2);
+      jlnombre.setText(lNombre);
+      jlcontrasena.setText(lContrasena);
+      jbiniciar.setText(bInciar);
+      jbregistrarse.setText(bRegistro);
+      jbrecuperar.setText(bRecuperar);
+
+       
 
     }//GEN-LAST:event_jlespanaMouseClicked
+
+    private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
+        
+                                             
+    // Crear una nueva instancia de RecuperarContraseña
+    RecuperarContrasena recuperarContraseña = new RecuperarContrasena();
+    
+    // Hacer visible el nuevo JFrame de RecuperarContraseña
+    recuperarContraseña.setVisible(true);
+
+
+
+    }//GEN-LAST:event_jbrecuperarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -628,12 +661,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jbiniciar;
     private javax.swing.JButton jbrecuperar;
     private javax.swing.JButton jbregistrarse;
-    private javax.swing.JLabel jlchina;
     private javax.swing.JLabel jlcontrasena;
     private javax.swing.JLabel jlespana;
+    private javax.swing.JLabel jlingles;
     private javax.swing.JLabel jlnombre;
     private javax.swing.JLabel jlo;
-    private javax.swing.JLabel jlreinoUnido1;
     private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JPanel jpanelContrasena;

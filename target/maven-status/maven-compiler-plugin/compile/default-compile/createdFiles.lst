@@ -1,3 +1,4 @@
+controlador\MetodosIncio.class
 modelo\Historial.class
 vista\Loading$6.class
 vista\PantallAlta$1.class
@@ -16,14 +17,18 @@ controlador\MetodosBarra.class
 modelo\Usuario.class
 vista\Inicio$9.class
 vista\PantallAlta.class
+vista\Inicio$12.class
 vista\Loading$1.class
 vista\Inicio$2.class
 vista\Inicio$6.class
+vista\RecuperarContrasena$2.class
 controlador\Load.class
 vista\Inicio$3.class
 vista\PantallAlta$2.class
 vista\Loading.class
 vista\Inicio.class
+vista\RecuperarContrasena.class
 modelo\Vehiculo.class
 vista\Loading$4.class
 vista\PanelRound.class
+vista\RecuperarContrasena$1.class
