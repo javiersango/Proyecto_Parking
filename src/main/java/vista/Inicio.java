@@ -4,10 +4,13 @@
  */
 package vista;
 
+import controlador.HibernateUtil;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
+
 import java.awt.Color;
+import java.awt.List;
 
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -20,6 +23,10 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JOptionPane;
+import modelo.Usuarios;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 
 
@@ -57,7 +64,7 @@ public class Inicio extends javax.swing.JFrame {
       
        
         jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
-        jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candado2.svg" ) );
+        jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candadoCerrado.svg" ) );
         
         
          //Configuracion reloj 
@@ -396,7 +403,7 @@ public class Inicio extends javax.swing.JFrame {
         jLtime.setPreferredSize(new java.awt.Dimension(17, 13));
 
         jlingles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlingles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/reino-unido.png"))); // NOI18N
+        jlingles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/ingles.png"))); // NOI18N
         jlingles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlinglesMouseClicked(evt);
