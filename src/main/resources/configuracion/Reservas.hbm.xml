@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 28 dic 2023 12:07:16 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="ad_parking" name="modelo.Reservas" optimistic-lock="none" table="reservas">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="modelo.Vehiculos" fetch="select" name="vehiculos">
+            <column name="id_vehiculo"/>
+        </many-to-one>
+        <property name="numeroPlaza" type="java.lang.Integer">
+            <column name="numeroPlaza"/>
+        </property>
+        <property name="reservada" type="java.lang.Boolean">
+            <column name="reservada"/>
+        </property>
+        <property name="fechaReservada" type="date">
+            <column length="10" name="fechaReservada"/>
+        </property>
+        <property name="horasReserva" type="java.lang.Integer">
+            <column name="horasReserva"/>
+        </property>
+        <property name="precioPorMinuto" type="java.lang.Double">
+            <column name="precioPorMinuto" precision="22" scale="0"/>
+        </property>
+        <property name="precioTotal" type="java.lang.Double">
+            <column name="precioTotal" precision="22" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -4,13 +4,13 @@
  */
 package vista;
 
-import controlador.HibernateUtil;
+
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import java.awt.Color;
-import java.awt.List;
+
 
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -23,10 +23,10 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JOptionPane;
-import modelo.Usuarios;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import controlador.DatabaseConnectionChecker;
+import controlador.HibernateUtil;
+import javax.swing.JPanel;
+import vista.RegistroCuenta;
 
 
 
@@ -215,6 +215,11 @@ public class Inicio extends javax.swing.JFrame {
         jbregistrarse.setText("Registrarse");
         jbregistrarse.setToolTipText("Botón para registra nuevo usuario");
         jbregistrarse.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbregistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbregistrarseActionPerformed(evt);
+            }
+        });
 
         jlo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jlo.setForeground(new java.awt.Color(0, 0, 0));
@@ -563,15 +568,12 @@ public class Inicio extends javax.swing.JFrame {
       jbiniciar.setText(bInciar);
       jbregistrarse.setText(bRegistro);
       jbrecuperar.setText(bRecuperar);
-
-
-       
         
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
       
-        // Cargar el idioma español
+      // Cargar el idioma español
       Locale spanishLocale = new Locale("es");
       ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", spanishLocale);
 
@@ -593,8 +595,6 @@ public class Inicio extends javax.swing.JFrame {
       jbregistrarse.setText(bRegistro);
       jbrecuperar.setText(bRecuperar);
 
-       
-
     }//GEN-LAST:event_jlespanaMouseClicked
 
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
@@ -609,6 +609,19 @@ public class Inicio extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jbrecuperarActionPerformed
+
+    private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
+      
+        RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
+        mostrarPanel( panelRegistroCuenta );
+        
+        
+        
+        
+     // DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
+      //checker.checkDatabaseConnection();
+    
+    }//GEN-LAST:event_jbregistrarseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -682,4 +695,14 @@ public class Inicio extends javax.swing.JFrame {
     private vista.PanelRound panelRoundFondo;
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables
+
+    private void mostrarPanel(JPanel panel) {
+       panel.setSize(428, 800);
+       panel.setLocation(0,0);  
+       
+       panelRoundFondo.removeAll();
+       panelRoundFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+       panelRoundFondo.revalidate();
+       panelRoundFondo.repaint();
+    }
 }
