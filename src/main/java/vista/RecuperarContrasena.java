@@ -97,7 +97,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                 .addComponent(jtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        bcancelar.setBackground(new java.awt.Color(244, 86, 86));
+        bcancelar.setBackground(new java.awt.Color(255, 3, 3));
         bcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         bcancelar.setForeground(new java.awt.Color(255, 255, 255));
         bcancelar.setText("Cancelar");

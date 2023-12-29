@@ -1,6 +1,8 @@
 controlador\MetodosIncio.class
 modelo\Historial.class
 vista\Loading$6.class
+controlador\MetodosHistorial.class
+vista\ReservaUsuario.class
 modelo\Vehiculos.class
 vista\Inicio$7.class
 vista\Inicio$10.class
@@ -9,6 +11,8 @@ vista\Loading$3.class
 vista\Inicio$11.class
 vista\Inicio$1.class
 vista\Loading$5.class
+vista\RegistroCuenta$1.class
+vista\HistorialUsuario.class
 vista\Inicio$5.class
 vista\Loading$2.class
 vista\Inicio$8.class
@@ -17,6 +21,7 @@ vista\RegistroCuenta.class
 controlador\HibernateUtil.class
 vista\Inicio$9.class
 vista\Inicio$12.class
+vista\Ejemplo.class
 vista\Loading$1.class
 modelo\Reservas.class
 vista\Inicio$2.class
@@ -29,7 +34,9 @@ vista\Inicio$13.class
 vista\Loading.class
 vista\Inicio.class
 vista\RecuperarContrasena.class
+vista\InicioCuenta$1.class
 vista\Loading$4.class
 controlador\DatabaseConnectionChecker.class
 vista\PanelRound.class
+vista\InicioCuenta.class
 vista\RecuperarContrasena$1.class

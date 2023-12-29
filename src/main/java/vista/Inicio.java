@@ -618,8 +618,8 @@ public class Inicio extends javax.swing.JFrame {
         
         
         
-     // DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
-      //checker.checkDatabaseConnection();
+     DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
+     checker.checkDatabaseConnection();
     
     }//GEN-LAST:event_jbregistrarseActionPerformed
 
