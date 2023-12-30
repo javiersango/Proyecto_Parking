@@ -39,9 +39,9 @@ public class DatabaseConnectionChecker {
         // Cargar un usuario por su ID (en este caso, ID 5)
         Usuarios usuario = sesion.load(Usuarios.class, 1);
 
-        System.out.println("Nombre del usuario: " + usuario.getNombre());
-        System.out.println("Apellidos del usuario: " + usuario.getApellidos());
-        System.out.println("Contraseña del usuario: " + usuario.getContrasena());
+        System.out.println("Nombre: " + usuario.getNombre());
+        System.out.println("Apellidos: " + usuario.getApellidos());
+        System.out.println("Contraseña: " + usuario.getContrasena());
 
     } catch (ObjectNotFoundException e) {
         System.out.println("El usuario no existe");
