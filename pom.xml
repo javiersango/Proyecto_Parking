@@ -70,6 +70,17 @@
             <artifactId>standard</artifactId>
             <version>1.1.2</version> <!-- Ajusta la versión según tus necesidades -->
         </dependency>
+         <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>1.6.2</version>
+            </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>mailapi</artifactId>
+            <version>2.0.1</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

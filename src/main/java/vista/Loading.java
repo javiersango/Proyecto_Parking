@@ -32,10 +32,12 @@ public class Loading extends javax.swing.JFrame {
      */
     public Loading() {
         initComponents();
+        setLocationRelativeTo(null);
         
         
         //jLTitulo.setFont(new java.awt.Font("Monoton", 1, 32));
         jLTitulo.putClientProperty("FlatLaf.styleClass", "h0");
+        jPBarraProgreso.putClientProperty("FlatLaf.style","arc: 15");
         
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);

@@ -494,11 +494,10 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private void jltitulo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jltitulo3MouseClicked
          // Crea una instancia de InicioCuenta
         InicioSesion inicio = new InicioSesion();
-    
         // Muestra la ventana InicioCuenta
         inicio.setVisible(true);
     }//GEN-LAST:event_jltitulo3MouseClicked
-
+    /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
     private void jbcancelarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarRegistroActionPerformed
         jtnombre.setText("Nombre");
         jtnombre.setForeground(Color.gray);

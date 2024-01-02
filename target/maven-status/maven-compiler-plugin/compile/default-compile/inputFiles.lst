@@ -1,10 +1,13 @@
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\com\mycompany\tarea17_mail\Mail.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\Reservas.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\ReservaUsuario.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\HistorialUsuario.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\PanelRound.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\HibernateUtil.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\Load.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\TraducirIngles.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosHistorial.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\EmailUtil.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Ejemplo.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\RegistroCuenta.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\DatabaseConnectionChecker.java
@@ -12,8 +15,10 @@ C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\contro
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\RecuperarContrasena.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\Historial.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosBarra.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosRecuperarContraseña.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\Vehiculos.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\Usuarios.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\una.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\InicioSesion.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Loading.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\InicioCuenta.java

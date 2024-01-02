@@ -4,10 +4,7 @@
  */
 package controlador;
 
-import javax.swing.JPanel;
-
-
-
+import com.formdev.flatlaf.FlatDarkLaf;
 
 /**
  *
@@ -18,6 +15,7 @@ public class Load {
       public static void main(String[] args) {
          vista.Loading l =new vista.Loading();  
           l.setVisible(true);
+           FlatDarkLaf.setup();
           vista.InicioSesion p= new vista.InicioSesion();
           p.setVisible(false);
       
@@ -33,7 +31,9 @@ public class Load {
                      
                   
                    p.setVisible(true);
+                    FlatDarkLaf.setup();
                    l.setVisible(false);
+                   
                  
             }
                      }

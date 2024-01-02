@@ -4,22 +4,39 @@
  */
 package vista;
 
+import controlador.EmailUtil;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import controlador.MetodosRecuperarContraseña;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import vista.InicioSesion;
-
-
 
 /**
  *
  * @author Javier
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
+    
+    public RecuperarContrasena(JTextField jtemail) {
+        this.jtemail = jtemail;
+    }
+
+    public JTextField getJtemail() {
+        return jtemail;
+    }
+
+    public void setJtemail(JTextField jtemail) {
+        this.jtemail = jtemail;
+    }
 
     /**
      * Creates new form RecuperarContrasena
@@ -28,20 +45,19 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
+        Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
-        
-         // Poner jTexfield y jBotton el radio
-        jtemail.putClientProperty("FlatLaf.style","arc: 15");
-        jbaceptar.putClientProperty("FlatLaf.style","arc: 15");
-        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
-       
+
+        // Poner jTexfield y jBotton el radio
+        jtemail.putClientProperty("FlatLaf.style", "arc: 15");
+        jbaceptar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
+
         // Poner el stiylo al texto
-        jltitulo1.putClientProperty("FlatLaf.styleClass", "h2");
-        jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
+        jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h1");
         jlemail.putClientProperty("FlatLaf.styleClass", "h2");
-        
- 
+
     }
 
     /**
@@ -91,9 +107,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jtemail.setText("Email");
         jtemail.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
         jtemail.setPreferredSize(new java.awt.Dimension(335, 50));
-        jtemail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtemailActionPerformed(evt);
+        jtemail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtemailMouseClicked(evt);
             }
         });
 
@@ -139,6 +155,11 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jbaceptar.setText("Aceptar");
         jbaceptar.setToolTipText("Boton acepta el envio para recuperar la contraseña");
         jbaceptar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbaceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbaceptarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRoundLayout = new javax.swing.GroupLayout(panelRound);
         panelRound.setLayout(panelRoundLayout);
@@ -188,23 +209,62 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-       
+
         dispose();  //setVisible(false);
     }//GEN-LAST:event_jbcancelarActionPerformed
 
-    private void jtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtemailActionPerformed
-         String correoElectronico = jtemail.getText(); // Reemplaza esto con la cadena que quieras verificar
-
-        if (esCorreoElectronicoValido(correoElectronico)) {
-            System.out.println("La dirección de correo electrónico es válida.");
-        } else {
-            System.out.println("La dirección de correo electrónico no es válida.");
-        }
-        
-        
-        jtemail.setText("");
+    private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
+        jtemail.setText(""); 
         jtemail.setForeground(Color.black);
-    }//GEN-LAST:event_jtemailActionPerformed
+        
+    }//GEN-LAST:event_jtemailMouseClicked
+    /** Evento comprueba que el correo sea valido , enviado un correo electronico para la recuperacion de la contraseña al usuario*/
+    private void jbaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbaceptarMouseClicked
+        String correoElectronico = jtemail.getText();
+        MetodosRecuperarContraseña metodo = new MetodosRecuperarContraseña();
+
+        if (correoElectronico != null && !correoElectronico.isEmpty()) {
+            if (metodo.esCorreoElectronicoValido(correoElectronico)) {
+                JOptionPane.showMessageDialog(null, "La dirección de correo electrónico es válida.");
+                
+                 // TODO add your handling code here:
+            final String fromEmail = "javier.sangon.14@educa.jcyl.es";
+            final String password = "Pury2014";
+           //final String toEmail= "alejandro.pernie@educa.jcyl.es"; 
+           final String toEmail= correoElectronico;
+          
+            System.out.println("SSLEmail Start");
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp-mail.outlook.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            
+            Authenticator auth = new Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication(){
+                    return new PasswordAuthentication(fromEmail, password);
+                }
+            };
+            
+            Session session = Session.getDefaultInstance(props, auth);
+            System.out.println("Sesión Creada");
+            EmailUtil.sendEmail(session, toEmail, "Parking ", " Mesaje de recuperación contraseña: "
+                    + "Recuerde cambiar volver a cambiar la contraseña.");
+            
+                jtemail.setText("Email"); 
+                jtemail.setForeground(Color.gray);
+                
+                 dispose();  //setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "La dirección de correo electrónico no es válida.");
+                jtemail.setForeground(Color.red); // Cambia el color del texto a rojo para indicar un error
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha introducido ninguna dirección de correo electrónico.");
+             jtemail.setText("Email"); 
+             jtemail.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jbaceptarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -240,26 +300,30 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             }
         });
     }
-    /** Metodo si esta seleccionado traducion en ingles traducira el texto, sino lo dejara como esta*/
-    public  void  cambiarIdioma(){
-      // Cambiar el idioma aquí en RecuperarContrasena
-      Locale defaultLocale = new Locale("en");
-      ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", defaultLocale);
 
-      // Obtener las cadenas de texto en ingles
-      String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
-      String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
-      String baceptar = resourceBundle.getString("Aceptar");
-      String bcancelar = resourceBundle.getString("Cancelar");
+    /**
+     * Metodo si esta seleccionado traducion en ingles traducira el texto, sino
+     * lo dejara como esta
+     */
+    public void cambiarIdioma() {
+        // Cambiar el idioma aquí en RecuperarContrasena
+        Locale defaultLocale = new Locale("en");
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", defaultLocale);
 
-      // Establecer el texto en los componentes
-      jltitulo1.setText(titulo1);
-      jltitulo2.setText(titulo2);
-      jbaceptar.setText(baceptar);
-      jbcancelar.setText(bcancelar);
-   
-        
+        // Obtener las cadenas de texto en ingles
+        String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
+        String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
+        String baceptar = resourceBundle.getString("Aceptar");
+        String bcancelar = resourceBundle.getString("Cancelar");
+
+        // Establecer el texto en los componentes
+        jltitulo1.setText(titulo1);
+        jltitulo2.setText(titulo2);
+        jbaceptar.setText(baceptar);
+        jbcancelar.setText(bcancelar);
+
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelContaseña;

@@ -165,7 +165,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtemailActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtemailMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -223,6 +223,9 @@
               <Dimension value="[124, 49]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbaceptarMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
