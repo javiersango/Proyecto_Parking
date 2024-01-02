@@ -7,20 +7,25 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
+import javax.swing.JTextField;
 import vista.InicioSesion;
-
+import controlador.MetodosRegistroCuenta;
+import javax.swing.JOptionPane;
+import controlador.MetodosRecuperarContraseña;
+import controlador.MetodosRegistroCuenta;
 /**
  *
  * @author Javier
  */
 public class RegistroCuenta extends javax.swing.JPanel {
-
+    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
+ 
     /**
      * Creates new form RegistroCuenta
      */
     public RegistroCuenta() {
         initComponents();
-
+        
         // Poner jTexfield y jBotton el radio
         jtnombre.putClientProperty("FlatLaf.style","arc: 15");
         jtapellidos.putClientProperty("FlatLaf.style","arc: 15");
@@ -142,6 +147,11 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtnombre.setText("Nombre");
         jtnombre.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
         jtnombre.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtnombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtnombreMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelNombreLayout = new javax.swing.GroupLayout(jPanelNombre);
         jPanelNombre.setLayout(jPanelNombreLayout);
@@ -174,8 +184,13 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtapellidos.setForeground(new java.awt.Color(153, 153, 153));
         jtapellidos.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtapellidos.setText("Apellidos");
-        jtapellidos.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtapellidos.setToolTipText("Introduce tus apellidos");
         jtapellidos.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtapellidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtapellidosMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelApellidosLayout = new javax.swing.GroupLayout(jPanelApellidos);
         jPanelApellidos.setLayout(jPanelApellidosLayout);
@@ -208,8 +223,13 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtemail.setForeground(new java.awt.Color(153, 153, 153));
         jtemail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtemail.setText("Email");
-        jtemail.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtemail.setToolTipText("Introduce un email valido");
         jtemail.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtemail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtemailMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelEmailLayout = new javax.swing.GroupLayout(jPanelEmail);
         jPanelEmail.setLayout(jPanelEmailLayout);
@@ -242,8 +262,13 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtmatricula.setForeground(new java.awt.Color(153, 153, 153));
         jtmatricula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtmatricula.setText("Matricula");
-        jtmatricula.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtmatricula.setToolTipText("Introduce una matricula valida 4 numeros separado por un guion y dos letras en mayusculas");
         jtmatricula.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtmatricula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtmatriculaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelMatriculaLayout = new javax.swing.GroupLayout(jPanelMatricula);
         jPanelMatricula.setLayout(jPanelMatriculaLayout);
@@ -309,6 +334,11 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtcontrasena.setText("********");
         jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
         jtcontrasena.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtcontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtcontrasenaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelContrasenaLayout = new javax.swing.GroupLayout(jPanelContrasena);
         jPanelContrasena.setLayout(jPanelContrasenaLayout);
@@ -343,6 +373,11 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtrepetirContrasena.setText("********");
         jtrepetirContrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
         jtrepetirContrasena.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtrepetirContrasena.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtrepetirContrasenaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelContrasena1Layout = new javax.swing.GroupLayout(jPanelContrasena1);
         jPanelContrasena1.setLayout(jPanelContrasena1Layout);
@@ -481,13 +516,55 @@ public class RegistroCuenta extends javax.swing.JPanel {
             .addComponent(panelRegistroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /** Evento nos lleva a la pantalla de incio de la cuenta*/
     private void jbregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistroActionPerformed
 
-        // Crear una nueva instancia de RecuperarContraseña
-        InicioCuenta inicio = new InicioCuenta();
-        // Hacer visible el nuevo JFrame de RecuperarContraseña
-        mostrarPanel(inicio);
+     if (jCheckBoxCoche.isSelected()) {
+            int checkBox = 1;
+        } else if (jCheckBoxMoto.isSelected()){
+            int checkBox = 0;
+     } else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehículo", "Vehiculo incorrecto", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+        
+    if (jtnombre.getText().isEmpty() || 
+    jtapellidos.getText().isEmpty() || 
+    jtemail.getText().isEmpty() || 
+    jtmatricula.getText().isEmpty() || 
+    jtcontrasena.getText().isEmpty() || 
+    jtrepetirContrasena.getText().isEmpty() )
+     {
+    
+    // Mostrar un mensaje de error o tomar alguna acción en caso de campos vacíos
+    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
+} else {
+    if (jtnombre.getText().length() < 3) {
+        JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
+    } else {
+        String email = jtemail.getText();
+        if (!MetodosRecuperarContraseña.esCorreoElectronicoValido(email)) {
+            JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Electrónico Incorrecto", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String matricula = jtmatricula.getText();
+            if (!MetodosRegistroCuenta.isMatriculaValida(matricula)) {
+                JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matrícula Incorrecta", JOptionPane.ERROR_MESSAGE);
+            } else {
+                String contrasena = jtcontrasena.getText();
+                String repetirContrasena = jtrepetirContrasena.getText();
+                if (!contrasena.equals(repetirContrasena)) {
+                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Contraseñas Incorrectas", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    // Si todas las comprobaciones son exitosas, continuar con la lógica deseada.
+                    InicioCuenta inicio = new InicioCuenta();
+                    mostrarPanel(inicio); 
+                }      
+            }
+        }
+    }
+}
+    
 
     }//GEN-LAST:event_jbregistroActionPerformed
     /** Evento me lleva a la ventana de inicio de sesion*/
@@ -499,6 +576,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
     }//GEN-LAST:event_jltitulo3MouseClicked
     /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
     private void jbcancelarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarRegistroActionPerformed
+       
         jtnombre.setText("Nombre");
         jtnombre.setForeground(Color.gray);
         jtapellidos.setText("Apellidos");
@@ -513,6 +591,32 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtrepetirContrasena.setForeground(Color.gray);
         
     }//GEN-LAST:event_jbcancelarRegistroActionPerformed
+    //
+    private void jtnombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMouseClicked
+    
+        mrc.handleTextFieldClick(jtnombre, "Nombre");
+       
+    }//GEN-LAST:event_jtnombreMouseClicked
+
+    private void jtapellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtapellidosMouseClicked
+        mrc.handleTextFieldClick(jtapellidos, "Apellidos");
+    }//GEN-LAST:event_jtapellidosMouseClicked
+
+    private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
+         mrc.handleTextFieldClick(jtmatricula, "Matricula");
+    }//GEN-LAST:event_jtmatriculaMouseClicked
+
+    private void jtcontrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMouseClicked
+        mrc.handleTextFieldClick(jtcontrasena, "********");
+    }//GEN-LAST:event_jtcontrasenaMouseClicked
+
+    private void jtrepetirContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtrepetirContrasenaMouseClicked
+        mrc.handleTextFieldClick(jtrepetirContrasena, "********");
+    }//GEN-LAST:event_jtrepetirContrasenaMouseClicked
+
+    private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
+        mrc.handleTextFieldClick(jtemail, "Email");
+    }//GEN-LAST:event_jtemailMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -558,5 +662,4 @@ public class RegistroCuenta extends javax.swing.JPanel {
     
 }
 
- 
 }

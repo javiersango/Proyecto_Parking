@@ -26,13 +26,6 @@ import javax.swing.JOptionPane;
 import controlador.DatabaseConnectionChecker;
 import javax.swing.JPanel;
 
-
-
-
-
-
-
-
 /**
  *
  * @author Javier
@@ -42,7 +35,6 @@ public class InicioSesion extends javax.swing.JFrame {
      private ResourceBundle resourceBundle;
      private RecuperarContrasena recuperarContrasena;
 
-   
 
     /**
      * Creates new form Incio
@@ -617,12 +609,9 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
                                       
     // Crear una nueva instancia de RecuperarContraseña
-    RecuperarContrasena recuperarContraseña = new RecuperarContrasena();
-    
+    RecuperarContrasena recuperarContraseña = new RecuperarContrasena();  
     // Hacer visible el nuevo JFrame de RecuperarContraseña
     recuperarContraseña.setVisible(true);
-
-
 
     }//GEN-LAST:event_jbrecuperarActionPerformed
 

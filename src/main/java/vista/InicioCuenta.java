@@ -4,7 +4,8 @@
  */
 package vista;
 
-import controlador.HibernateUtil;
+
+
 
 import modelo.Historial;
 import org.hibernate.SessionFactory;
@@ -12,6 +13,7 @@ import org.hibernate.SessionFactory;
 import modelo.Usuarios;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.mapping.Set;
 
 
@@ -137,9 +139,9 @@ public class InicioCuenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
-        
+      Configuration configuration = new Configuration();
     // Crear una fábrica de sesiones de Hibernate
-    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    SessionFactory sessionFactory = configuration.buildSessionFactory();
 
     // Abrir una sesión de Hibernate
     Session sesion = sessionFactory.openSession();

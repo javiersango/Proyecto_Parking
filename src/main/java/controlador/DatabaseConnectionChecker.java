@@ -9,8 +9,10 @@ package controlador;
  * @author Javier
  */
 
+import java.util.List;
 import modelo.Usuarios;
 import org.hibernate.ObjectNotFoundException;
+import org.hibernate.Query;
 import org.hibernate.Session;
     import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -36,12 +38,19 @@ public class DatabaseConnectionChecker {
     Session sesion = sessionFactory.openSession();
 
     try {
-        // Cargar un usuario por su ID (en este caso, ID 5)
-        Usuarios usuario = sesion.load(Usuarios.class, 1);
+        // Crear una consulta para seleccionar todos los usuarios
+    Query<Usuarios> query = sesion.createQuery("FROM Usuarios", Usuarios.class);
 
+    // Obtener una lista de todos los usuarios
+    List<Usuarios> usuarios = query.list();
+
+    // Iterar a través de la lista de usuarios y mostrar sus datos
+    for (Usuarios usuario : usuarios) {
         System.out.println("Nombre: " + usuario.getNombre());
         System.out.println("Apellidos: " + usuario.getApellidos());
         System.out.println("Contraseña: " + usuario.getContrasena());
+        System.out.println(); // Agregar una línea en blanco para separar los datos de los usuarios
+    }
 
     } catch (ObjectNotFoundException e) {
         System.out.println("El usuario no existe");
