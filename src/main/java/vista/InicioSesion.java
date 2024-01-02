@@ -24,9 +24,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JOptionPane;
 import controlador.DatabaseConnectionChecker;
-import controlador.HibernateUtil;
 import javax.swing.JPanel;
-import vista.RegistroCuenta;
+
+
+
+
 
 
 
@@ -35,22 +37,28 @@ import vista.RegistroCuenta;
  *
  * @author Javier
  */
-public class Inicio extends javax.swing.JFrame {
+public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
-    
+     private ResourceBundle resourceBundle;
+     private RecuperarContrasena recuperarContrasena;
+
    
 
     /**
      * Creates new form Incio
      */
-    public Inicio() {
+    public InicioSesion() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        // Cargar el idioma predeterminado (español)
+        Locale defaultLocale = new Locale("es");
+        resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", defaultLocale);
         
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
-        // Poner jTexfield y jBotton
+        // Poner jTexfield y jBotton el radio
         jtnombre.putClientProperty("FlatLaf.style","arc: 15");
         jtcontrasena.putClientProperty("FlatLaf.style","arc: 15");
         jbiniciar.putClientProperty("FlatLaf.style","arc: 15");
@@ -62,7 +70,7 @@ public class Inicio extends javax.swing.JFrame {
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
         jlo.putClientProperty("FlatLaf.styleClass", "h2");
       
-       
+        //añadir a los jTextField iconos
         jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
         jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candadoCerrado.svg" ) );
         
@@ -519,8 +527,8 @@ public class Inicio extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "La contraseña debe contener entre 8 y 10 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
     } else {
         jtnombre.setText("");
-         jtnombre.setEnabled(false);
-         jtcontrasena.setText("");
+        jtnombre.setEnabled(false);
+        jtcontrasena.setText("");
         jtcontrasena.setEnabled(false);
         JOptionPane.showMessageDialog(null, "Se han introducido los datos", "Correcto", JOptionPane.INFORMATION_MESSAGE);
         
@@ -546,9 +554,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
+      // Cambia por defecto a ingles
+      Locale defaultLocale = new Locale("en");
       // Cargar el idioma ingles
-      Locale englishLocale = new Locale("en");
-      ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", englishLocale);
+      resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", defaultLocale);
 
       // Obtener las cadenas de texto en ingles
       String titulo1 = resourceBundle.getString("buscasPlazasDeAparcamiento");
@@ -564,19 +573,26 @@ public class Inicio extends javax.swing.JFrame {
       jltitulo1.setText(titulo1);
       jltitulo2.setText(titulo2);
       jlnombre.setText(lNombre);
+      jtnombre.setText(lNombre);
       jlcontrasena.setText(lContrasena);
       jbiniciar.setText(bInciar);
       jbregistrarse.setText(bRegistro);
       jbrecuperar.setText(bRecuperar);
+      
+       
+       // Llama al método cambiarIdioma de la instancia de RecuperarContrasena si es necesario
+    if (recuperarContrasena != null) {
+        recuperarContrasena.cambiarIdioma();
+    }
+    
         
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
-      
-      // Cargar el idioma español
-      Locale spanishLocale = new Locale("es");
-      ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", spanishLocale);
-
+      // Cambia por defecto a ingles
+      Locale defaultLocale = new Locale("es");
+      // Cargar el idioma ingles
+      resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", defaultLocale);
       // Obtener las traducciones en español de las cadenas de texto en ingles
       String titulo1 = resourceBundle.getString("AreYouLookingForParkingSpaces?");
       String titulo2 = resourceBundle.getString("LogInOrRegister");
@@ -590,6 +606,7 @@ public class Inicio extends javax.swing.JFrame {
       jltitulo1.setText(titulo1);
       jltitulo2.setText(titulo2);
       jlnombre.setText(lNombre);
+      jtnombre.setText(lNombre);
       jlcontrasena.setText(lContrasena);
       jbiniciar.setText(bInciar);
       jbregistrarse.setText(bRegistro);
@@ -598,8 +615,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jlespanaMouseClicked
 
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
-        
-                                             
+                                      
     // Crear una nueva instancia de RecuperarContraseña
     RecuperarContrasena recuperarContraseña = new RecuperarContrasena();
     
@@ -612,12 +628,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
       
-        RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
-        mostrarPanel( panelRegistroCuenta );
-        
-        
-        
-        
+     RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
+     mostrarPanel( panelRegistroCuenta );
+
      DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
      checker.checkDatabaseConnection();
     
@@ -640,13 +653,13 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -655,7 +668,7 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                new InicioSesion().setVisible(true);
             }
         });
     }
@@ -705,4 +718,7 @@ public class Inicio extends javax.swing.JFrame {
        panelRoundFondo.revalidate();
        panelRoundFondo.repaint();
     }
+
+   
+
 }

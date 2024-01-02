@@ -7,8 +7,11 @@ package vista;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import vista.InicioSesion;
 
 
 
@@ -24,11 +27,21 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     public RecuperarContrasena() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
          Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
         
+         // Poner jTexfield y jBotton el radio
+        jtemail.putClientProperty("FlatLaf.style","arc: 15");
+        jbaceptar.putClientProperty("FlatLaf.style","arc: 15");
+        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
+       
+        // Poner el stiylo al texto
+        jltitulo1.putClientProperty("FlatLaf.styleClass", "h2");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
+        jlemail.putClientProperty("FlatLaf.styleClass", "h2");
         
+ 
     }
 
     /**
@@ -45,9 +58,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jPanelContaseña = new javax.swing.JPanel();
         jlemail = new javax.swing.JLabel();
         jtemail = new javax.swing.JTextField();
-        bcancelar = new javax.swing.JButton();
+        jbcancelar = new javax.swing.JButton();
         jltitulo1 = new javax.swing.JLabel();
-        benviar = new javax.swing.JButton();
+        jbaceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -78,6 +91,11 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jtemail.setText("Email");
         jtemail.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
         jtemail.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtemailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelContaseñaLayout = new javax.swing.GroupLayout(jPanelContaseña);
         jPanelContaseña.setLayout(jPanelContaseñaLayout);
@@ -97,15 +115,15 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                 .addComponent(jtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        bcancelar.setBackground(new java.awt.Color(255, 3, 3));
-        bcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        bcancelar.setForeground(new java.awt.Color(255, 255, 255));
-        bcancelar.setText("Cancelar");
-        bcancelar.setToolTipText("Boton cancela la accion");
-        bcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
-        bcancelar.addActionListener(new java.awt.event.ActionListener() {
+        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbcancelar.setText("Cancelar");
+        jbcancelar.setToolTipText("Boton cancela la accion");
+        jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bcancelarActionPerformed(evt);
+                jbcancelarActionPerformed(evt);
             }
         });
 
@@ -115,12 +133,12 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo1.setText("Introduzca su email ");
         jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        benviar.setBackground(new java.awt.Color(43, 220, 61));
-        benviar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        benviar.setForeground(new java.awt.Color(255, 255, 255));
-        benviar.setText("Aceptar");
-        benviar.setToolTipText("Boton acepta el envio para recuperar la contraseña");
-        benviar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbaceptar.setBackground(new java.awt.Color(43, 220, 61));
+        jbaceptar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbaceptar.setForeground(new java.awt.Color(255, 255, 255));
+        jbaceptar.setText("Aceptar");
+        jbaceptar.setToolTipText("Boton acepta el envio para recuperar la contraseña");
+        jbaceptar.setPreferredSize(new java.awt.Dimension(124, 49));
 
         javax.swing.GroupLayout panelRoundLayout = new javax.swing.GroupLayout(panelRound);
         panelRound.setLayout(panelRoundLayout);
@@ -133,9 +151,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                     .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(panelRoundLayout.createSequentialGroup()
-                            .addComponent(benviar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -150,8 +168,8 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                 .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(benviar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -169,10 +187,24 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcancelarActionPerformed
+    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
        
         dispose();  //setVisible(false);
-    }//GEN-LAST:event_bcancelarActionPerformed
+    }//GEN-LAST:event_jbcancelarActionPerformed
+
+    private void jtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtemailActionPerformed
+         String correoElectronico = jtemail.getText(); // Reemplaza esto con la cadena que quieras verificar
+
+        if (esCorreoElectronicoValido(correoElectronico)) {
+            System.out.println("La dirección de correo electrónico es válida.");
+        } else {
+            System.out.println("La dirección de correo electrónico no es válida.");
+        }
+        
+        
+        jtemail.setText("");
+        jtemail.setForeground(Color.black);
+    }//GEN-LAST:event_jtemailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,11 +240,31 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             }
         });
     }
+    /** Metodo si esta seleccionado traducion en ingles traducira el texto, sino lo dejara como esta*/
+    public  void  cambiarIdioma(){
+      // Cambiar el idioma aquí en RecuperarContrasena
+      Locale defaultLocale = new Locale("en");
+      ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", defaultLocale);
+
+      // Obtener las cadenas de texto en ingles
+      String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
+      String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
+      String baceptar = resourceBundle.getString("Aceptar");
+      String bcancelar = resourceBundle.getString("Cancelar");
+
+      // Establecer el texto en los componentes
+      jltitulo1.setText(titulo1);
+      jltitulo2.setText(titulo2);
+      jbaceptar.setText(baceptar);
+      jbcancelar.setText(bcancelar);
+   
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bcancelar;
-    private javax.swing.JButton benviar;
     private javax.swing.JPanel jPanelContaseña;
+    private javax.swing.JButton jbaceptar;
+    private javax.swing.JButton jbcancelar;
     private javax.swing.JLabel jlemail;
     private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;

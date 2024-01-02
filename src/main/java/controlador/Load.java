@@ -18,7 +18,7 @@ public class Load {
       public static void main(String[] args) {
          vista.Loading l =new vista.Loading();  
           l.setVisible(true);
-          vista.Inicio p= new vista.Inicio();
+          vista.InicioSesion p= new vista.InicioSesion();
           p.setVisible(false);
       
     

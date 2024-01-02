@@ -53,9 +53,9 @@
                       <Component id="jltitulo1" min="-2" pref="356" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="benviar" min="-2" pref="142" max="-2" attributes="0"/>
+                              <Component id="jbaceptar" min="-2" pref="142" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="bcancelar" min="-2" pref="142" max="-2" attributes="0"/>
+                              <Component id="jbcancelar" min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanelContaseña" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -75,8 +75,8 @@
                   <Component id="jPanelContaseña" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="benviar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bcancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbaceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbcancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
@@ -164,10 +164,13 @@
                   <Dimension value="[335, 50]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtemailActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="bcancelar">
+        <Component class="javax.swing.JButton" name="jbcancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3" green="3" red="ff" type="rgb"/>
@@ -185,7 +188,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bcancelarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbcancelarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jltitulo1">
@@ -203,7 +206,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="benviar">
+        <Component class="javax.swing.JButton" name="jbaceptar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3d" green="dc" red="2b" type="rgb"/>

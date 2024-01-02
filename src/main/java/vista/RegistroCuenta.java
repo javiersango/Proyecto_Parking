@@ -4,6 +4,11 @@
  */
 package vista;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import java.awt.Color;
+import vista.InicioSesion;
+
 /**
  *
  * @author Javier
@@ -15,6 +20,38 @@ public class RegistroCuenta extends javax.swing.JPanel {
      */
     public RegistroCuenta() {
         initComponents();
+
+        // Poner jTexfield y jBotton el radio
+        jtnombre.putClientProperty("FlatLaf.style","arc: 15");
+        jtapellidos.putClientProperty("FlatLaf.style","arc: 15");
+        jtemail.putClientProperty("FlatLaf.style","arc: 15");
+        jtmatricula.putClientProperty("FlatLaf.style","arc: 15");
+        jtcontrasena.putClientProperty("FlatLaf.style","arc: 15");
+        jtrepetirContrasena.putClientProperty("FlatLaf.style","arc: 15");
+        
+        jbregistro.putClientProperty("FlatLaf.style","arc: 15");
+        jbcancelarRegistro.putClientProperty("FlatLaf.style","arc: 15");
+ 
+        jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
+        jltitulo3.putClientProperty("FlatLaf.styleClass", "h3");
+        jlnombre.putClientProperty("FlatLaf.styleClass", "h3");
+        jlapellidos.putClientProperty("FlatLaf.styleClass", "h3");
+        jlemail.putClientProperty("FlatLaf.styleClass", "h3");
+        jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");
+        jlcontrasena.putClientProperty("FlatLaf.styleClass", "h3");
+        jlrepetirContrasena.putClientProperty("FlatLaf.styleClass", "h3");
+        
+      
+        // añadir a los jTextField iconos
+        jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
+        jtapellidos.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/apellidos.svg" ) );
+        jtemail.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/email.svg" ) );
+        
+        jtmatricula.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/matricula.svg" ) );
+        jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candadoCerrado.svg" ) );
+        jtrepetirContrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candadoCerrado.svg" ) );
+       
     }
 
     /**
@@ -31,8 +68,8 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo2 = new javax.swing.JLabel();
         jbregistro = new javax.swing.JButton();
         jPanelNombre = new javax.swing.JPanel();
-        jlnombre1 = new javax.swing.JLabel();
-        jtnombre1 = new javax.swing.JTextField();
+        jlnombre = new javax.swing.JLabel();
+        jtnombre = new javax.swing.JTextField();
         jPanelApellidos = new javax.swing.JPanel();
         jlapellidos = new javax.swing.JLabel();
         jtapellidos = new javax.swing.JTextField();
@@ -47,21 +84,20 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jCheckBoxMoto = new javax.swing.JCheckBox();
         jltitulo3 = new javax.swing.JLabel();
         jPanelContrasena = new javax.swing.JPanel();
-        jlemail1 = new javax.swing.JLabel();
-        jtcontrasena10 = new javax.swing.JPasswordField();
+        jlcontrasena = new javax.swing.JLabel();
+        jtcontrasena = new javax.swing.JPasswordField();
         jPanelContrasena1 = new javax.swing.JPanel();
-        jlemail3 = new javax.swing.JLabel();
-        jtcontrasena11 = new javax.swing.JPasswordField();
+        jlrepetirContrasena = new javax.swing.JLabel();
+        jtrepetirContrasena = new javax.swing.JPasswordField();
         jLiconMoto = new javax.swing.JLabel();
         jLiconCoche = new javax.swing.JLabel();
+        jbcancelarRegistro = new javax.swing.JButton();
 
         setMaximumSize(null);
-        setMinimumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
         panelRegistroCuenta.setBackground(new java.awt.Color(249, 251, 255));
         panelRegistroCuenta.setMaximumSize(null);
-        panelRegistroCuenta.setMinimumSize(null);
         panelRegistroCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
         panelRegistroCuenta.setRoundBottomLeft(30);
         panelRegistroCuenta.setRoundBottomRight(30);
@@ -83,7 +119,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jbregistro.setForeground(new java.awt.Color(255, 255, 255));
         jbregistro.setText("Registrarse");
         jbregistro.setToolTipText("Botón para recuparar contraseña ");
-        jbregistro.setActionCommand("Registrarse");
         jbregistro.setPreferredSize(new java.awt.Dimension(124, 49));
         jbregistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,35 +129,35 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jPanelNombre.setBackground(new java.awt.Color(249, 251, 255));
         jPanelNombre.setPreferredSize(new java.awt.Dimension(335, 82));
 
-        jlnombre1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlnombre1.setForeground(new java.awt.Color(25, 35, 66));
-        jlnombre1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlnombre1.setText("Nombre");
-        jlnombre1.setPreferredSize(new java.awt.Dimension(51, 17));
+        jlnombre.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre.setForeground(new java.awt.Color(25, 35, 66));
+        jlnombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre.setText("Nombre");
+        jlnombre.setPreferredSize(new java.awt.Dimension(51, 17));
 
-        jtnombre1.setBackground(new java.awt.Color(198, 212, 255));
-        jtnombre1.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtnombre1.setForeground(new java.awt.Color(153, 153, 153));
-        jtnombre1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jtnombre1.setText("Nombre");
-        jtnombre1.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
-        jtnombre1.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtnombre.setBackground(new java.awt.Color(198, 212, 255));
+        jtnombre.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtnombre.setForeground(new java.awt.Color(153, 153, 153));
+        jtnombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtnombre.setText("Nombre");
+        jtnombre.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtnombre.setPreferredSize(new java.awt.Dimension(335, 50));
 
         javax.swing.GroupLayout jPanelNombreLayout = new javax.swing.GroupLayout(jPanelNombre);
         jPanelNombre.setLayout(jPanelNombreLayout);
         jPanelNombreLayout.setHorizontalGroup(
             jPanelNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNombreLayout.createSequentialGroup()
-                .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jtnombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelNombreLayout.setVerticalGroup(
             jPanelNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNombreLayout.createSequentialGroup()
-                .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanelApellidos.setBackground(new java.awt.Color(249, 251, 255));
@@ -234,11 +269,15 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo4.setText("Inicie sesión o regístrese");
         jltitulo4.setPreferredSize(new java.awt.Dimension(273, 30));
 
+        jCheckBoxCoche.setBackground(new java.awt.Color(249, 251, 255));
+        jCheckBoxCoche.setForeground(new java.awt.Color(39, 59, 244));
         jCheckBoxCoche.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jCheckBoxCoche.setMaximumSize(null);
         jCheckBoxCoche.setMinimumSize(null);
         jCheckBoxCoche.setPreferredSize(new java.awt.Dimension(25, 19));
 
+        jCheckBoxMoto.setBackground(new java.awt.Color(249, 251, 255));
+        jCheckBoxMoto.setForeground(new java.awt.Color(39, 59, 244));
         jCheckBoxMoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jCheckBoxMoto.setMaximumSize(null);
         jCheckBoxMoto.setMinimumSize(null);
@@ -249,22 +288,27 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jltitulo3.setText("Inicia sesion.");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
+        jltitulo3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jltitulo3MouseClicked(evt);
+            }
+        });
 
         jPanelContrasena.setBackground(new java.awt.Color(249, 251, 255));
         jPanelContrasena.setPreferredSize(new java.awt.Dimension(335, 82));
 
-        jlemail1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlemail1.setForeground(new java.awt.Color(25, 35, 66));
-        jlemail1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlemail1.setText("Contraseña");
-        jlemail1.setPreferredSize(new java.awt.Dimension(51, 17));
+        jlcontrasena.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlcontrasena.setForeground(new java.awt.Color(25, 35, 66));
+        jlcontrasena.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlcontrasena.setText("Contraseña");
+        jlcontrasena.setPreferredSize(new java.awt.Dimension(51, 17));
 
-        jtcontrasena10.setBackground(new java.awt.Color(198, 212, 255));
-        jtcontrasena10.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtcontrasena10.setForeground(new java.awt.Color(153, 153, 153));
-        jtcontrasena10.setText("********");
-        jtcontrasena10.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
-        jtcontrasena10.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtcontrasena.setBackground(new java.awt.Color(198, 212, 255));
+        jtcontrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtcontrasena.setForeground(new java.awt.Color(153, 153, 153));
+        jtcontrasena.setText("********");
+        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
+        jtcontrasena.setPreferredSize(new java.awt.Dimension(335, 50));
 
         javax.swing.GroupLayout jPanelContrasenaLayout = new javax.swing.GroupLayout(jPanelContrasena);
         jPanelContrasena.setLayout(jPanelContrasenaLayout);
@@ -272,33 +316,33 @@ public class RegistroCuenta extends javax.swing.JPanel {
             jPanelContrasenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContrasenaLayout.createSequentialGroup()
                 .addGroup(jPanelContrasenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtcontrasena10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlemail1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelContrasenaLayout.setVerticalGroup(
             jPanelContrasenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContrasenaLayout.createSequentialGroup()
-                .addComponent(jlemail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jtcontrasena10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jtcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanelContrasena1.setBackground(new java.awt.Color(249, 251, 255));
         jPanelContrasena1.setPreferredSize(new java.awt.Dimension(335, 82));
 
-        jlemail3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlemail3.setForeground(new java.awt.Color(25, 35, 66));
-        jlemail3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlemail3.setText("Repetir contraseña");
-        jlemail3.setPreferredSize(new java.awt.Dimension(51, 17));
+        jlrepetirContrasena.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlrepetirContrasena.setForeground(new java.awt.Color(25, 35, 66));
+        jlrepetirContrasena.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlrepetirContrasena.setText("Repetir contraseña");
+        jlrepetirContrasena.setPreferredSize(new java.awt.Dimension(51, 17));
 
-        jtcontrasena11.setBackground(new java.awt.Color(198, 212, 255));
-        jtcontrasena11.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtcontrasena11.setForeground(new java.awt.Color(153, 153, 153));
-        jtcontrasena11.setText("********");
-        jtcontrasena11.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
-        jtcontrasena11.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtrepetirContrasena.setBackground(new java.awt.Color(198, 212, 255));
+        jtrepetirContrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtrepetirContrasena.setForeground(new java.awt.Color(153, 153, 153));
+        jtrepetirContrasena.setText("********");
+        jtrepetirContrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
+        jtrepetirContrasena.setPreferredSize(new java.awt.Dimension(335, 50));
 
         javax.swing.GroupLayout jPanelContrasena1Layout = new javax.swing.GroupLayout(jPanelContrasena1);
         jPanelContrasena1.setLayout(jPanelContrasena1Layout);
@@ -306,18 +350,19 @@ public class RegistroCuenta extends javax.swing.JPanel {
             jPanelContrasena1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContrasena1Layout.createSequentialGroup()
                 .addGroup(jPanelContrasena1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtcontrasena11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlemail3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtrepetirContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlrepetirContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelContrasena1Layout.setVerticalGroup(
             jPanelContrasena1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelContrasena1Layout.createSequentialGroup()
-                .addComponent(jlemail3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlrepetirContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jtcontrasena11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jtrepetirContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jLiconMoto.setBackground(new java.awt.Color(39, 59, 244));
         jLiconMoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/motorbike-fill 1.png"))); // NOI18N
         jLiconMoto.setMaximumSize(null);
         jLiconMoto.setMinimumSize(null);
@@ -327,6 +372,18 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jLiconCoche.setMaximumSize(null);
         jLiconCoche.setMinimumSize(null);
         jLiconCoche.setPreferredSize(new java.awt.Dimension(25, 19));
+
+        jbcancelarRegistro.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelarRegistro.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbcancelarRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        jbcancelarRegistro.setText("Cancelar");
+        jbcancelarRegistro.setToolTipText("Botón para recuparar contraseña ");
+        jbcancelarRegistro.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbcancelarRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbcancelarRegistroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRegistroCuentaLayout = new javax.swing.GroupLayout(panelRegistroCuenta);
         panelRegistroCuenta.setLayout(panelRegistroCuentaLayout);
@@ -343,15 +400,15 @@ public class RegistroCuenta extends javax.swing.JPanel {
                     .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                        .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLiconCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBoxCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -361,13 +418,16 @@ public class RegistroCuenta extends javax.swing.JPanel {
                             .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                        .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanelContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                                .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbcancelarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelRegistroCuentaLayout.setVerticalGroup(
@@ -376,9 +436,9 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -403,8 +463,10 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 .addComponent(jPanelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbcancelarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56))
         );
 
@@ -416,7 +478,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRegistroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(panelRegistroCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -424,11 +486,34 @@ public class RegistroCuenta extends javax.swing.JPanel {
 
         // Crear una nueva instancia de RecuperarContraseña
         InicioCuenta inicio = new InicioCuenta();
-
         // Hacer visible el nuevo JFrame de RecuperarContraseña
         mostrarPanel(inicio);
 
     }//GEN-LAST:event_jbregistroActionPerformed
+    /** Evento me lleva a la ventana de inicio de sesion*/
+    private void jltitulo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jltitulo3MouseClicked
+         // Crea una instancia de InicioCuenta
+        InicioSesion inicio = new InicioSesion();
+    
+        // Muestra la ventana InicioCuenta
+        inicio.setVisible(true);
+    }//GEN-LAST:event_jltitulo3MouseClicked
+
+    private void jbcancelarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarRegistroActionPerformed
+        jtnombre.setText("Nombre");
+        jtnombre.setForeground(Color.gray);
+        jtapellidos.setText("Apellidos");
+        jtapellidos.setForeground(Color.gray);
+        jtemail.setText("Email");
+        jtemail.setForeground(Color.gray);
+        jtmatricula.setText("Matricula");
+        jtmatricula.setForeground(Color.gray);
+        jtcontrasena.setText("********");
+        jtcontrasena.setForeground(Color.gray);
+        jtrepetirContrasena.setText("********");
+        jtrepetirContrasena.setForeground(Color.gray);
+        
+    }//GEN-LAST:event_jbcancelarRegistroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -442,53 +527,24 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelEmail;
     private javax.swing.JPanel jPanelMatricula;
     private javax.swing.JPanel jPanelNombre;
+    private javax.swing.JButton jbcancelarRegistro;
     private javax.swing.JButton jbregistro;
     private javax.swing.JLabel jlapellidos;
     private javax.swing.JLabel jlcontrasena;
-    private javax.swing.JLabel jlcontrasena1;
-    private javax.swing.JLabel jlcontrasena2;
-    private javax.swing.JLabel jlcontrasena3;
-    private javax.swing.JLabel jlcontrasena4;
-    private javax.swing.JLabel jlcontrasena5;
-    private javax.swing.JLabel jlcontrasena6;
-    private javax.swing.JLabel jlcontrasena7;
-    private javax.swing.JLabel jlcontrasena8;
-    private javax.swing.JLabel jlcontrasena9;
     private javax.swing.JLabel jlemail;
-    private javax.swing.JLabel jlemail1;
-    private javax.swing.JLabel jlemail3;
     private javax.swing.JLabel jlmatricula;
-    private javax.swing.JLabel jlnombre1;
+    private javax.swing.JLabel jlnombre;
+    private javax.swing.JLabel jlrepetirContrasena;
     private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JLabel jltitulo4;
-    private javax.swing.JPanel jpanelContrasena;
-    private javax.swing.JPanel jpanelContrasena1;
-    private javax.swing.JPanel jpanelContrasena2;
-    private javax.swing.JPanel jpanelContrasena3;
-    private javax.swing.JPanel jpanelContrasena4;
-    private javax.swing.JPanel jpanelContrasena5;
-    private javax.swing.JPanel jpanelContrasena6;
-    private javax.swing.JPanel jpanelContrasena7;
-    private javax.swing.JPanel jpanelContrasena8;
-    private javax.swing.JPanel jpanelContrasena9;
     private javax.swing.JTextField jtapellidos;
     private javax.swing.JPasswordField jtcontrasena;
-    private javax.swing.JPasswordField jtcontrasena1;
-    private javax.swing.JPasswordField jtcontrasena10;
-    private javax.swing.JPasswordField jtcontrasena11;
-    private javax.swing.JPasswordField jtcontrasena2;
-    private javax.swing.JPasswordField jtcontrasena3;
-    private javax.swing.JPasswordField jtcontrasena4;
-    private javax.swing.JPasswordField jtcontrasena5;
-    private javax.swing.JPasswordField jtcontrasena6;
-    private javax.swing.JPasswordField jtcontrasena7;
-    private javax.swing.JPasswordField jtcontrasena8;
-    private javax.swing.JPasswordField jtcontrasena9;
     private javax.swing.JTextField jtemail;
     private javax.swing.JTextField jtmatricula;
-    private javax.swing.JTextField jtnombre1;
+    private javax.swing.JTextField jtnombre;
+    private javax.swing.JPasswordField jtrepetirContrasena;
     private vista.PanelRound panelRegistroCuenta;
     // End of variables declaration//GEN-END:variables
 
@@ -502,5 +558,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
        panelRegistroCuenta.repaint();
     
 }
-    
+
+ 
 }
