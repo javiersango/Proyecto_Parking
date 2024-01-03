@@ -22,7 +22,7 @@ public class DatabaseConnectionChecker {
     public  void checkDatabaseConnection() {
         // Crea una instancia de la configuración de Hibernate
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml"); // Reemplaza con la ubicación de tu archivo de configuración
+        configuration.configure("hibernate.cfg.xml"); //ubicacion configuracion
 
         // Crea una instancia de la fábrica de sesiones de Hibernate
         try {

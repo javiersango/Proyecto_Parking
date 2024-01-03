@@ -34,7 +34,6 @@ vista\InicioSesion$1.class
 vista\Loading$1.class
 modelo\Reservas.class
 controlador\MetodosRegistroCuenta.class
-com\mycompany\tarea17_mail\Mail.class
 vista\RegistroCuenta$2.class
 vista\RegistroCuenta$9.class
 vista\RecuperarContrasena$2.class

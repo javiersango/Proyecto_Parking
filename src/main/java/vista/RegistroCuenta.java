@@ -7,17 +7,23 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
-import javax.swing.JTextField;
-import vista.InicioSesion;
-import controlador.MetodosRegistroCuenta;
 import javax.swing.JOptionPane;
 import controlador.MetodosRecuperarContraseña;
 import controlador.MetodosRegistroCuenta;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Javier
  */
 public class RegistroCuenta extends javax.swing.JPanel {
+    // Variables
+    private boolean esCoche;
+    private String nombre;
+    private String apellidos;
+    private String matricula;
+    private String email;
+    private String contrasena;
+   
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
  
     /**
@@ -518,17 +524,17 @@ public class RegistroCuenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     /** Evento nos lleva a la pantalla de incio de la cuenta*/
     private void jbregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistroActionPerformed
-
+        nombre = jtnombre.getText();
+        apellidos = jtapellidos.getText();
+        
      if (jCheckBoxCoche.isSelected()) {
-            int checkBox = 1;
+            esCoche = true;
         } else if (jCheckBoxMoto.isSelected()){
-            int checkBox = 0;
+             esCoche = false;
      } else {
             JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehículo", "Vehiculo incorrecto", JOptionPane.ERROR_MESSAGE);
         }
 
-
-        
     if (jtnombre.getText().isEmpty() || 
     jtapellidos.getText().isEmpty() || 
     jtemail.getText().isEmpty() || 
@@ -537,28 +543,35 @@ public class RegistroCuenta extends javax.swing.JPanel {
     jtrepetirContrasena.getText().isEmpty() )
      {
     
-    // Mostrar un mensaje de error o tomar alguna acción en caso de campos vacíos
+    // Comprobacion de los campos
     JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
 } else {
     if (jtnombre.getText().length() < 3) {
         JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
     } else {
-        String email = jtemail.getText();
+         email = jtemail.getText();
         if (!MetodosRecuperarContraseña.esCorreoElectronicoValido(email)) {
             JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Electrónico Incorrecto", JOptionPane.ERROR_MESSAGE);
         } else {
-            String matricula = jtmatricula.getText();
-            if (!MetodosRegistroCuenta.isMatriculaValida(matricula)) {
+             matricula = jtmatricula.getText();
+            if (!MetodosRegistroCuenta.validarMatricula(matricula)) {
                 JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matrícula Incorrecta", JOptionPane.ERROR_MESSAGE);
             } else {
-                String contrasena = jtcontrasena.getText();
+                contrasena = jtcontrasena.getText();
                 String repetirContrasena = jtrepetirContrasena.getText();
                 if (!contrasena.equals(repetirContrasena)) {
                     JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Contraseñas Incorrectas", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    // Si todas las comprobaciones son exitosas, continuar con la lógica deseada.
-                    InicioCuenta inicio = new InicioCuenta();
-                    mostrarPanel(inicio); 
+
+                     // lLamar al metodo guardar cuenta usuario
+                        if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, email, matricula, contrasena, esCoche)) {
+                            JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario nombre " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                            InicioCuenta inicio = new InicioCuenta();
+                            mostrarPanel(inicio);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al guardar el registro", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+   
                 }      
             }
         }
@@ -591,31 +604,31 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtrepetirContrasena.setForeground(Color.gray);
         
     }//GEN-LAST:event_jbcancelarRegistroActionPerformed
-    //
+    /** Evento compotamiento de los campos al seleccionar*/
     private void jtnombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMouseClicked
     
-        mrc.handleTextFieldClick(jtnombre, "Nombre");
+        mrc.comportamientoCampos(jtnombre, "Nombre");
        
     }//GEN-LAST:event_jtnombreMouseClicked
 
     private void jtapellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtapellidosMouseClicked
-        mrc.handleTextFieldClick(jtapellidos, "Apellidos");
+        mrc.comportamientoCampos(jtapellidos, "Apellidos");
     }//GEN-LAST:event_jtapellidosMouseClicked
 
     private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
-         mrc.handleTextFieldClick(jtmatricula, "Matricula");
+         mrc.comportamientoCampos(jtmatricula, "Matricula");
     }//GEN-LAST:event_jtmatriculaMouseClicked
 
     private void jtcontrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMouseClicked
-        mrc.handleTextFieldClick(jtcontrasena, "********");
+        mrc.comportamientoCampos(jtcontrasena, "********");
     }//GEN-LAST:event_jtcontrasenaMouseClicked
 
     private void jtrepetirContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtrepetirContrasenaMouseClicked
-        mrc.handleTextFieldClick(jtrepetirContrasena, "********");
+        mrc.comportamientoCampos(jtrepetirContrasena, "********");
     }//GEN-LAST:event_jtrepetirContrasenaMouseClicked
 
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
-        mrc.handleTextFieldClick(jtemail, "Email");
+        mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
 
 
