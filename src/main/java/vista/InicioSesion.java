@@ -620,8 +620,8 @@ public class InicioSesion extends javax.swing.JFrame {
      RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
      mostrarPanel( panelRegistroCuenta );
 
-     DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
-     checker.checkDatabaseConnection();
+     //DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
+     //checker.checkDatabaseConnection();
     
     }//GEN-LAST:event_jbregistrarseActionPerformed
 

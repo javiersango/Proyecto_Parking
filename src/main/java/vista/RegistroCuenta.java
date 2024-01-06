@@ -8,14 +8,33 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import controlador.MetodosRecuperarContraseña;
+import controlador.MetodosContraseña;
 import controlador.MetodosRegistroCuenta;
 import javax.swing.ImageIcon;
+
 /**
  *
  * @author Javier
  */
 public class RegistroCuenta extends javax.swing.JPanel {
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getRepetirContrasena() {
+        return repetirContrasena;
+    }
+
+    public void setRepetirContrasena(String repetirContrasena) {
+        this.repetirContrasena = repetirContrasena;
+    }
+    
+    
     // Variables
     private boolean esCoche;
     private String nombre;
@@ -23,6 +42,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private String matricula;
     private String email;
     private String contrasena;
+    private  String repetirContrasena;
    
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
  
@@ -550,7 +570,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
     } else {
          email = jtemail.getText();
-        if (!MetodosRecuperarContraseña.esCorreoElectronicoValido(email)) {
+        if (!MetodosContraseña.esCorreoElectronicoValido(email)) {
             JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Electrónico Incorrecto", JOptionPane.ERROR_MESSAGE);
         } else {
              matricula = jtmatricula.getText();
@@ -558,24 +578,30 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matrícula Incorrecta", JOptionPane.ERROR_MESSAGE);
             } else {
                 contrasena = jtcontrasena.getText();
-                String repetirContrasena = jtrepetirContrasena.getText();
-                if (!contrasena.equals(repetirContrasena)) {
-                    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "Contraseñas Incorrectas", JOptionPane.ERROR_MESSAGE);
-                } else {
+                repetirContrasena = jtrepetirContrasena.getText();
+               
+                   MetodosContraseña metodos = new MetodosContraseña();
+                    String hash = metodos.crearHashContrasena(contrasena, repetirContrasena);
 
-                     // lLamar al metodo guardar cuenta usuario
-                        if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, email, matricula, contrasena, esCoche)) {
-                            JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario nombre " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                    if (hash != null) {
+                         // lLamar al metodo guardar cuenta usuario
+                        if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, email, matricula, hash, esCoche)) {
+                            JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
                             InicioCuenta inicio = new InicioCuenta();
                             mostrarPanel(inicio);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al guardar el registro", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-   
+                        
+                        } 
+                    } else {
+                     
+                        JOptionPane.showMessageDialog(null, "Error en la generación del hash. " + nombre, "Correcto", JOptionPane.WARNING_MESSAGE);
+                    }
+
+
+                    
                 }      
             }
         }
-    }
+    
 }
     
 
@@ -674,5 +700,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
        panelRegistroCuenta.repaint();
     
 }
+
+  
 
 }

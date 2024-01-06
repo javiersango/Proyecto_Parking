@@ -10,7 +10,8 @@ import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import controlador.MetodosRecuperarContraseña;
+import controlador.MetodosContraseña;
+import controlador.MetodosRegistroCuenta;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -20,11 +21,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import vista.InicioSesion;
 
+
 /**
  *
  * @author Javier
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
+    
+    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
     
     public RecuperarContrasena(JTextField jtemail) {
         this.jtemail = jtemail;
@@ -47,6 +51,8 @@ public class RecuperarContrasena extends javax.swing.JFrame {
 
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
+        
+        
 
         // Poner jTexfield y jBotton el radio
         jtemail.putClientProperty("FlatLaf.style", "arc: 15");
@@ -77,6 +83,12 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jbcancelar = new javax.swing.JButton();
         jltitulo1 = new javax.swing.JLabel();
         jbaceptar = new javax.swing.JButton();
+        jPanelContaseña1 = new javax.swing.JPanel();
+        jlmatricula = new javax.swing.JLabel();
+        jtmatricula = new javax.swing.JTextField();
+        jPanelContaseña2 = new javax.swing.JPanel();
+        jlnombre = new javax.swing.JLabel();
+        jtnombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -110,6 +122,11 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jtemail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtemailMouseClicked(evt);
+            }
+        });
+        jtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtemailActionPerformed(evt);
             }
         });
 
@@ -146,7 +163,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jltitulo1.setForeground(new java.awt.Color(255, 255, 255));
         jltitulo1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jltitulo1.setText("Introduzca su email ");
+        jltitulo1.setText("Introduzca sus datos");
         jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jbaceptar.setBackground(new java.awt.Color(43, 220, 61));
@@ -161,6 +178,96 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             }
         });
 
+        jPanelContaseña1.setBackground(new java.awt.Color(39, 59, 244));
+        jPanelContaseña1.setPreferredSize(new java.awt.Dimension(335, 82));
+
+        jlmatricula.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jlmatricula.setForeground(new java.awt.Color(255, 255, 255));
+        jlmatricula.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlmatricula.setText("Matricula");
+        jlmatricula.setPreferredSize(new java.awt.Dimension(51, 17));
+
+        jtmatricula.setBackground(new java.awt.Color(221, 221, 221));
+        jtmatricula.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtmatricula.setForeground(new java.awt.Color(153, 153, 153));
+        jtmatricula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtmatricula.setText("Matricula");
+        jtmatricula.setToolTipText("Introduce la matricula");
+        jtmatricula.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtmatricula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtmatriculaMouseClicked(evt);
+            }
+        });
+        jtmatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtmatriculaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelContaseña1Layout = new javax.swing.GroupLayout(jPanelContaseña1);
+        jPanelContaseña1.setLayout(jPanelContaseña1Layout);
+        jPanelContaseña1Layout.setHorizontalGroup(
+            jPanelContaseña1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jtmatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelContaseña1Layout.createSequentialGroup()
+                .addComponent(jlmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelContaseña1Layout.setVerticalGroup(
+            jPanelContaseña1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContaseña1Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(jlmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanelContaseña2.setBackground(new java.awt.Color(39, 59, 244));
+        jPanelContaseña2.setPreferredSize(new java.awt.Dimension(335, 82));
+
+        jlnombre.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jlnombre.setForeground(new java.awt.Color(255, 255, 255));
+        jlnombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre.setText("Nombre");
+        jlnombre.setPreferredSize(new java.awt.Dimension(51, 17));
+
+        jtnombre.setBackground(new java.awt.Color(221, 221, 221));
+        jtnombre.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtnombre.setForeground(new java.awt.Color(153, 153, 153));
+        jtnombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtnombre.setText("Nombre");
+        jtnombre.setToolTipText("Introduce tu nombre");
+        jtnombre.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtnombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtnombreMouseClicked(evt);
+            }
+        });
+        jtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtnombreActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelContaseña2Layout = new javax.swing.GroupLayout(jPanelContaseña2);
+        jPanelContaseña2.setLayout(jPanelContaseña2Layout);
+        jPanelContaseña2Layout.setHorizontalGroup(
+            jPanelContaseña2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContaseña2Layout.createSequentialGroup()
+                .addComponent(jlnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelContaseña2Layout.setVerticalGroup(
+            jPanelContaseña2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelContaseña2Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(jlnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout panelRoundLayout = new javax.swing.GroupLayout(panelRound);
         panelRound.setLayout(panelRoundLayout);
         panelRoundLayout.setHorizontalGroup(
@@ -170,28 +277,35 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                 .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(panelRoundLayout.createSequentialGroup()
-                            .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanelContaseña1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelRoundLayout.createSequentialGroup()
+                                .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelContaseña2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         panelRoundLayout.setVerticalGroup(
             panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRoundLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelContaseña2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelContaseña1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,7 +316,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelRound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -214,14 +330,18 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
-        jtemail.setText(""); 
-        jtemail.setForeground(Color.black);
-        
+        mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
     /** Evento comprueba que el correo sea valido , enviado un correo electronico para la recuperacion de la contraseña al usuario*/
     private void jbaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbaceptarMouseClicked
+       
+       
+        
+        
+        
+        
         String correoElectronico = jtemail.getText();
-        MetodosRecuperarContraseña metodo = new MetodosRecuperarContraseña();
+        MetodosContraseña metodo = new MetodosContraseña();
 
         if (correoElectronico != null && !correoElectronico.isEmpty()) {
             if (metodo.esCorreoElectronicoValido(correoElectronico)) {
@@ -249,7 +369,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             Session session = Session.getDefaultInstance(props, auth);
             System.out.println("Sesión Creada");
             EmailUtil.sendEmail(session, toEmail, "Parking ", " Mesaje de recuperación contraseña: "
-                    + "Recuerde cambiar volver a cambiar la contraseña.");
+                    + "¡Recuerde! volver a cambiar la contraseña en la cuenta de usuario.");
             
                 jtemail.setText("Email"); 
                 jtemail.setForeground(Color.gray);
@@ -265,6 +385,27 @@ public class RecuperarContrasena extends javax.swing.JFrame {
              jtemail.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jbaceptarMouseClicked
+
+    private void jtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtemailActionPerformed
+        mrc.comportamientoCampos(jtemail, "Email");
+    }//GEN-LAST:event_jtemailActionPerformed
+
+    private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
+         mrc.comportamientoCampos(jtmatricula, "Matricula");
+    }//GEN-LAST:event_jtmatriculaMouseClicked
+
+    private void jtmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtmatriculaActionPerformed
+       mrc.comportamientoCampos(jtmatricula, "Matricula");
+        
+    }//GEN-LAST:event_jtmatriculaActionPerformed
+
+    private void jtnombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMouseClicked
+        mrc.comportamientoCampos(jtnombre, "Nombre");
+    }//GEN-LAST:event_jtnombreMouseClicked
+
+    private void jtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtnombreActionPerformed
+        mrc.comportamientoCampos(jtnombre, "Nombre");
+    }//GEN-LAST:event_jtnombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,12 +468,18 @@ public class RecuperarContrasena extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelContaseña;
+    private javax.swing.JPanel jPanelContaseña1;
+    private javax.swing.JPanel jPanelContaseña2;
     private javax.swing.JButton jbaceptar;
     private javax.swing.JButton jbcancelar;
     private javax.swing.JLabel jlemail;
+    private javax.swing.JLabel jlmatricula;
+    private javax.swing.JLabel jlnombre;
     private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JTextField jtemail;
+    private javax.swing.JTextField jtmatricula;
+    private javax.swing.JTextField jtnombre;
     private vista.PanelRound panelRound;
     // End of variables declaration//GEN-END:variables
 }

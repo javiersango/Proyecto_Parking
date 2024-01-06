@@ -28,8 +28,7 @@ public class MetodosRegistroCuenta {
   public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
          if (usuarioExistente(nombre, contrasena)) {
-            JOptionPane.showMessageDialog(null, "El usuario con el mismo nombre y contraseña ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println("El usuario con el mismo nombre y contraseña ya existe.");
+            JOptionPane.showMessageDialog(null, "El usuario " + nombre + " ya existe. ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
     } else {
 
@@ -60,7 +59,7 @@ public class MetodosRegistroCuenta {
 
             // Guardar el usuario en la base de datos
             sesion.save(usuario);
-/*
+
             // Crear una instancia de Vehiculos y configurar los datos
             Vehiculos vehiculo = new Vehiculos();
             vehiculo.setUsuarios(usuario); // Establecer la relación con el usuario
@@ -69,7 +68,7 @@ public class MetodosRegistroCuenta {
 
             // Guardar el vehículo en la base de datos
             sesion.save(vehiculo);
-*/
+
             // Confirmar la transacción
             transaction.commit();
 
@@ -89,46 +88,40 @@ public class MetodosRegistroCuenta {
   
    /** Método para comprobar si ya existe un usuario con el mismo nombre, matrícula y contraseña*/
     public static boolean usuarioExistente(String nombre, String contrasena) {
-        // Configurar la conexión a la base de datos utilizando Hibernate
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
+     // Configurar la conexión a la base de datos utilizando Hibernate
+    Configuration configuration = new Configuration();
+    configuration.configure("hibernate.cfg.xml");
+    SessionFactory sessionFactory = configuration.buildSessionFactory();
+    Session session = sessionFactory.openSession();
 
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+    Transaction transaction = null;
 
-        Transaction transaction = null;
+    try {
+        // Comenzar una transacción
+        transaction = session.beginTransaction();
 
-        try {
-            // Comenzar una transacción
-            transaction = session.beginTransaction();
+        // Consulta Hibernate para buscar un usuario con los mismos datos
+        String hql = "FROM Usuarios WHERE nombre = :nombre AND contrasena = :contrasena";
+        Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
+        query.setParameter("nombre", nombre);
+        query.setParameter("contrasena", contrasena);
 
-            // Consulta Hibernate para buscar un usuario con los mismos datos
-            String hql = "FROM Usuarios WHERE nombre = :nombre AND contrasena = :contrasena";
-            Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
-            query.setParameter("nombre", nombre);
-            query.setParameter("contrasena", contrasena);
+        Usuarios usuario = query.uniqueResult();
 
-            Usuarios usuario = query.uniqueResult();
+        // Commit de la transacción
+        transaction.commit();
 
-            // Commit de la transacción
-            transaction.commit();
-
-            if (usuario != null) {
-                 return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-            // JOptionPane.showMessageDialog(null, "Error al verificar el usuario", "Error", JOptionPane.WARNING_MESSAGE);
-             return false;
-        } finally {
-            session.close();
+        return usuario != null;
+    } catch (Exception e) {
+        if (transaction != null) {
+            transaction.rollback();
         }
+        e.printStackTrace();
+        return false;
+    } finally {
+        session.close();
     }
+}
 
     /** Método para manejar la visualización de los campos de texto*/
     public void comportamientoCampos(JTextField textField, String placeholder) {

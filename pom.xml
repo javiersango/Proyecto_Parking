@@ -81,6 +81,16 @@
             <version>2.0.1</version>
             <type>jar</type>
         </dependency>
+         <dependency>
+        <groupId>org.passay</groupId>
+        <artifactId>passay</artifactId>
+        <version>1.6.0</version> <!-- Verifica la última versión en el repositorio Maven -->
+    </dependency>
+      <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
