@@ -27,8 +27,8 @@ public class MetodosRegistroCuenta {
    /** Metodo se le le pasan los datos de vehiculo y uuario para registra la cuenta en la base de datos parking*/
   public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
-         if (usuarioExistente(nombre, contrasena)) {
-            JOptionPane.showMessageDialog(null, "El usuario " + nombre + " ya existe. ", "Error", JOptionPane.ERROR_MESSAGE);
+         if (usuarioExistente(nombre, email)) {
+            JOptionPane.showMessageDialog(null, "El usuario " + nombre + " ya existe. Introduca otro email ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
     } else {
 
@@ -87,7 +87,7 @@ public class MetodosRegistroCuenta {
     }
   
    /** Método para comprobar si ya existe un usuario con el mismo nombre, matrícula y contraseña*/
-    public static boolean usuarioExistente(String nombre, String contrasena) {
+    public static boolean usuarioExistente(String nombre, String email) {
      // Configurar la conexión a la base de datos utilizando Hibernate
     Configuration configuration = new Configuration();
     configuration.configure("hibernate.cfg.xml");
@@ -101,10 +101,10 @@ public class MetodosRegistroCuenta {
         transaction = session.beginTransaction();
 
         // Consulta Hibernate para buscar un usuario con los mismos datos
-        String hql = "FROM Usuarios WHERE nombre = :nombre AND contrasena = :contrasena";
+        String hql = "FROM Usuarios WHERE nombre = :nombre AND email = :email";
         Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
         query.setParameter("nombre", nombre);
-        query.setParameter("contrasena", contrasena);
+        query.setParameter("email", email);
 
         Usuarios usuario = query.uniqueResult();
 
