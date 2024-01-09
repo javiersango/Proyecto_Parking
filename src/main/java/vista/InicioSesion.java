@@ -23,8 +23,8 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JOptionPane;
-import controlador.DatabaseConnectionChecker;
 import javax.swing.JPanel;
+import controlador.HibernateUtil;
 
 /**
  *
@@ -620,8 +620,10 @@ public class InicioSesion extends javax.swing.JFrame {
      RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
      mostrarPanel( panelRegistroCuenta );
 
-     //DatabaseConnectionChecker checker = new DatabaseConnectionChecker();
-     //checker.checkDatabaseConnection();
+     HibernateUtil hibernate = new HibernateUtil();
+     hibernate.conectar();
+     hibernate.mostrarDatosUsuarios();
+     hibernate.desconectar();
     
     }//GEN-LAST:event_jbregistrarseActionPerformed
 

@@ -8,7 +8,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import controlador.MetodosContraseña;
+import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
 import javax.swing.ImageIcon;
 
@@ -570,7 +570,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
     } else {
          email = jtemail.getText();
-        if (!MetodosContraseña.esCorreoElectronicoValido(email)) {
+        if (!MetodosContrasena.esCorreoElectronicoValido(email)) {
             JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Electrónico Incorrecto", JOptionPane.ERROR_MESSAGE);
         } else {
              matricula = jtmatricula.getText();
@@ -580,7 +580,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 contrasena = jtcontrasena.getText();
                 repetirContrasena = jtrepetirContrasena.getText();
                
-                   MetodosContraseña metodos = new MetodosContraseña();
+                   MetodosContrasena metodos = new MetodosContrasena();
                     String hash = metodos.crearHashContrasena(contrasena, repetirContrasena);
 
                     if (hash != null) {
@@ -593,7 +593,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
                         } 
                     } else {
                      
-                        JOptionPane.showMessageDialog(null, "Error en la generación del hash. " + nombre, "Correcto", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Error en la contraseña. " + nombre, "Error", JOptionPane.WARNING_MESSAGE);
                     }
 
 

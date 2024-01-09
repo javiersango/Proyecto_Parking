@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import static controlador.MetodosRegistroCuenta.usuarioExistente;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +23,7 @@ import org.passay.WhitespaceRule;
  * @author Javier
  */
 /** Metodo verifica si una direccion de correo electronico es válida*/
-public class MetodosContraseña {
+public class MetodosContrasena {
     
      public static boolean esCorreoElectronicoValido(String correo) {
          String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+).(es|com)$";
@@ -64,5 +65,9 @@ public class MetodosContraseña {
     JOptionPane.showMessageDialog(null, "Generado hash correctamente", "Correcto", JOptionPane.QUESTION_MESSAGE);
 
     return hashedPassword; // Devuelve el hash generado
-}}
+}
+ }
+ 
+
+ 
 }
