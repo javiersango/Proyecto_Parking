@@ -23,6 +23,9 @@ import org.passay.WhitespaceRule;
  */
 
 public class MetodosContrasena {
+
+    
+
     /** Metodo verifica si una direccion de correo electronico es valida*/
      public static boolean esCorreoElectronicoValido(String correo) {
          String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+).(es|com)$";
@@ -84,18 +87,17 @@ public class MetodosContrasena {
         return result.isValid(); // si es valida devuelve true, si no false
     }
     
-      // Boton comprueba que el hash con la contraseña introducida es correcta
-    private void comprobarContraseña(contrasena, contrasenaGuardada) {                                            
-       // Ahora puedes verificar la contraseña ingresada por el usuario
-         String inputPassword = contrasena.getText() ; // Debes proporcionar la contraseña a verificar
-         boolean passwordMatches = checkPasswordWithBCrypt(inputPassword, contraenaGuardada.getText());
-         System.out.println("La contraseña coincide: " + passwordMatches);
-         if (passwordMatches != true){
-             JOptionPane.showMessageDialog(null, "La conteraeña no es correcta", "Error", JOptionPane.WARNING_MESSAGE);
-         } else {
-             JOptionPane.showMessageDialog(null, "La conteraeña es correcta", "Correcto", JOptionPane.QUESTION_MESSAGE);   
-         }
-    }                              
+public static boolean comprobarContrasena(String contrasena, String hashGuardado) {
+    return BCrypt.checkpw(contrasena, hashGuardado);
 }
+
+}
+   
+
+
+
+
+                   
+
 
 

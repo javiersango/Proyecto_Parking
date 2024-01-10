@@ -513,21 +513,23 @@ public class InicioSesion extends javax.swing.JFrame {
     String nombre = jtnombre.getText();
     String contraseña = String.valueOf(jtcontrasena.getPassword());
 
-    if (nombre.isEmpty() || contraseña.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "No pueden haber campos vacíos", "Error", JOptionPane.WARNING_MESSAGE);
+    if (nombre.isEmpty() || nombre.equals("Nombre")) {
+        JOptionPane.showMessageDialog(null, "El campo nombre esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
     } else if (nombre.length() < 3) {
         JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if ( contraseña.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "El campo contraseña esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
     } else if (contraseña.length() < 8 || contraseña.length() > 12) {
         JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
     } else {
         //String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
        // System.out.println("Hash contraseña : " + hashContrasena);
-        //MetodosIncio mi = new MetodosInicio(); // Corregir el nombre de la clase MetodosInicio
+        MetodosInicio mi = new MetodosInicio(); // Corregir el nombre de la clase MetodosInicio
+        String contrasena = String.valueOf(jtcontrasena.getPassword());
         
-      
+       // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
 
-        if (mi.comprobarInicioUsuario(nombre, hashContrasena)) {
-            // JOptionPane.showMessageDialog(null, "Bienvenido a APP PARKING", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+        if (mi.comprobarInicioUsuario(nombre, contrasena)) {
             InicioCuenta panelInicioCuenta = new InicioCuenta();
             mostrarPanel(panelInicioCuenta);
         } else {

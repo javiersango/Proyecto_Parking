@@ -1,4 +1,3 @@
-controlador\MetodosIncio.class
 modelo\Historial.class
 vista\Loading$6.class
 controlador\EmailUtil.class
@@ -28,6 +27,7 @@ controlador\MetodosContrasena.class
 controlador\MetodosBarra.class
 vista\RegistroCuenta.class
 controlador\HibernateUtil.class
+controlador\MetodosInicio.class
 vista\InicioSesion$8.class
 vista\RegistroCuenta$8.class
 vista\RegistroCuenta$5.class
