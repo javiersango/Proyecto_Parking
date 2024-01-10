@@ -66,8 +66,8 @@ public class EmailUtil {
         props.put("mail.smtp.user", fromEmail);
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.protocols","TLSv1.2");
-        */
-
+        
+*/
         Authenticator auth = new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(fromEmail, password);
