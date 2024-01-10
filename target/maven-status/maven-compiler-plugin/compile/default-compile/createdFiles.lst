@@ -9,6 +9,7 @@ controlador\MetodosHistorial.class
 vista\InicioSesion$6.class
 vista\ReservaUsuario.class
 modelo\Vehiculos.class
+controlador\MetodosIdioma.class
 vista\InicioSesion$2.class
 vista\InicioSesion$9.class
 vista\RegistroCuenta$7.class
@@ -22,7 +23,6 @@ vista\Loading$5.class
 vista\RegistroCuenta$1.class
 vista\RecuperarContrasena$3.class
 vista\HistorialUsuario.class
-vista\RecuperarContrasena$6.class
 vista\Loading$2.class
 controlador\MetodosContrasena.class
 controlador\MetodosBarra.class
@@ -46,6 +46,7 @@ vista\InicioSesion$7.class
 controlador\Load.class
 vista\RecuperarContrasena$5.class
 controlador\MetodosRecuperarContrasena.class
+controlador\EmailUtil$1.class
 vista\Loading.class
 vista\RegistroCuenta$6.class
 vista\InicioSesion$3.class

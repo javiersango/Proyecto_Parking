@@ -12,14 +12,9 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
-import java.util.Properties;
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import vista.InicioSesion;
+import controlador.MetodosRecuperarContrasena;
 
 
 /**
@@ -29,11 +24,12 @@ import vista.InicioSesion;
 public class RecuperarContrasena extends javax.swing.JFrame {
     
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
-    
+   
+    //Constructor
     public RecuperarContrasena(JTextField jtemail) {
         this.jtemail = jtemail;
     }
-
+    // Getters y setters mail
     public JTextField getJtemail() {
         return jtemail;
     }
@@ -52,8 +48,6 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
         
-        
-
         // Poner jTexfield y jBotton el radio
         jtemail.putClientProperty("FlatLaf.style", "arc: 15");
         jbaceptar.putClientProperty("FlatLaf.style", "arc: 15");
@@ -220,8 +214,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-
-        dispose();  //setVisible(false);
+     dispose();  //salir
     }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
@@ -229,45 +222,28 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     }//GEN-LAST:event_jtemailMouseClicked
     /** Evento comprueba que el correo sea valido , enviado un correo electronico para la recuperacion de la contraseña al usuario*/
     private void jbaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbaceptarMouseClicked
-       
-        
+     
         String correoElectronico = jtemail.getText();
         MetodosContrasena metodo = new MetodosContrasena();
-
-        if (correoElectronico != null && !correoElectronico.isEmpty()) {
+        // comprobaciones correo no sea nulo o este vacio o si no existe en la base de datos
+        if (correoElectronico != null || !correoElectronico.isEmpty() || MetodosRecuperarContrasena.existeEmail(correoElectronico) != false ) {
             if (metodo.esCorreoElectronicoValido(correoElectronico)) {
                 JOptionPane.showMessageDialog(null, "La dirección de correo electrónico es válida.");
+               
+                String nuevaContrasena = MetodosRecuperarContrasena.generarContrasenaAleatoria(); // genera una contreaseña nueva aleatoria
                 
-                 // TODO add your handling code here:
-            final String fromEmail = "javier.sangon.14@educa.jcyl.es";
-            final String password = "Pury2014";
-           //final String toEmail= "alejandro.pernie@educa.jcyl.es"; 
-           final String toEmail= correoElectronico;
-          
-            System.out.println("SSLEmail Start");
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp-mail.outlook.com");
-            props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
-            
-            Authenticator auth = new Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication(){
-                    return new PasswordAuthentication(fromEmail, password);
-                }
-            };
-            
-            Session session = Session.getDefaultInstance(props, auth);
-            System.out.println("Sesión Creada");
-            EmailUtil.sendEmail(session, toEmail, "Parking ", " Mesaje de recuperación contraseña: "
-                    + "¡Recuerde! volver a cambiar la contraseña en la cuenta de usuario.");
-            
+                String nuevoHash = MetodosContrasena.crearHashContrasena(nuevaContrasena, nuevaContrasena); // Genera un hash con la contraseña nueva
+                
+                MetodosRecuperarContrasena.guardarHashContraseña(correoElectronico, nuevoHash);
+                
+                EmailUtil.enviarCorreoRecuperacionContrasena(correoElectronico, nuevaContrasena);  //envia email con la nueva contraseña
+               
                 jtemail.setText("Email"); 
                 jtemail.setForeground(Color.gray);
                 
-                 dispose();  //setVisible(false);
+                dispose();  //salir ;
             } else {
-                JOptionPane.showMessageDialog(null, "La dirección de correo electrónico no es válida.");
+                JOptionPane.showMessageDialog(null, "La dirección de correo electrónico no es válida o no existe.");
                 jtemail.setForeground(Color.red); // Cambia el color del texto a rojo para indicar un error
             }
         } else {
@@ -338,6 +314,14 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jbcancelar.setText(bcancelar);
 
     }
+    
+      public static boolean idiomaSeleccionado (){
+           
+       
+        return false;
+           
+       
+        }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

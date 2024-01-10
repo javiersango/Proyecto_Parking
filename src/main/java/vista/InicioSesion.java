@@ -24,7 +24,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import controlador.HibernateUtil;
+import controlador.MetodosContrasena;
+import controlador.MetodosIncio;
 
 /**
  *
@@ -508,23 +509,33 @@ public class InicioSesion extends javax.swing.JFrame {
 
    /** Metodo comprobacion que no estan vacios los campos datos nombre y contraseña*/
     private void jbiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiniciarActionPerformed
-       String nombre = jtnombre.getText();
-       String contraseña = String.valueOf(jtcontrasena.getPassword());
+       
+                                              
+    MetodosContrasena mc = new MetodosContrasena();
+    
+    String nombre = jtnombre.getText();
+    String contraseña = String.valueOf(jtcontrasena.getPassword());
 
-    if (nombre.isEmpty() || nombre.equals("Nombre") || contraseña.isEmpty() || contraseña.equals("********")) {
+    if (nombre.isEmpty() || contraseña.isEmpty()) {
         JOptionPane.showMessageDialog(null, "No pueden haber campos vacíos", "Error", JOptionPane.WARNING_MESSAGE);
-    } else if (!validarNombre(nombre)) {
+    } else if (nombre.length() < 3) {
         JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
-    } else if (!validarContraseña(contraseña)) {
-        JOptionPane.showMessageDialog(null, "La contraseña debe contener entre 8 y 10 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
+    } else if (contraseña.length() < 8 || contraseña.length() > 12) {
+        JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
     } else {
-        jtnombre.setText("");
-        jtnombre.setEnabled(false);
-        jtcontrasena.setText("");
-        jtcontrasena.setEnabled(false);
-        JOptionPane.showMessageDialog(null, "Se han introducido los datos", "Correcto", JOptionPane.INFORMATION_MESSAGE);
-        
-    } 
+        String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
+
+        MetodosIncio mi = new MetodosIncio(); // Corregir el nombre de la clase MetodosInicio
+
+        if (mi.comprobarInicioUsuario(nombre, hashContrasena)) {
+            JOptionPane.showMessageDialog(null, "Bienvenido a APP PARKING", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+
+            // Realiza alguna acción para abrir la sesión del usuario
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     }//GEN-LAST:event_jbiniciarActionPerformed
     /** Evento cuanto se selecciona el texto se pone en negrita y si no esta selecciado lo deja como estaba al inicio */
@@ -546,6 +557,8 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
+     
+        
       // Cambia por defecto a ingles
       Locale defaultLocale = new Locale("en");
       // Cargar el idioma ingles
@@ -581,6 +594,7 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
+     
       // Cambia por defecto a ingles
       Locale defaultLocale = new Locale("es");
       // Cargar el idioma ingles
@@ -616,15 +630,16 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jbrecuperarActionPerformed
 
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
-      
+ 
      RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
-     mostrarPanel( panelRegistroCuenta );
+         mostrarPanel( panelRegistroCuenta );
 
+     /*
      HibernateUtil hibernate = new HibernateUtil();
      hibernate.conectar();
      hibernate.mostrarDatosUsuarios();
      hibernate.desconectar();
-    
+    */
     }//GEN-LAST:event_jbregistrarseActionPerformed
 
     /**
@@ -668,9 +683,9 @@ public class InicioSesion extends javax.swing.JFrame {
     return nombre.length() >= 3;
 }
     /**Metodo verifica que la contraseña tenga al menos 8 caracteres y como máximo 10 caracteres*/
-    private boolean validarContraseña(String contraseña) {
-    return contraseña.length() >= 8 && contraseña.length() <= 10;
-}
+   // private boolean validarContraseña(String contraseña) {
+   // return contraseña.length() >= 8 && contraseña.length() <= 10;
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

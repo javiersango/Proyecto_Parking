@@ -20,7 +20,7 @@ public class HibernateUtil {
         // Crea una instancia de la fábrica de sesiones de Hibernate
         sessionFactory = configuration.buildSessionFactory();
     }
-
+    /** Metodo inicia la sesion con la conesion a la base de datos*/
     public void conectar() {
         try {
             // Si la fábrica de sesiones se crea sin errores, la conexión es exitosa
@@ -30,7 +30,7 @@ public class HibernateUtil {
             System.err.println("Error al conectar con la base de datos ad_parking: " + e.getMessage());
         }
     }
-
+    /** Metodo cierra la sesion de oonexion con la base de datos*/
     public void desconectar() {
         if (sessionFactory != null) {
             sessionFactory.close();
@@ -64,5 +64,10 @@ public class HibernateUtil {
             sesion.close();
         }
     }
+
+  public SessionFactory getSessionFactory() {
+    return sessionFactory;
+}
+
 }
 

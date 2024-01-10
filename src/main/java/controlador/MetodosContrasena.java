@@ -4,8 +4,7 @@
  */
 package controlador;
 
-import static controlador.MetodosRegistroCuenta.usuarioExistente;
-import java.awt.Color;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -22,16 +21,16 @@ import org.passay.WhitespaceRule;
  *
  * @author Javier
  */
-/** Metodo verifica si una direccion de correo electronico es válida*/
+
 public class MetodosContrasena {
-    
+    /** Metodo verifica si una direccion de correo electronico es valida*/
      public static boolean esCorreoElectronicoValido(String correo) {
          String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+).(es|com)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(correo);
         return matcher.matches();
     }
-     
+  /**  Metodos comprueba que la contraseña y repetircontraseña sea la misma, genera el hash de la contraseña introducida  */
  public static String crearHashContrasena(String contrasena, String repetircontrasena) {
     // Verificar si las contraseñas coinciden
     if (!contrasena.equals(repetircontrasena)) {
@@ -65,9 +64,25 @@ public class MetodosContrasena {
     JOptionPane.showMessageDialog(null, "Generado hash correctamente", "Correcto", JOptionPane.QUESTION_MESSAGE);
 
     return hashedPassword; // Devuelve el hash generado
-}
+    }
  }
  
+   /** Metodo que valida contraseña segun lo parametros permitidos */
+    public static boolean validarContrasena(String contrasena) {
+        // Validar la contraseña introcducida
+        PasswordValidator validator = new PasswordValidator(
+            new LengthRule(8, 12), // Longitud mínima y máxima de la contraseña
+            new CharacterRule(EnglishCharacterData.UpperCase, 1), // Al menos una letra mayúscula
+            new CharacterRule(EnglishCharacterData.LowerCase, 1), // Al menos una letra minúscula
+            new CharacterRule(EnglishCharacterData.Digit, 1), // Al menos un dígito
+            new CharacterRule(EnglishCharacterData.Special, 1), // Al menos un carácter especial
+            new WhitespaceRule() // No permite espacios en blanco
+        );
 
- 
+        RuleResult result = validator.validate(new PasswordData(contrasena));
+
+        return result.isValid(); // si es valida devuelve true, si no false
+    }
 }
+
+
