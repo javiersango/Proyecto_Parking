@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosContrasena;
-import controlador.MetodosIncio;
+import controlador.MetodosInicio;
 
 /**
  *
@@ -509,10 +509,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
    /** Metodo comprobacion que no estan vacios los campos datos nombre y contraseña*/
     private void jbiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiniciarActionPerformed
-       
-                                              
-    MetodosContrasena mc = new MetodosContrasena();
-    
+     MetodosContrasena mc = new MetodosContrasena();
     String nombre = jtnombre.getText();
     String contraseña = String.valueOf(jtcontrasena.getPassword());
 
@@ -523,20 +520,20 @@ public class InicioSesion extends javax.swing.JFrame {
     } else if (contraseña.length() < 8 || contraseña.length() > 12) {
         JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
     } else {
-        String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
-
-        MetodosIncio mi = new MetodosIncio(); // Corregir el nombre de la clase MetodosInicio
+        //String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
+       // System.out.println("Hash contraseña : " + hashContrasena);
+        //MetodosIncio mi = new MetodosInicio(); // Corregir el nombre de la clase MetodosInicio
+        
+      
 
         if (mi.comprobarInicioUsuario(nombre, hashContrasena)) {
-            JOptionPane.showMessageDialog(null, "Bienvenido a APP PARKING", "Correcto", JOptionPane.INFORMATION_MESSAGE);
-
-            // Realiza alguna acción para abrir la sesión del usuario
+            // JOptionPane.showMessageDialog(null, "Bienvenido a APP PARKING", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+            InicioCuenta panelInicioCuenta = new InicioCuenta();
+            mostrarPanel(panelInicioCuenta);
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-
     }//GEN-LAST:event_jbiniciarActionPerformed
     /** Evento cuanto se selecciona el texto se pone en negrita y si no esta selecciado lo deja como estaba al inicio */
     private void jtcontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMousePressed
