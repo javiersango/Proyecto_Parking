@@ -15,6 +15,10 @@ import controlador.MetodosRegistroCuenta;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controlador.MetodosRecuperarContrasena;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+
 
 
 /**
@@ -22,6 +26,14 @@ import controlador.MetodosRecuperarContrasena;
  * @author Javier
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
+    
+     // Constructor de la clase RecuperarContrasena
+    public RecuperarContrasena(JLabel jltitulo1, JLabel jltitulo2, JButton jbaceptar, JButton jbcancelar) {
+        this.jltitulo1 = jltitulo1;
+        this.jltitulo2 = jltitulo2;
+        this.jbaceptar = jbaceptar;
+        this.jbcancelar = jbcancelar;
+    }
     
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
    
@@ -315,13 +327,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
 
     }
     
-      public static boolean idiomaSeleccionado (){
-           
-       
-        return false;
-           
-       
-        }
+ 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
