@@ -26,6 +26,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosContrasena;
 import controlador.MetodosInicio;
+import vista.RecuperarContrasena;
+import controlador.MetodosIdioma;
 
 /**
  *
@@ -34,7 +36,11 @@ import controlador.MetodosInicio;
 public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
      private ResourceBundle resourceBundle;
-     private RecuperarContrasena recuperarContrasena;
+     MetodosIdioma mi = new MetodosIdioma();
+     
+     
+     
+     
 
 
     /**
@@ -43,6 +49,15 @@ public class InicioSesion extends javax.swing.JFrame {
     public InicioSesion() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        this.jltitulo1 = jltitulo1;
+        this.jltitulo2 = jltitulo2;
+        this.jlnombre = jlnombre;
+        this.jtnombre = jtnombre;
+        this.jlcontrasena = jlcontrasena;
+        this.jbiniciar = jbiniciar;
+        this.jbregistrarse = jbregistrarse;
+        this.jbrecuperar = jbrecuperar;
         
         // Cargar el idioma predeterminado (español)
         Locale defaultLocale = new Locale("es");
@@ -557,65 +572,16 @@ public class InicioSesion extends javax.swing.JFrame {
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
      
-        
-      // Cambia por defecto a ingles
-      Locale defaultLocale = new Locale("en");
-      // Cargar el idioma ingles
-      resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", defaultLocale);
+       MetodosIdioma.cambioIdiomaEnInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);
 
-      // Obtener las cadenas de texto en ingles
-      String titulo1 = resourceBundle.getString("buscasPlazasDeAparcamiento");
-      String titulo2 = resourceBundle.getString("InicieSesionOregistrarse");
-      String lNombre = resourceBundle.getString("nombre");
-      String lContrasena = resourceBundle.getString("contrasena");
+     
 
-      String bInciar = resourceBundle.getString("iniciarSesion");
-      String bRegistro = resourceBundle.getString("registrarse");
-      String bRecuperar = resourceBundle.getString("recuperarContrasena");
-
-      // Establecer el texto en los componentes
-      jltitulo1.setText(titulo1);
-      jltitulo2.setText(titulo2);
-      jlnombre.setText(lNombre);
-      jtnombre.setText(lNombre);
-      jlcontrasena.setText(lContrasena);
-      jbiniciar.setText(bInciar);
-      jbregistrarse.setText(bRegistro);
-      jbrecuperar.setText(bRecuperar);
-      
-       
-       // Llama al método cambiarIdioma de la instancia de RecuperarContrasena si es necesario
-    if (recuperarContrasena != null) {
-        recuperarContrasena.cambiarIdioma();
-    }
-    
-        
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
      
-      // Cambia por defecto a ingles
-      Locale defaultLocale = new Locale("es");
-      // Cargar el idioma ingles
-      resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", defaultLocale);
-      // Obtener las traducciones en español de las cadenas de texto en ingles
-      String titulo1 = resourceBundle.getString("AreYouLookingForParkingSpaces?");
-      String titulo2 = resourceBundle.getString("LogInOrRegister");
-      String lNombre = resourceBundle.getString("Name");
-      String lContrasena = resourceBundle.getString("Password");
-      String bInciar = resourceBundle.getString("LogIn");
-      String bRegistro = resourceBundle.getString("Register");
-      String bRecuperar = resourceBundle.getString("RecoverPassword");
-
-      // Establecer el texto en los componentes
-      jltitulo1.setText(titulo1);
-      jltitulo2.setText(titulo2);
-      jlnombre.setText(lNombre);
-      jtnombre.setText(lNombre);
-      jlcontrasena.setText(lContrasena);
-      jbiniciar.setText(bInciar);
-      jbregistrarse.setText(bRegistro);
-      jbrecuperar.setText(bRecuperar);
+         MetodosIdioma.cambioIdiomaEsInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);
+      
 
     }//GEN-LAST:event_jlespanaMouseClicked
 
