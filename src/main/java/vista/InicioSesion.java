@@ -37,6 +37,7 @@ public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
      private ResourceBundle resourceBundle;
      MetodosIdioma mi = new MetodosIdioma();
+     boolean Idioma = true;
      
      
      
@@ -77,6 +78,7 @@ public class InicioSesion extends javax.swing.JFrame {
         //jltitulo1.putClientProperty("FlatLaf.styleClass", "h0");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
         jlo.putClientProperty("FlatLaf.styleClass", "h2");
+      
       
         //añadir a los jTextField iconos
         jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
@@ -573,17 +575,14 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
-     
+       Idioma = false;
        MetodosIdioma.cambioIdiomaEnInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);
-
-     
 
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
-     
-         MetodosIdioma.cambioIdiomaEsInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);
-      
+        Idioma = true;
+         MetodosIdioma.cambioIdiomaEsInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);   
 
     }//GEN-LAST:event_jlespanaMouseClicked
 

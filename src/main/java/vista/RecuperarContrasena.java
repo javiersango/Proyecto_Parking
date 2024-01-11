@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import controlador.MetodosRecuperarContrasena;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import vista.InicioSesion;
 
 
 
@@ -56,6 +57,14 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     public RecuperarContrasena() {
         initComponents();
         setLocationRelativeTo(null);
+        InicioSesion is = new InicioSesion();
+        boolean Idioma = is.Idioma;
+        
+        if (Idioma){
+               cambiarIdioma();
+        } else {
+            cambiarIdioma();
+        }
 
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
