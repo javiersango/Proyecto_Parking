@@ -5,17 +5,8 @@
 package vista;
 
 
-
-
 import javax.swing.JPanel;
-import modelo.Historial;
-import org.hibernate.SessionFactory;
 
-import modelo.Usuarios;
-import org.hibernate.ObjectNotFoundException;
-import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.mapping.Set;
 
 
 /**
@@ -95,6 +86,11 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbreserva2.setText("Reservar");
         jbreserva2.setToolTipText("Botón para reservar una plaza de aparcamiento");
         jbreserva2.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbreserva2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbreserva2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInicioCuentaLayout = new javax.swing.GroupLayout(panelInicioCuenta);
         panelInicioCuenta.setLayout(panelInicioCuentaLayout);
@@ -145,33 +141,19 @@ public class InicioCuenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
-      Configuration configuration = new Configuration();
-    // Crear una fábrica de sesiones de Hibernate
-    SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-    // Abrir una sesión de Hibernate
-    Session sesion = sessionFactory.openSession();
-
-    try {
-        // Cargar un usuario por su ID (en este caso, ID 5)
-        Usuarios usuario = sesion.load(Usuarios.class, 5);
-
-        System.out.println("Nombre del usuario: " + usuario.getNombre());
-        System.out.println("Apellidos del usuario: " + usuario.getApellidos());
-        System.out.println("Matricula del usuario: " + usuario.getContrasena());
-
-    } catch (ObjectNotFoundException e) {
-        System.out.println("El usuario no existe");
-    } finally {
-        // Cerrar la sesión de Hibernate
-        sesion.close();
-    }
+     Historial hi = new Historial();
+        mostrarPanel(hi);
     }//GEN-LAST:event_jbhistorialActionPerformed
 
     private void jbcuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcuentaActionPerformed
          Cuenta cuenta = new Cuenta();
-     mostrarPanel( cuenta );
+         mostrarPanel( cuenta );
     }//GEN-LAST:event_jbcuentaActionPerformed
+
+    private void jbreserva2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreserva2ActionPerformed
+        Reserva re = new Reserva();
+        mostrarPanel(re);
+    }//GEN-LAST:event_jbreserva2ActionPerformed
 
      private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);

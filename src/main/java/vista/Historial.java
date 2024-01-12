@@ -6,11 +6,8 @@ package vista;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import java.awt.Color;
-import javax.swing.JOptionPane;
-import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
-import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -18,8 +15,7 @@ import javax.swing.ImageIcon;
  */
 public class Historial extends javax.swing.JPanel {
 
- 
-    
+
     // Variables
     private boolean esCoche;
     private String nombre;
@@ -45,16 +41,14 @@ public class Historial extends javax.swing.JPanel {
         jbsalir.putClientProperty("FlatLaf.style","arc: 15");
  
         jlhistorial.putClientProperty("FlatLaf.styleClass", "h1");
-        jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
-        jltitulo3.putClientProperty("FlatLaf.styleClass", "h3");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
+        jltitulo3.putClientProperty("FlatLaf.styleClass", "h2");
         jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");
 
-        
-      
+
         // añadir a los jTextField iconos
         jtmatricula.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/matricula.svg" ) );
-     
-       
+    
     }
 
     /**
@@ -66,7 +60,7 @@ public class Historial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelCuenta = new vista.PanelRound();
+        panelHistorial = new vista.PanelRound();
         jlhistorial = new javax.swing.JLabel();
         jbmostrar = new javax.swing.JButton();
         jPanelMatricula = new javax.swing.JPanel();
@@ -81,16 +75,16 @@ public class Historial extends javax.swing.JPanel {
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
-        panelCuenta.setBackground(new java.awt.Color(249, 251, 255));
-        panelCuenta.setMaximumSize(null);
-        panelCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
-        panelCuenta.setRoundBottomLeft(30);
-        panelCuenta.setRoundBottomRight(30);
+        panelHistorial.setBackground(new java.awt.Color(249, 251, 255));
+        panelHistorial.setMaximumSize(null);
+        panelHistorial.setPreferredSize(new java.awt.Dimension(428, 800));
+        panelHistorial.setRoundBottomLeft(30);
+        panelHistorial.setRoundBottomRight(30);
 
         jlhistorial.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jlhistorial.setForeground(new java.awt.Color(39, 59, 244));
         jlhistorial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlhistorial.setText("Historial aparcamiento");
+        jlhistorial.setText("HISTORIAL APARCAMIENTO");
         jlhistorial.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jbmostrar.setBackground(new java.awt.Color(39, 59, 244));
@@ -134,7 +128,7 @@ public class Historial extends javax.swing.JPanel {
             .addGroup(jPanelMatriculaLayout.createSequentialGroup()
                 .addGroup(jPanelMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanelMatriculaLayout.setVerticalGroup(
@@ -169,6 +163,7 @@ public class Historial extends javax.swing.JPanel {
         jltitulo2.setText("Introduzca  la matricula ");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
+        jTable1.setBackground(new java.awt.Color(198, 212, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -189,36 +184,35 @@ public class Historial extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout panelCuentaLayout = new javax.swing.GroupLayout(panelCuenta);
-        panelCuenta.setLayout(panelCuentaLayout);
-        panelCuentaLayout.setHorizontalGroup(
-            panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelHistorialLayout = new javax.swing.GroupLayout(panelHistorial);
+        panelHistorial.setLayout(panelHistorialLayout);
+        panelHistorialLayout.setHorizontalGroup(
+            panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHistorialLayout.createSequentialGroup()
+                .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHistorialLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                    .addGroup(panelHistorialLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(panelCuentaLayout.createSequentialGroup()
-                                    .addComponent(jbmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistorialLayout.createSequentialGroup()
+                                .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                            .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCuentaLayout.createSequentialGroup()
+            .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelHistorialLayout.createSequentialGroup()
                     .addGap(44, 44, 44)
                     .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(111, Short.MAX_VALUE)))
         );
-        panelCuentaLayout.setVerticalGroup(
-            panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCuentaLayout.createSequentialGroup()
+        panelHistorialLayout.setVerticalGroup(
+            panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHistorialLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
@@ -226,14 +220,14 @@ public class Historial extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(166, 166, 166))
-            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCuentaLayout.createSequentialGroup()
+            .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelHistorialLayout.createSequentialGroup()
                     .addGap(72, 72, 72)
                     .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(678, Short.MAX_VALUE)))
@@ -243,18 +237,17 @@ public class Historial extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     /** Evento nos lleva a la pantalla de incio de la cuenta*/
     private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
       
 
-    
 
     }//GEN-LAST:event_jbmostrarActionPerformed
 
@@ -277,10 +270,10 @@ public class Historial extends javax.swing.JPanel {
        panel.setSize(428, 800);
        panel.setLocation(0,0);  
        
-       panelCuenta.removeAll();
-       panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       panelCuenta.revalidate();
-       panelCuenta.repaint();
+       panelHistorial.removeAll();
+       panelHistorial.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+       panelHistorial.revalidate();
+       panelHistorial.repaint();
     
 }
 
@@ -296,7 +289,7 @@ public class Historial extends javax.swing.JPanel {
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JTextField jtmatricula;
-    private vista.PanelRound panelCuenta;
+    private vista.PanelRound panelHistorial;
     // End of variables declaration//GEN-END:variables
 
    

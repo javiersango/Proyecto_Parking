@@ -79,13 +79,13 @@ public class Reserva extends javax.swing.JPanel {
         jlreservar.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jlreservar.setForeground(new java.awt.Color(39, 59, 244));
         jlreservar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlreservar.setText("Cuenta");
+        jlreservar.setText("RESERVAR PLAZA");
         jlreservar.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jltitulo2.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
-        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jltitulo2.setText("Quiere reservar?");
+        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltitulo2.setText("Quiere reservar?.");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jbmodificar.setBackground(new java.awt.Color(0, 255, 0));
@@ -98,7 +98,7 @@ public class Reserva extends javax.swing.JPanel {
         jltitulo3.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo3.setForeground(new java.awt.Color(25, 35, 66));
         jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo3.setText("Selecciones el numero de plaza");
+        jltitulo3.setText(" Seleccione una plaza ");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jlvolver.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -107,6 +107,11 @@ public class Reserva extends javax.swing.JPanel {
         jlvolver.setText("volver");
         jlvolver.setToolTipText("Vuelve a la pantalla anterior");
         jlvolver.setPreferredSize(new java.awt.Dimension(273, 30));
+        jlvolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlvolverMouseClicked(evt);
+            }
+        });
 
         jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
         jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
@@ -124,20 +129,22 @@ public class Reserva extends javax.swing.JPanel {
                     .addGroup(panelCuentaLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jlreservar, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelCuentaLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createSequentialGroup()
+                            .addGap(34, 34, 34)
                             .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
         panelCuentaLayout.setVerticalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,11 +157,11 @@ public class Reserva extends javax.swing.JPanel {
                     .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 568, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 529, Short.MAX_VALUE)
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                .addGap(100, 100, 100))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -168,6 +175,13 @@ public class Reserva extends javax.swing.JPanel {
             .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jlvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlvolverMouseClicked
+        // Crea una instancia de InicioCuenta
+        InicioCuenta ic = new InicioCuenta();
+        // Muestra la ventana InicioCuenta
+        mostrarPanel(ic);
+    }//GEN-LAST:event_jlvolverMouseClicked
 
     private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);

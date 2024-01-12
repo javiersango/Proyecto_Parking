@@ -266,7 +266,7 @@ public class Cuenta extends javax.swing.JPanel {
 
         jlvolver.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jlvolver.setForeground(new java.awt.Color(39, 59, 244));
-        jlvolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlvolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlvolver.setText("volver");
         jlvolver.setToolTipText("Vuelve a la pantalla anterior");
         jlvolver.setPreferredSize(new java.awt.Dimension(273, 30));
