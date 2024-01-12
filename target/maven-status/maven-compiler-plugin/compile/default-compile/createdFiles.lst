@@ -8,7 +8,6 @@ controlador\MetodosHistorial.class
 vista\InicioSesion$6.class
 vista\ReservaUsuario.class
 modelo\Vehiculos.class
-controlador\MetodosIdioma.class
 vista\InicioSesion$2.class
 vista\InicioSesion$9.class
 vista\RegistroCuenta$7.class

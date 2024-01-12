@@ -4,22 +4,18 @@
  */
 package vista;
 
-import controlador.EmailUtil;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
+import controlador.MetodosRecuperarContrasena;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import controlador.MetodosRecuperarContrasena;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import vista.InicioSesion;
-
-
+import controlador.EmailUtil;
 
 
 /**
@@ -28,28 +24,9 @@ import vista.InicioSesion;
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
     
-     // Constructor de la clase RecuperarContrasena
-    public RecuperarContrasena(JLabel jltitulo1, JLabel jltitulo2, JButton jbaceptar, JButton jbcancelar) {
-        this.jltitulo1 = jltitulo1;
-        this.jltitulo2 = jltitulo2;
-        this.jbaceptar = jbaceptar;
-        this.jbcancelar = jbcancelar;
-    }
+    private boolean isEnglish = true;
     
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
-   
-    //Constructor
-    public RecuperarContrasena(JTextField jtemail) {
-        this.jtemail = jtemail;
-    }
-    // Getters y setters mail
-    public JTextField getJtemail() {
-        return jtemail;
-    }
-
-    public void setJtemail(JTextField jtemail) {
-        this.jtemail = jtemail;
-    }
 
     /**
      * Creates new form RecuperarContrasena
@@ -57,15 +34,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     public RecuperarContrasena() {
         initComponents();
         setLocationRelativeTo(null);
-        InicioSesion is = new InicioSesion();
-        boolean Idioma = is.Idioma;
         
-        if (Idioma){
-               cambiarIdioma();
-        } else {
-            cambiarIdioma();
-        }
-
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
         
@@ -312,33 +281,22 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             }
         });
     }
-
-    /**
-     * Metodo si esta seleccionado traducion en ingles traducira el texto, sino
-     * lo dejara como esta
-     */
-    public void cambiarIdioma() {
-        // Cambiar el idioma aquí en RecuperarContrasena
-        Locale defaultLocale = new Locale("en");
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", defaultLocale);
-
-        // Obtener las cadenas de texto en ingles
+    
+    public  void cambiarIdiomaEn(){
+        
+        Locale locale = new Locale("en"); 
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", locale);
         String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
         String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
-        String baceptar = resourceBundle.getString("Aceptar");
-        String bcancelar = resourceBundle.getString("Cancelar");
-
-        // Establecer el texto en los componentes
+        String aceptar = resourceBundle.getString("Aceptar");
+        String cancelar = resourceBundle.getString("Cancelar");
         jltitulo1.setText(titulo1);
         jltitulo2.setText(titulo2);
-        jbaceptar.setText(baceptar);
-        jbcancelar.setText(bcancelar);
-
+        jbaceptar.setText(aceptar);
+        jbcancelar.setText(cancelar);
+  
     }
     
- 
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelContaseña;
     private javax.swing.JButton jbaceptar;

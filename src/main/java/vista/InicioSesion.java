@@ -11,7 +11,6 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import java.awt.Color;
 
-
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
@@ -27,7 +26,7 @@ import javax.swing.JPanel;
 import controlador.MetodosContrasena;
 import controlador.MetodosInicio;
 import vista.RecuperarContrasena;
-import controlador.MetodosIdioma;
+
 
 /**
  *
@@ -36,13 +35,9 @@ import controlador.MetodosIdioma;
 public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
      private ResourceBundle resourceBundle;
-     MetodosIdioma mi = new MetodosIdioma();
-     boolean Idioma = true;
-     
-     
-     
-     
-
+     private RecuperarContrasena recuperarContrasena;
+     private boolean isEnglish = true; // Inicia el idioma en ingles
+   
 
     /**
      * Creates new form Incio
@@ -50,16 +45,9 @@ public class InicioSesion extends javax.swing.JFrame {
     public InicioSesion() {
         initComponents();
         setLocationRelativeTo(null);
-        
-        this.jltitulo1 = jltitulo1;
-        this.jltitulo2 = jltitulo2;
-        this.jlnombre = jlnombre;
-        this.jtnombre = jtnombre;
-        this.jlcontrasena = jlcontrasena;
-        this.jbiniciar = jbiniciar;
-        this.jbregistrarse = jbregistrarse;
-        this.jbrecuperar = jbrecuperar;
-        
+
+        recuperarContrasena = new RecuperarContrasena();
+
         // Cargar el idioma predeterminado (español)
         Locale defaultLocale = new Locale("es");
         resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", defaultLocale);
@@ -543,7 +531,7 @@ public class InicioSesion extends javax.swing.JFrame {
     } else {
         //String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
        // System.out.println("Hash contraseña : " + hashContrasena);
-        MetodosInicio mi = new MetodosInicio(); // Corregir el nombre de la clase MetodosInicio
+        MetodosInicio mi = new MetodosInicio(); 
         String contrasena = String.valueOf(jtcontrasena.getPassword());
         
        // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
@@ -575,15 +563,14 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
-       Idioma = false;
-       MetodosIdioma.cambioIdiomaEnInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);
+        isEnglish = false; // Cambia el estado a español
+        cambiarIdiomaIngles(new Locale("en"));
 
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
-        Idioma = true;
-         MetodosIdioma.cambioIdiomaEsInicioSesion(jltitulo1, jltitulo2, jlnombre, jtnombre, jlcontrasena,jbiniciar, jbregistrarse, jbrecuperar);   
-
+        isEnglish = true; // Cambia el estado a ingles
+        cambiarIdiomaEspanol(new Locale("es"));
     }//GEN-LAST:event_jlespanaMouseClicked
 
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
@@ -598,7 +585,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
  
      RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
-         mostrarPanel( panelRegistroCuenta );
+     mostrarPanel( panelRegistroCuenta );
 
      /*
      HibernateUtil hibernate = new HibernateUtil();
@@ -644,15 +631,64 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
     }
-    /**Metodo  verifica que el nombre tenga al menos tres letras*/
-    private boolean validarNombre(String nombre) {
-    return nombre.length() >= 3;
-}
+
     /**Metodo verifica que la contraseña tenga al menos 8 caracteres y como máximo 10 caracteres*/
    // private boolean validarContraseña(String contraseña) {
    // return contraseña.length() >= 8 && contraseña.length() <= 10;
+    
+     private void mostrarPanel(JPanel panel) {
+       panel.setSize(428, 800);
+       panel.setLocation(0,0);  
+       
+       panelRoundFondo.removeAll();
+       panelRoundFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+       panelRoundFondo.revalidate();
+       panelRoundFondo.repaint();
+    }
+     
+      private void cambiarIdiomaEspanol(Locale locale) {
 
+        // Cargar el idioma ingles
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", locale);
+        // Obtener las traducciones en español de las cadenas de texto en ingles
+        String titulo1 = resourceBundle.getString("AreYouLookingForParkingSpaces?");
+        String titulo2 = resourceBundle.getString("LogInOrRegister");
+        String lNombre = resourceBundle.getString("Name");
+        String lContrasena = resourceBundle.getString("Password");
+        String bInciar = resourceBundle.getString("LogIn");
+        String bRegistro = resourceBundle.getString("Register");
+        String bRecuperar = resourceBundle.getString("RecoverPassword");
+        
+        // Establecer el texto en los componentes
+        jltitulo1.setText(titulo1);
+        jltitulo2.setText(titulo2);
+        jlnombre.setText(lNombre);
+        jtnombre.setText(lNombre);
+        jlcontrasena.setText(lContrasena);
+        jbiniciar.setText(bInciar);
+        jbregistrarse.setText(bRegistro);
+        jbrecuperar.setText(bRecuperar);  
+    }
+    
+    private void cambiarIdiomaIngles (Locale locale) {
+        
+        resourceBundle = ResourceBundle.getBundle("mensajes/messages", locale);
+        String titulo1 = resourceBundle.getString("buscasPlazasDeAparcamiento");
+        String titulo2 = resourceBundle.getString("InicieSesionOregistrarse");
+        String lNombre = resourceBundle.getString("nombre");
+        String lContrasena = resourceBundle.getString("contrasena");
+        String bIniciar = resourceBundle.getString("iniciarSesion");
+        String bRegistro = resourceBundle.getString("registrarse");
+        String bRecuperar = resourceBundle.getString("recuperarContrasena");
 
+        jltitulo1.setText(titulo1);
+        jltitulo2.setText(titulo2);
+        jlnombre.setText(lNombre);
+        jlcontrasena.setText(lContrasena);
+        jbiniciar.setText(bIniciar);
+        jbregistrarse.setText(bRegistro);
+        jbrecuperar.setText(bRecuperar);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLcierre;
@@ -681,16 +717,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarPanel(JPanel panel) {
-       panel.setSize(428, 800);
-       panel.setLocation(0,0);  
-       
-       panelRoundFondo.removeAll();
-       panelRoundFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       panelRoundFondo.revalidate();
-       panelRoundFondo.repaint();
-    }
-
    
 
+   
 }
