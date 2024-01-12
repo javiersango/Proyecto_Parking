@@ -7,6 +7,7 @@ package vista;
 
 
 
+import javax.swing.JPanel;
 import modelo.Historial;
 import org.hibernate.SessionFactory;
 
@@ -39,7 +40,7 @@ public class InicioCuenta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new vista.PanelRound();
+        panelInicioCuenta = new vista.PanelRound();
         jltitulo1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jbcuenta = new javax.swing.JButton();
@@ -49,11 +50,11 @@ public class InicioCuenta extends javax.swing.JPanel {
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
-        panelRound1.setBackground(new java.awt.Color(249, 251, 255));
-        panelRound1.setMaximumSize(null);
-        panelRound1.setPreferredSize(new java.awt.Dimension(428, 800));
-        panelRound1.setRoundBottomLeft(30);
-        panelRound1.setRoundBottomRight(30);
+        panelInicioCuenta.setBackground(new java.awt.Color(249, 251, 255));
+        panelInicioCuenta.setMaximumSize(null);
+        panelInicioCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
+        panelInicioCuenta.setRoundBottomLeft(30);
+        panelInicioCuenta.setRoundBottomRight(30);
 
         jltitulo1.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jltitulo1.setForeground(new java.awt.Color(39, 59, 244));
@@ -70,6 +71,11 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbcuenta.setText("Cuenta");
         jbcuenta.setToolTipText("Boton para modificar datos del usuario");
         jbcuenta.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbcuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbcuentaActionPerformed(evt);
+            }
+        });
 
         jbhistorial.setBackground(new java.awt.Color(39, 59, 244));
         jbhistorial.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
@@ -90,29 +96,29 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbreserva2.setToolTipText("Botón para reservar una plaza de aparcamiento");
         jbreserva2.setPreferredSize(new java.awt.Dimension(124, 49));
 
-        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
-        panelRound1.setLayout(panelRound1Layout);
-        panelRound1Layout.setHorizontalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelInicioCuentaLayout = new javax.swing.GroupLayout(panelInicioCuenta);
+        panelInicioCuenta.setLayout(panelInicioCuentaLayout);
+        panelInicioCuentaLayout.setHorizontalGroup(
+            panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioCuentaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jltitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(panelRound1Layout.createSequentialGroup()
+            .addGroup(panelInicioCuentaLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioCuentaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jbhistorial, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                     .addComponent(jbreserva2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                     .addComponent(jbcuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
                 .addGap(46, 46, 46))
         );
-        panelRound1Layout.setVerticalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
+        panelInicioCuentaLayout.setVerticalGroup(
+            panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicioCuentaLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -130,11 +136,11 @@ public class InicioCuenta extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelInicioCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelInicioCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,13 +168,26 @@ public class InicioCuenta extends javax.swing.JPanel {
     }
     }//GEN-LAST:event_jbhistorialActionPerformed
 
+    private void jbcuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcuentaActionPerformed
+         Cuenta cuenta = new Cuenta();
+     mostrarPanel( cuenta );
+    }//GEN-LAST:event_jbcuentaActionPerformed
 
+     private void mostrarPanel(JPanel panel) {
+        panel.setSize(428, 800);
+        panel.setLocation(0,0);  
+       
+        panelInicioCuenta.removeAll();
+        panelInicioCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelInicioCuenta.revalidate();
+        panelInicioCuenta.repaint();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbcuenta;
     private javax.swing.JButton jbhistorial;
     private javax.swing.JButton jbreserva2;
     private javax.swing.JLabel jltitulo1;
-    private vista.PanelRound panelRound1;
+    private vista.PanelRound panelInicioCuenta;
     // End of variables declaration//GEN-END:variables
 }
