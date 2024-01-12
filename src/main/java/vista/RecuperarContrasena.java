@@ -18,22 +18,24 @@ import controlador.MetodosRegistroCuenta;
 import controlador.EmailUtil;
 
 
+
 /**
  *
  * @author Javier
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
     
-    private boolean isEnglish = true;
+    private boolean inglesRecuperarContrasena;
     
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
 
     /**
      * Creates new form RecuperarContrasena
      */
-    public RecuperarContrasena() {
+    public RecuperarContrasena(boolean ingles) {
         initComponents();
         setLocationRelativeTo(null);
+        this.inglesRecuperarContrasena = ingles;
         
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
@@ -47,6 +49,10 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h1");
         jlemail.putClientProperty("FlatLaf.styleClass", "h2");
+        
+         if (ingles) {
+            cambiarIdiomaEn();
+        }
 
     }
 
@@ -161,7 +167,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         panelRoundLayout.setHorizontalGroup(
             panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRoundLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,15 +176,14 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                             .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanelContaseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jPanelContaseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         panelRoundLayout.setVerticalGroup(
             panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRoundLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +198,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelRound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +217,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     }//GEN-LAST:event_jtemailMouseClicked
     /** Evento comprueba que el correo sea valido , enviado un correo electronico para la recuperacion de la contraseña al usuario*/
     private void jbaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbaceptarMouseClicked
-     
+       
         String correoElectronico = jtemail.getText();
         MetodosContrasena metodo = new MetodosContrasena();
         // comprobaciones correo no sea nulo o este vacio o si no existe en la base de datos
@@ -245,6 +250,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
 
     private void jtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtemailActionPerformed
         mrc.comportamientoCampos(jtemail, "Email");
+        
     }//GEN-LAST:event_jtemailActionPerformed
 
     /**
@@ -277,24 +283,26 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RecuperarContrasena().setVisible(true);
+                new RecuperarContrasena(false).setVisible(true);
             }
         });
     }
     
-    public  void cambiarIdiomaEn(){
+ 
+
+    public void cambiarIdiomaEn() {
+       
+            Locale locale = new Locale("en");
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", locale);
+            String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
+            String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
+            String aceptar = resourceBundle.getString("Aceptar");
+            String cancelar = resourceBundle.getString("Cancelar");
+            jltitulo1.setText(titulo1);
+            jltitulo2.setText(titulo2);
+            jbaceptar.setText(aceptar);
+            jbcancelar.setText(cancelar);
         
-        Locale locale = new Locale("en"); 
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", locale);
-        String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
-        String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
-        String aceptar = resourceBundle.getString("Aceptar");
-        String cancelar = resourceBundle.getString("Cancelar");
-        jltitulo1.setText(titulo1);
-        jltitulo2.setText(titulo2);
-        jbaceptar.setText(aceptar);
-        jbcancelar.setText(cancelar);
-  
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -36,7 +36,7 @@ public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
      private ResourceBundle resourceBundle;
      private RecuperarContrasena recuperarContrasena;
-     private boolean isEnglish = true; // Inicia el idioma en ingles
+     private boolean ingles; // Inicia el idioma en ingles
    
 
     /**
@@ -46,7 +46,7 @@ public class InicioSesion extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-        recuperarContrasena = new RecuperarContrasena();
+        recuperarContrasena = new RecuperarContrasena(ingles);
 
         // Cargar el idioma predeterminado (español)
         Locale defaultLocale = new Locale("es");
@@ -563,22 +563,24 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
-        isEnglish = false; // Cambia el estado a español
+        ingles = false; // Cambia el estado a español
         cambiarIdiomaIngles(new Locale("en"));
+          
 
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
-        isEnglish = true; // Cambia el estado a ingles
+        ingles = true; // Cambia el estado a ingles
         cambiarIdiomaEspanol(new Locale("es"));
+          
     }//GEN-LAST:event_jlespanaMouseClicked
 
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
                                       
     // Crear una nueva instancia de RecuperarContraseña
-    RecuperarContrasena recuperarContraseña = new RecuperarContrasena();  
+    recuperarContrasena = new RecuperarContrasena(ingles);  
     // Hacer visible el nuevo JFrame de RecuperarContraseña
-    recuperarContraseña.setVisible(true);
+    recuperarContrasena.setVisible(true);
 
     }//GEN-LAST:event_jbrecuperarActionPerformed
 
