@@ -50,9 +50,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h1");
         jlemail.putClientProperty("FlatLaf.styleClass", "h2");
         
-         if (ingles) {
+        
             cambiarIdiomaEn();
-        }
+        
 
     }
 
