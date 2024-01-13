@@ -31,8 +31,8 @@ public class EmailUtil {
         msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
         msg.addHeader("format", "flowed");
         msg.addHeader("Content-Transfer-Encoding", "8bit");
-        msg.setFrom(new InternetAddress("javier.sangon.14@educa.jcyl.es", "NoReply-JD"));
-        msg.setReplyTo(InternetAddress.parse("javier.sangon.14@educa.jcyl.es", false));
+        msg.setFrom(new InternetAddress("reservarparking@gmail.com", "NoReply-JD"));
+        msg.setReplyTo(InternetAddress.parse("reservarparking@gmail.com", false));
         msg.setSubject(body, "UTF-8");
         msg.setText(body, "UTF-8");
         msg.setSentDate(new Date());
@@ -48,18 +48,18 @@ public class EmailUtil {
   }
     /** Metodo envia correo electronico con la nueva contraseña al correo electronico introducido */
     public static void enviarCorreoRecuperacionContrasena(String correoElectronico, String nuevaContraseña) {
-        final String fromEmail = "javier.sangon.14@educa.jcyl.es";
-        final String password = "Pury2014";
+        final String fromEmail = "reservarparking@gmail.com";
+        final String password = "unlwlfrrsfmcnumu";
         final String toEmail = correoElectronico;
 
         System.out.println("Iniciando correo SSL");
         Properties props = new Properties();
-        
+        /*
         props.put("mail.smtp.host", "smtp-mail.outlook.com");
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        /*
+        */
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.port", "587");
@@ -67,7 +67,7 @@ public class EmailUtil {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.protocols","TLSv1.2");
         
-*/
+
         Authenticator auth = new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(fromEmail, password);
