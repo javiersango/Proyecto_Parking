@@ -210,7 +210,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtapellidos.setForeground(new java.awt.Color(153, 153, 153));
         jtapellidos.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtapellidos.setText("Apellidos");
-        jtapellidos.setToolTipText("Introduce tus apellidos");
+        jtapellidos.setToolTipText("Introduce el primer apellido");
         jtapellidos.setPreferredSize(new java.awt.Dimension(335, 50));
         jtapellidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,7 +249,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtemail.setForeground(new java.awt.Color(153, 153, 153));
         jtemail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtemail.setText("Email");
-        jtemail.setToolTipText("Introduce un email valido");
+        jtemail.setToolTipText("Introduce un email valido, Minimo: 1 letra mayuscula, 1 letra minuscula, 1 caracter especial, 1 numero.");
         jtemail.setPreferredSize(new java.awt.Dimension(335, 50));
         jtemail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -288,7 +288,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtmatricula.setForeground(new java.awt.Color(153, 153, 153));
         jtmatricula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtmatricula.setText("Matricula");
-        jtmatricula.setToolTipText("Introduce una matricula valida 4 numeros separado por un guion y dos letras en mayusculas");
+        jtmatricula.setToolTipText("Introduce una matricula valida 4 numeros y 3 letras en mayusculas");
         jtmatricula.setPreferredSize(new java.awt.Dimension(335, 50));
         jtmatricula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

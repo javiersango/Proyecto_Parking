@@ -15,15 +15,6 @@ import controlador.MetodosRegistroCuenta;
  */
 public class Historial extends javax.swing.JPanel {
 
-
-    // Variables
-    private boolean esCoche;
-    private String nombre;
-    private String apellidos;
-    private String matricula;
-    private String email;
-    private String contrasena;
-    private  String repetirContrasena;
    
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
  
@@ -40,7 +31,7 @@ public class Historial extends javax.swing.JPanel {
         jbmostrar.putClientProperty("FlatLaf.style","arc: 15");
         jbsalir.putClientProperty("FlatLaf.style","arc: 15");
  
-        jlhistorial.putClientProperty("FlatLaf.styleClass", "h1");
+        jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
         jltitulo3.putClientProperty("FlatLaf.styleClass", "h2");
         jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");

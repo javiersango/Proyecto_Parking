@@ -68,7 +68,7 @@
                                   <Component id="jbsalir" min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" alignment="0" pref="339" max="32767" attributes="0"/>
-                              <Component id="jPanelMatricula" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jPanelMatricula" alignment="0" pref="339" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

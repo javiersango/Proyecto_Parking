@@ -5,6 +5,7 @@
 package controlador;
 
 import java.awt.Color;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ public class MetodosRegistroCuenta {
   public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
          if (usuarioExistente(nombre, email)) {
-            JOptionPane.showMessageDialog(null, "El usuario " + nombre + " ya existe. Introduca otro email ", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, nombre + " ya existe " + email + " Introduca otro email ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
     } else {
 
@@ -74,17 +75,18 @@ public class MetodosRegistroCuenta {
 
             return true; // El registro se ha guardado correctamente
         } catch (Exception e) {
-            if (transaction != null) {
+            if (transaction != null) {  // El registro no se ha guardado porque el email ya existe.
                 transaction.rollback();
+                JOptionPane.showMessageDialog(null, "Error, el correo ya existe", "Error", JOptionPane.ERROR_MESSAGE);
             }
             e.printStackTrace();
-            return false; // Ha ocurrido un error al guardar el registro
+               return false;          
         } finally {
             // Cerrar la sesión de Hibernate
             sesion.close();
         }
-         }
-    }
+     }
+  }
   
    /** Método para comprobar si ya existe un usuario con el mismo nombre, matrícula y contraseña*/
     public static boolean usuarioExistente(String nombre, String email) {
@@ -101,9 +103,8 @@ public class MetodosRegistroCuenta {
         transaction = session.beginTransaction();
 
         // Consulta Hibernate para buscar un usuario con los mismos datos
-        String hql = "FROM Usuarios WHERE nombre = :nombre AND email = :email";
+        String hql = "FROM Usuarios WHERE  email = :email";
         Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
-        query.setParameter("nombre", nombre);
         query.setParameter("email", email);
 
         Usuarios usuario = query.uniqueResult();
