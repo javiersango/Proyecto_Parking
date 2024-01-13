@@ -34,7 +34,7 @@ import vista.RecuperarContrasena;
  */
 public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
-     private ResourceBundle resourceBundle;
+    
      private RecuperarContrasena recuperarContrasena;
      private boolean ingles; // Inicia el idioma en ingles
    
@@ -49,8 +49,9 @@ public class InicioSesion extends javax.swing.JFrame {
         recuperarContrasena = new RecuperarContrasena(ingles);
 
         // Cargar el idioma predeterminado (español)
-        Locale defaultLocale = new Locale("es");
-        resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", defaultLocale);
+         Locale.setDefault(new Locale("es"));
+         ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es");
+       
         
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
@@ -564,14 +565,14 @@ public class InicioSesion extends javax.swing.JFrame {
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
         ingles = false; // Cambia el estado a español
-        cambiarIdiomaIngles(new Locale("en"));
+        cambiarIdiomaIngles();
           
 
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
         ingles = true; // Cambia el estado a ingles
-        cambiarIdiomaEspanol(new Locale("es"));
+        cambiarIdiomaEspanol();
           
     }//GEN-LAST:event_jlespanaMouseClicked
 
@@ -648,10 +649,10 @@ public class InicioSesion extends javax.swing.JFrame {
        panelRoundFondo.repaint();
     }
      
-      private void cambiarIdiomaEspanol(Locale locale) {
-
+      private void cambiarIdiomaEspanol() {
+          Locale.setDefault(new Locale("en")); 
         // Cargar el idioma ingles
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", locale);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es");
         // Obtener las traducciones en español de las cadenas de texto en ingles
         String titulo1 = resourceBundle.getString("AreYouLookingForParkingSpaces?");
         String titulo2 = resourceBundle.getString("LogInOrRegister");
@@ -670,11 +671,13 @@ public class InicioSesion extends javax.swing.JFrame {
         jbiniciar.setText(bInciar);
         jbregistrarse.setText(bRegistro);
         jbrecuperar.setText(bRecuperar);  
+        
+        
     }
     
-    private void cambiarIdiomaIngles (Locale locale) {
-        
-        resourceBundle = ResourceBundle.getBundle("mensajes/messages", locale);
+    private void cambiarIdiomaIngles () {
+        Locale.setDefault(new Locale("en")); 
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages");
         String titulo1 = resourceBundle.getString("buscasPlazasDeAparcamiento");
         String titulo2 = resourceBundle.getString("InicieSesionOregistrarse");
         String lNombre = resourceBundle.getString("nombre");

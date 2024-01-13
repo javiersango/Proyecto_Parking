@@ -50,8 +50,13 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h1");
         jlemail.putClientProperty("FlatLaf.styleClass", "h2");
         
-        
+        if (ingles  == true){
+            cambiarIdiomaEs();
+            System.out.println("CAMBIAR IDIOMA " + ingles);
+        } else {
             cambiarIdiomaEn();
+             System.out.println("CAMBIAR IDIOMA " + ingles);
+        }
         
 
     }
@@ -305,6 +310,23 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         
     }
     
+      private void cambiarIdiomaEs() {
+          
+           Locale locale = new Locale("en");
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", locale);
+            String titulo1 = resourceBundle.getString("EnterYourEmail");
+            String titulo2 = resourceBundle.getString("ToRecoverYourPassword");
+            String aceptar = resourceBundle.getString("Accept");
+            String cancelar = resourceBundle.getString("Cancel");
+            jltitulo1.setText(titulo1);
+            jltitulo2.setText(titulo2);
+            jbaceptar.setText(aceptar);
+            jbcancelar.setText(cancelar);
+            
+
+       
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelContaseña;
     private javax.swing.JButton jbaceptar;
@@ -315,4 +337,6 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     private javax.swing.JTextField jtemail;
     private vista.PanelRound panelRound;
     // End of variables declaration//GEN-END:variables
+
+  
 }
