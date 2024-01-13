@@ -4,13 +4,9 @@
  */
 package vista;
 
-import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
-import java.awt.Color;
-import javax.swing.JOptionPane;
-import controlador.MetodosContrasena;
+
 import controlador.MetodosRegistroCuenta;
-import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -18,18 +14,8 @@ import javax.swing.ImageIcon;
  */
 public class Reserva extends javax.swing.JPanel {
 
- 
-    
-    // Variables
-    private boolean esCoche;
-    private String nombre;
-    private String apellidos;
-    private String matricula;
-    private String email;
-    private String contrasena;
-    private  String repetirContrasena;
+
    
-    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
  
     /**
      * Creates new form RegistroCuenta
@@ -42,8 +28,9 @@ public class Reserva extends javax.swing.JPanel {
         jbmodificar.putClientProperty("FlatLaf.style","arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
  
-        jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
+       // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
+        jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
         jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
 
      
@@ -88,7 +75,7 @@ public class Reserva extends javax.swing.JPanel {
         jltitulo2.setText("Quiere reservar?.");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jbmodificar.setBackground(new java.awt.Color(0, 255, 0));
+        jbmodificar.setBackground(new java.awt.Color(43, 220, 61));
         jbmodificar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbmodificar.setForeground(new java.awt.Color(255, 255, 255));
         jbmodificar.setText("Reservar");

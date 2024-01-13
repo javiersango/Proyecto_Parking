@@ -31,10 +31,10 @@ public class Historial extends javax.swing.JPanel {
         jbmostrar.putClientProperty("FlatLaf.style","arc: 15");
         jbsalir.putClientProperty("FlatLaf.style","arc: 15");
  
-        jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
-        jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
-        jltitulo3.putClientProperty("FlatLaf.styleClass", "h2");
-        jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");
+       // jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
+        jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
+        jlmatricula.putClientProperty("FlatLaf.styleClass", "h2");
 
 
         // añadir a los jTextField iconos
@@ -51,6 +51,7 @@ public class Historial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgeleccion = new javax.swing.ButtonGroup();
         panelHistorial = new vista.PanelRound();
         jlhistorial = new javax.swing.JLabel();
         jbmostrar = new javax.swing.JButton();
@@ -62,6 +63,8 @@ public class Historial extends javax.swing.JPanel {
         jltitulo2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jrbmatricula = new javax.swing.JRadioButton();
+        jrbtodos = new javax.swing.JRadioButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -117,10 +120,9 @@ public class Historial extends javax.swing.JPanel {
         jPanelMatriculaLayout.setHorizontalGroup(
             jPanelMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMatriculaLayout.createSequentialGroup()
-                .addGroup(jPanelMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(jlmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jtmatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelMatriculaLayout.setVerticalGroup(
             jPanelMatriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,6 +177,16 @@ public class Historial extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        bgeleccion.add(jrbmatricula);
+        jrbmatricula.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jrbmatricula.setForeground(new java.awt.Color(0, 0, 0));
+        jrbmatricula.setText("Por Matricula");
+
+        bgeleccion.add(jrbtodos);
+        jrbtodos.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
+        jrbtodos.setForeground(new java.awt.Color(0, 0, 0));
+        jrbtodos.setText("Todos");
+
         javax.swing.GroupLayout panelHistorialLayout = new javax.swing.GroupLayout(panelHistorial);
         panelHistorial.setLayout(panelHistorialLayout);
         panelHistorialLayout.setHorizontalGroup(
@@ -188,18 +200,22 @@ public class Historial extends javax.swing.JPanel {
                         .addGap(45, 45, 45)
                         .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistorialLayout.createSequentialGroup()
-                                .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                            .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                            .addComponent(jPanelMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                            .addComponent(jbsalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelHistorialLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jrbmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrbtodos)
+                .addGap(72, 72, 72))
             .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelHistorialLayout.createSequentialGroup()
                     .addGap(44, 44, 44)
-                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(111, Short.MAX_VALUE)))
+                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(36, Short.MAX_VALUE)))
         );
         panelHistorialLayout.setVerticalGroup(
             panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,15 +224,19 @@ public class Historial extends javax.swing.JPanel {
                 .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbtodos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jbmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(166, 166, 166))
+                .addGap(26, 26, 26)
+                .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
             .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelHistorialLayout.createSequentialGroup()
                     .addGap(72, 72, 72)
@@ -270,6 +290,7 @@ public class Historial extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgeleccion;
     private javax.swing.JPanel jPanelMatricula;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -279,6 +300,8 @@ public class Historial extends javax.swing.JPanel {
     private javax.swing.JLabel jlmatricula;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
+    private javax.swing.JRadioButton jrbmatricula;
+    private javax.swing.JRadioButton jrbtodos;
     private javax.swing.JTextField jtmatricula;
     private vista.PanelRound panelHistorial;
     // End of variables declaration//GEN-END:variables

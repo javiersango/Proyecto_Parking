@@ -8,6 +8,7 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
+import controlador.HibernateUtil;
 
 import java.awt.Color;
 
@@ -140,7 +141,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jlespana = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -564,14 +564,14 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
-        ingles = false; // Cambia el estado a español
+        ingles = true; // Cambia el estado a español
         cambiarIdiomaIngles();
           
 
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
-        ingles = true; // Cambia el estado a ingles
+        ingles = false; // Cambia el estado a ingles
         cambiarIdiomaEspanol();
           
     }//GEN-LAST:event_jlespanaMouseClicked
@@ -590,12 +590,12 @@ public class InicioSesion extends javax.swing.JFrame {
      RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
      mostrarPanel( panelRegistroCuenta );
 
-     /*
+     
      HibernateUtil hibernate = new HibernateUtil();
      hibernate.conectar();
      hibernate.mostrarDatosUsuarios();
      hibernate.desconectar();
-    */
+    
     }//GEN-LAST:event_jbregistrarseActionPerformed
 
     /**

@@ -10,7 +10,8 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
-import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import vista.InicioCuenta;
 
 /**
  *
@@ -18,23 +19,6 @@ import javax.swing.ImageIcon;
  */
 public class RegistroCuenta extends javax.swing.JPanel {
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public String getRepetirContrasena() {
-        return repetirContrasena;
-    }
-
-    public void setRepetirContrasena(String repetirContrasena) {
-        this.repetirContrasena = repetirContrasena;
-    }
-    
-    
     // Variables
     private boolean esCoche;
     private String nombre;
@@ -94,6 +78,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgrupovehiculos = new javax.swing.ButtonGroup();
         panelRegistroCuenta = new vista.PanelRound();
         jltitulo1 = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
@@ -321,6 +306,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo4.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jCheckBoxCoche.setBackground(new java.awt.Color(249, 251, 255));
+        bgrupovehiculos.add(jCheckBoxCoche);
         jCheckBoxCoche.setForeground(new java.awt.Color(39, 59, 244));
         jCheckBoxCoche.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jCheckBoxCoche.setMaximumSize(null);
@@ -328,6 +314,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jCheckBoxCoche.setPreferredSize(new java.awt.Dimension(25, 19));
 
         jCheckBoxMoto.setBackground(new java.awt.Color(249, 251, 255));
+        bgrupovehiculos.add(jCheckBoxMoto);
         jCheckBoxMoto.setForeground(new java.awt.Color(39, 59, 244));
         jCheckBoxMoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jCheckBoxMoto.setMaximumSize(null);
@@ -548,71 +535,56 @@ public class RegistroCuenta extends javax.swing.JPanel {
         nombre = jtnombre.getText();
         apellidos = jtapellidos.getText();
         
-     if (jCheckBoxCoche.isSelected()) {
-            esCoche = true;
-        } else if (jCheckBoxMoto.isSelected()){
-             esCoche = false;
-     } else {
-            JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehículo", "Vehiculo incorrecto", JOptionPane.ERROR_MESSAGE);
-        }
-
-    if (jtnombre.getText().isEmpty() || 
-    jtapellidos.getText().isEmpty() || 
-    jtemail.getText().isEmpty() || 
-    jtmatricula.getText().isEmpty() || 
-    jtcontrasena.getText().isEmpty() || 
-    jtrepetirContrasena.getText().isEmpty() )
-     {
-    
-    // Comprobacion de los campos
-    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
-} else {
-    if (jtnombre.getText().length() < 3) {
-        JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
-    } else {
-         email = jtemail.getText();
-        if (!MetodosContrasena.esCorreoElectronicoValido(email)) {
-            JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Electrónico Incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else {
-             matricula = jtmatricula.getText();
-            if (!MetodosRegistroCuenta.validarMatricula(matricula)) {
-                JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matrícula Incorrecta", JOptionPane.ERROR_MESSAGE);
-            } else {
-                contrasena = jtcontrasena.getText();
-                repetirContrasena = jtrepetirContrasena.getText();
-               
-                   MetodosContrasena metodos = new MetodosContrasena();
-                    String hash = metodos.crearHashContrasena(contrasena, repetirContrasena);
-
-                    if (hash != null) {
-                         // lLamar al metodo guardar cuenta usuario
-                        if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, email, matricula, hash, esCoche)) {
-                            JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
-                            InicioCuenta inicio = new InicioCuenta();
-                            mostrarPanel(inicio);
-                        
-                        } 
-                    } else {
-                     
-                        JOptionPane.showMessageDialog(null, "Error en la contraseña. " + nombre, "Error", JOptionPane.WARNING_MESSAGE);
-                    }
+            if (jCheckBoxCoche.isSelected()) {
+               esCoche = true;
+            } else if (jCheckBoxMoto.isSelected()) {
+               esCoche = false;
+            }  
 
 
-                    
-                }      
-            }
-        }
-    
-}
-    
+            if (jtnombre.getText().isEmpty() || jtapellidos.getText().isEmpty() || jtemail.getText().isEmpty() || 
+             jtmatricula.getText().isEmpty() || jtcontrasena.getText().isEmpty() || jtrepetirContrasena.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
+         } else if (jtnombre.getText().length() < 3) {
+             JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
+         } else if (!MetodosContrasena.esCorreoElectronicoValido(jtemail.getText())) {
+             JOptionPane.showMessageDialog(null, "El correo electronico no es valido", "Correo Electrnico Incorrecto", JOptionPane.ERROR_MESSAGE);
+         } else if (!MetodosRegistroCuenta.validarMatricula(jtmatricula.getText())) {
+             JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matricula Incorrecta", JOptionPane.ERROR_MESSAGE);
+         } else if (!jCheckBoxCoche.isSelected() && !jCheckBoxMoto.isSelected()) {
+             JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehiculo", "Vehiculo", JOptionPane.ERROR_MESSAGE);
+         } else if (jCheckBoxCoche.isSelected() && jCheckBoxMoto.isSelected()) {
+             JOptionPane.showMessageDialog(null, "Solo puedes seleccionar un vehiculo", "Vehiculo", JOptionPane.ERROR_MESSAGE);
+         } else {
+             contrasena = jtcontrasena.getText();
+             repetirContrasena = jtrepetirContrasena.getText();
+
+             MetodosContrasena metodos = new MetodosContrasena();
+             String hash = metodos.crearHashContrasena(contrasena, repetirContrasena);
+
+             if (hash != null) {
+                 // Llamar al método guardar cuenta usuario
+                 if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, jtemail.getText(), jtmatricula.getText(), hash, esCoche)) {
+                     JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                     InicioCuenta inicio = new InicioCuenta();
+                     mostrarPanel(inicio );
+                 } 
+             } else {
+                 JOptionPane.showMessageDialog(null, "Error en la contraseña. " + nombre, "Error", JOptionPane.WARNING_MESSAGE);
+             }
+         }
 
     }//GEN-LAST:event_jbregistroActionPerformed
     /** Evento me lleva a la ventana de inicio de sesion*/
     private void jlvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlvolverMouseClicked
          // Crea una instancia de InicioCuenta
-        InicioSesion inicio = new InicioSesion();
+        InicioSesion panelInicioSesison = new InicioSesion();
+        
+        
         // Muestra la ventana InicioCuenta
-        inicio.setVisible(true);
+        panelInicioSesison.setVisible(true);
+        
+
     }//GEN-LAST:event_jlvolverMouseClicked
     /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
     private void jbcancelarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarRegistroActionPerformed
@@ -657,18 +629,19 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
         mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
-      private void mostrarPanel(InicioCuenta panel) {
-       panel.setSize(428, 800);
-       panel.setLocation(0,0);  
-       
-       panelRegistroCuenta.removeAll();
-       panelRegistroCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       panelRegistroCuenta.revalidate();
-       panelRegistroCuenta.repaint();
-    
-}
+     
+
+    private void mostrarPanel(JPanel panel) {
+        panel.setSize(428, 800);
+        panel.setLocation(0, 0);
+        panelRegistroCuenta.removeAll();
+        panelRegistroCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelRegistroCuenta.revalidate();
+        panelRegistroCuenta.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgrupovehiculos;
     private javax.swing.JCheckBox jCheckBoxCoche;
     private javax.swing.JCheckBox jCheckBoxMoto;
     private javax.swing.JLabel jLiconCoche;
@@ -699,6 +672,8 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private javax.swing.JPasswordField jtrepetirContrasena;
     private vista.PanelRound panelRegistroCuenta;
     // End of variables declaration//GEN-END:variables
+
+
 
 
 }

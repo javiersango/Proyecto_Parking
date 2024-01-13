@@ -46,8 +46,9 @@ public class Cuenta extends javax.swing.JPanel {
         jbmodificar.putClientProperty("FlatLaf.style","arc: 15");
         jbborrar.putClientProperty("FlatLaf.style","arc: 15");
  
-        jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
-        jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
+        //jlcuentausuario.putClientProperty("FlatLaf.styleClass", "h1");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
+          jltitulo4.putClientProperty("FlatLaf.styleClass", "h0");
         jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
         jlnombre.putClientProperty("FlatLaf.styleClass", "h3");
         jlemail.putClientProperty("FlatLaf.styleClass", "h3");
@@ -73,7 +74,7 @@ public class Cuenta extends javax.swing.JPanel {
     private void initComponents() {
 
         panelCuenta = new vista.PanelRound();
-        jltitulo1 = new javax.swing.JLabel();
+        jlcuentausuario = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
         jbmodificar = new javax.swing.JButton();
         jPanelNombre = new javax.swing.JPanel();
@@ -102,11 +103,11 @@ public class Cuenta extends javax.swing.JPanel {
         panelCuenta.setRoundBottomLeft(30);
         panelCuenta.setRoundBottomRight(30);
 
-        jltitulo1.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
-        jltitulo1.setForeground(new java.awt.Color(39, 59, 244));
-        jltitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo1.setText("Cuenta");
-        jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
+        jlcuentausuario.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
+        jlcuentausuario.setForeground(new java.awt.Color(39, 59, 244));
+        jlcuentausuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlcuentausuario.setText("Cuenta usuario");
+        jlcuentausuario.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jltitulo2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
@@ -304,20 +305,6 @@ public class Cuenta extends javax.swing.JPanel {
         panelCuentaLayout.setHorizontalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -336,12 +323,27 @@ public class Cuenta extends javax.swing.JPanel {
                             .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jlcuentausuario, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jltitulo4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelCuentaLayout.setVerticalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlcuentausuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -495,10 +497,10 @@ public class Cuenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelNombre;
     private javax.swing.JButton jbborrar;
     private javax.swing.JButton jbmodificar;
+    private javax.swing.JLabel jlcuentausuario;
     private javax.swing.JLabel jlemail;
     private javax.swing.JLabel jlmatricula;
     private javax.swing.JLabel jlnombre;
-    private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo4;
     private javax.swing.JLabel jlvolver;

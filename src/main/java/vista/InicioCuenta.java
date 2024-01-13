@@ -20,6 +20,11 @@ public class InicioCuenta extends javax.swing.JPanel {
      */
     public InicioCuenta() {
         initComponents();
+        
+
+        jbcuenta.putClientProperty("FlatLaf.style","arc: 15");
+        jbreserva.putClientProperty("FlatLaf.style","arc: 15");
+        jbhistorial.putClientProperty("FlatLaf.style","arc: 15");
     }
 
     /**
@@ -36,7 +41,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jbcuenta = new javax.swing.JButton();
         jbhistorial = new javax.swing.JButton();
-        jbreserva2 = new javax.swing.JButton();
+        jbreserva = new javax.swing.JButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -80,15 +85,15 @@ public class InicioCuenta extends javax.swing.JPanel {
             }
         });
 
-        jbreserva2.setBackground(new java.awt.Color(39, 59, 244));
-        jbreserva2.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbreserva2.setForeground(new java.awt.Color(255, 255, 255));
-        jbreserva2.setText("Reservar");
-        jbreserva2.setToolTipText("Botón para reservar una plaza de aparcamiento");
-        jbreserva2.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbreserva2.addActionListener(new java.awt.event.ActionListener() {
+        jbreserva.setBackground(new java.awt.Color(39, 59, 244));
+        jbreserva.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbreserva.setForeground(new java.awt.Color(255, 255, 255));
+        jbreserva.setText("Reservar");
+        jbreserva.setToolTipText("Botón para reservar una plaza de aparcamiento");
+        jbreserva.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbreserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbreserva2ActionPerformed(evt);
+                jbreservaActionPerformed(evt);
             }
         });
 
@@ -108,7 +113,7 @@ public class InicioCuenta extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jbhistorial, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                    .addComponent(jbreserva2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                    .addComponent(jbreserva, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                     .addComponent(jbcuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
                 .addGap(46, 46, 46))
         );
@@ -120,7 +125,7 @@ public class InicioCuenta extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(jbreserva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbreserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jbcuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -141,19 +146,19 @@ public class InicioCuenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
-     Historial hi = new Historial();
-        mostrarPanel(hi);
+     Historial panelHistorial = new Historial();
+        mostrarPanel(panelHistorial);
     }//GEN-LAST:event_jbhistorialActionPerformed
 
     private void jbcuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcuentaActionPerformed
-         Cuenta cuenta = new Cuenta();
-         mostrarPanel( cuenta );
+         Cuenta panelCuenta = new Cuenta();
+         mostrarPanel(panelCuenta );
     }//GEN-LAST:event_jbcuentaActionPerformed
 
-    private void jbreserva2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreserva2ActionPerformed
-        Reserva re = new Reserva();
-        mostrarPanel(re);
-    }//GEN-LAST:event_jbreserva2ActionPerformed
+    private void jbreservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservaActionPerformed
+        Reserva panelReserva = new Reserva();
+        mostrarPanel(panelReserva);
+    }//GEN-LAST:event_jbreservaActionPerformed
 
      private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
@@ -168,7 +173,7 @@ public class InicioCuenta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbcuenta;
     private javax.swing.JButton jbhistorial;
-    private javax.swing.JButton jbreserva2;
+    private javax.swing.JButton jbreserva;
     private javax.swing.JLabel jltitulo1;
     private vista.PanelRound panelInicioCuenta;
     // End of variables declaration//GEN-END:variables

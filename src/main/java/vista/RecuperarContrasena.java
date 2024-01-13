@@ -50,7 +50,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h1");
         jlemail.putClientProperty("FlatLaf.styleClass", "h2");
         
-        if (ingles  == true){
+        if (ingles  == false){
             cambiarIdiomaEs();
             System.out.println("CAMBIAR IDIOMA " + ingles);
         } else {
@@ -283,6 +283,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RecuperarContrasena.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
