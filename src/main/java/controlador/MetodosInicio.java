@@ -70,5 +70,9 @@ public static boolean comprobarInicioUsuario(String nombre, String contrasena) {
         conexion.desconectar();
     }
 }
+
+    public void devolverIdusuario(String nombre, String contrasena) {
+       
+    }
     
 }

@@ -28,6 +28,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     private boolean inglesRecuperarContrasena;
     
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
+      
 
     /**
      * Creates new form RecuperarContrasena
@@ -39,6 +40,10 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
+        
+        
+        //Boton por defecto enter
+         getRootPane().setDefaultButton(jbaceptar);
         
         // Poner jTexfield y jBotton el radio
         jtemail.putClientProperty("FlatLaf.style", "arc: 15");

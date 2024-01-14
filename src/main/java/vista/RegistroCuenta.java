@@ -49,7 +49,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
  
         jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
-        jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
+        //jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
         jlnombre.putClientProperty("FlatLaf.styleClass", "h3");
         jlapellidos.putClientProperty("FlatLaf.styleClass", "h3");
         jlemail.putClientProperty("FlatLaf.styleClass", "h3");
@@ -98,7 +98,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo4 = new javax.swing.JLabel();
         jCheckBoxCoche = new javax.swing.JCheckBox();
         jCheckBoxMoto = new javax.swing.JCheckBox();
-        jlvolver = new javax.swing.JLabel();
         jPanelContrasena = new javax.swing.JPanel();
         jlcontrasena = new javax.swing.JLabel();
         jtcontrasena = new javax.swing.JPasswordField();
@@ -126,7 +125,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
 
         jltitulo2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
-        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo2.setText("ya registraste tu cuenta?");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
@@ -321,18 +320,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jCheckBoxMoto.setMinimumSize(null);
         jCheckBoxMoto.setPreferredSize(new java.awt.Dimension(25, 19));
 
-        jlvolver.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jlvolver.setForeground(new java.awt.Color(39, 59, 244));
-        jlvolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlvolver.setText("Inicia sesion.");
-        jlvolver.setToolTipText("Vuelve a la pantalla anterior");
-        jlvolver.setPreferredSize(new java.awt.Dimension(273, 30));
-        jlvolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlvolverMouseClicked(evt);
-            }
-        });
-
         jPanelContrasena.setBackground(new java.awt.Color(249, 251, 255));
         jPanelContrasena.setPreferredSize(new java.awt.Dimension(335, 82));
 
@@ -439,20 +426,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
         panelRegistroCuentaLayout.setHorizontalGroup(
             panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
@@ -478,6 +451,21 @@ public class RegistroCuenta extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbcancelarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                        .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistroCuentaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jltitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelRegistroCuentaLayout.setVerticalGroup(
             panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,9 +473,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -575,18 +561,8 @@ public class RegistroCuenta extends javax.swing.JPanel {
          }
 
     }//GEN-LAST:event_jbregistroActionPerformed
-    /** Evento me lleva a la ventana de inicio de sesion*/
-    private void jlvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlvolverMouseClicked
-         // Crea una instancia de InicioCuenta
-        InicioSesion panelInicioSesison = new InicioSesion();
-        
-        
-        // Muestra la ventana InicioCuenta
-        panelInicioSesison.setVisible(true);
-        
 
-    }//GEN-LAST:event_jlvolverMouseClicked
-    /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
+   /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
     private void jbcancelarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarRegistroActionPerformed
        
         jtnombre.setText("Nombre");
@@ -663,7 +639,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo4;
-    private javax.swing.JLabel jlvolver;
     private javax.swing.JTextField jtapellidos;
     private javax.swing.JPasswordField jtcontrasena;
     private javax.swing.JTextField jtemail;

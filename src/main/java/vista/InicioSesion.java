@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosContrasena;
 import controlador.MetodosInicio;
+import java.awt.event.KeyEvent;
 import vista.RecuperarContrasena;
 
 
@@ -48,6 +49,10 @@ public class InicioSesion extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         recuperarContrasena = new RecuperarContrasena(ingles);
+        
+        //Boton por defecto enter
+        //jbiniciar.setMnemonic(KeyEvent.VK_0); 
+        getRootPane().setDefaultButton(jbiniciar);
 
         // Cargar el idioma predeterminado (español)
          Locale.setDefault(new Locale("es"));
@@ -538,6 +543,10 @@ public class InicioSesion extends javax.swing.JFrame {
        // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
 
         if (mi.comprobarInicioUsuario(nombre, contrasena)) {
+            
+          /*  mi.devolverIdusuario(nombre, contrasena);*/
+            
+            
             InicioCuenta panelInicioCuenta = new InicioCuenta();
             mostrarPanel(panelInicioCuenta);
         } else {

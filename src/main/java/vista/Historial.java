@@ -7,6 +7,9 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.MetodosRegistroCuenta;
+import static org.hibernate.criterion.Projections.id;
+import modelo.Vehiculos;
+import modelo.Usuarios;
 
 
 /**
@@ -62,7 +65,7 @@ public class Historial extends javax.swing.JPanel {
         jbsalir = new javax.swing.JButton();
         jltitulo2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtabla = new javax.swing.JTable();
         jrbmatricula = new javax.swing.JRadioButton();
         jrbtodos = new javax.swing.JRadioButton();
 
@@ -156,8 +159,8 @@ public class Historial extends javax.swing.JPanel {
         jltitulo2.setText("Introduzca  la matricula ");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jTable1.setBackground(new java.awt.Color(198, 212, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtabla.setBackground(new java.awt.Color(198, 212, 255));
+        jtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -175,7 +178,7 @@ public class Historial extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtabla);
 
         bgeleccion.add(jrbmatricula);
         jrbmatricula.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -257,7 +260,16 @@ public class Historial extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     /** Evento nos lleva a la pantalla de incio de la cuenta*/
     private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
-      
+        if ( jrbtodos.isSelected()){
+            Cuenta cuenta = new Cuenta();
+            
+           
+            
+            
+            
+        } else if (jrbmatricula.isSelected()){
+            
+        }
 
 
     }//GEN-LAST:event_jbmostrarActionPerformed
@@ -293,7 +305,6 @@ public class Historial extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bgeleccion;
     private javax.swing.JPanel jPanelMatricula;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbmostrar;
     private javax.swing.JButton jbsalir;
     private javax.swing.JLabel jlhistorial;
@@ -302,6 +313,7 @@ public class Historial extends javax.swing.JPanel {
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JRadioButton jrbmatricula;
     private javax.swing.JRadioButton jrbtodos;
+    private javax.swing.JTable jtabla;
     private javax.swing.JTextField jtmatricula;
     private vista.PanelRound panelHistorial;
     // End of variables declaration//GEN-END:variables

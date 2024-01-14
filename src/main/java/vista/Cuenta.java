@@ -385,60 +385,8 @@ public class Cuenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     /** Evento nos lleva a la pantalla de incio de la cuenta*/
     private void jbmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmodificarActionPerformed
-        nombre = jtnombre.getText();
-             
-     if (jCheckBoxCoche.isSelected()) {
-            esCoche = true;
-        } else if (jCheckBoxMoto.isSelected()){
-             esCoche = false;
-     } else {
-            JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehículo", "Vehiculo incorrecto", JOptionPane.ERROR_MESSAGE);
-        }
+       
 
-    if (jtnombre.getText().isEmpty() || 
-    jtemail.getText().isEmpty() || 
-    jtmatricula.getText().isEmpty())
-     {
-    
-    // Comprobacion de los campos
-    JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
-} else {
-    if (jtnombre.getText().length() < 3) {
-        JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
-    } else {
-         email = jtemail.getText();
-        if (!MetodosContrasena.esCorreoElectronicoValido(email)) {
-            JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Electrónico Incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else {
-             matricula = jtmatricula.getText();
-            if (!MetodosRegistroCuenta.validarMatricula(matricula)) {
-                JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matrícula Incorrecta", JOptionPane.ERROR_MESSAGE);
-            } else {
-              
-               
-                   MetodosContrasena metodos = new MetodosContrasena();
-                    String hash = metodos.crearHashContrasena(contrasena, repetirContrasena);
-
-                    if (hash != null) {
-                         // lLamar al metodo guardar cuenta usuario
-                        if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, email, matricula, hash, esCoche)) {
-                            JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
-                            InicioCuenta inicio = new InicioCuenta();
-                            mostrarPanel(inicio);
-                        
-                        } 
-                    } else {
-                     
-                        JOptionPane.showMessageDialog(null, "Error en la contraseña. " + nombre, "Error", JOptionPane.WARNING_MESSAGE);
-                    }
-
-
-                    
-                }      
-            }
-        }
-    
-}
     
 
     }//GEN-LAST:event_jbmodificarActionPerformed
