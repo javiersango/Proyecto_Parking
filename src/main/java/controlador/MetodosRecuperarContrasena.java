@@ -28,6 +28,8 @@ public class MetodosRecuperarContrasena {
             
             conexion.conectar();
             Session sesion = conexion.getSessionFactory().openSession();
+            
+          
 
             try {
                 // Comprobar si el email ya existe en la base de datos
