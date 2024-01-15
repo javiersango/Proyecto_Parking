@@ -65,7 +65,7 @@ public class MetodosRegistroCuenta {
             vehiculo.setMatricula(matricula);
             vehiculo.setEsCoche(esCoche);
 
-            // Guardar el vehículo en la base de datos
+            // Guardar el vehiculo en la base de datos
             sesion.save(vehiculo);
 
             // Confirmar la transacción
@@ -80,13 +80,13 @@ public class MetodosRegistroCuenta {
             e.printStackTrace();
                return false;          
         } finally {
-            // Cerrar la sesión de Hibernate
+            // Cerrar la sesion de Hibernate
             sesion.close();
         }
      }
   }
   
-   /** Método para comprobar si ya existe un usuario con el mismo nombre, matrícula y contraseña*/
+   /** Metodo para comprobar si ya existe un usuario con el mismo nombre, matricula y contraseña*/
     public static boolean usuarioExistente(String nombre, String email) {
      // Configurar la conexión a la base de datos utilizando Hibernate
     Configuration configuration = new Configuration();
@@ -122,7 +122,7 @@ public class MetodosRegistroCuenta {
     }
 }
 
-    /** Método para manejar la visualización de los campos de texto*/
+    /** Metodo para manejar la visualización de los campos de texto*/
     public void comportamientoCampos(JTextField textField, String placeholder) {
         if (textField.getText().equals(placeholder)) {
             textField.setText("");
@@ -133,7 +133,7 @@ public class MetodosRegistroCuenta {
         }
     }
 
-    /** Método para validar si una matrícula es válida*/
+    /** Metodo para validar si una matricula */
     public static boolean validarMatricula(String matricula) {
         String regex = "^[0-9]{4}[A-Z]{3}$";
         return Pattern.matches(regex, matricula);

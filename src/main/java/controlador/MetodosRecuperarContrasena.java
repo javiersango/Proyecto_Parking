@@ -18,7 +18,7 @@ import org.hibernate.Transaction;
 
 
 public class MetodosRecuperarContrasena {
-    
+    // Inico de la variables para generar una contraseña segura
     private static final String CARACTERES = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:'\",.<>?";
     private static final int LONGITUD_CONTRASENA = 12; // Cambia la longitud de la contraseña según tus necesidades
 

@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtil {
 
     private SessionFactory sessionFactory;
-
+// Contructor conexion hibernate
     public HibernateUtil() {
         // Crea una instancia de la configuración de Hibernate
         Configuration configuration = new Configuration();
@@ -37,8 +37,8 @@ public class HibernateUtil {
             System.out.println("La conexión a la base de datos ad_parking se ha cerrado.");
         }
     }
-
-    public void mostrarDatosUsuarios() {
+    // Medoos prueba de funcionamiento de codigo
+   /* public void mostrarDatosUsuarios() {
         // Abrir una sesión de Hibernate
         Session sesion = sessionFactory.openSession();
 
@@ -54,7 +54,7 @@ public class HibernateUtil {
                 System.out.println("Nombre: " + usuario.getNombre());
                 System.out.println("Apellidos: " + usuario.getApellidos());
                 System.out.println("Contraseña: " + usuario.getContrasena());
-                System.out.println(); // Agregar una línea en blanco para separar los datos de los usuarios
+                System.out.println(); 
             }
 
         } catch (ObjectNotFoundException e) {
@@ -64,7 +64,9 @@ public class HibernateUtil {
             sesion.close();
         }
     }
+*/
 
+/** Metodo devuelve para instanciar una conexion a la base de datos*/
   public SessionFactory getSessionFactory() {
     return sessionFactory;
 }

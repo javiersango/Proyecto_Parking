@@ -13,6 +13,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 public class Load {
     
       public static void main(String[] args) {
+         // Inicio de la vista de la pantalla, y vista de incio de sesion
          vista.Loading l =new vista.Loading();  
           l.setVisible(true);
            FlatDarkLaf.setup();
@@ -29,7 +30,7 @@ public class Load {
             
                  if(x==100){
                      
-                  
+                  // una vez que acaba la barra de progreso, establece las vista
                    p.setVisible(true);
                     FlatDarkLaf.setup();
                    l.setVisible(false);

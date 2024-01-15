@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  * @author Javier
  */
 public class MetodosInicio {
-    
+/** Metodo se le pasa el nombre introducido y la contraseña , que hara las comprobaciones necesarias para que inicie sesion en la aplicacion*/    
 public static boolean comprobarInicioUsuario(String nombre, String contrasena) {
     HibernateUtil conexion = new HibernateUtil();  // instaciacion a la conexion con la base de datos
     conexion.conectar();
@@ -70,7 +70,7 @@ public static boolean comprobarInicioUsuario(String nombre, String contrasena) {
         conexion.desconectar();
     }
 }
-
+    /**Metodo le pasa el nombre y la contraseña...................*/
     public void devolverIdusuario(String nombre, String contrasena) {
        
     }

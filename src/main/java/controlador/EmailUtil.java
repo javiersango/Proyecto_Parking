@@ -22,7 +22,8 @@ import vista.RecuperarContrasena;
  */
 public class EmailUtil {
     
-    /** Metodo se utiliza para enviar un correo electronico utilizando seision JavaMail toma la direcciondel correo electronico que lo envia , el asunto del correo y el cuerpo del correo  */
+    /** Metodo se utiliza para enviar un correo electronico utilizando seision JavaMail toma la direcciondel 
+     * correo electronico que lo envia , el asunto del correo y el cuerpo del correo  */
     public static void sendEmail(Session session, String toEmail, String subject, String body) {
    
         try {

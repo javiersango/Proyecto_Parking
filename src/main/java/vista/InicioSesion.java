@@ -39,6 +39,7 @@ public class InicioSesion extends javax.swing.JFrame {
     
      private RecuperarContrasena recuperarContrasena;
      private boolean ingles; // Inicia el idioma en ingles
+     private int nivelBateria = 100;
    
 
     /**
@@ -92,7 +93,7 @@ public class InicioSesion extends javax.swing.JFrame {
             public void run() {
                 updateBatteryLevel();
             }
-        }, 0, 10000); // Actualiza cada segundo (1000 ms)
+        }, 0, 60000); // Actualiza cada segundo (1000 ms)
         
     }
     
@@ -107,8 +108,13 @@ public class InicioSesion extends javax.swing.JFrame {
 
     // Método de ejemplo para obtener el nivel de la batería (simulado)
     private int obtenerNivelBateria() {
-        AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
-        return atomicBatteryLevel.get();
+      //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
+      //  return atomicBatteryLevel.get();
+            if (nivelBateria > 0) {
+              nivelBateria--; // Disminuimos el nivel de batería en 1
+             }
+            return nivelBateria;
+      
     }
 
     /**
@@ -598,13 +604,14 @@ public class InicioSesion extends javax.swing.JFrame {
  
      RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
      mostrarPanel( panelRegistroCuenta );
-
      
+     // Prueba de la base de datos
+     /*
      HibernateUtil hibernate = new HibernateUtil();
      hibernate.conectar();
      hibernate.mostrarDatosUsuarios();
      hibernate.desconectar();
-    
+    */
     }//GEN-LAST:event_jbregistrarseActionPerformed
 
     /**

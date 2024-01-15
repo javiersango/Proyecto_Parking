@@ -23,7 +23,9 @@ import javax.swing.SwingUtilities;
  * @author Javier
  */
 public class Loading extends javax.swing.JFrame {
-     int xMouse, yMouse;
+    // Inicio de la variables
+    int xMouse, yMouse;
+     private int nivelBateria = 101;
     
     
 
@@ -56,7 +58,7 @@ public class Loading extends javax.swing.JFrame {
             public void run() {
                 updateBatteryLevel();
             }
-        }, 0, 1000); // Actualiza cada segundo (1000 ms)
+        }, 0, 600000); // Actualiza cada segundo (1000 ms)
         
     }
     
@@ -73,8 +75,12 @@ public class Loading extends javax.swing.JFrame {
 
     // Método de ejemplo para obtener el nivel de la batería (simulado)
     private int obtenerNivelBateria() {
-        AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
-        return atomicBatteryLevel.get();
+         //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
+      //  return atomicBatteryLevel.get();
+            if (nivelBateria > 0) {
+              nivelBateria--; // Disminuimos el nivel de batería en 1
+             }
+            return nivelBateria;
     }
     
     

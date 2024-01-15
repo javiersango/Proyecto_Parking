@@ -86,9 +86,9 @@ public class MetodosContrasena {
 
         return result.isValid(); // si es valida devuelve true, si no false
     }
-    
-public static boolean comprobarContrasena(String contrasena, String hashGuardado) {
-    return BCrypt.checkpw(contrasena, hashGuardado);
+    /** Metodo se le pasa la contraseña y el hash guardado comprueba que la encriptacion sea correcta*/
+    public static boolean comprobarContrasena(String contrasena, String hashGuardado) {
+        return BCrypt.checkpw(contrasena, hashGuardado);
 }
 
 }
