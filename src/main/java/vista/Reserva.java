@@ -27,7 +27,8 @@ public class Reserva extends javax.swing.JPanel {
         
         jbmodificar.putClientProperty("FlatLaf.style","arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
- 
+        panelRoundP1.putClientProperty("FlatLaf.style","arc: 15");
+        
        // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
         jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
@@ -53,20 +54,32 @@ public class Reserva extends javax.swing.JPanel {
         jltitulo3 = new javax.swing.JLabel();
         jlvolver = new javax.swing.JLabel();
         jbcancelar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jlsalida = new javax.swing.JLabel();
+        jlentrada = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        panelRoundP1 = new vista.PanelRound();
+        jlplaza1 = new javax.swing.JLabel();
+        jCheckBoxP1 = new javax.swing.JCheckBox();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
         panelCuenta.setBackground(new java.awt.Color(249, 251, 255));
+        panelCuenta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
         panelCuenta.setMaximumSize(null);
         panelCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
         panelCuenta.setRoundBottomLeft(30);
         panelCuenta.setRoundBottomRight(30);
 
-        jlreservar.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
+        jlreservar.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
         jlreservar.setForeground(new java.awt.Color(39, 59, 244));
         jlreservar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlreservar.setText("RESERVAR PLAZA");
@@ -110,22 +123,87 @@ public class Reserva extends javax.swing.JPanel {
         jbcancelar.setToolTipText("Botón borra la cuenta del usuario");
         jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
 
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 30));
+        jlsalida.setBackground(new java.awt.Color(0, 0, 0));
+        jlsalida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlsalida.setForeground(new java.awt.Color(25, 35, 66));
+        jlsalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlsalida.setText("SALIDA");
 
+        jlentrada.setBackground(new java.awt.Color(0, 0, 0));
+        jlentrada.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlentrada.setForeground(new java.awt.Color(25, 35, 66));
+        jlentrada.setText("ENTRADA");
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+
+        panelRoundP1.setBackground(new java.awt.Color(0, 255, 255));
+        panelRoundP1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP1.setRoundBottomLeft(25);
+        panelRoundP1.setRoundBottomRight(15);
+        panelRoundP1.setRoundTopLeft(15);
+        panelRoundP1.setRoundTopRight(15);
+
+        jlplaza1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza1.setForeground(new java.awt.Color(0, 0, 0));
+        jlplaza1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza1.setText("P01");
+
+        jCheckBoxP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP1Layout = new javax.swing.GroupLayout(panelRoundP1);
+        panelRoundP1.setLayout(panelRoundP1Layout);
+        panelRoundP1Layout.setHorizontalGroup(
+            panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP1)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        panelRoundP1Layout.setVerticalGroup(
+            panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP1)
+                    .addComponent(jlplaza1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.setBackground(new java.awt.Color(255, 0, 51));
+
+        jToggleButton1.setBackground(new java.awt.Color(0, 255, 255));
+        jToggleButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/carcoche.png"))); // NOI18N
         jToggleButton1.setText("jToggleButton1");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/carcoche.png"))); // NOI18N
+
+        jButton2.setBackground(new java.awt.Color(0, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/carcoche.png"))); // NOI18N
+        jButton2.setText("jButton1");
 
         javax.swing.GroupLayout panelCuentaLayout = new javax.swing.GroupLayout(panelCuenta);
         panelCuenta.setLayout(panelCuentaLayout);
         panelCuentaLayout.setHorizontalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
             .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCuentaLayout.createSequentialGroup()
@@ -141,13 +219,49 @@ public class Reserva extends javax.swing.JPanel {
                             .addGap(34, 34, 34)
                             .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
+                        .addGap(22, 22, 22)
                         .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton1))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(jlsalida))
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jlentrada))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(jSeparator2)))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                                        .addGap(301, 301, 301)
+                                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jTabbedPane2)))
+                .addContainerGap())
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
         panelCuentaLayout.setVerticalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,16 +274,32 @@ public class Reserva extends javax.swing.JPanel {
                     .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlentrada)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(108, 108, 108)
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelRoundP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                        .addGap(85, 85, 85)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlsalida, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +314,7 @@ public class Reserva extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,6 +324,14 @@ public class Reserva extends javax.swing.JPanel {
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
     }//GEN-LAST:event_jlvolverMouseClicked
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jCheckBoxP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP1ActionPerformed
 
     private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);
@@ -208,16 +346,27 @@ public class Reserva extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBoxP1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton jbcancelar;
     private javax.swing.JButton jbmodificar;
+    private javax.swing.JLabel jlentrada;
+    private javax.swing.JLabel jlplaza1;
     private javax.swing.JLabel jlreservar;
+    private javax.swing.JLabel jlsalida;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JLabel jlvolver;
     private vista.PanelRound panelCuenta;
+    private vista.PanelRound panelRoundP1;
     // End of variables declaration//GEN-END:variables
 
    

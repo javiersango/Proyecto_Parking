@@ -7,6 +7,7 @@ package vista;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.HibernateUtil;
 
@@ -641,7 +642,8 @@ public class InicioSesion extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        FlatDarkLaf.setup();
+       // FlatDarkLaf.setup();
+         FlatLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
