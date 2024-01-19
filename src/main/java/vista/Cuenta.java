@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
 import javax.swing.ImageIcon;
+import jdk.internal.org.jline.reader.LineReader;
 
 /**
  *
@@ -39,7 +40,7 @@ public class Cuenta extends javax.swing.JPanel {
         
         // Poner jTexfield y jBotton el radio
         jtnombre.putClientProperty("FlatLaf.style","arc: 15");
-        jtemail.putClientProperty("FlatLaf.style","arc: 15");
+        jtapellidos.putClientProperty("FlatLaf.style","arc: 15");
         jtmatricula.putClientProperty("FlatLaf.style","arc: 15");
 
         
@@ -51,17 +52,17 @@ public class Cuenta extends javax.swing.JPanel {
           jltitulo4.putClientProperty("FlatLaf.styleClass", "h0");
         jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
         jlnombre.putClientProperty("FlatLaf.styleClass", "h3");
-        jlemail.putClientProperty("FlatLaf.styleClass", "h3");
+        jlapellidos.putClientProperty("FlatLaf.styleClass", "h3");
         jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");
 
         
       
         // añadir a los jTextField iconos
         jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
-        jtemail.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/email.svg" ) );
+        jtapellidos.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/email.svg" ) );
         jtmatricula.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/matricula.svg" ) );
-     
-       
+      /*  String matricula = jtmatricula.setText();
+        matricula.LineReader.CAPITALIZE_WORD*/
     }
 
     /**
@@ -81,8 +82,8 @@ public class Cuenta extends javax.swing.JPanel {
         jlnombre = new javax.swing.JLabel();
         jtnombre = new javax.swing.JTextField();
         jPanelEmail = new javax.swing.JPanel();
-        jlemail = new javax.swing.JLabel();
-        jtemail = new javax.swing.JTextField();
+        jlapellidos = new javax.swing.JLabel();
+        jtapellidos = new javax.swing.JTextField();
         jPanelMatricula = new javax.swing.JPanel();
         jlmatricula = new javax.swing.JLabel();
         jtmatricula = new javax.swing.JTextField();
@@ -169,22 +170,22 @@ public class Cuenta extends javax.swing.JPanel {
         jPanelEmail.setBackground(new java.awt.Color(249, 251, 255));
         jPanelEmail.setPreferredSize(new java.awt.Dimension(335, 82));
 
-        jlemail.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlemail.setForeground(new java.awt.Color(25, 35, 66));
-        jlemail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlemail.setText("Email");
-        jlemail.setPreferredSize(new java.awt.Dimension(51, 17));
+        jlapellidos.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlapellidos.setForeground(new java.awt.Color(25, 35, 66));
+        jlapellidos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlapellidos.setText("Apellidos");
+        jlapellidos.setPreferredSize(new java.awt.Dimension(51, 17));
 
-        jtemail.setBackground(new java.awt.Color(198, 212, 255));
-        jtemail.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtemail.setForeground(new java.awt.Color(153, 153, 153));
-        jtemail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jtemail.setText("Email");
-        jtemail.setToolTipText("Introduce un email valido");
-        jtemail.setPreferredSize(new java.awt.Dimension(335, 50));
-        jtemail.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtapellidos.setBackground(new java.awt.Color(198, 212, 255));
+        jtapellidos.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtapellidos.setForeground(new java.awt.Color(153, 153, 153));
+        jtapellidos.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtapellidos.setText("Apellidos");
+        jtapellidos.setToolTipText("Introduce un email valido");
+        jtapellidos.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtapellidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtemailMouseClicked(evt);
+                jtapellidosMouseClicked(evt);
             }
         });
 
@@ -193,16 +194,16 @@ public class Cuenta extends javax.swing.JPanel {
         jPanelEmailLayout.setHorizontalGroup(
             jPanelEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEmailLayout.createSequentialGroup()
-                .addComponent(jlemail, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jtemail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jtapellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelEmailLayout.setVerticalGroup(
             jPanelEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEmailLayout.createSequentialGroup()
-                .addComponent(jlemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jtapellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanelMatricula.setBackground(new java.awt.Color(249, 251, 255));
@@ -402,8 +403,8 @@ public class Cuenta extends javax.swing.JPanel {
        
         jtnombre.setText("Nombre");
         jtnombre.setForeground(Color.gray);
-        jtemail.setText("Email");
-        jtemail.setForeground(Color.gray);
+        jtapellidos.setText("Email");
+        jtapellidos.setForeground(Color.gray);
         jtmatricula.setText("Matricula");
         jtmatricula.setForeground(Color.gray);
   
@@ -420,9 +421,9 @@ public class Cuenta extends javax.swing.JPanel {
          mrc.comportamientoCampos(jtmatricula, "Matricula");
     }//GEN-LAST:event_jtmatriculaMouseClicked
 
-    private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
-        mrc.comportamientoCampos(jtemail, "Email");
-    }//GEN-LAST:event_jtemailMouseClicked
+    private void jtapellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtapellidosMouseClicked
+        mrc.comportamientoCampos(jtapellidos, "Email");
+    }//GEN-LAST:event_jtapellidosMouseClicked
      private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);
        panel.setLocation(0,0);  
@@ -445,14 +446,14 @@ public class Cuenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelNombre;
     private javax.swing.JButton jbborrar;
     private javax.swing.JButton jbmodificar;
+    private javax.swing.JLabel jlapellidos;
     private javax.swing.JLabel jlcuentausuario;
-    private javax.swing.JLabel jlemail;
     private javax.swing.JLabel jlmatricula;
     private javax.swing.JLabel jlnombre;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo4;
     private javax.swing.JLabel jlvolver;
-    private javax.swing.JTextField jtemail;
+    private javax.swing.JTextField jtapellidos;
     private javax.swing.JTextField jtmatricula;
     private javax.swing.JTextField jtnombre;
     private vista.PanelRound panelCuenta;
