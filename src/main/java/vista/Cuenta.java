@@ -7,21 +7,21 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
-import javax.swing.JOptionPane;
-import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
-import javax.swing.ImageIcon;
-import jdk.internal.org.jline.reader.LineReader;
+
 
 /**
  *
- * @author Javier
+ * @author Javier Sanchez Gonzalez
  */
 public class Cuenta extends javax.swing.JPanel {
 
  
     
     // Variables
+    /**
+     * 
+     */
     private boolean esCoche;
     private String nombre;
     private String apellidos;
@@ -55,7 +55,6 @@ public class Cuenta extends javax.swing.JPanel {
         jlapellidos.putClientProperty("FlatLaf.styleClass", "h3");
         jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");
 
-        
       
         // añadir a los jTextField iconos
         jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
@@ -95,6 +94,7 @@ public class Cuenta extends javax.swing.JPanel {
         jLiconCoche = new javax.swing.JLabel();
         jbborrar = new javax.swing.JButton();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 

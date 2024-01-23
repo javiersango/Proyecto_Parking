@@ -87,6 +87,7 @@ public class Historial extends javax.swing.JPanel {
         jbmostrar.setForeground(new java.awt.Color(255, 255, 255));
         jbmostrar.setText("Mostrar");
         jbmostrar.setToolTipText("Muestra el historial por nombre o por matricula");
+        jbmostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbmostrar.setPreferredSize(new java.awt.Dimension(124, 49));
         jbmostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +150,7 @@ public class Historial extends javax.swing.JPanel {
         jbsalir.setForeground(new java.awt.Color(255, 255, 255));
         jbsalir.setText("Salir");
         jbsalir.setToolTipText("Boton salir de mostrar historial");
+        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbsalir.setPreferredSize(new java.awt.Dimension(124, 49));
         jbsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
