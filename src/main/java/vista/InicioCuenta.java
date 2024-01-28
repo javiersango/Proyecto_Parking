@@ -146,7 +146,7 @@ public class InicioCuenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
-     Historial panelHistorial = new Historial();
+     Historiales panelHistorial = new Historiales();
         mostrarPanel(panelHistorial);
     }//GEN-LAST:event_jbhistorialActionPerformed
 

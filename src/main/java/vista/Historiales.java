@@ -7,14 +7,20 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.MetodosRegistroCuenta;
+import controlador.MetodosHistorial;
+import modelo.Historial;
+
+import java.util.List;
+import javax.swing.JOptionPane;
+
 
 
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez Gonzalez
  */
-public class Historial extends javax.swing.JPanel {
+public class Historiales extends javax.swing.JPanel {
 
    
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
@@ -22,13 +28,11 @@ public class Historial extends javax.swing.JPanel {
     /**
      * Creates new form RegistroCuenta
      */
-    public Historial() {
+    public Historiales() {
         initComponents();
         
         // Poner jTexfield y jBotton el radio
         jtmatricula.putClientProperty("FlatLaf.style","arc: 15");
-        
-
         
         jbmostrar.putClientProperty("FlatLaf.style","arc: 15");
         jbsalir.putClientProperty("FlatLaf.style","arc: 15");
@@ -114,11 +118,6 @@ public class Historial extends javax.swing.JPanel {
         jtmatricula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtmatriculaMouseClicked(evt);
-            }
-        });
-        jtmatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtmatriculaActionPerformed(evt);
             }
         });
 
@@ -245,9 +244,21 @@ public class Historial extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
  
     private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
-       
-
-
+       Historial historial = new Historial();
+        String matricula = jtmatricula.getText();
+    List<Historial> historia = MetodosHistorial.buscarMatricula(matricula);
+    
+    if (historial != null && !historia.isEmpty()) {
+        for (Historial his : historia) {
+            System.out.println("Fecha: " + his.getDia());
+            System.out.println("Duración: " + his.getTiempoReservado());
+            System.out.println("Precio: " + his.getPrecio());
+            System.out.println("-----------");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "No se encontraron resultados para la matrícula: " + matricula, "Historial", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("No se encontraron resultados para la matrícula: " + matricula);
+    }
     }//GEN-LAST:event_jbmostrarActionPerformed
 
    /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
@@ -257,17 +268,12 @@ public class Historial extends javax.swing.JPanel {
         InicioCuenta ic = new InicioCuenta();
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
-  
         
     }//GEN-LAST:event_jbsalirActionPerformed
 
     private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
          mrc.comportamientoCampos(jtmatricula, "Matricula");
     }//GEN-LAST:event_jtmatriculaMouseClicked
-
-    private void jtmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtmatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtmatriculaActionPerformed
 
     private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);

@@ -10,7 +10,7 @@ import controlador.MetodosRegistroCuenta;
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez González
  */
 public class Reserva extends javax.swing.JPanel {
 
@@ -22,6 +22,8 @@ public class Reserva extends javax.swing.JPanel {
      */
     public Reserva() {
         initComponents();
+        // Boton por defecto
+       // getRootPane().setDefaultButton(jbmodificar);
         
         // Poner jTexfield y jBotton el radio
         
@@ -48,6 +50,9 @@ public class Reserva extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelRoundP14 = new vista.PanelRound();
+        jlplaza14 = new javax.swing.JLabel();
+        jCheckBoxP14 = new javax.swing.JCheckBox();
         panelCuenta = new vista.PanelRound();
         jlreservar = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
@@ -55,7 +60,6 @@ public class Reserva extends javax.swing.JPanel {
         jltitulo3 = new javax.swing.JLabel();
         jlvolver = new javax.swing.JLabel();
         jbcancelar = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         panelRoundP1 = new vista.PanelRound();
@@ -67,13 +71,99 @@ public class Reserva extends javax.swing.JPanel {
         panelRoundP3 = new vista.PanelRound();
         jlplaza3 = new javax.swing.JLabel();
         jCheckBoxP3 = new javax.swing.JCheckBox();
+        panelRoundP4 = new vista.PanelRound();
+        jlplaza4 = new javax.swing.JLabel();
+        jCheckBoxP4 = new javax.swing.JCheckBox();
+        panelRoundP5 = new vista.PanelRound();
+        jlplaza5 = new javax.swing.JLabel();
+        jCheckBoxP5 = new javax.swing.JCheckBox();
+        panelRoundP6 = new vista.PanelRound();
+        jlplaza6 = new javax.swing.JLabel();
+        jCheckBoxP6 = new javax.swing.JCheckBox();
+        panelRoundP7 = new vista.PanelRound();
+        jlplaza7 = new javax.swing.JLabel();
+        jCheckBoxP7 = new javax.swing.JCheckBox();
+        panelRoundP8 = new vista.PanelRound();
+        jlplaza8 = new javax.swing.JLabel();
+        jCheckBoxP8 = new javax.swing.JCheckBox();
+        panelRoundP9 = new vista.PanelRound();
+        jlplaza9 = new javax.swing.JLabel();
+        jCheckBoxP9 = new javax.swing.JCheckBox();
+        panelRoundP10 = new vista.PanelRound();
+        jlplaza10 = new javax.swing.JLabel();
+        jCheckBoxP10 = new javax.swing.JCheckBox();
+        panelRoundP11 = new vista.PanelRound();
+        jlplaza11 = new javax.swing.JLabel();
+        jCheckBoxP11 = new javax.swing.JCheckBox();
+        panelRoundP12 = new vista.PanelRound();
+        jlplaza12 = new javax.swing.JLabel();
+        jCheckBoxP12 = new javax.swing.JCheckBox();
+        panelRoundP13 = new vista.PanelRound();
+        jlplaza13 = new javax.swing.JLabel();
+        jCheckBoxP13 = new javax.swing.JCheckBox();
+        panelRoundP15 = new vista.PanelRound();
+        jlplaza15 = new javax.swing.JLabel();
+        jCheckBoxP15 = new javax.swing.JCheckBox();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jlentrada = new javax.swing.JLabel();
+        jlsalida = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        jSeparator11 = new javax.swing.JSeparator();
+        jSeparator12 = new javax.swing.JSeparator();
+        jSeparator13 = new javax.swing.JSeparator();
+        jSeparator14 = new javax.swing.JSeparator();
+        jSeparator15 = new javax.swing.JSeparator();
+        jSeparator16 = new javax.swing.JSeparator();
+        jSeparator17 = new javax.swing.JSeparator();
+        jSeparator18 = new javax.swing.JSeparator();
 
+        panelRoundP14.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP14.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP14.setRoundBottomRight(20);
+        panelRoundP14.setRoundTopRight(20);
+
+        jlplaza14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza14.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza14.setText("P01");
+
+        jCheckBoxP14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP14ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP14Layout = new javax.swing.GroupLayout(panelRoundP14);
+        panelRoundP14.setLayout(panelRoundP14Layout);
+        panelRoundP14Layout.setHorizontalGroup(
+            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP14Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP14)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP14Layout.setVerticalGroup(
+            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP14Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP14)
+                    .addComponent(jlplaza14))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
         panelCuenta.setBackground(new java.awt.Color(249, 251, 255));
         panelCuenta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
-        panelCuenta.setMaximumSize(null);
         panelCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
         panelCuenta.setRoundBottomLeft(30);
         panelCuenta.setRoundBottomRight(30);
@@ -122,8 +212,6 @@ public class Reserva extends javax.swing.JPanel {
         jbcancelar.setToolTipText("Botón borra la cuenta del usuario");
         jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
@@ -154,7 +242,7 @@ public class Reserva extends javax.swing.JPanel {
                 .addComponent(jlplaza1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP1)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         panelRoundP1Layout.setVerticalGroup(
             panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +280,7 @@ public class Reserva extends javax.swing.JPanel {
                 .addComponent(jlplaza2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP2)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         panelRoundP2Layout.setVerticalGroup(
             panelRoundP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,6 +294,7 @@ public class Reserva extends javax.swing.JPanel {
 
         panelRoundP3.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP3.setPreferredSize(new java.awt.Dimension(84, 46));
         panelRoundP3.setRoundBottomLeft(20);
         panelRoundP3.setRoundTopLeft(20);
 
@@ -229,7 +318,7 @@ public class Reserva extends javax.swing.JPanel {
                 .addComponent(jlplaza3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP3)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         panelRoundP3Layout.setVerticalGroup(
             panelRoundP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,83 +330,646 @@ public class Reserva extends javax.swing.JPanel {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
+        panelRoundP4.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP4.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP4.setRoundBottomLeft(20);
+        panelRoundP4.setRoundTopLeft(20);
+
+        jlplaza4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza4.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza4.setText("P01");
+
+        jCheckBoxP4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP4Layout = new javax.swing.GroupLayout(panelRoundP4);
+        panelRoundP4.setLayout(panelRoundP4Layout);
+        panelRoundP4Layout.setHorizontalGroup(
+            panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP4)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP4Layout.setVerticalGroup(
+            panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP4)
+                    .addComponent(jlplaza4))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP5.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP5.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP5.setRoundBottomLeft(20);
+        panelRoundP5.setRoundTopLeft(20);
+
+        jlplaza5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza5.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza5.setText("P01");
+
+        jCheckBoxP5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP5Layout = new javax.swing.GroupLayout(panelRoundP5);
+        panelRoundP5.setLayout(panelRoundP5Layout);
+        panelRoundP5Layout.setHorizontalGroup(
+            panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP5)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP5Layout.setVerticalGroup(
+            panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP5)
+                    .addComponent(jlplaza5))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP6.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP6.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP6.setRoundBottomLeft(20);
+        panelRoundP6.setRoundTopLeft(20);
+
+        jlplaza6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza6.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza6.setText("P01");
+
+        jCheckBoxP6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP6Layout = new javax.swing.GroupLayout(panelRoundP6);
+        panelRoundP6.setLayout(panelRoundP6Layout);
+        panelRoundP6Layout.setHorizontalGroup(
+            panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP6Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP6)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP6Layout.setVerticalGroup(
+            panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP6)
+                    .addComponent(jlplaza6))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP7.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP7.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP7.setRoundBottomLeft(20);
+        panelRoundP7.setRoundTopLeft(20);
+
+        jlplaza7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza7.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza7.setText("P01");
+
+        jCheckBoxP7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP7Layout = new javax.swing.GroupLayout(panelRoundP7);
+        panelRoundP7.setLayout(panelRoundP7Layout);
+        panelRoundP7Layout.setHorizontalGroup(
+            panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP7Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP7)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP7Layout.setVerticalGroup(
+            panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP7Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP7)
+                    .addComponent(jlplaza7))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP8.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP8.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP8.setRoundBottomRight(20);
+        panelRoundP8.setRoundTopRight(20);
+
+        jlplaza8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza8.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza8.setText("P01");
+
+        jCheckBoxP8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP8ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP8Layout = new javax.swing.GroupLayout(panelRoundP8);
+        panelRoundP8.setLayout(panelRoundP8Layout);
+        panelRoundP8Layout.setHorizontalGroup(
+            panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP8Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP8)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP8Layout.setVerticalGroup(
+            panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP8Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP8)
+                    .addComponent(jlplaza8))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP9.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP9.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP9.setRoundBottomRight(20);
+        panelRoundP9.setRoundTopRight(20);
+
+        jlplaza9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza9.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza9.setText("P01");
+
+        jCheckBoxP9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP9ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP9Layout = new javax.swing.GroupLayout(panelRoundP9);
+        panelRoundP9.setLayout(panelRoundP9Layout);
+        panelRoundP9Layout.setHorizontalGroup(
+            panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP9Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP9)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP9Layout.setVerticalGroup(
+            panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP9Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP9)
+                    .addComponent(jlplaza9))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP10.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP10.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP10.setRoundBottomRight(20);
+        panelRoundP10.setRoundTopRight(20);
+
+        jlplaza10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza10.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza10.setText("P01");
+
+        jCheckBoxP10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP10ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP10Layout = new javax.swing.GroupLayout(panelRoundP10);
+        panelRoundP10.setLayout(panelRoundP10Layout);
+        panelRoundP10Layout.setHorizontalGroup(
+            panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP10Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP10)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP10Layout.setVerticalGroup(
+            panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP10Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP10)
+                    .addComponent(jlplaza10))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP11.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP11.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP11.setRoundBottomRight(20);
+        panelRoundP11.setRoundTopRight(20);
+
+        jlplaza11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza11.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza11.setText("P01");
+
+        jCheckBoxP11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP11ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP11Layout = new javax.swing.GroupLayout(panelRoundP11);
+        panelRoundP11.setLayout(panelRoundP11Layout);
+        panelRoundP11Layout.setHorizontalGroup(
+            panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP11Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP11)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP11Layout.setVerticalGroup(
+            panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP11Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP11)
+                    .addComponent(jlplaza11))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP12.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP12.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP12.setRoundBottomRight(20);
+        panelRoundP12.setRoundTopRight(20);
+
+        jlplaza12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza12.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza12.setText("P01");
+
+        jCheckBoxP12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP12Layout = new javax.swing.GroupLayout(panelRoundP12);
+        panelRoundP12.setLayout(panelRoundP12Layout);
+        panelRoundP12Layout.setHorizontalGroup(
+            panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP12Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP12)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP12Layout.setVerticalGroup(
+            panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP12Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP12)
+                    .addComponent(jlplaza12))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP13.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP13.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP13.setRoundBottomRight(20);
+        panelRoundP13.setRoundTopRight(20);
+
+        jlplaza13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza13.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza13.setText("P01");
+
+        jCheckBoxP13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP13ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP13Layout = new javax.swing.GroupLayout(panelRoundP13);
+        panelRoundP13.setLayout(panelRoundP13Layout);
+        panelRoundP13Layout.setHorizontalGroup(
+            panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP13Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP13)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP13Layout.setVerticalGroup(
+            panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP13Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP13)
+                    .addComponent(jlplaza13))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        panelRoundP15.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP15.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP15.setRoundBottomRight(20);
+        panelRoundP15.setRoundTopRight(20);
+
+        jlplaza15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jlplaza15.setForeground(new java.awt.Color(255, 255, 255));
+        jlplaza15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlplaza15.setText("P01");
+
+        jCheckBoxP15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxP15ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoundP15Layout = new javax.swing.GroupLayout(panelRoundP15);
+        panelRoundP15.setLayout(panelRoundP15Layout);
+        panelRoundP15Layout.setHorizontalGroup(
+            panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP15Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jlplaza15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBoxP15)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRoundP15Layout.setVerticalGroup(
+            panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP15Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP15)
+                    .addComponent(jlplaza15))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+
+        jlentrada.setForeground(new java.awt.Color(0, 0, 0));
+        jlentrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlentrada.setText("ENTRADA");
+
+        jlsalida.setForeground(new java.awt.Color(0, 0, 0));
+        jlsalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlsalida.setText("SALIDA");
+
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator14.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator15.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator16.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator17.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator18.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout panelCuentaLayout = new javax.swing.GroupLayout(panelCuenta);
         panelCuenta.setLayout(panelCuentaLayout);
         panelCuentaLayout.setHorizontalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlentrada, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlsalida, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator3))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCuentaLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jlreservar, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(panelCuentaLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createSequentialGroup()
-                            .addGap(34, 34, 34)
-                            .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelRoundP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(panelRoundP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(91, 91, 91)
+                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(panelRoundP7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(panelRoundP15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addGap(26, 26, 26))
         );
         panelCuentaLayout.setVerticalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jlreservar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(panelRoundP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelRoundP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addComponent(jlreservar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
                         .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(185, 185, 185))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(76, 76, 76))))
+                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jlentrada))
+                .addGap(3, 3, 3)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRoundP8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRoundP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRoundP9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRoundP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRoundP10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRoundP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRoundP11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRoundP5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRoundP12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelRoundP6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRoundP13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelRoundP7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelRoundP15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))))
+                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jlsalida)))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -331,10 +983,6 @@ public class Reserva extends javax.swing.JPanel {
             .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jCheckBoxP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP3ActionPerformed
 
     private void jCheckBoxP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP2ActionPerformed
         // TODO add your handling code here:
@@ -351,6 +999,58 @@ public class Reserva extends javax.swing.JPanel {
         mostrarPanel(ic);
     }//GEN-LAST:event_jlvolverMouseClicked
 
+    private void jCheckBoxP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP3ActionPerformed
+
+    private void jCheckBoxP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP4ActionPerformed
+
+    private void jCheckBoxP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP5ActionPerformed
+
+    private void jCheckBoxP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP6ActionPerformed
+
+    private void jCheckBoxP7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP7ActionPerformed
+
+    private void jCheckBoxP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP8ActionPerformed
+
+    private void jCheckBoxP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP9ActionPerformed
+
+    private void jCheckBoxP10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP10ActionPerformed
+
+    private void jCheckBoxP11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP11ActionPerformed
+
+    private void jCheckBoxP12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP12ActionPerformed
+
+    private void jCheckBoxP13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP13ActionPerformed
+
+    private void jCheckBoxP14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxP14ActionPerformed
+
+    private void jCheckBoxP15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP15ActionPerformed
+    
+    }//GEN-LAST:event_jCheckBoxP15ActionPerformed
+
     private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);
        panel.setLocation(0,0);  
@@ -365,25 +1065,75 @@ public class Reserva extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBoxP1;
+    private javax.swing.JCheckBox jCheckBoxP10;
+    private javax.swing.JCheckBox jCheckBoxP11;
+    private javax.swing.JCheckBox jCheckBoxP12;
+    private javax.swing.JCheckBox jCheckBoxP13;
+    private javax.swing.JCheckBox jCheckBoxP14;
+    private javax.swing.JCheckBox jCheckBoxP15;
     private javax.swing.JCheckBox jCheckBoxP2;
     private javax.swing.JCheckBox jCheckBoxP3;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JCheckBox jCheckBoxP4;
+    private javax.swing.JCheckBox jCheckBoxP5;
+    private javax.swing.JCheckBox jCheckBoxP6;
+    private javax.swing.JCheckBox jCheckBoxP7;
+    private javax.swing.JCheckBox jCheckBoxP8;
+    private javax.swing.JCheckBox jCheckBoxP9;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JButton jbcancelar;
     private javax.swing.JButton jbmodificar;
+    private javax.swing.JLabel jlentrada;
     private javax.swing.JLabel jlplaza1;
+    private javax.swing.JLabel jlplaza10;
+    private javax.swing.JLabel jlplaza11;
+    private javax.swing.JLabel jlplaza12;
+    private javax.swing.JLabel jlplaza13;
+    private javax.swing.JLabel jlplaza14;
+    private javax.swing.JLabel jlplaza15;
     private javax.swing.JLabel jlplaza2;
     private javax.swing.JLabel jlplaza3;
+    private javax.swing.JLabel jlplaza4;
+    private javax.swing.JLabel jlplaza5;
+    private javax.swing.JLabel jlplaza6;
+    private javax.swing.JLabel jlplaza7;
+    private javax.swing.JLabel jlplaza8;
+    private javax.swing.JLabel jlplaza9;
     private javax.swing.JLabel jlreservar;
+    private javax.swing.JLabel jlsalida;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JLabel jlvolver;
     private vista.PanelRound panelCuenta;
     private vista.PanelRound panelRoundP1;
+    private vista.PanelRound panelRoundP10;
+    private vista.PanelRound panelRoundP11;
+    private vista.PanelRound panelRoundP12;
+    private vista.PanelRound panelRoundP13;
+    private vista.PanelRound panelRoundP14;
+    private vista.PanelRound panelRoundP15;
     private vista.PanelRound panelRoundP2;
     private vista.PanelRound panelRoundP3;
+    private vista.PanelRound panelRoundP4;
+    private vista.PanelRound panelRoundP5;
+    private vista.PanelRound panelRoundP6;
+    private vista.PanelRound panelRoundP7;
+    private vista.PanelRound panelRoundP8;
+    private vista.PanelRound panelRoundP9;
     // End of variables declaration//GEN-END:variables
 
    
