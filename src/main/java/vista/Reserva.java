@@ -4,40 +4,58 @@
  */
 package vista;
 
-
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
-
+import javax.swing.JPanel;
+import vista.InicioCuenta;
 
 /**
  *
- * @author Javier Sánchez González
+ * @author Javier
  */
 public class Reserva extends javax.swing.JPanel {
 
-
+    // Variables
+    private boolean esCoche;
+    private String nombre;
+    private String apellidos;
+    private String matricula;
+    private String email;
+    private String contrasena;
+    private  String repetirContrasena;
    
+    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
  
     /**
      * Creates new form RegistroCuenta
      */
     public Reserva() {
         initComponents();
-        // Boton por defecto
-       // getRootPane().setDefaultButton(jbmodificar);
         
         // Poner jTexfield y jBotton el radio
+    
+        jtmatricula.putClientProperty("FlatLaf.style","arc: 15");
+      
         
-        jbmodificar.putClientProperty("FlatLaf.style","arc: 15");
-        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
-        panelRoundP1.putClientProperty("FlatLaf.style","arc: 15");
-        
-       // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
-        jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
-        jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
-        jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
-        
-
      
+ 
+        jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
+        //jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
+   
+        
+      
+        // añadir a los jTextField iconos
+        jtcoche.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
+        jtmatricula.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/apellidos.svg" ) );
+        jtplaza.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/email.svg" ) );
+        
+        jtmatricula.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/matricula.svg" ) );
+
        
     }
 
@@ -50,1093 +68,305 @@ public class Reserva extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRoundP14 = new vista.PanelRound();
-        jlplaza14 = new javax.swing.JLabel();
-        jCheckBoxP14 = new javax.swing.JCheckBox();
-        panelCuenta = new vista.PanelRound();
-        jlreservar = new javax.swing.JLabel();
+        bgrupovehiculos = new javax.swing.ButtonGroup();
+        panelRoundFondo = new vista.PanelRound();
+        jlnombre1 = new javax.swing.JLabel();
+        jltitulo1 = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
-        jbmodificar = new javax.swing.JButton();
-        jltitulo3 = new javax.swing.JLabel();
-        jlvolver = new javax.swing.JLabel();
+        jPdatosReserva = new javax.swing.JPanel();
+        jtcoche = new javax.swing.JTextField();
+        jtplaza = new javax.swing.JTextField();
+        jtmatricula = new javax.swing.JTextField();
+        jlnombre2 = new javax.swing.JLabel();
+        jlnombre3 = new javax.swing.JLabel();
+        jlnombre4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jlnombre5 = new javax.swing.JLabel();
+        jtplaza2 = new javax.swing.JTextField();
+        jbConfirmar = new javax.swing.JButton();
         jbcancelar = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        panelRoundP1 = new vista.PanelRound();
-        jlplaza1 = new javax.swing.JLabel();
-        jCheckBoxP1 = new javax.swing.JCheckBox();
-        panelRoundP2 = new vista.PanelRound();
-        jlplaza2 = new javax.swing.JLabel();
-        jCheckBoxP2 = new javax.swing.JCheckBox();
-        panelRoundP3 = new vista.PanelRound();
-        jlplaza3 = new javax.swing.JLabel();
-        jCheckBoxP3 = new javax.swing.JCheckBox();
-        panelRoundP4 = new vista.PanelRound();
-        jlplaza4 = new javax.swing.JLabel();
-        jCheckBoxP4 = new javax.swing.JCheckBox();
-        panelRoundP5 = new vista.PanelRound();
-        jlplaza5 = new javax.swing.JLabel();
-        jCheckBoxP5 = new javax.swing.JCheckBox();
-        panelRoundP6 = new vista.PanelRound();
-        jlplaza6 = new javax.swing.JLabel();
-        jCheckBoxP6 = new javax.swing.JCheckBox();
-        panelRoundP7 = new vista.PanelRound();
-        jlplaza7 = new javax.swing.JLabel();
-        jCheckBoxP7 = new javax.swing.JCheckBox();
-        panelRoundP8 = new vista.PanelRound();
-        jlplaza8 = new javax.swing.JLabel();
-        jCheckBoxP8 = new javax.swing.JCheckBox();
-        panelRoundP9 = new vista.PanelRound();
-        jlplaza9 = new javax.swing.JLabel();
-        jCheckBoxP9 = new javax.swing.JCheckBox();
-        panelRoundP10 = new vista.PanelRound();
-        jlplaza10 = new javax.swing.JLabel();
-        jCheckBoxP10 = new javax.swing.JCheckBox();
-        panelRoundP11 = new vista.PanelRound();
-        jlplaza11 = new javax.swing.JLabel();
-        jCheckBoxP11 = new javax.swing.JCheckBox();
-        panelRoundP12 = new vista.PanelRound();
-        jlplaza12 = new javax.swing.JLabel();
-        jCheckBoxP12 = new javax.swing.JCheckBox();
-        panelRoundP13 = new vista.PanelRound();
-        jlplaza13 = new javax.swing.JLabel();
-        jCheckBoxP13 = new javax.swing.JCheckBox();
-        panelRoundP15 = new vista.PanelRound();
-        jlplaza15 = new javax.swing.JLabel();
-        jCheckBoxP15 = new javax.swing.JCheckBox();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
-        jlentrada = new javax.swing.JLabel();
-        jlsalida = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
-        jSeparator9 = new javax.swing.JSeparator();
-        jSeparator10 = new javax.swing.JSeparator();
-        jSeparator11 = new javax.swing.JSeparator();
-        jSeparator12 = new javax.swing.JSeparator();
-        jSeparator13 = new javax.swing.JSeparator();
-        jSeparator14 = new javax.swing.JSeparator();
-        jSeparator15 = new javax.swing.JSeparator();
-        jSeparator16 = new javax.swing.JSeparator();
-        jSeparator17 = new javax.swing.JSeparator();
-        jSeparator18 = new javax.swing.JSeparator();
-
-        panelRoundP14.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP14.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP14.setRoundBottomRight(20);
-        panelRoundP14.setRoundTopRight(20);
-
-        jlplaza14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza14.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza14.setText("P01");
-
-        jCheckBoxP14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP14ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP14Layout = new javax.swing.GroupLayout(panelRoundP14);
-        panelRoundP14.setLayout(panelRoundP14Layout);
-        panelRoundP14Layout.setHorizontalGroup(
-            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP14Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP14)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP14Layout.setVerticalGroup(
-            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP14Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP14)
-                    .addComponent(jlplaza14))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
+        jSlider1 = new javax.swing.JSlider();
+        jbcancelar1 = new javax.swing.JButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
-        panelCuenta.setBackground(new java.awt.Color(249, 251, 255));
-        panelCuenta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
-        panelCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
-        panelCuenta.setRoundBottomLeft(30);
-        panelCuenta.setRoundBottomRight(30);
+        panelRoundFondo.setBackground(new java.awt.Color(249, 251, 255));
+        panelRoundFondo.setMaximumSize(null);
+        panelRoundFondo.setPreferredSize(new java.awt.Dimension(428, 800));
+        panelRoundFondo.setRoundBottomLeft(30);
+        panelRoundFondo.setRoundBottomRight(30);
 
-        jlreservar.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
-        jlreservar.setForeground(new java.awt.Color(39, 59, 244));
-        jlreservar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlreservar.setText("RESERVAR PLAZA");
-        jlreservar.setPreferredSize(new java.awt.Dimension(273, 30));
+        jlnombre1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre1.setForeground(new java.awt.Color(0, 0, 0));
+        jlnombre1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre1.setText("Tiempo duración");
+        jlnombre1.setToolTipText("");
+        jlnombre1.setPreferredSize(new java.awt.Dimension(51, 17));
 
-        jltitulo2.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
-        jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
-        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo2.setText("Quiere reservar?.");
+        jltitulo1.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
+        jltitulo1.setForeground(new java.awt.Color(39, 59, 244));
+        jltitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltitulo1.setText("DATOS RESERVA");
+        jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
+
+        jltitulo2.setFont(new java.awt.Font("Lucida Sans", 0, 24)); // NOI18N
+        jltitulo2.setForeground(new java.awt.Color(25, 35, 66));
+        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jltitulo2.setText("Detalle plaza reservada.");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jbmodificar.setBackground(new java.awt.Color(43, 220, 61));
-        jbmodificar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbmodificar.setForeground(new java.awt.Color(255, 255, 255));
-        jbmodificar.setText("Reservar");
-        jbmodificar.setToolTipText("Boton hace la reserva");
-        jbmodificar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jPdatosReserva.setBackground(new java.awt.Color(198, 212, 255));
+        jPdatosReserva.setForeground(new java.awt.Color(198, 212, 255));
+        jPdatosReserva.setPreferredSize(new java.awt.Dimension(335, 82));
 
-        jltitulo3.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
-        jltitulo3.setForeground(new java.awt.Color(25, 35, 66));
-        jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo3.setText(" Seleccione una plaza ");
-        jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
+        jtcoche.setBackground(new java.awt.Color(198, 212, 255));
+        jtcoche.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtcoche.setForeground(new java.awt.Color(153, 153, 153));
+        jtcoche.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtcoche.setText("COCHE");
+        jtcoche.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtcoche.setPreferredSize(new java.awt.Dimension(335, 50));
 
-        jlvolver.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jlvolver.setForeground(new java.awt.Color(39, 59, 244));
-        jlvolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlvolver.setText("volver");
-        jlvolver.setToolTipText("Vuelve a la pantalla anterior");
-        jlvolver.setPreferredSize(new java.awt.Dimension(273, 30));
-        jlvolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlvolverMouseClicked(evt);
+        jtplaza.setBackground(new java.awt.Color(198, 212, 255));
+        jtplaza.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtplaza.setForeground(new java.awt.Color(153, 153, 153));
+        jtplaza.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtplaza.setText("P01");
+        jtplaza.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtplaza.setPreferredSize(new java.awt.Dimension(335, 50));
+
+        jtmatricula.setBackground(new java.awt.Color(198, 212, 255));
+        jtmatricula.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtmatricula.setForeground(new java.awt.Color(153, 153, 153));
+        jtmatricula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jtmatricula.setText("matricula");
+        jtmatricula.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtmatricula.setPreferredSize(new java.awt.Dimension(335, 50));
+
+        jlnombre2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre2.setForeground(new java.awt.Color(153, 153, 153));
+        jlnombre2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre2.setText("Matricula");
+        jlnombre2.setToolTipText("");
+        jlnombre2.setPreferredSize(new java.awt.Dimension(51, 17));
+
+        jlnombre3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre3.setForeground(new java.awt.Color(153, 153, 153));
+        jlnombre3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre3.setText("Tipo de vehiculo");
+        jlnombre3.setToolTipText("");
+        jlnombre3.setPreferredSize(new java.awt.Dimension(51, 17));
+
+        jlnombre4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre4.setForeground(new java.awt.Color(153, 153, 153));
+        jlnombre4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre4.setText("Plaza de aparcamiento");
+        jlnombre4.setToolTipText("");
+        jlnombre4.setPreferredSize(new java.awt.Dimension(51, 17));
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(39, 59, 244));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 9, 50));
 
-        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jlnombre5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre5.setForeground(new java.awt.Color(153, 153, 153));
+        jlnombre5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre5.setText("TOTAL");
+        jlnombre5.setToolTipText("");
+        jlnombre5.setPreferredSize(new java.awt.Dimension(51, 17));
+        jPanel1.add(jlnombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 90, 40));
+
+        jtplaza2.setBackground(new java.awt.Color(153, 204, 255));
+        jtplaza2.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jtplaza2.setForeground(new java.awt.Color(0, 0, 0));
+        jtplaza2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jtplaza2.setText("00");
+        jtplaza2.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
+        jtplaza2.setPreferredSize(new java.awt.Dimension(335, 50));
+        jtplaza2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jtplaza2MousePressed(evt);
+            }
+        });
+        jPanel1.add(jtplaza2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 130, 40));
+
+        javax.swing.GroupLayout jPdatosReservaLayout = new javax.swing.GroupLayout(jPdatosReserva);
+        jPdatosReserva.setLayout(jPdatosReservaLayout);
+        jPdatosReservaLayout.setHorizontalGroup(
+            jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPdatosReservaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jtcoche, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(jtplaza, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPdatosReservaLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jlnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlnombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jlnombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPdatosReservaLayout.setVerticalGroup(
+            jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlnombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtcoche, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jlnombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jtplaza, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jbConfirmar.setBackground(new java.awt.Color(43, 220, 61));
+        jbConfirmar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        jbConfirmar.setText("Confirmar y pagar");
+        jbConfirmar.setToolTipText("Boton cofirmar el pago");
+        jbConfirmar.setPreferredSize(new java.awt.Dimension(124, 49));
+
+        jbcancelar.setBackground(new java.awt.Color(39, 59, 244));
         jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
-        jbcancelar.setText("Carcelar");
-        jbcancelar.setToolTipText("Botón borra la cuenta del usuario");
+        jbcancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/calendario.png"))); // NOI18N
+        jbcancelar.setToolTipText("Boton muesetra el calendario para selecicionar fecha");
         jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
 
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-
-        panelRoundP1.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP1.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP1.setRoundBottomLeft(20);
-        panelRoundP1.setRoundTopLeft(20);
-
-        jlplaza1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza1.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza1.setText("P01");
-
-        jCheckBoxP1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP1Layout = new javax.swing.GroupLayout(panelRoundP1);
-        panelRoundP1.setLayout(panelRoundP1Layout);
-        panelRoundP1Layout.setHorizontalGroup(
-            panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP1)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP1Layout.setVerticalGroup(
-            panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP1)
-                    .addComponent(jlplaza1))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP2.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP2.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP2.setRoundBottomLeft(20);
-        panelRoundP2.setRoundTopLeft(20);
-
-        jlplaza2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza2.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza2.setText("P01");
-
-        jCheckBoxP2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP2Layout = new javax.swing.GroupLayout(panelRoundP2);
-        panelRoundP2.setLayout(panelRoundP2Layout);
-        panelRoundP2Layout.setHorizontalGroup(
-            panelRoundP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP2)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP2Layout.setVerticalGroup(
-            panelRoundP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP2)
-                    .addComponent(jlplaza2))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP3.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP3.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP3.setRoundBottomLeft(20);
-        panelRoundP3.setRoundTopLeft(20);
-
-        jlplaza3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza3.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza3.setText("P01");
-
-        jCheckBoxP3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP3Layout = new javax.swing.GroupLayout(panelRoundP3);
-        panelRoundP3.setLayout(panelRoundP3Layout);
-        panelRoundP3Layout.setHorizontalGroup(
-            panelRoundP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP3)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP3Layout.setVerticalGroup(
-            panelRoundP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP3)
-                    .addComponent(jlplaza3))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP4.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP4.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP4.setRoundBottomLeft(20);
-        panelRoundP4.setRoundTopLeft(20);
-
-        jlplaza4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza4.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza4.setText("P01");
-
-        jCheckBoxP4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP4Layout = new javax.swing.GroupLayout(panelRoundP4);
-        panelRoundP4.setLayout(panelRoundP4Layout);
-        panelRoundP4Layout.setHorizontalGroup(
-            panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP4)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP4Layout.setVerticalGroup(
-            panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP4)
-                    .addComponent(jlplaza4))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP5.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP5.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP5.setRoundBottomLeft(20);
-        panelRoundP5.setRoundTopLeft(20);
-
-        jlplaza5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza5.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza5.setText("P01");
-
-        jCheckBoxP5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP5Layout = new javax.swing.GroupLayout(panelRoundP5);
-        panelRoundP5.setLayout(panelRoundP5Layout);
-        panelRoundP5Layout.setHorizontalGroup(
-            panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP5Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP5)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP5Layout.setVerticalGroup(
-            panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP5Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP5)
-                    .addComponent(jlplaza5))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP6.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP6.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP6.setRoundBottomLeft(20);
-        panelRoundP6.setRoundTopLeft(20);
-
-        jlplaza6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza6.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza6.setText("P01");
-
-        jCheckBoxP6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP6Layout = new javax.swing.GroupLayout(panelRoundP6);
-        panelRoundP6.setLayout(panelRoundP6Layout);
-        panelRoundP6Layout.setHorizontalGroup(
-            panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP6Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP6)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP6Layout.setVerticalGroup(
-            panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP6Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP6)
-                    .addComponent(jlplaza6))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP7.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP7.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP7.setRoundBottomLeft(20);
-        panelRoundP7.setRoundTopLeft(20);
-
-        jlplaza7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza7.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza7.setText("P01");
-
-        jCheckBoxP7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP7ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP7Layout = new javax.swing.GroupLayout(panelRoundP7);
-        panelRoundP7.setLayout(panelRoundP7Layout);
-        panelRoundP7Layout.setHorizontalGroup(
-            panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP7Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP7)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP7Layout.setVerticalGroup(
-            panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP7Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP7)
-                    .addComponent(jlplaza7))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP8.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP8.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP8.setRoundBottomRight(20);
-        panelRoundP8.setRoundTopRight(20);
-
-        jlplaza8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza8.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza8.setText("P01");
-
-        jCheckBoxP8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP8ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP8Layout = new javax.swing.GroupLayout(panelRoundP8);
-        panelRoundP8.setLayout(panelRoundP8Layout);
-        panelRoundP8Layout.setHorizontalGroup(
-            panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP8Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP8)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP8Layout.setVerticalGroup(
-            panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP8)
-                    .addComponent(jlplaza8))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP9.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP9.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP9.setRoundBottomRight(20);
-        panelRoundP9.setRoundTopRight(20);
-
-        jlplaza9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza9.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza9.setText("P01");
-
-        jCheckBoxP9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP9ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP9Layout = new javax.swing.GroupLayout(panelRoundP9);
-        panelRoundP9.setLayout(panelRoundP9Layout);
-        panelRoundP9Layout.setHorizontalGroup(
-            panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP9Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP9)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP9Layout.setVerticalGroup(
-            panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP9Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP9)
-                    .addComponent(jlplaza9))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP10.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP10.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP10.setRoundBottomRight(20);
-        panelRoundP10.setRoundTopRight(20);
-
-        jlplaza10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza10.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza10.setText("P01");
-
-        jCheckBoxP10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP10ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP10Layout = new javax.swing.GroupLayout(panelRoundP10);
-        panelRoundP10.setLayout(panelRoundP10Layout);
-        panelRoundP10Layout.setHorizontalGroup(
-            panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP10Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP10)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP10Layout.setVerticalGroup(
-            panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP10Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP10)
-                    .addComponent(jlplaza10))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP11.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP11.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP11.setRoundBottomRight(20);
-        panelRoundP11.setRoundTopRight(20);
-
-        jlplaza11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza11.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza11.setText("P01");
-
-        jCheckBoxP11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP11ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP11Layout = new javax.swing.GroupLayout(panelRoundP11);
-        panelRoundP11.setLayout(panelRoundP11Layout);
-        panelRoundP11Layout.setHorizontalGroup(
-            panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP11Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP11)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP11Layout.setVerticalGroup(
-            panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP11Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP11)
-                    .addComponent(jlplaza11))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP12.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP12.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP12.setRoundBottomRight(20);
-        panelRoundP12.setRoundTopRight(20);
-
-        jlplaza12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza12.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza12.setText("P01");
-
-        jCheckBoxP12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP12ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP12Layout = new javax.swing.GroupLayout(panelRoundP12);
-        panelRoundP12.setLayout(panelRoundP12Layout);
-        panelRoundP12Layout.setHorizontalGroup(
-            panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP12Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP12)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP12Layout.setVerticalGroup(
-            panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP12Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP12)
-                    .addComponent(jlplaza12))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP13.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP13.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP13.setRoundBottomRight(20);
-        panelRoundP13.setRoundTopRight(20);
-
-        jlplaza13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza13.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza13.setText("P01");
-
-        jCheckBoxP13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP13ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP13Layout = new javax.swing.GroupLayout(panelRoundP13);
-        panelRoundP13.setLayout(panelRoundP13Layout);
-        panelRoundP13Layout.setHorizontalGroup(
-            panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP13Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP13)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP13Layout.setVerticalGroup(
-            panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP13Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP13)
-                    .addComponent(jlplaza13))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        panelRoundP15.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP15.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP15.setRoundBottomRight(20);
-        panelRoundP15.setRoundTopRight(20);
-
-        jlplaza15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza15.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza15.setText("P01");
-
-        jCheckBoxP15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP15ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP15Layout = new javax.swing.GroupLayout(panelRoundP15);
-        panelRoundP15.setLayout(panelRoundP15Layout);
-        panelRoundP15Layout.setHorizontalGroup(
-            panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP15Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP15)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP15Layout.setVerticalGroup(
-            panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP15Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP15)
-                    .addComponent(jlplaza15))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-
-        jlentrada.setForeground(new java.awt.Color(0, 0, 0));
-        jlentrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlentrada.setText("ENTRADA");
-
-        jlsalida.setForeground(new java.awt.Color(0, 0, 0));
-        jlsalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlsalida.setText("SALIDA");
-
-        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator14.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator15.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator16.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator17.setForeground(new java.awt.Color(0, 0, 0));
-
-        jSeparator18.setForeground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout panelCuentaLayout = new javax.swing.GroupLayout(panelCuenta);
-        panelCuenta.setLayout(panelCuentaLayout);
-        panelCuentaLayout.setHorizontalGroup(
-            panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlentrada, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlsalida, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator3))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
+        jSlider1.setMajorTickSpacing(24);
+        jSlider1.setMaximum(24);
+        jSlider1.setMinorTickSpacing(1);
+        jSlider1.setPaintLabels(true);
+        jSlider1.setPaintTicks(true);
+        jSlider1.setSnapToTicks(true);
+        jSlider1.setToolTipText("Selecciona la horas que quieres reservar la plaza");
+
+        jbcancelar1.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelar1.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbcancelar1.setForeground(new java.awt.Color(255, 255, 255));
+        jbcancelar1.setText("Cancelar");
+        jbcancelar1.setToolTipText("Boton cancela el pago y vuelve a la panta del parking");
+        jbcancelar1.setPreferredSize(new java.awt.Dimension(124, 49));
+
+        javax.swing.GroupLayout panelRoundFondoLayout = new javax.swing.GroupLayout(panelRoundFondo);
+        panelRoundFondo.setLayout(panelRoundFondoLayout);
+        panelRoundFondoLayout.setHorizontalGroup(
+            panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jltitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelRoundFondoLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelRoundFondoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jlreservar, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(panelRoundP7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(panelRoundP15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                        .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jbcancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelRoundFondoLayout.createSequentialGroup()
+                            .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(51, 51, 51)
+                            .addComponent(jbConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPdatosReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
-        panelCuentaLayout.setVerticalGroup(
-            panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addComponent(jlreservar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jlvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jlentrada))
-                .addGap(3, 3, 3)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRoundP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRoundP8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+        panelRoundFondoLayout.setVerticalGroup(
+            panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundFondoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRoundP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRoundP9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRoundP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRoundP10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRoundP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRoundP11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRoundP5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRoundP12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRoundP6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelRoundP13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelRoundP7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelRoundP15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))))
-                    .addGroup(panelCuentaLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jlsalida)))
-                .addGap(0, 56, Short.MAX_VALUE))
+                .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPdatosReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addGroup(panelRoundFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbConfirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jbcancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelRoundFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelRoundFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBoxP2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP2ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jCheckBoxP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP1ActionPerformed
+    private void jtplaza2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtplaza2MousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP1ActionPerformed
+    }//GEN-LAST:event_jtplaza2MousePressed
+     
 
-    private void jlvolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlvolverMouseClicked
-        // Crea una instancia de InicioCuenta
-        InicioCuenta ic = new InicioCuenta();
-        // Muestra la ventana InicioCuenta
-        mostrarPanel(ic);
-    }//GEN-LAST:event_jlvolverMouseClicked
-
-    private void jCheckBoxP3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP3ActionPerformed
-
-    private void jCheckBoxP4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP4ActionPerformed
-
-    private void jCheckBoxP5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP5ActionPerformed
-
-    private void jCheckBoxP6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP6ActionPerformed
-
-    private void jCheckBoxP7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP7ActionPerformed
-
-    private void jCheckBoxP8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP8ActionPerformed
-
-    private void jCheckBoxP9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP9ActionPerformed
-
-    private void jCheckBoxP10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP10ActionPerformed
-
-    private void jCheckBoxP11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP11ActionPerformed
-
-    private void jCheckBoxP12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP12ActionPerformed
-
-    private void jCheckBoxP13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP13ActionPerformed
-
-    private void jCheckBoxP14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP14ActionPerformed
-
-    private void jCheckBoxP15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP15ActionPerformed
-    
-    }//GEN-LAST:event_jCheckBoxP15ActionPerformed
-
-    private void mostrarPanel(InicioCuenta panel) {
-       panel.setSize(428, 800);
-       panel.setLocation(0,0);  
-       
-       panelCuenta.removeAll();
-       panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       panelCuenta.revalidate();
-       panelCuenta.repaint();
-    
-}
-
+    private void mostrarPanel(JPanel panel) {
+        panel.setSize(428, 800);
+        panel.setLocation(0, 0);
+        panelRoundFondo.removeAll();
+        panelRoundFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelRoundFondo.revalidate();
+        panelRoundFondo.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBoxP1;
-    private javax.swing.JCheckBox jCheckBoxP10;
-    private javax.swing.JCheckBox jCheckBoxP11;
-    private javax.swing.JCheckBox jCheckBoxP12;
-    private javax.swing.JCheckBox jCheckBoxP13;
-    private javax.swing.JCheckBox jCheckBoxP14;
-    private javax.swing.JCheckBox jCheckBoxP15;
-    private javax.swing.JCheckBox jCheckBoxP2;
-    private javax.swing.JCheckBox jCheckBoxP3;
-    private javax.swing.JCheckBox jCheckBoxP4;
-    private javax.swing.JCheckBox jCheckBoxP5;
-    private javax.swing.JCheckBox jCheckBoxP6;
-    private javax.swing.JCheckBox jCheckBoxP7;
-    private javax.swing.JCheckBox jCheckBoxP8;
-    private javax.swing.JCheckBox jCheckBoxP9;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
-    private javax.swing.JSeparator jSeparator14;
-    private javax.swing.JSeparator jSeparator15;
-    private javax.swing.JSeparator jSeparator16;
-    private javax.swing.JSeparator jSeparator17;
-    private javax.swing.JSeparator jSeparator18;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.ButtonGroup bgrupovehiculos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPdatosReserva;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbcancelar;
-    private javax.swing.JButton jbmodificar;
-    private javax.swing.JLabel jlentrada;
-    private javax.swing.JLabel jlplaza1;
-    private javax.swing.JLabel jlplaza10;
-    private javax.swing.JLabel jlplaza11;
-    private javax.swing.JLabel jlplaza12;
-    private javax.swing.JLabel jlplaza13;
-    private javax.swing.JLabel jlplaza14;
-    private javax.swing.JLabel jlplaza15;
-    private javax.swing.JLabel jlplaza2;
-    private javax.swing.JLabel jlplaza3;
-    private javax.swing.JLabel jlplaza4;
-    private javax.swing.JLabel jlplaza5;
-    private javax.swing.JLabel jlplaza6;
-    private javax.swing.JLabel jlplaza7;
-    private javax.swing.JLabel jlplaza8;
-    private javax.swing.JLabel jlplaza9;
-    private javax.swing.JLabel jlreservar;
-    private javax.swing.JLabel jlsalida;
+    private javax.swing.JButton jbcancelar1;
+    private javax.swing.JLabel jlnombre1;
+    private javax.swing.JLabel jlnombre2;
+    private javax.swing.JLabel jlnombre3;
+    private javax.swing.JLabel jlnombre4;
+    private javax.swing.JLabel jlnombre5;
+    private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
-    private javax.swing.JLabel jltitulo3;
-    private javax.swing.JLabel jlvolver;
-    private vista.PanelRound panelCuenta;
-    private vista.PanelRound panelRoundP1;
-    private vista.PanelRound panelRoundP10;
-    private vista.PanelRound panelRoundP11;
-    private vista.PanelRound panelRoundP12;
-    private vista.PanelRound panelRoundP13;
-    private vista.PanelRound panelRoundP14;
-    private vista.PanelRound panelRoundP15;
-    private vista.PanelRound panelRoundP2;
-    private vista.PanelRound panelRoundP3;
-    private vista.PanelRound panelRoundP4;
-    private vista.PanelRound panelRoundP5;
-    private vista.PanelRound panelRoundP6;
-    private vista.PanelRound panelRoundP7;
-    private vista.PanelRound panelRoundP8;
-    private vista.PanelRound panelRoundP9;
+    private javax.swing.JTextField jtcoche;
+    private javax.swing.JTextField jtmatricula;
+    private javax.swing.JTextField jtplaza;
+    private javax.swing.JTextField jtplaza2;
+    private vista.PanelRound panelRoundFondo;
     // End of variables declaration//GEN-END:variables
 
-   
-  
+
+
 
 }

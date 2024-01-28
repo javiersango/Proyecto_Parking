@@ -48,7 +48,6 @@ public class Borrada extends javax.swing.JFrame {
         jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
         jbcancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/check.png"))); // NOI18N
         jbcancelar.setToolTipText("Boton cancela la accion");
-        jbcancelar.setActionCommand("");
         jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
 
         jltitulo1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N

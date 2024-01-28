@@ -68,7 +68,7 @@
                               <Component id="jltitulo3" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" alignment="0" pref="339" max="32767" attributes="0"/>
                               <Component id="jPanelMatricula" alignment="0" pref="339" max="32767" attributes="0"/>
-                              <Component id="jbsalir" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jbcancelar" alignment="0" max="32767" attributes="0"/>
                               <Component id="jbmostrar" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -98,7 +98,7 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="246" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jbsalir" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbcancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -130,7 +130,7 @@
         <Component class="javax.swing.JButton" name="jbmostrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -236,7 +236,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbsalir">
+        <Component class="javax.swing.JButton" name="jbcancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3" green="3" red="ff" type="rgb"/>
@@ -247,8 +247,8 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Salir"/>
-            <Property name="toolTipText" type="java.lang.String" value="Boton salir de mostrar historial"/>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Boton cancela operacion y regresa a la pantalla anterior"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -257,7 +257,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbsalirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbcancelarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jltitulo2">

@@ -35,7 +35,7 @@ public class Historiales extends javax.swing.JPanel {
         jtmatricula.putClientProperty("FlatLaf.style","arc: 15");
         
         jbmostrar.putClientProperty("FlatLaf.style","arc: 15");
-        jbsalir.putClientProperty("FlatLaf.style","arc: 15");
+        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
  
        // jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
        jlhistorial.putClientProperty("Flatlaf.styleClass", "");
@@ -66,7 +66,7 @@ public class Historiales extends javax.swing.JPanel {
         jlmatricula = new javax.swing.JLabel();
         jtmatricula = new javax.swing.JTextField();
         jltitulo3 = new javax.swing.JLabel();
-        jbsalir = new javax.swing.JButton();
+        jbcancelar = new javax.swing.JButton();
         jltitulo2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtabla = new javax.swing.JTable();
@@ -86,7 +86,7 @@ public class Historiales extends javax.swing.JPanel {
         jlhistorial.setText("HISTORIAL APARCAMIENTO");
         jlhistorial.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jbmostrar.setBackground(new java.awt.Color(39, 59, 244));
+        jbmostrar.setBackground(new java.awt.Color(43, 220, 61));
         jbmostrar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbmostrar.setForeground(new java.awt.Color(255, 255, 255));
         jbmostrar.setText("Mostrar");
@@ -144,16 +144,16 @@ public class Historiales extends javax.swing.JPanel {
         jltitulo3.setText("del vehículo");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jbsalir.setBackground(new java.awt.Color(255, 3, 3));
-        jbsalir.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbsalir.setForeground(new java.awt.Color(255, 255, 255));
-        jbsalir.setText("Salir");
-        jbsalir.setToolTipText("Boton salir de mostrar historial");
-        jbsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbsalir.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbsalir.addActionListener(new java.awt.event.ActionListener() {
+        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbcancelar.setText("Cancelar");
+        jbcancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
+        jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbsalirActionPerformed(evt);
+                jbcancelarActionPerformed(evt);
             }
         });
 
@@ -199,7 +199,7 @@ public class Historiales extends javax.swing.JPanel {
                             .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                             .addComponent(jPanelMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                            .addComponent(jbsalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +222,7 @@ public class Historiales extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jbsalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
             .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelHistorialLayout.createSequentialGroup()
@@ -262,14 +262,14 @@ public class Historiales extends javax.swing.JPanel {
     }//GEN-LAST:event_jbmostrarActionPerformed
 
    /** Evento si al introducir los datos son erroneos, al cancelar vuelven a incilizarse los campos*/
-    private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
+    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
        
         // Crea una instancia de InicioCuenta
         InicioCuenta ic = new InicioCuenta();
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
         
-    }//GEN-LAST:event_jbsalirActionPerformed
+    }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
          mrc.comportamientoCampos(jtmatricula, "Matricula");
@@ -291,8 +291,8 @@ public class Historiales extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bgeleccion;
     private javax.swing.JPanel jPanelMatricula;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbcancelar;
     private javax.swing.JButton jbmostrar;
-    private javax.swing.JButton jbsalir;
     private javax.swing.JLabel jlhistorial;
     private javax.swing.JLabel jlmatricula;
     private javax.swing.JLabel jltitulo2;

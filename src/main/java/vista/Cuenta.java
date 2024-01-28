@@ -93,6 +93,7 @@ public class Cuenta extends javax.swing.JPanel {
         jLiconMoto = new javax.swing.JLabel();
         jLiconCoche = new javax.swing.JLabel();
         jbborrar = new javax.swing.JButton();
+        jbcancelar = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMaximumSize(null);
@@ -301,6 +302,19 @@ public class Cuenta extends javax.swing.JPanel {
             }
         });
 
+        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbcancelar.setText("Cancelar");
+        jbcancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
+        jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbcancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelCuentaLayout = new javax.swing.GroupLayout(panelCuenta);
         panelCuenta.setLayout(panelCuentaLayout);
         panelCuentaLayout.setHorizontalGroup(
@@ -312,7 +326,8 @@ public class Cuenta extends javax.swing.JPanel {
                         .addComponent(jPanelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbborrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jbborrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbcancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelCuentaLayout.createSequentialGroup()
                         .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
@@ -370,7 +385,9 @@ public class Cuenta extends javax.swing.JPanel {
                 .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbborrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -424,6 +441,15 @@ public class Cuenta extends javax.swing.JPanel {
     private void jtapellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtapellidosMouseClicked
         mrc.comportamientoCampos(jtapellidos, "Email");
     }//GEN-LAST:event_jtapellidosMouseClicked
+
+    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
+
+        // Crea una instancia de InicioCuenta
+        InicioCuenta ic = new InicioCuenta();
+        // Muestra la ventana InicioCuenta
+        mostrarPanel(ic);
+
+    }//GEN-LAST:event_jbcancelarActionPerformed
      private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);
        panel.setLocation(0,0);  
@@ -445,6 +471,9 @@ public class Cuenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelMatricula;
     private javax.swing.JPanel jPanelNombre;
     private javax.swing.JButton jbborrar;
+    private javax.swing.JButton jbcancelar;
+    private javax.swing.JButton jbcancelar2;
+    private javax.swing.JButton jbcancelar3;
     private javax.swing.JButton jbmodificar;
     private javax.swing.JLabel jlapellidos;
     private javax.swing.JLabel jlcuentausuario;
