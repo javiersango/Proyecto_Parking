@@ -50,9 +50,6 @@ public class Parking extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRoundP14 = new vista.PanelRound();
-        jlplaza14 = new javax.swing.JLabel();
-        jCheckBoxP14 = new javax.swing.JCheckBox();
         panelCuenta = new vista.PanelRound();
         jlreservar = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
@@ -101,9 +98,9 @@ public class Parking extends javax.swing.JPanel {
         panelRoundP13 = new vista.PanelRound();
         jlplaza13 = new javax.swing.JLabel();
         jCheckBoxP13 = new javax.swing.JCheckBox();
-        panelRoundP15 = new vista.PanelRound();
+        panelRoundP14 = new vista.PanelRound();
         jlplaza15 = new javax.swing.JLabel();
-        jCheckBoxP15 = new javax.swing.JCheckBox();
+        jCheckBoxP14 = new javax.swing.JCheckBox();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         jlentrada = new javax.swing.JLabel();
@@ -120,44 +117,6 @@ public class Parking extends javax.swing.JPanel {
         jSeparator16 = new javax.swing.JSeparator();
         jSeparator17 = new javax.swing.JSeparator();
         jSeparator18 = new javax.swing.JSeparator();
-
-        panelRoundP14.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP14.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP14.setRoundBottomRight(20);
-        panelRoundP14.setRoundTopRight(20);
-
-        jlplaza14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jlplaza14.setForeground(new java.awt.Color(255, 255, 255));
-        jlplaza14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza14.setText("P01");
-
-        jCheckBoxP14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP14ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRoundP14Layout = new javax.swing.GroupLayout(panelRoundP14);
-        panelRoundP14.setLayout(panelRoundP14Layout);
-        panelRoundP14Layout.setHorizontalGroup(
-            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP14Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jlplaza14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP14)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        panelRoundP14Layout.setVerticalGroup(
-            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP14Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP14)
-                    .addComponent(jlplaza14))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -242,7 +201,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP1)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP1Layout.setVerticalGroup(
             panelRoundP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +222,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza2.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza2.setText("P01");
+        jlplaza2.setText("P02");
 
         jCheckBoxP2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,7 +239,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP2)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP2Layout.setVerticalGroup(
             panelRoundP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +260,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza3.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza3.setText("P01");
+        jlplaza3.setText("P03");
 
         jCheckBoxP3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +277,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP3)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP3Layout.setVerticalGroup(
             panelRoundP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +298,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza4.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza4.setText("P01");
+        jlplaza4.setText("P04");
 
         jCheckBoxP4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,7 +315,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP4)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP4Layout.setVerticalGroup(
             panelRoundP4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +336,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza5.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza5.setText("P01");
+        jlplaza5.setText("P05");
 
         jCheckBoxP5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,7 +353,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP5)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP5Layout.setVerticalGroup(
             panelRoundP5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,7 +374,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza6.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza6.setText("P01");
+        jlplaza6.setText("P06");
 
         jCheckBoxP6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -432,7 +391,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP6)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP6Layout.setVerticalGroup(
             panelRoundP6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,7 +412,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza7.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza7.setText("P01");
+        jlplaza7.setText("P07");
 
         jCheckBoxP7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -470,7 +429,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP7)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP7Layout.setVerticalGroup(
             panelRoundP7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,7 +450,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza8.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza8.setText("P01");
+        jlplaza8.setText("P08");
 
         jCheckBoxP8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,7 +467,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP8)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP8Layout.setVerticalGroup(
             panelRoundP8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,7 +488,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza9.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza9.setText("P01");
+        jlplaza9.setText("P09");
 
         jCheckBoxP9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -546,7 +505,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP9)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP9Layout.setVerticalGroup(
             panelRoundP9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -567,7 +526,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza10.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza10.setText("P01");
+        jlplaza10.setText("P010");
 
         jCheckBoxP10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -584,7 +543,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP10)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         panelRoundP10Layout.setVerticalGroup(
             panelRoundP10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,7 +564,7 @@ public class Parking extends javax.swing.JPanel {
         jlplaza11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza11.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlplaza11.setText("P01");
+        jlplaza11.setText("P011");
 
         jCheckBoxP11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -622,7 +581,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP11)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         panelRoundP11Layout.setVerticalGroup(
             panelRoundP11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -660,7 +619,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP12)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP12Layout.setVerticalGroup(
             panelRoundP12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,7 +657,7 @@ public class Parking extends javax.swing.JPanel {
                 .addComponent(jlplaza13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxP13)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelRoundP13Layout.setVerticalGroup(
             panelRoundP13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -710,40 +669,40 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        panelRoundP15.setBackground(new java.awt.Color(39, 59, 244));
-        panelRoundP15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
-        panelRoundP15.setPreferredSize(new java.awt.Dimension(84, 46));
-        panelRoundP15.setRoundBottomRight(20);
-        panelRoundP15.setRoundTopRight(20);
+        panelRoundP14.setBackground(new java.awt.Color(39, 59, 244));
+        panelRoundP14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
+        panelRoundP14.setPreferredSize(new java.awt.Dimension(84, 46));
+        panelRoundP14.setRoundBottomRight(20);
+        panelRoundP14.setRoundTopRight(20);
 
         jlplaza15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jlplaza15.setForeground(new java.awt.Color(255, 255, 255));
         jlplaza15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlplaza15.setText("P01");
 
-        jCheckBoxP15.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxP14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxP15ActionPerformed(evt);
+                jCheckBoxP14ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout panelRoundP15Layout = new javax.swing.GroupLayout(panelRoundP15);
-        panelRoundP15.setLayout(panelRoundP15Layout);
-        panelRoundP15Layout.setHorizontalGroup(
-            panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP15Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelRoundP14Layout = new javax.swing.GroupLayout(panelRoundP14);
+        panelRoundP14.setLayout(panelRoundP14Layout);
+        panelRoundP14Layout.setHorizontalGroup(
+            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP14Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jlplaza15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBoxP15)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(jCheckBoxP14)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
-        panelRoundP15Layout.setVerticalGroup(
-            panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRoundP15Layout.createSequentialGroup()
+        panelRoundP14Layout.setVerticalGroup(
+            panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoundP14Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(panelRoundP15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBoxP15)
+                .addGroup(panelRoundP14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxP14)
                     .addComponent(jlplaza15))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
@@ -847,7 +806,7 @@ public class Parking extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addComponent(panelRoundP7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(205, 205, 205)
-                        .addComponent(panelRoundP15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelRoundP14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -953,7 +912,7 @@ public class Parking extends javax.swing.JPanel {
                     .addGroup(panelCuentaLayout.createSequentialGroup()
                         .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelRoundP7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelRoundP15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panelRoundP14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelCuentaLayout.createSequentialGroup()
                                 .addGap(15, 15, 15)
@@ -1044,12 +1003,8 @@ public class Parking extends javax.swing.JPanel {
     }//GEN-LAST:event_jCheckBoxP13ActionPerformed
 
     private void jCheckBoxP14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxP14ActionPerformed
-
-    private void jCheckBoxP15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxP15ActionPerformed
     
-    }//GEN-LAST:event_jCheckBoxP15ActionPerformed
+    }//GEN-LAST:event_jCheckBoxP14ActionPerformed
 
     private void mostrarPanel(InicioCuenta panel) {
        panel.setSize(428, 800);
@@ -1070,7 +1025,6 @@ public class Parking extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBoxP12;
     private javax.swing.JCheckBox jCheckBoxP13;
     private javax.swing.JCheckBox jCheckBoxP14;
-    private javax.swing.JCheckBox jCheckBoxP15;
     private javax.swing.JCheckBox jCheckBoxP2;
     private javax.swing.JCheckBox jCheckBoxP3;
     private javax.swing.JCheckBox jCheckBoxP4;
@@ -1103,7 +1057,6 @@ public class Parking extends javax.swing.JPanel {
     private javax.swing.JLabel jlplaza11;
     private javax.swing.JLabel jlplaza12;
     private javax.swing.JLabel jlplaza13;
-    private javax.swing.JLabel jlplaza14;
     private javax.swing.JLabel jlplaza15;
     private javax.swing.JLabel jlplaza2;
     private javax.swing.JLabel jlplaza3;
@@ -1125,7 +1078,6 @@ public class Parking extends javax.swing.JPanel {
     private vista.PanelRound panelRoundP12;
     private vista.PanelRound panelRoundP13;
     private vista.PanelRound panelRoundP14;
-    private vista.PanelRound panelRoundP15;
     private vista.PanelRound panelRoundP2;
     private vista.PanelRound panelRoundP3;
     private vista.PanelRound panelRoundP4;
