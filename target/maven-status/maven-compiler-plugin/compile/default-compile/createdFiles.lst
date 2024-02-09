@@ -5,7 +5,6 @@ controlador\EmailUtil.class
 vista\Historiales.class
 vista\RecuperarContrasena$4.class
 vista\InicioSesion.class
-vista\Reserva$5.class
 controlador\MetodosHistorial.class
 vista\Parking$7.class
 modelo\Vehiculos.class
@@ -56,6 +55,7 @@ vista\Historiales$1.class
 vista\Parking.class
 vista\Reserva.class
 vista\InicioSesion$9.class
+vista\Parking$16.class
 vista\Parking$6.class
 vista\InicioCuenta$3.class
 vista\InicioSesion$13.class
@@ -82,14 +82,12 @@ modelo\Usuarios.class
 vista\InicioSesion$4.class
 vista\InicioCuenta$2.class
 vista\Modificada$1.class
-vista\Reserva$4.class
 vista\Modificada.class
 vista\Parking$13.class
 vista\Historiales$3.class
 vista\RegistroCuenta$6.class
 vista\Cuenta$2.class
 vista\InicioSesion$3.class
-vista\Reserva$3.class
 vista\InicioSesion$11.class
 vista\InicioCuenta$1.class
 vista\InicioCuenta.class

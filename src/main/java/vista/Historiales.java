@@ -12,6 +12,7 @@ import modelo.Historial;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -242,18 +243,22 @@ public class Historiales extends javax.swing.JPanel {
             .addComponent(panelHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
- 
+    /**
+     * 
+     * @param evt 
+     * Metodo buscarMatricula 
+     * var matricula = se pasa al metodo y nos devuelve un arrayList del historial
+     */
     private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
-       Historial historial = new Historial();
-        String matricula = jtmatricula.getText();
+       String matricula = jtmatricula.getText();
     List<Historial> historia = MetodosHistorial.buscarMatricula(matricula);
-    
-    if (historial != null && !historia.isEmpty()) {
+
+    if (!historia.isEmpty()) {
+        DefaultTableModel model = (DefaultTableModel) jtabla.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
+
         for (Historial his : historia) {
-            System.out.println("Fecha: " + his.getDia());
-            System.out.println("Duración: " + his.getTiempoReservado());
-            System.out.println("Precio: " + his.getPrecio());
-            System.out.println("-----------");
+            model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), his.getPrecio()});
         }
     } else {
         JOptionPane.showMessageDialog(null, "No se encontraron resultados para la matrícula: " + matricula, "Historial", JOptionPane.INFORMATION_MESSAGE);

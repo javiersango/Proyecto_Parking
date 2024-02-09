@@ -109,9 +109,7 @@ public class Loading extends javax.swing.JFrame {
         jLtime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(428, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRoundFondo.setBackground(new java.awt.Color(249, 251, 255));

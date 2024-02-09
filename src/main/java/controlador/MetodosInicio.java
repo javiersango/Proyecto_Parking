@@ -71,6 +71,11 @@ public static boolean comprobarInicioUsuario(String nombre, String contrasena) {
     }
 }
     /**Metodo le pasa el nombre y la contraseña...................*/
+/**
+ * Metodo 
+ * @param nombre = se pasa nombre = 
+ * @param contrasena 
+ */
     public void devolverIdusuario(String nombre, String contrasena) {
        
     }
