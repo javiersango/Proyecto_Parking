@@ -88,29 +88,86 @@ public class MetodosRegistroCuenta {
   
    /** Metodo para comprobar si ya existe un usuario con el mismo nombre, matricula y contraseña*/
     public static boolean usuarioExistente(String nombre, String email) {
-     // Configurar la conexión a la base de datos utilizando Hibernate
+            // Configurar la conexión a la base de datos utilizando Hibernate
+           Configuration configuration = new Configuration();
+           configuration.configure("hibernate.cfg.xml");
+           SessionFactory sessionFactory = configuration.buildSessionFactory();
+           Session session = sessionFactory.openSession();
+
+           Transaction transaction = null;
+
+           try {
+               // Comenzar una transacción
+               transaction = session.beginTransaction();
+
+               // Consulta Hibernate para buscar un usuario con los mismos datos
+               String hql = "FROM Usuarios WHERE  email = :email";
+               Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
+               query.setParameter("email", email);
+
+               Usuarios usuario = query.uniqueResult();
+
+               // Commit de la transacción
+               transaction.commit();
+
+               return usuario != null;
+           } catch (Exception e) {
+               if (transaction != null) {
+                   transaction.rollback();
+               }
+               e.printStackTrace();
+               return false;
+           } finally {
+               session.close();
+           }
+       }
+
+    public static boolean modificarDatosUsuario(String nombre, String apellidos, boolean esCoche, String matricula, String email) {
+    // Configurar la conexión a la base de datos utilizando Hibernate
     Configuration configuration = new Configuration();
     configuration.configure("hibernate.cfg.xml");
     SessionFactory sessionFactory = configuration.buildSessionFactory();
     Session session = sessionFactory.openSession();
-
     Transaction transaction = null;
 
     try {
         // Comenzar una transacción
         transaction = session.beginTransaction();
 
-        // Consulta Hibernate para buscar un usuario con los mismos datos
-        String hql = "FROM Usuarios WHERE  email = :email";
+        // Consultar Hibernate para buscar un usuario con el mismo correo electrónico
+        String hql = "FROM Usuarios WHERE email = :email";
         Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
         query.setParameter("email", email);
 
         Usuarios usuario = query.uniqueResult();
 
+        // Verificar si se encontró el usuario
+        if (usuario != null) {
+            // Actualizar los datos del usuario
+            usuario.setNombre(nombre);
+            usuario.setApellidos(apellidos);
+
+            // Si esCoche es true, se asocia un vehículo al usuario
+            
+                Vehiculos vehiculo = new Vehiculos();
+                       
+                    vehiculo = new Vehiculos();
+                    vehiculo.setUsuarios(usuario);
+                    vehiculo.setMatricula(matricula);
+                    vehiculo.setEsCoche(esCoche);
+                    // Guardar el vehículo en la base de datos
+           
+                    session.update(vehiculo);
+            
+            }
+
+            // Guardar los cambios en el usuario en la base de datos
+            session.update(usuario);
+        
+
         // Commit de la transacción
         transaction.commit();
-
-        return usuario != null;
+        return true; // Los datos del usuario se han actualizado correctamente
     } catch (Exception e) {
         if (transaction != null) {
             transaction.rollback();
@@ -118,9 +175,54 @@ public class MetodosRegistroCuenta {
         e.printStackTrace();
         return false;
     } finally {
+        // Cerrar la sesión de Hibernate
         session.close();
     }
 }
+
+
+
+
+   public static boolean eliminarUsuario( String email) {
+           
+                // Configurar la conexión a la base de datos utilizando Hibernate
+                Configuration configuration = new Configuration();
+                configuration.configure("hibernate.cfg.xml");
+                SessionFactory sessionFactory = configuration.buildSessionFactory();
+                Session session = sessionFactory.openSession();
+
+                Transaction transaction = null;
+
+                try {
+                    // Comenzar una transacción
+                    transaction = session.beginTransaction();
+
+                    // Consulta Hibernate para buscar un usuario con el mismo correo electrónico
+                    String hql = "FROM Usuarios WHERE email = :email";
+                    Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
+                    query.setParameter("email", email);
+
+                    Usuarios usuario = query.uniqueResult();
+
+                    // Eliminar el usuario
+                    session.delete(usuario);
+
+                    // Commit de la transacción
+                    transaction.commit();
+
+                    return true;
+                } catch (Exception e) {
+                    if (transaction != null) {
+                        transaction.rollback();
+                    }
+                    e.printStackTrace();
+                    return false;
+                } finally {
+                    session.close();
+                }
+        }
+
+
 
     /** Metodo para manejar la visualización de los campos de texto*/
     public void comportamientoCampos(JTextField textField, String placeholder) {

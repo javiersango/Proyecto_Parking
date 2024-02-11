@@ -21,7 +21,7 @@ import controlador.EmailUtil;
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez González
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
     
@@ -30,9 +30,10 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
       
 
-    /**
-     * Creates new form RecuperarContrasena
-     */
+   /**
+    * 
+    * @param ingles 
+    */
     public RecuperarContrasena(boolean ingles) {
         initComponents();
         setLocationRelativeTo(null);
@@ -148,6 +149,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
         jbcancelar.setText("Cancelar");
         jbcancelar.setToolTipText("Boton cancela la accion");
+        jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
         jbcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +168,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jbaceptar.setForeground(new java.awt.Color(255, 255, 255));
         jbaceptar.setText("Aceptar");
         jbaceptar.setToolTipText("Boton acepta el envio para recuperar la contraseña");
+        jbaceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbaceptar.setPreferredSize(new java.awt.Dimension(124, 49));
         jbaceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,29 +184,27 @@ public class RecuperarContrasena extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRoundLayout.createSequentialGroup()
-                        .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundLayout.createSequentialGroup()
+                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelRoundLayout.createSequentialGroup()
+                        .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(panelRoundLayout.createSequentialGroup()
                                     .addComponent(jbaceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(53, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRoundLayout.createSequentialGroup()
-                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(21, 21, 21)))))
+                                .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(32, Short.MAX_VALUE))))
         );
         panelRoundLayout.setVerticalGroup(
             panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRoundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelContaseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelRoundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +226,10 @@ public class RecuperarContrasena extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * 
+     * @param evt 
+     */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
      dispose();  //salir
     }//GEN-LAST:event_jbcancelarActionPerformed
@@ -297,9 +301,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RecuperarContrasena.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -310,7 +312,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     }
     
  
-
+    /**
+     * 
+     */
     public void cambiarIdiomaEn() {
        
             Locale locale = new Locale("en");
@@ -326,6 +330,9 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         
     }
     
+    /**
+     * 
+     */
       private void cambiarIdiomaEs() {
           
            Locale locale = new Locale("en");

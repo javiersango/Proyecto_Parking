@@ -56,44 +56,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanelMatricula" min="-2" pref="180" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLiconCoche" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBoxCoche" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCheckBoxMoto" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLiconMoto" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jbcancelarRegistro" min="-2" pref="57" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jbregistro" min="-2" pref="156" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Component id="jbcancelar" min="-2" pref="156" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanelContrasena" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanelNombre" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanelApellidos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanelContrasena1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -104,7 +66,41 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="jltitulo4" min="-2" pref="356" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jltitulo4" min="-2" pref="356" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="jPanelMatricula" min="-2" pref="180" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jLiconCoche" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jCheckBoxCoche" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jCheckBoxMoto" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLiconMoto" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Component id="jPanelEmail" alignment="0" pref="350" max="32767" attributes="0"/>
+                                                  <Component id="jPanelContrasena" alignment="0" pref="350" max="32767" attributes="0"/>
+                                                  <Component id="jPanelContrasena1" alignment="0" pref="350" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="jPanelNombre" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="jPanelApellidos" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jbregistro" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="jbcancelar" min="-2" pref="108" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                  <Component id="jbborrarDatos" min="-2" pref="108" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -126,47 +122,39 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jltitulo2" min="-2" pref="19" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="jltitulo4" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jltitulo4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelNombre" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelApellidos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelEmail" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jPanelMatricula" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLiconCoche" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLiconMoto" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jCheckBoxCoche" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBoxMoto" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="jPanelMatricula" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLiconCoche" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLiconMoto" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jbcancelarRegistro" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jCheckBoxCoche" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxMoto" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelContrasena" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelContrasena1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbregistro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbcancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbborrarDatos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <EmptySpace pref="94" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -181,7 +169,7 @@
               <Color blue="f4" green="3b" red="27" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Registra tu cuenta"/>
+            <Property name="text" type="java.lang.String" value="REGISTRA TU CUENTA"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[273, 30]"/>
             </Property>
@@ -205,7 +193,7 @@
         <Component class="javax.swing.JButton" name="jbregistro">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -213,8 +201,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registrarse"/>
-            <Property name="toolTipText" type="java.lang.String" value="Bot&#xf3;n para recuparar contrase&#xf1;a "/>
+            <Property name="text" type="java.lang.String" value="Registro"/>
+            <Property name="toolTipText" type="java.lang.String" value="Boton confirma el registro "/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 49]"/>
             </Property>
@@ -240,7 +231,7 @@
                       <Component id="jlnombre" min="-2" pref="69" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jtnombre" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtnombre" alignment="0" pref="350" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -310,7 +301,7 @@
                       <Component id="jlapellidos" min="-2" pref="69" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jtapellidos" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtapellidos" alignment="0" pref="350" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -380,7 +371,7 @@
                       <Component id="jlemail" min="-2" pref="69" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jtemail" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtemail" alignment="0" pref="350" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -449,7 +440,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlmatricula" min="-2" pref="69" max="-2" attributes="0"/>
-                          <Component id="jtmatricula" min="-2" pref="179" max="-2" attributes="0"/>
+                          <Component id="jtmatricula" min="-2" pref="235" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -580,12 +571,10 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtcontrasena" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlcontrasena" min="-2" pref="99" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jlcontrasena" min="-2" pref="99" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jtcontrasena" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -651,12 +640,10 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtrepetirContrasena" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlrepetirContrasena" min="-2" pref="166" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jlrepetirContrasena" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jtrepetirContrasena" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -743,10 +730,10 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jbcancelarRegistro">
+        <Component class="javax.swing.JButton" name="jbborrarDatos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="3" green="3" red="ff" type="rgb"/>
+              <Color blue="f4" green="3b" red="27" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -754,14 +741,17 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cancelar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Bot&#xf3;n para recuparar contrase&#xf1;a "/>
+            <Property name="text" type="java.lang.String" value="Borrar "/>
+            <Property name="toolTipText" type="java.lang.String" value="Boton limpia los campos"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 49]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbcancelarRegistroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbborrarDatosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbcancelar">

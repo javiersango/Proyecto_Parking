@@ -68,7 +68,7 @@
                       <Component id="jbhistorial" alignment="1" pref="335" max="32767" attributes="0"/>
                       <Component id="jbreserva" alignment="1" pref="335" max="32767" attributes="0"/>
                       <Component id="jbcuenta" alignment="1" pref="335" max="32767" attributes="0"/>
-                      <Component id="jbcancelar2" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jbcancelar" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
@@ -88,7 +88,7 @@
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jbhistorial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="jbcancelar2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbcancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="87" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -121,7 +121,7 @@
         <Component class="javax.swing.JButton" name="jbcuenta">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -142,7 +142,7 @@
         <Component class="javax.swing.JButton" name="jbhistorial">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -163,7 +163,7 @@
         <Component class="javax.swing.JButton" name="jbreserva">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -181,7 +181,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbreservaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jbcancelar2">
+        <Component class="javax.swing.JButton" name="jbcancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3" green="3" red="ff" type="rgb"/>
@@ -202,7 +202,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbcancelar2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbcancelarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

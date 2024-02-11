@@ -6,10 +6,10 @@ package vista;
 
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatDarkLaf;
+
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import controlador.HibernateUtil;
+
 
 import java.awt.Color;
 
@@ -33,7 +33,7 @@ import vista.RecuperarContrasena;
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez González
  */
 public class InicioSesion extends javax.swing.JFrame {
      int xMouse, yMouse;
@@ -216,11 +216,12 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jbiniciar.setBackground(new java.awt.Color(39, 59, 244));
+        jbiniciar.setBackground(new java.awt.Color(43, 220, 61));
         jbiniciar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbiniciar.setForeground(new java.awt.Color(255, 255, 255));
         jbiniciar.setText("Iniciar sesión");
         jbiniciar.setToolTipText("Boton incia sesion aplicacion");
+        jbiniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbiniciar.setPreferredSize(new java.awt.Dimension(124, 49));
         jbiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,11 +229,12 @@ public class InicioSesion extends javax.swing.JFrame {
             }
         });
 
-        jbregistrarse.setBackground(new java.awt.Color(39, 59, 244));
+        jbregistrarse.setBackground(new java.awt.Color(43, 220, 61));
         jbregistrarse.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbregistrarse.setForeground(new java.awt.Color(255, 255, 255));
         jbregistrarse.setText("Registrarse");
         jbregistrarse.setToolTipText("Botón para registra nuevo usuario");
+        jbregistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbregistrarse.setPreferredSize(new java.awt.Dimension(124, 49));
         jbregistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +254,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jbrecuperar.setText("Recuperar contraseña");
         jbrecuperar.setToolTipText("Botón para recuparar contraseña ");
         jbrecuperar.setActionCommand("Registrarse");
+        jbrecuperar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbrecuperar.setPreferredSize(new java.awt.Dimension(124, 49));
         jbrecuperar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

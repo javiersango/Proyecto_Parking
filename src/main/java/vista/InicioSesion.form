@@ -223,7 +223,7 @@
         <Component class="javax.swing.JButton" name="jbiniciar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -233,6 +233,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Iniciar sesi&#xf3;n"/>
             <Property name="toolTipText" type="java.lang.String" value="Boton incia sesion aplicacion"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 49]"/>
             </Property>
@@ -244,7 +247,7 @@
         <Component class="javax.swing.JButton" name="jbregistrarse">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f4" green="3b" red="27" type="rgb"/>
+              <Color blue="3d" green="dc" red="2b" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="16" style="1"/>
@@ -254,6 +257,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Registrarse"/>
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xf3;n para registra nuevo usuario"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 49]"/>
             </Property>
@@ -291,6 +297,9 @@
             <Property name="text" type="java.lang.String" value="Recuperar contrase&#xf1;a"/>
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xf3;n para recuparar contrase&#xf1;a "/>
             <Property name="actionCommand" type="java.lang.String" value="Registrarse"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[124, 49]"/>
             </Property>

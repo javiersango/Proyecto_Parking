@@ -245,6 +245,7 @@ public class Reserva extends javax.swing.JPanel {
         jbConfirmar.setForeground(new java.awt.Color(255, 255, 255));
         jbConfirmar.setText("Confirmar y pagar");
         jbConfirmar.setToolTipText("Boton cofirmar el pago");
+        jbConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbConfirmar.setPreferredSize(new java.awt.Dimension(124, 49));
 
         jbcancelar.setBackground(new java.awt.Color(39, 59, 244));
@@ -267,6 +268,7 @@ public class Reserva extends javax.swing.JPanel {
         jbcancelar1.setForeground(new java.awt.Color(255, 255, 255));
         jbcancelar1.setText("Cancelar");
         jbcancelar1.setToolTipText("Boton cancela el pago y vuelve a la panta del parking");
+        jbcancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbcancelar1.setPreferredSize(new java.awt.Dimension(124, 49));
 
         javax.swing.GroupLayout panelRoundFondoLayout = new javax.swing.GroupLayout(panelRoundFondo);

@@ -25,6 +25,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbcuenta.putClientProperty("FlatLaf.style","arc: 15");
         jbreserva.putClientProperty("FlatLaf.style","arc: 15");
         jbhistorial.putClientProperty("FlatLaf.style","arc: 15");
+        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
     }
 
     /**
@@ -42,7 +43,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbcuenta = new javax.swing.JButton();
         jbhistorial = new javax.swing.JButton();
         jbreserva = new javax.swing.JButton();
-        jbcancelar2 = new javax.swing.JButton();
+        jbcancelar = new javax.swing.JButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -62,7 +63,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jbcuenta.setBackground(new java.awt.Color(39, 59, 244));
+        jbcuenta.setBackground(new java.awt.Color(43, 220, 61));
         jbcuenta.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbcuenta.setForeground(new java.awt.Color(255, 255, 255));
         jbcuenta.setText("Cuenta");
@@ -74,7 +75,7 @@ public class InicioCuenta extends javax.swing.JPanel {
             }
         });
 
-        jbhistorial.setBackground(new java.awt.Color(39, 59, 244));
+        jbhistorial.setBackground(new java.awt.Color(43, 220, 61));
         jbhistorial.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbhistorial.setForeground(new java.awt.Color(255, 255, 255));
         jbhistorial.setText("Historial");
@@ -86,7 +87,7 @@ public class InicioCuenta extends javax.swing.JPanel {
             }
         });
 
-        jbreserva.setBackground(new java.awt.Color(39, 59, 244));
+        jbreserva.setBackground(new java.awt.Color(43, 220, 61));
         jbreserva.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbreserva.setForeground(new java.awt.Color(255, 255, 255));
         jbreserva.setText("Reservar");
@@ -98,16 +99,16 @@ public class InicioCuenta extends javax.swing.JPanel {
             }
         });
 
-        jbcancelar2.setBackground(new java.awt.Color(255, 3, 3));
-        jbcancelar2.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbcancelar2.setForeground(new java.awt.Color(255, 255, 255));
-        jbcancelar2.setText("Cancelar");
-        jbcancelar2.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
-        jbcancelar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbcancelar2.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbcancelar2.addActionListener(new java.awt.event.ActionListener() {
+        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbcancelar.setText("Cancelar");
+        jbcancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
+        jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbcancelar2ActionPerformed(evt);
+                jbcancelarActionPerformed(evt);
             }
         });
 
@@ -129,7 +130,7 @@ public class InicioCuenta extends javax.swing.JPanel {
                     .addComponent(jbhistorial, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                     .addComponent(jbreserva, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                     .addComponent(jbcuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                    .addComponent(jbcancelar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(46, 46, 46))
         );
         panelInicioCuentaLayout.setVerticalGroup(
@@ -146,7 +147,7 @@ public class InicioCuenta extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addComponent(jbhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jbcancelar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -177,14 +178,14 @@ public class InicioCuenta extends javax.swing.JPanel {
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbreservaActionPerformed
 
-    private void jbcancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelar2ActionPerformed
+    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
         // Crea una instancia de InicioCuenta
         InicioCuenta ic = new InicioCuenta();
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
 
-    }//GEN-LAST:event_jbcancelar2ActionPerformed
+    }//GEN-LAST:event_jbcancelarActionPerformed
 
      private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
@@ -198,8 +199,6 @@ public class InicioCuenta extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbcancelar;
-    private javax.swing.JButton jbcancelar1;
-    private javax.swing.JButton jbcancelar2;
     private javax.swing.JButton jbcuenta;
     private javax.swing.JButton jbhistorial;
     private javax.swing.JButton jbreserva;
