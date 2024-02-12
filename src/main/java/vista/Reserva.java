@@ -11,6 +11,8 @@ import controlador.MetodosReservar;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Vehiculos;
 
@@ -19,11 +21,10 @@ import modelo.Vehiculos;
  * @author Javier Sanchez Gonzalez
  */
 public class Reserva extends javax.swing.JPanel {
-
+    
     MetodosInicio mi = new MetodosInicio();
     MetodosReservar mr = new MetodosReservar();
     
-
     private final double precioPorHora = 0.25;
     private LocalDate fecha;
     private int horas;
@@ -52,16 +53,14 @@ public class Reserva extends javax.swing.JPanel {
         jtcoche.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtmatricula.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtplaza.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
-
-       
-       
+        
         jtplaza.setText(plaza);
         jtplaza.setForeground(Color.black);
         System.out.print(plaza);
 
         // Obtener información del vehículo asociado al usuario
         mi.devolverIdusuario(nombre, contrasena);
-
+        
         Vehiculos vehiculo = mr.devuelveDatosVehiculo(nombre, contrasena);
         if (vehiculo != null) {
             jtmatricula.setText(vehiculo.getMatricula());
@@ -71,7 +70,7 @@ public class Reserva extends javax.swing.JPanel {
             jtmatricula.setText("");
             jtcoche.setText("");
         }
-
+        
     }
 
     /**
@@ -408,6 +407,48 @@ public class Reserva extends javax.swing.JPanel {
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
+        // Verificar si los campos están vacíos
+        jtcoche.setForeground(Color.black);
+        jtmatricula.setForeground(Color.black);
+        String coche = jtcoche.getText().trim();
+        String matricula = jtmatricula.getText().trim();
+        
+        String plaza = jtplaza.getText().trim();
+        String fechaTexto = jbcalendario.getText().trim();
+
+        // Obtener la hora seleccionada del slider
+        int horasSeleccionadas = jSlider1.getValue();
+        jTexthora.setText(Integer.toString(horasSeleccionadas));
+
+        // Verificar si los campos y el total no están vacíos
+        if (coche.isEmpty() || matricula.isEmpty() || plaza.isEmpty() || fechaTexto.isEmpty()) {
+            // Mostrar mensaje de advertencia si algún campo está vacío
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
+        } else if (horasSeleccionadas <= 0) {
+            // Mostrar mensaje de advertencia si no se ha seleccionado ninguna hora en el slider
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione al menos una hora.", "Horas no seleccionadas", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // Verificar si la fecha tiene el formato correcto
+            try {
+                LocalDate.parse(fechaTexto, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+            } catch (DateTimeParseException ex) {
+                // Mostrar mensaje de advertencia si la fecha no tiene el formato correcto
+                JOptionPane.showMessageDialog(this, "El formato de fecha es incorrecto. Utilice el formato yyyy/MM/dd.", "Formato de fecha incorrecto", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Realizar la reserva del aparcamiento
+            // Calcular el total
+            double precioHora = 0.25;
+            double total = precioHora * horasSeleccionadas;
+
+            // Mostrar el total en el campo correspondiente
+            jttotal.setText(String.format("%.2f", total));
+
+            // Mostrar mensaje de reserva completada
+            JOptionPane.showMessageDialog(this, "La reserva del aparcamiento se ha completado.", "Reserva completada", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
 
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
@@ -419,7 +460,7 @@ public class Reserva extends javax.swing.JPanel {
         total = precio + (precioPorHora * horas);
         jttotal.setText(String.valueOf(total));
     }//GEN-LAST:event_jSlider1StateChanged
-
+    
     private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
@@ -428,12 +469,10 @@ public class Reserva extends javax.swing.JPanel {
         jPanelTiket.revalidate();
         jPanelTiket.repaint();
     }
-
+    
     public void setPlazaSeleccionada(String plazaSeleccionada) {
         this.plaza = plazaSeleccionada;
     }
-    
-  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -459,7 +498,5 @@ public class Reserva extends javax.swing.JPanel {
     private javax.swing.JTextField jtplaza;
     private javax.swing.JTextField jttotal;
     // End of variables declaration//GEN-END:variables
-
-  
 
 }

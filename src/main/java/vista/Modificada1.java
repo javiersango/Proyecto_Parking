@@ -4,26 +4,18 @@
  */
 package vista;
 
-
-import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 
 import controlador.MetodosRegistroCuenta;
 import javax.swing.JRootPane;
 
-
-
-
 /**
  *
- * @author Javier
+ * @author Javier Sánchez González
  */
 public class Modificada1 extends javax.swing.JFrame {
-    
- 
-    
+
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
-      
 
     /**
      * Creates new form RecuperarContrasena
@@ -31,11 +23,8 @@ public class Modificada1 extends javax.swing.JFrame {
     public Modificada1(boolean ingles) {
         initComponents();
         setLocationRelativeTo(null);
-        
-       
-        
-        jbaceptar.putClientProperty("FlatLaf.style","arc: 25");
-      
+
+        jbaceptar.putClientProperty("FlatLaf.style", "arc: 25");
 
     }
 
@@ -71,6 +60,11 @@ public class Modificada1 extends javax.swing.JFrame {
         jbaceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/check.png"))); // NOI18N
         jbaceptar.setToolTipText("Boton acepta el envio para recuperar la contraseña");
         jbaceptar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbaceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbaceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRoundLayout = new javax.swing.GroupLayout(panelRound);
         panelRound.setLayout(panelRoundLayout);
@@ -110,6 +104,10 @@ public class Modificada1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbaceptarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbaceptarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -147,9 +145,7 @@ public class Modificada1 extends javax.swing.JFrame {
         });
     }
 
-    
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbaceptar;
     private javax.swing.JLabel jltitulo1;
