@@ -4,7 +4,6 @@ controlador\EmailUtil.class
 vista\Historiales.class
 vista\RecuperarContrasena$4.class
 vista\InicioSesion.class
-vista\Reserva$5.class
 controlador\MetodosHistorial.class
 modelo\Vehiculos.class
 vista\Reserva$2.class
@@ -43,7 +42,6 @@ vista\RegistroCuenta$3.class
 vista\Historiales$4.class
 vista\InicioSesion$6.class
 vista\Historiales$1.class
-modelo\PlazaDeEstacionamiento.class
 vista\Parking.class
 vista\Reserva.class
 vista\InicioSesion$9.class

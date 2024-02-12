@@ -11,40 +11,34 @@ import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
-
-
 /**
  *
  * @author Javier Sánchez González
  */
 public class Parking extends javax.swing.JPanel {
     
-     private Map<String, JTextField> plazasTextFields;
+    Reserva reserva = new Reserva();
+
+    private Map<String, JTextField> plazasTextFields;
     private Map<String, JCheckBox> plazasCheckBoxes;
     private Map<String, Boolean> estadoPlazas;
-     
-   
- 
+
     /**
      * Creates new form RegistroCuenta
      */
     public Parking() {
         initComponents();
-        
-           // Boton por defecto
-       
-        
+
         // Poner jTexfield y jBotton el radio
-        
-        jbreservar.putClientProperty("FlatLaf.style","arc: 15");
-        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
-        panelRoundP1.putClientProperty("FlatLaf.style","arc: 15");
-        
-       // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
+        jbreservar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
+        panelRoundP1.putClientProperty("FlatLaf.style", "arc: 15");
+
+        // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
         jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
-        
-         // Inicializar mapas y estructuras de datos
+
+        // Inicializar mapas y estructuras de datos
         plazasTextFields = new HashMap<>();
         plazasTextFields.put("P01", P01);
         plazasTextFields.put("P02", P02);
@@ -60,72 +54,68 @@ public class Parking extends javax.swing.JPanel {
         plazasTextFields.put("P12", P12);
         plazasTextFields.put("P13", P13);
         plazasTextFields.put("P14", P14);
-       
-        
+
         plazasCheckBoxes = new HashMap<>();
         plazasCheckBoxes.put("P01", jCheckBoxP1);
         plazasCheckBoxes.put("P02", jCheckBoxP2);
-        plazasCheckBoxes.put("P02", jCheckBoxP3);
-        plazasCheckBoxes.put("P02", jCheckBoxP4);
-        plazasCheckBoxes.put("P02", jCheckBoxP5);
-        plazasCheckBoxes.put("P02", jCheckBoxP6);
-        plazasCheckBoxes.put("P02", jCheckBoxP7);
-        plazasCheckBoxes.put("P02", jCheckBoxP8);
-        plazasCheckBoxes.put("P02", jCheckBoxP9);
-        plazasCheckBoxes.put("P02", jCheckBoxP10);
-        plazasCheckBoxes.put("P02", jCheckBoxP11);
-        plazasCheckBoxes.put("P02", jCheckBoxP12);
-        plazasCheckBoxes.put("P02", jCheckBoxP13);
-        plazasCheckBoxes.put("P02", jCheckBoxP14);
-        
-          // Inicializa el estado de todas las plazas como inicialmente no ocupadas
+        plazasCheckBoxes.put("P03", jCheckBoxP3);
+        plazasCheckBoxes.put("P04", jCheckBoxP4);
+        plazasCheckBoxes.put("P05", jCheckBoxP5);
+        plazasCheckBoxes.put("P06", jCheckBoxP6);
+        plazasCheckBoxes.put("P07", jCheckBoxP7);
+        plazasCheckBoxes.put("P08", jCheckBoxP8);
+        plazasCheckBoxes.put("P09", jCheckBoxP9);
+        plazasCheckBoxes.put("P10", jCheckBoxP10);
+        plazasCheckBoxes.put("P11", jCheckBoxP11);
+        plazasCheckBoxes.put("P12", jCheckBoxP12);
+        plazasCheckBoxes.put("P13", jCheckBoxP13);
+        plazasCheckBoxes.put("P14", jCheckBoxP14);
+
+        // Inicializa el estado de todas las plazas como inicialmente no ocupadas
         estadoPlazas = new HashMap<>();
         for (String plaza : plazasTextFields.keySet()) {
             estadoPlazas.put(plaza, false);
         }
-        
+
         // Agregar ActionListener a cada checkbox
-       // Agregar ActionListener a cada checkbox
-for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
-    String numeroPlaza = entry.getKey();
-    JCheckBox checkBox = entry.getValue();
+        // Agregar ActionListener a cada checkbox
+// Agregar ActionListener a cada checkbox
+        for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
+            String numeroPlaza = entry.getKey();
+            JCheckBox checkBox = entry.getValue();
 
-    checkBox.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // Obtener el último JCheckBox seleccionado
-            JCheckBox ultimoSeleccionado = null;
-            for (JCheckBox cb : plazasCheckBoxes.values()) {
-                if (cb.isSelected() && cb != checkBox) {
-                    ultimoSeleccionado = cb;
-                    break;
+            checkBox.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Iterar sobre todos los JCheckBoxes
+                    for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
+                        String plaza = entry.getKey();
+                        JCheckBox cb = entry.getValue();
+                        JTextField textField = plazasTextFields.get(plaza);
+
+                        // Verificar si el JCheckBox actual es el seleccionado
+                        if (cb == checkBox) {
+                            // Si es el seleccionado, establecer su texto como "Reservado"
+                            textField.setText("Reservado");
+                        } else {
+                            // Si no es el seleccionado, establecer su texto como la posición de la plaza de garaje
+                            textField.setText(plaza);
+                            // Desmarcar el JCheckBox
+                            cb.setSelected(false);
+                        }
+                    }
+
+                    // Actualizar el estado de la plaza en la estructura de datos
+                    estadoPlazas.put(numeroPlaza, checkBox.isSelected());
                 }
-            }
-
-            // Deseleccionar el último seleccionado si hay alguno
-            if (ultimoSeleccionado != null) {
-                ultimoSeleccionado.setSelected(false);
-            }
-
-            // Obtener el JTextField correspondiente
-            JTextField textField = plazasTextFields.get(numeroPlaza);
-
-            // Establecer el estado de ocupación y el texto del JTextField
-            boolean isSelected = checkBox.isSelected();
-            if (isSelected) {
-                textField.setText("Ocupado");
-            } else {
-                textField.setText("");
-            }
-
-            // Actualizar el estado de la plaza en la estructura de datos
-            estadoPlazas.put(numeroPlaza, isSelected);
+            });
         }
-    });
-}
-
     }
-
+  /*  
+    public void pasarPlaza(String plaza){
+        reserva.pasarPlaza(plaza);
+    }
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -971,41 +961,38 @@ for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-         // Crea una instancia de InicioCuenta
+        // Crea una instancia de InicioCuenta
         InicioCuenta ic = new InicioCuenta();
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
     }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
-           
-       // Reserva reserva = new Reserva();
-       // mostrarPanel2(reserva);
+
+        Reserva reserva = new Reserva();
+        mostrarPanel2(reserva);
     }//GEN-LAST:event_jbreservarActionPerformed
 
     private void mostrarPanel(InicioCuenta panel) {
-       panel.setSize(428, 800);
-       panel.setLocation(0,0);  
-       
-       panelCuenta.removeAll();
-       panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       panelCuenta.revalidate();
-       panelCuenta.repaint();
-    
-}
+        panel.setSize(428, 800);
+        panel.setLocation(0, 0);
+
+        panelCuenta.removeAll();
+        panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelCuenta.revalidate();
+        panelCuenta.repaint();
+
+    }
+
     private void mostrarPanel2(Reserva panel) {
-     panel.setSize(428, 800);
-       panel.setLocation(0,0);  
-       
-       panelCuenta.removeAll();
-       panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       panelCuenta.revalidate();
-       panelCuenta.repaint();
-}
-    
- 
-    
- 
+        panel.setSize(428, 800);
+        panel.setLocation(0, 0);
+
+        panelCuenta.removeAll();
+        panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelCuenta.revalidate();
+        panelCuenta.repaint();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1077,6 +1064,5 @@ for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
     private vista.PanelRound panelRoundP8;
     private vista.PanelRound panelRoundP9;
     // End of variables declaration//GEN-END:variables
-
 
 }

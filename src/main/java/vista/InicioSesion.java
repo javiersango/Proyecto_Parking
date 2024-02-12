@@ -22,10 +22,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosContrasena;
 import controlador.MetodosInicio;
-import java.awt.event.KeyEvent;
-import javax.swing.JRootPane;
 
 
+ 
 
 
 /**
@@ -50,9 +49,9 @@ public class InicioSesion extends javax.swing.JFrame {
         recuperarContrasena = new RecuperarContrasena(ingles);
         
         //Boton por defecto enter
-        jbiniciar.setMnemonic(KeyEvent.VK_0); 
+        //jbiniciar.setMnemonic(KeyEvent.VK_0); 
         
-          //  rootPane.setDefaultButton(jbiniciar); 
+           rootPane.setDefaultButton(jbiniciar); 
         
 
 
@@ -730,6 +729,17 @@ public class InicioSesion extends javax.swing.JFrame {
         jbregistrarse.setText(bRegistro);
         jbrecuperar.setText(bRecuperar);
     }
+    
+        public String getNombre() {
+        String nombre = jtnombre.getText();
+        return nombre;
+    }
+
+        public String getContrasena() {
+            String contrasena = jtcontrasena.getText();
+            return contrasena;
+        }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLcierre;
@@ -759,9 +769,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables
 
-  
-
-   
 
    
 }

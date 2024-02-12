@@ -69,6 +69,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbcuenta.setForeground(new java.awt.Color(255, 255, 255));
         jbcuenta.setText("Cuenta");
         jbcuenta.setToolTipText("Boton para modificar datos del usuario");
+        jbcuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbcuenta.setPreferredSize(new java.awt.Dimension(124, 49));
         jbcuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +82,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbhistorial.setForeground(new java.awt.Color(255, 255, 255));
         jbhistorial.setText("Historial");
         jbhistorial.setToolTipText("Boton muestra historial de aparcamiento del usuario");
+        jbhistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbhistorial.setPreferredSize(new java.awt.Dimension(124, 49));
         jbhistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +95,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbreserva.setForeground(new java.awt.Color(255, 255, 255));
         jbreserva.setText("Reservar");
         jbreserva.setToolTipText("Botón para reservar una plaza de aparcamiento");
+        jbreserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbreserva.setPreferredSize(new java.awt.Dimension(124, 49));
         jbreserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +175,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         panelInicioCuenta.revalidate();
         panelInicioCuenta.repaint();
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbcuenta;
