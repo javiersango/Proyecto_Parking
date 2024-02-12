@@ -6,11 +6,13 @@ package vista;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import controlador.MetodosRegistroCuenta;
+import controlador.MetodosInicio;
+import controlador.MetodosReservar;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeListener;
+import modelo.Vehiculos;
 
 /**
  *
@@ -18,17 +20,28 @@ import javax.swing.event.ChangeListener;
  */
 public class Reserva extends javax.swing.JPanel {
 
-    private double precioPorHora = 0.25;
+    MetodosInicio mi = new MetodosInicio();
+    MetodosReservar mr = new MetodosReservar();
+    
+
+    private final double precioPorHora = 0.25;
     private LocalDate fecha;
     private int horas;
     private double precio;
     private double total;
+    private String plaza;
+    private final String nombre;
+    private final String contrasena;
 
     /**
      * Creates new form RegistroCuenta
      */
     public Reserva() {
         initComponents();
+
+        // Asignar valores predeterminados a los atributos nombre y contrasena
+        this.nombre = "";
+        this.contrasena = "";
 
         // Poner jTexfield y jBotton el radio
         jbConfirmar.putClientProperty("FlatLaf.style", "arc: 15");
@@ -40,11 +53,24 @@ public class Reserva extends javax.swing.JPanel {
         jtmatricula.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtplaza.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
 
-        horas = jSlider1.getValue();
+       
+       
+        jtplaza.setText(plaza);
+        jtplaza.setForeground(Color.black);
+        System.out.print(plaza);
 
-        precio = Double.parseDouble(jttotal.getText());
-        total = precio + (precioPorHora * horas);
-        jttotal.setText(String.valueOf(total));
+        // Obtener información del vehículo asociado al usuario
+        mi.devolverIdusuario(nombre, contrasena);
+
+        Vehiculos vehiculo = mr.devuelveDatosVehiculo(nombre, contrasena);
+        if (vehiculo != null) {
+            jtmatricula.setText(vehiculo.getMatricula());
+            jtcoche.setText(vehiculo.getEsCoche().toString());
+        } else {
+            // Si no se encontró ningún vehículo para el usuario, puedes mostrar un mensaje o dejar los campos vacíos
+            jtmatricula.setText("");
+            jtcoche.setText("");
+        }
 
     }
 
@@ -386,8 +412,12 @@ public class Reserva extends javax.swing.JPanel {
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        int horas = jSlider1.getValue();
+        horas = jSlider1.getValue();
         jTexthora.setText(String.valueOf(horas));
+        jTexthora.setForeground(Color.black);
+        precio = Double.parseDouble(jttotal.getText());
+        total = precio + (precioPorHora * horas);
+        jttotal.setText(String.valueOf(total));
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void mostrarPanel(JPanel panel) {
@@ -398,6 +428,13 @@ public class Reserva extends javax.swing.JPanel {
         jPanelTiket.revalidate();
         jPanelTiket.repaint();
     }
+
+    public void setPlazaSeleccionada(String plazaSeleccionada) {
+        this.plaza = plazaSeleccionada;
+    }
+    
+  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -422,5 +459,7 @@ public class Reserva extends javax.swing.JPanel {
     private javax.swing.JTextField jtplaza;
     private javax.swing.JTextField jttotal;
     // End of variables declaration//GEN-END:variables
+
+  
 
 }

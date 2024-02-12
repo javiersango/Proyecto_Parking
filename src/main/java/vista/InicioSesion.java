@@ -4,9 +4,7 @@
  */
 package vista;
 
-
 import com.formdev.flatlaf.FlatClientProperties;
-
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
@@ -23,21 +21,17 @@ import javax.swing.JPanel;
 import controlador.MetodosContrasena;
 import controlador.MetodosInicio;
 
-
- 
-
-
 /**
  *
  * @author Javier Sánchez González
  */
 public class InicioSesion extends javax.swing.JFrame {
-     int xMouse, yMouse;
-    
-     private RecuperarContrasena recuperarContrasena;
-     private boolean ingles; // Inicia el idioma en ingles
-     private int nivelBateria = 100;
-   
+
+    int xMouse, yMouse;
+
+    private RecuperarContrasena recuperarContrasena;
+    private boolean ingles; // Inicia el idioma en ingles
+    private int nivelBateria = 100;
 
     /**
      * Creates new form Incio
@@ -47,46 +41,40 @@ public class InicioSesion extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         recuperarContrasena = new RecuperarContrasena(ingles);
-        
+
         //Boton por defecto enter
         //jbiniciar.setMnemonic(KeyEvent.VK_0); 
-        
-           rootPane.setDefaultButton(jbiniciar); 
-        
-
+        rootPane.setDefaultButton(jbiniciar);
 
         // Cargar el idioma predeterminado (español)
-         Locale.setDefault(new Locale("es"));
-         ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es");
-       
-        
+        Locale.setDefault(new Locale("es"));
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es");
+
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
         // Poner jTexfield y jBotton el radio
-        jtnombre.putClientProperty("FlatLaf.style","arc: 15");
-        jtcontrasena.putClientProperty("FlatLaf.style","arc: 15");
-        jbiniciar.putClientProperty("FlatLaf.style","arc: 15");
-        jbrecuperar.putClientProperty("FlatLaf.style","arc: 15");
-        jbregistrarse.putClientProperty("FlatLaf.style","arc: 15");
-        
+        jtnombre.putClientProperty("FlatLaf.style", "arc: 15");
+        jtcontrasena.putClientProperty("FlatLaf.style", "arc: 15");
+        jbiniciar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbrecuperar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbregistrarse.putClientProperty("FlatLaf.style", "arc: 15");
+
         //jltitulo1.setFont(new java.awt.Font("Stencyl",Font.PLAIN, 23)); // NOI18N
         //jltitulo1.putClientProperty("FlatLaf.styleClass", "h0");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
         jlo.putClientProperty("FlatLaf.styleClass", "h2");
-      
-      
+
         //añadir a los jTextField iconos
-        jtnombre.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/usuario.svg" ) );
-        jtcontrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candadoCerrado.svg" ) );
-        
-        
-         //Configuracion reloj 
+        jtnombre.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/usuario.svg"));
+        jtcontrasena.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/candadoCerrado.svg"));
+
+        //Configuracion reloj 
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String horaActual = sdf.format(new Date());
         jLtime.setText(horaActual);
 
-         // Inicia una tarea programada para actualizar el nivel de la batería y el JLabel
+        // Inicia una tarea programada para actualizar el nivel de la batería y el JLabel
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -94,27 +82,27 @@ public class InicioSesion extends javax.swing.JFrame {
                 updateBatteryLevel();
             }
         }, 0, 60000); // Actualiza cada segundo (1000 ms)
-        
+
     }
-    
-       private void updateBatteryLevel() {
+
+    private void updateBatteryLevel() {
         // Lógica para obtener el nivel de la batería (simulado aquí)
         int batteryLevel = obtenerNivelBateria();
 
-       // Actualiza el JLabel con el nivel de la batería
-        jLporcentajeBateria.setText( batteryLevel + "%");
-        
+        // Actualiza el JLabel con el nivel de la batería
+        jLporcentajeBateria.setText(batteryLevel + "%");
+
     }
 
     // Método de ejemplo para obtener el nivel de la batería (simulado)
     private int obtenerNivelBateria() {
-      //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
-      //  return atomicBatteryLevel.get();
-            if (nivelBateria > 0) {
-              nivelBateria--; // Disminuimos el nivel de batería en 1
-             }
-            return nivelBateria;
-      
+        //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
+        //  return atomicBatteryLevel.get();
+        if (nivelBateria > 0) {
+            nivelBateria--; // Disminuimos el nivel de batería en 1
+        }
+        return nivelBateria;
+
     }
 
     /**
@@ -520,7 +508,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jLcierreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLcierreMouseClicked
-    
+
     private void jLcierreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseExited
         panelRoundFondoCierre.setBackground(Color.WHITE);
     }//GEN-LAST:event_jLcierreMouseExited
@@ -528,106 +516,113 @@ public class InicioSesion extends javax.swing.JFrame {
     private void panelRoundBarraFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRoundBarraFondoMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse,y-yMouse);
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_panelRoundBarraFondoMouseDragged
-    /** Evento en el que devuelve la posicion cada vez que se mueve y se establece */
+    /**
+     * Evento en el que devuelve la posicion cada vez que se mueve y se
+     * establece
+     */
     private void panelRoundBarraFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRoundBarraFondoMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelRoundBarraFondoMousePressed
-    /** Metodo visulaizacion del jTextField nombre*/
+    /**
+     * Metodo visulaizacion del jTextField nombre
+     */
     private void jtnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMousePressed
-       if ( jtnombre.getText().equals("Nombre")){
-        
-          jtnombre.setText("");
-          jtnombre.setForeground(Color.black);
-          
-      }
-      if (String.valueOf(jtcontrasena.getPassword()).isEmpty()){
-          jtcontrasena.setText("********");
-          jtcontrasena.setForeground(Color.gray);
-      }   
+        if (jtnombre.getText().equals("Nombre")) {
+
+            jtnombre.setText("");
+            jtnombre.setForeground(Color.black);
+
+        }
+        if (String.valueOf(jtcontrasena.getPassword()).isEmpty()) {
+            jtcontrasena.setText("********");
+            jtcontrasena.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_jtnombreMousePressed
 
-   /** Metodo comprobacion que no estan vacios los campos datos nombre y contraseña*/
+    /**
+     * Metodo comprobacion que no estan vacios los campos datos nombre y contraseña
+     */
     private void jbiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiniciarActionPerformed
-     MetodosContrasena mc = new MetodosContrasena();
-    String nombre = jtnombre.getText();
-    String contraseña = String.valueOf(jtcontrasena.getPassword());
+        MetodosContrasena mc = new MetodosContrasena();
+        String nombre = jtnombre.getText();
+        String contraseña = String.valueOf(jtcontrasena.getPassword());
 
-    if (nombre.isEmpty() || nombre.equals("Nombre")) {
-        JOptionPane.showMessageDialog(null, "El campo nombre esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
-    } else if (nombre.length() < 3) {
-        JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
-    } else if ( contraseña.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "El campo contraseña esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
-    } else if (contraseña.length() < 8 || contraseña.length() > 12) {
-        JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
-    } else {
-        //String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
-       // System.out.println("Hash contraseña : " + hashContrasena);
-        MetodosInicio mi = new MetodosInicio(); 
-        String contrasena = String.valueOf(jtcontrasena.getPassword());
-        
-       // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
-
-        if (mi.comprobarInicioUsuario(nombre, contrasena)) {
-            
-          /*  mi.devolverIdusuario(nombre, contrasena);*/
-            
-            
-            InicioCuenta panelInicioCuenta = new InicioCuenta();
-            mostrarPanel(panelInicioCuenta);
+        if (nombre.isEmpty() || nombre.equals("Nombre")) {
+            JOptionPane.showMessageDialog(null, "El campo nombre esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (nombre.length() < 3) {
+            JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo contraseña esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (contraseña.length() < 8 || contraseña.length() > 12) {
+            JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
+            //String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
+            // System.out.println("Hash contraseña : " + hashContrasena);
+            MetodosInicio mi = new MetodosInicio();
+            String contrasena = String.valueOf(jtcontrasena.getPassword());
+
+            // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
+            if (mi.comprobarInicioUsuario(nombre, contrasena)) {
+                
+                  mi.devolverIdusuario(nombre, contrasena);
+                InicioCuenta panelInicioCuenta = new InicioCuenta();
+                mostrarPanel(panelInicioCuenta);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-    }
     }//GEN-LAST:event_jbiniciarActionPerformed
-    /** Evento cuanto se selecciona el texto se pone en negrita y si no esta selecciado lo deja como estaba al inicio */
+    /**
+     * Evento cuanto se selecciona el texto se pone en negrita y si no esta
+     * selecciado lo deja como estaba al inicio
+     */
     private void jtcontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMousePressed
-    if ( String.valueOf(jtcontrasena.getPassword()).equals("********")){
-          jtcontrasena.setText("");
-          jtcontrasena.setForeground(Color.black);
-          
-      } else {
-          jtcontrasena.setForeground(new Color (0,0,0)); 
-      }
-          
-      if (jtnombre.getText().isEmpty()){
-          jtnombre.setText("Nombre");
-          jtnombre.setForeground(Color.gray);
-      } else {
-          jtnombre.setForeground(new Color (0,0,0)); 
-      }  
+        if (String.valueOf(jtcontrasena.getPassword()).equals("********")) {
+            jtcontrasena.setText("");
+            jtcontrasena.setForeground(Color.black);
+
+        } else {
+            jtcontrasena.setForeground(new Color(0, 0, 0));
+        }
+
+        if (jtnombre.getText().isEmpty()) {
+            jtnombre.setText("Nombre");
+            jtnombre.setForeground(Color.gray);
+        } else {
+            jtnombre.setForeground(new Color(0, 0, 0));
+        }
     }//GEN-LAST:event_jtcontrasenaMousePressed
 
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
         ingles = true; // Cambia el estado a español
         cambiarIdiomaIngles();
-          
+
 
     }//GEN-LAST:event_jlinglesMouseClicked
 
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
         ingles = false; // Cambia el estado a ingles
         cambiarIdiomaEspanol();
-          
+
     }//GEN-LAST:event_jlespanaMouseClicked
 
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
-                                      
-    // Crear una nueva instancia de RecuperarContraseña
-    recuperarContrasena = new RecuperarContrasena(ingles);  
-    // Hacer visible el nuevo JFrame de RecuperarContraseña
-    recuperarContrasena.setVisible(true);
+
+        // Crear una nueva instancia de RecuperarContraseña
+        recuperarContrasena = new RecuperarContrasena(ingles);
+        // Hacer visible el nuevo JFrame de RecuperarContraseña
+        recuperarContrasena.setVisible(true);
 
     }//GEN-LAST:event_jbrecuperarActionPerformed
 
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
- 
-     RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
-     mostrarPanel( panelRegistroCuenta );
-     
+
+        RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
+        mostrarPanel(panelRegistroCuenta);
+
     }//GEN-LAST:event_jbregistrarseActionPerformed
 
     /**
@@ -657,8 +652,8 @@ public class InicioSesion extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-       // FlatDarkLaf.setup();
-         FlatLightLaf.setup();
+        // FlatDarkLaf.setup();
+        FlatLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -668,24 +663,24 @@ public class InicioSesion extends javax.swing.JFrame {
         });
     }
 
-    /**Metodo verifica que la contraseña tenga al menos 8 caracteres y como máximo 10 caracteres*/
-   // private boolean validarContraseña(String contraseña) {
-   // return contraseña.length() >= 8 && contraseña.length() <= 10;
-    
-     public void mostrarPanel(JPanel panel) {
-       panel.setSize(428, 800);
-       panel.setLocation(0,0);  
-       
-       jPanelFondo.removeAll();
-       jPanelFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-       jPanelFondo.revalidate();
-       jPanelFondo.repaint();
+    /**
+     * Metodo verifica que la contraseña tenga al menos 8 caracteres y como
+     * máximo 10 caracteres
+     */
+    // private boolean validarContraseña(String contraseña) {
+    // return contraseña.length() >= 8 && contraseña.length() <= 10;
+    public void mostrarPanel(JPanel panel) {
+        panel.setSize(428, 800);
+        panel.setLocation(0, 0);
+
+        jPanelFondo.removeAll();
+        jPanelFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanelFondo.revalidate();
+        jPanelFondo.repaint();
     }
 
-
-     
-      public void cambiarIdiomaEspanol() {
-          Locale.setDefault(new Locale("en")); 
+    public void cambiarIdiomaEspanol() {
+        Locale.setDefault(new Locale("en"));
         // Cargar el idioma ingles
         ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es");
         // Obtener las traducciones en español de las cadenas de texto en ingles
@@ -696,7 +691,7 @@ public class InicioSesion extends javax.swing.JFrame {
         String bInciar = resourceBundle.getString("LogIn");
         String bRegistro = resourceBundle.getString("Register");
         String bRecuperar = resourceBundle.getString("RecoverPassword");
-        
+
         // Establecer el texto en los componentes
         jltitulo1.setText(titulo1);
         jltitulo2.setText(titulo2);
@@ -705,13 +700,12 @@ public class InicioSesion extends javax.swing.JFrame {
         jlcontrasena.setText(lContrasena);
         jbiniciar.setText(bInciar);
         jbregistrarse.setText(bRegistro);
-        jbrecuperar.setText(bRecuperar);  
-        
-        
+        jbrecuperar.setText(bRecuperar);
+
     }
-    
-    private void cambiarIdiomaIngles () {
-        Locale.setDefault(new Locale("en")); 
+
+    private void cambiarIdiomaIngles() {
+        Locale.setDefault(new Locale("en"));
         ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages");
         String titulo1 = resourceBundle.getString("buscasPlazasDeAparcamiento");
         String titulo2 = resourceBundle.getString("InicieSesionOregistrarse");
@@ -729,16 +723,16 @@ public class InicioSesion extends javax.swing.JFrame {
         jbregistrarse.setText(bRegistro);
         jbrecuperar.setText(bRecuperar);
     }
-    
-        public String getNombre() {
+
+    public String getNombre() {
         String nombre = jtnombre.getText();
         return nombre;
     }
 
-        public String getContrasena() {
-            String contrasena = jtcontrasena.getText();
-            return contrasena;
-        }
+    public String getContrasena() {
+        String contrasena = jtcontrasena.getText();
+        return contrasena;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -769,6 +763,4 @@ public class InicioSesion extends javax.swing.JFrame {
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables
 
-
-   
 }

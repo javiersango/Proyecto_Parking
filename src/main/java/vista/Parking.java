@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  * @author Javier Sánchez González
  */
 public class Parking extends javax.swing.JPanel {
-    
+
     Reserva reserva = new Reserva();
 
     private Map<String, JTextField> plazasTextFields;
@@ -77,7 +77,7 @@ public class Parking extends javax.swing.JPanel {
             estadoPlazas.put(plaza, false);
         }
 
-        // Agregar ActionListener a cada checkbox
+        // Agregar ActionListener a cada checkbox 
         // Agregar ActionListener a cada checkbox
 // Agregar ActionListener a cada checkbox
         for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
@@ -107,15 +107,19 @@ public class Parking extends javax.swing.JPanel {
 
                     // Actualizar el estado de la plaza en la estructura de datos
                     estadoPlazas.put(numeroPlaza, checkBox.isSelected());
+                    estadoPlazas.put(numeroPlaza, checkBox.isSelected());
+
+                    // Obtener el texto de la plaza seleccionada
+                    String textoPlazaSeleccionada = checkBox.isSelected() ? "Reservado" : numeroPlaza;
+
+                    // Pasar el texto de la plaza seleccionada a la clase Reserva
+                  //  reserva.setPlazaSeleccionada(textoPlazaSeleccionada);
                 }
             });
         }
     }
-  /*  
-    public void pasarPlaza(String plaza){
-        reserva.pasarPlaza(plaza);
-    }
-*/
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
