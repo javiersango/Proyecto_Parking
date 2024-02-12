@@ -4,6 +4,8 @@
  */
 package vista;
 
+import javax.swing.JRootPane;
+
 /**
  *
  * @author Javier Sánchez González
@@ -16,7 +18,11 @@ public class Borrada extends javax.swing.JFrame {
     public Borrada(boolean ingles) {
         initComponents();
         setLocationRelativeTo(null);
+        
+       
+        
         jbcancelar.putClientProperty("FlatLaf.style","arc: 25");
+        
     }
 
     /**

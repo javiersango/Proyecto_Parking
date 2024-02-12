@@ -9,6 +9,7 @@ import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 
 import controlador.MetodosRegistroCuenta;
+import javax.swing.JRootPane;
 
 
 
@@ -30,6 +31,8 @@ public class Modificada extends javax.swing.JFrame {
     public Modificada(boolean ingles) {
         initComponents();
         setLocationRelativeTo(null);
+        
+       
         
         jbaceptar.putClientProperty("FlatLaf.style","arc: 25");
       

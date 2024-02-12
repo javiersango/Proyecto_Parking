@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import vista.InicioSesion;
 
 /**
@@ -27,6 +28,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private String email;
     private String contrasena;
     private  String repetirContrasena;
+    private InicioSesion inicioSesion;
    
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
  
@@ -34,7 +36,10 @@ public class RegistroCuenta extends javax.swing.JPanel {
      * Creates new form RegistroCuenta
      */
     public RegistroCuenta() {
+        
         initComponents();
+        
+       
         
         // Poner jTexfield y jBotton el radio
         jtnombre.putClientProperty("FlatLaf.style","arc: 15");
@@ -46,7 +51,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         
         jbregistro.putClientProperty("FlatLaf.style","arc: 15");
         jbborrarDatos.putClientProperty("FlatLaf.style","arc: 15");
-        jbcancelar.putClientProperty("FlatLaf.style","arc: 15");
+       
  
         jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
@@ -69,6 +74,8 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtrepetirContrasena.putClientProperty( FlatClientProperties.TEXT_FIELD_LEADING_ICON,new FlatSVGIcon( "img/candadoCerrado.svg" ) );
        
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +115,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jLiconMoto = new javax.swing.JLabel();
         jLiconCoche = new javax.swing.JLabel();
         jbborrarDatos = new javax.swing.JButton();
-        jbcancelar = new javax.swing.JButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -251,7 +257,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
             .addGroup(jPanelEmailLayout.createSequentialGroup()
                 .addComponent(jlemail, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addComponent(jtemail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelEmailLayout.setVerticalGroup(
             jPanelEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,20 +429,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
             }
         });
 
-        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
-        jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
-        jbcancelar.setText("Cancelar");
-        jbcancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
-        jbcancelar.setActionCommand("");
-        jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbcancelarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelRegistroCuentaLayout = new javax.swing.GroupLayout(panelRegistroCuenta);
         panelRegistroCuenta.setLayout(panelRegistroCuentaLayout);
         panelRegistroCuentaLayout.setHorizontalGroup(
@@ -468,15 +460,13 @@ public class RegistroCuenta extends javax.swing.JPanel {
                                                         .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                 .addComponent(jPanelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                                                 .addComponent(jPanelContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                                .addComponent(jPanelContrasena1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
-                                            .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jPanelApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jPanelContrasena1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                                .addComponent(jPanelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                                .addComponent(jPanelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                                             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                                                .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(12, 12, 12)
-                                                .addComponent(jbborrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jbborrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistroCuentaLayout.createSequentialGroup()
                         .addContainerGap()
@@ -516,7 +506,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbborrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
@@ -621,16 +610,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
         mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
-
-    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-
-        // Crea una instancia de InicioCuenta
-      
   
-
-    }//GEN-LAST:event_jbcancelarActionPerformed
-     
-
     private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
@@ -653,7 +633,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelMatricula;
     private javax.swing.JPanel jPanelNombre;
     private javax.swing.JButton jbborrarDatos;
-    private javax.swing.JButton jbcancelar;
     private javax.swing.JButton jbregistro;
     private javax.swing.JLabel jlapellidos;
     private javax.swing.JLabel jlcontrasena;
@@ -672,8 +651,6 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private javax.swing.JPasswordField jtrepetirContrasena;
     private vista.PanelRound panelRegistroCuenta;
     // End of variables declaration//GEN-END:variables
-
-
 
 
 }

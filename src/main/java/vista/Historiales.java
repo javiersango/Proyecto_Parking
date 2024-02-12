@@ -12,6 +12,7 @@ import modelo.Historial;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -31,6 +32,8 @@ public class Historiales extends javax.swing.JPanel {
      */
     public Historiales() {
         initComponents();
+        
+        
         
         // Poner jTexfield y jBotton el radio
         jtmatricula.putClientProperty("FlatLaf.style","arc: 15");

@@ -16,6 +16,7 @@ import controlador.MetodosRecuperarContrasena;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
 import controlador.EmailUtil;
+import javax.swing.JRootPane;
 
 
 
@@ -43,8 +44,7 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         setShape(forma);
         
         
-        //Boton por defecto enter
-         getRootPane().setDefaultButton(jbaceptar);
+       
         
         // Poner jTexfield y jBotton el radio
         jtemail.putClientProperty("FlatLaf.style", "arc: 15");

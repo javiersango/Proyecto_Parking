@@ -5,6 +5,7 @@
 package controlador;
 
 import java.awt.Color;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -22,6 +23,9 @@ import org.hibernate.query.Query;
  * @author Javier
  */
 public class MetodosRegistroCuenta {
+    
+   
+  
 
    /** Metodo se le le pasan los datos de vehiculo y uuario para registra la cuenta en la base de datos parking*/
   public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
@@ -122,52 +126,46 @@ public class MetodosRegistroCuenta {
            }
        }
 
-    public static boolean modificarDatosUsuario(String nombre, String apellidos, boolean esCoche, String matricula, String email) {
+
+   public static boolean modificarDatosVehiculo(String email, String nuevaMatricula, boolean nuevoEsCoche) {
     // Configurar la conexión a la base de datos utilizando Hibernate
     Configuration configuration = new Configuration();
     configuration.configure("hibernate.cfg.xml");
     SessionFactory sessionFactory = configuration.buildSessionFactory();
     Session session = sessionFactory.openSession();
     Transaction transaction = null;
-
     try {
         // Comenzar una transacción
         transaction = session.beginTransaction();
 
-        // Consultar Hibernate para buscar un usuario con el mismo correo electrónico
+        // Consultar Hibernate para buscar un usuario con el antiguo correo electrónico
         String hql = "FROM Usuarios WHERE email = :email";
         Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
         query.setParameter("email", email);
-
         Usuarios usuario = query.uniqueResult();
 
         // Verificar si se encontró el usuario
         if (usuario != null) {
-            // Actualizar los datos del usuario
-            usuario.setNombre(nombre);
-            usuario.setApellidos(apellidos);
+            // Obtener el ID del usuario
+            int userId = usuario.getId();
 
-            // Si esCoche es true, se asocia un vehículo al usuario
-            
-                Vehiculos vehiculo = new Vehiculos();
-                       
-                    vehiculo = new Vehiculos();
-                    vehiculo.setUsuarios(usuario);
-                    vehiculo.setMatricula(matricula);
-                    vehiculo.setEsCoche(esCoche);
-                    // Guardar el vehículo en la base de datos
-           
-                    session.update(vehiculo);
-            
+            // Consultar los vehículos asociados al usuario por su ID
+            String vehiculosHql = "FROM Vehiculos WHERE usuarios.id = :userId";
+            Query<Vehiculos> vehiculosQuery = session.createQuery(vehiculosHql, Vehiculos.class);
+            vehiculosQuery.setParameter("userId", userId);
+            List<Vehiculos> vehiculos = vehiculosQuery.getResultList();
+
+            // Actualizar cada vehículo asociado al usuario
+            for (Vehiculos vehiculo : vehiculos) {
+                vehiculo.setMatricula(nuevaMatricula);
+                vehiculo.setEsCoche(nuevoEsCoche);
+                session.update(vehiculo);
             }
-
-            // Guardar los cambios en el usuario en la base de datos
-            session.update(usuario);
-        
+        }
 
         // Commit de la transacción
         transaction.commit();
-        return true; // Los datos del usuario se han actualizado correctamente
+        return true; // Los datos del vehículo se han actualizado correctamente
     } catch (Exception e) {
         if (transaction != null) {
             transaction.rollback();
@@ -180,8 +178,13 @@ public class MetodosRegistroCuenta {
     }
 }
 
+            
 
+                
 
+            
+
+                
 
    public static boolean eliminarUsuario( String email) {
            
