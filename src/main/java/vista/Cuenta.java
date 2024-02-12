@@ -120,7 +120,7 @@ public class Cuenta extends javax.swing.JPanel {
 
         jltitulo2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
-        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo2.setText("Que desea hacer?");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
@@ -377,7 +377,6 @@ public class Cuenta extends javax.swing.JPanel {
                             .addGroup(panelCuentaLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jlcuentausuario, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelCuentaLayout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,14 +398,16 @@ public class Cuenta extends javax.swing.JPanel {
                                                 .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jltitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(jCheckBoxEliminarCuenta)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jCheckBoxContraseña)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jCheckBoxModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jltitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jCheckBoxEliminarCuenta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckBoxContraseña)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckBoxModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jltcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
