@@ -18,7 +18,6 @@ vista\Loading$3.class
 vista\InicioSesion$5.class
 vista\Cuenta$7.class
 vista\RegistroCuenta$1.class
-vista\Borrada$1.class
 vista\Historiales$2.class
 controlador\MetodosInicio.class
 vista\InicioSesion$8.class
@@ -36,13 +35,13 @@ controlador\EmailUtil$1.class
 vista\Parking$1.class
 controlador\MetodosReservar.class
 vista\Loading.class
-vista\Borrada.class
 vista\RecuperarContrasena.class
 vista\Loading$4.class
 vista\PanelRound.class
 vista\RegistroCuenta$3.class
 vista\Modificada1.class
 vista\Historiales$4.class
+controlador\MetodosCuenta.class
 vista\InicioSesion$6.class
 vista\Historiales$1.class
 vista\Parking.class
@@ -73,9 +72,7 @@ modelo\Usuarios.class
 vista\InicioSesion$4.class
 vista\Cuenta$9.class
 vista\InicioCuenta$2.class
-vista\Modificada$1.class
 vista\Reserva$4.class
-vista\Modificada.class
 vista\Historiales$3.class
 vista\RegistroCuenta$6.class
 vista\Cuenta$2.class

@@ -7,6 +7,7 @@ package vista;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.MetodosContrasena;
+import controlador.MetodosCuenta;
 import java.awt.Color;
 import controlador.MetodosRegistroCuenta;
 import javax.swing.JOptionPane;
@@ -21,11 +22,16 @@ public class Cuenta extends javax.swing.JPanel {
     /**
      * Variables
      */
-    private boolean esCoche;
-    private String matricula;
     private String email;
+    private String matricula;
+    private boolean esCoche;
+    private String nuevaContrasena;
+    private boolean contrasenaValida;
+    private String hashContrasena;
 
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
+    MetodosCuenta cuenta = new MetodosCuenta();
+    MetodosContrasena mc = new MetodosContrasena();
 
     /**
      * Creates new form RegistroCuenta
@@ -473,9 +479,9 @@ public class Cuenta extends javax.swing.JPanel {
      */
     private void jbmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmodificarActionPerformed
 
-        String email = jtemail.getText();
-        String matricula = jtmatricula.getText();
-        boolean esCoche = jCheckBoxCoche.isSelected();
+        email = jtemail.getText();
+        matricula = jtmatricula.getText();
+        esCoche = jCheckBoxCoche.isSelected();
 
         if (email.isEmpty() || email.equals("Email") || matricula.equals("Matricula") || matricula.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
@@ -543,7 +549,6 @@ public class Cuenta extends javax.swing.JPanel {
         boolean seleciondoEliminar = jCheckBoxEliminarCuenta.isSelected();
 
         if (seleciondoEliminar) {
-
             jtmatricula.setEnabled(false);
             jCheckBoxMoto.setEnabled(false);
             jCheckBoxCoche.setEnabled(false);
@@ -551,15 +556,17 @@ public class Cuenta extends javax.swing.JPanel {
             jbcontrasena.setEnabled(false);
             jtcontrasena.setEnabled(false);
 
-        } else if (!seleciondoEliminar) {
-
+            // Desactivar los otros checkbox
+            jCheckBoxContraseña.setEnabled(false);
+            jCheckBoxModificar.setEnabled(false);
+        } else {
             jtmatricula.setEnabled(true);
             jCheckBoxMoto.setEnabled(true);
             jCheckBoxCoche.setEnabled(true);
             jbmodificar.setEnabled(true);
-            jbcontrasena.setEnabled(true);
-            jtcontrasena.setEnabled(true);
-
+            // Habilitar solo el checkbox correspondiente a la acción seleccionada
+            jCheckBoxContraseña.setEnabled(true);
+            jCheckBoxModificar.setEnabled(true);
         }
 
 
@@ -569,28 +576,41 @@ public class Cuenta extends javax.swing.JPanel {
         boolean seleciondoContrasena = jCheckBoxContraseña.isSelected();
 
         if (seleciondoContrasena) {
-
             jtmatricula.setEnabled(false);
             jCheckBoxMoto.setEnabled(false);
             jCheckBoxCoche.setEnabled(false);
             jbmodificar.setEnabled(false);
             jbborrar.setEnabled(false);
 
-        } else if (!seleciondoContrasena) {
-
+            // Desactivar los otros checkbox
+            jCheckBoxEliminarCuenta.setEnabled(false);
+            jCheckBoxModificar.setEnabled(false);
+        } else {
             jtmatricula.setEnabled(true);
             jCheckBoxMoto.setEnabled(true);
             jCheckBoxCoche.setEnabled(true);
             jbmodificar.setEnabled(true);
-            jbcontrasena.setEnabled(true);
-            jtcontrasena.setEnabled(true);
-            jbborrar.setEnabled(true);
-
+            // Habilitar solo el checkbox correspondiente a la acción seleccionada
+            jCheckBoxEliminarCuenta.setEnabled(true);
+            jCheckBoxModificar.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBoxContraseñaActionPerformed
 
     private void jbcontrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcontrasenaActionPerformed
-        // TODO add your handling code here:
+
+        nuevaContrasena = String.valueOf(jtcontrasena.getPassword());
+
+        contrasenaValida = mc.validarContrasena(nuevaContrasena);
+
+        if (contrasenaValida) {
+            hashContrasena = mc.crearHashContrasena(nuevaContrasena, nuevaContrasena);
+            cuenta.modificarContraseña(email, hashContrasena);
+            JOptionPane.showMessageDialog(null, "Contraseña modificada correctamente.", "Modificación de contraseña", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "La contraseña no cumple con los requisitos mínimos.", "Contraseña no valida", JOptionPane.WARNING_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_jbcontrasenaActionPerformed
 
     private void jtcontrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMouseClicked
@@ -601,17 +621,21 @@ public class Cuenta extends javax.swing.JPanel {
         boolean seleciondoModicar = jCheckBoxModificar.isSelected();
 
         if (seleciondoModicar) {
-
             jbcontrasena.setEnabled(false);
             jtcontrasena.setEnabled(false);
             jbborrar.setEnabled(false);
 
-        } else if (!seleciondoModicar) {
-
+            // Desactivar los otros checkbox
+            jCheckBoxEliminarCuenta.setEnabled(false);
+            jCheckBoxContraseña.setEnabled(false);
+        } else {
             jbborrar.setEnabled(true);
             jbcontrasena.setEnabled(true);
             jtcontrasena.setEnabled(true);
 
+            // Habilitar solo el checkbox correspondiente a la acción seleccionada
+            jCheckBoxEliminarCuenta.setEnabled(true);
+            jCheckBoxContraseña.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBoxModificarActionPerformed
     private void mostrarPanel(InicioCuenta panel) {
