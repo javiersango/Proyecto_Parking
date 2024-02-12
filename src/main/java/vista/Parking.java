@@ -17,11 +17,11 @@ import javax.swing.JTextField;
  */
 public class Parking extends javax.swing.JPanel {
 
-    Reserva reserva = new Reserva();
-
+    // Inicializacion variables
     private Map<String, JTextField> plazasTextFields;
     private Map<String, JCheckBox> plazasCheckBoxes;
     private Map<String, Boolean> estadoPlazas;
+    private String textoPlazaSeleccionada;
 
     /**
      * Creates new form RegistroCuenta
@@ -71,15 +71,13 @@ public class Parking extends javax.swing.JPanel {
         plazasCheckBoxes.put("P13", jCheckBoxP13);
         plazasCheckBoxes.put("P14", jCheckBoxP14);
 
-        // Inicializa el estado de todas las plazas como inicialmente no ocupadas
+        // Inicializacion  de todas las plazas como inicialmente no ocupadas
         estadoPlazas = new HashMap<>();
         for (String plaza : plazasTextFields.keySet()) {
             estadoPlazas.put(plaza, false);
         }
 
-        // Agregar ActionListener a cada checkbox 
         // Agregar ActionListener a cada checkbox
-// Agregar ActionListener a cada checkbox
         for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
             String numeroPlaza = entry.getKey();
             JCheckBox checkBox = entry.getValue();
@@ -93,12 +91,12 @@ public class Parking extends javax.swing.JPanel {
                         JCheckBox cb = entry.getValue();
                         JTextField textField = plazasTextFields.get(plaza);
 
-                        // Verificar si el JCheckBox actual es el seleccionado
+                        // Verificar si el checkBox seleccionado
                         if (cb == checkBox) {
-                            // Si es el seleccionado, establecer su texto como "Reservado"
+                            // establece su texto como "Reservado"
                             textField.setText("Reservado");
                         } else {
-                            // Si no es el seleccionado, establecer su texto como la posición de la plaza de garaje
+                            // Si no es el seleccionado, deja la posición de la plaza 
                             textField.setText(plaza);
                             // Desmarcar el JCheckBox
                             cb.setSelected(false);
@@ -109,17 +107,14 @@ public class Parking extends javax.swing.JPanel {
                     estadoPlazas.put(numeroPlaza, checkBox.isSelected());
                     estadoPlazas.put(numeroPlaza, checkBox.isSelected());
 
-                    // Obtener el texto de la plaza seleccionada
-                    String textoPlazaSeleccionada = checkBox.isSelected() ? "Reservado" : numeroPlaza;
+                    // Obtener el texto de la plaza seleccionada Pasar el texto de la plaza seleccionada a la clase Reserva
+                    textoPlazaSeleccionada = checkBox.isSelected() ? "Reservado" : numeroPlaza;
 
-                    // Pasar el texto de la plaza seleccionada a la clase Reserva
-                  //  reserva.setPlazaSeleccionada(textoPlazaSeleccionada);
                 }
             });
         }
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -963,20 +958,32 @@ public class Parking extends javax.swing.JPanel {
             .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Evento se le pasa el panel de IncioCuenta para mostralo.
+     *
+     * @param evt
+     */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
         // Crea una instancia de InicioCuenta
         InicioCuenta ic = new InicioCuenta();
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
     }//GEN-LAST:event_jbcancelarActionPerformed
-
+    /**
+     * Evento se le pasa el panel de Reserva para mostralo.
+     *
+     * @param evt
+     */
     private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
 
         Reserva reserva = new Reserva();
         mostrarPanel2(reserva);
     }//GEN-LAST:event_jbreservarActionPerformed
-
+    /**
+     * Metodo elimna el panel actual y muestra el que se le pasa
+     *
+     * @param panel
+     */
     private void mostrarPanel(InicioCuenta panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
@@ -988,6 +995,11 @@ public class Parking extends javax.swing.JPanel {
 
     }
 
+    /**
+     * Metodo elimna el panel actual y muestra el que se le pasa
+     *
+     * @param panel
+     */
     private void mostrarPanel2(Reserva panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);

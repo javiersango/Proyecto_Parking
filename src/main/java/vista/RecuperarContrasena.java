@@ -18,34 +18,28 @@ import controlador.MetodosRegistroCuenta;
 import controlador.EmailUtil;
 import javax.swing.JRootPane;
 
-
-
 /**
  *
  * @author Javier Sánchez González
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
-    
-    private boolean inglesRecuperarContrasena;
-    
-    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
-      
 
-   /**
-    * 
-    * @param ingles 
-    */
+    private boolean inglesRecuperarContrasena;
+
+    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
+
+    /**
+     *
+     * @param ingles
+     */
     public RecuperarContrasena(boolean ingles) {
         initComponents();
         setLocationRelativeTo(null);
         this.inglesRecuperarContrasena = ingles;
-        
+
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
-        
-        
-       
-        
+
         // Poner jTexfield y jBotton el radio
         jtemail.putClientProperty("FlatLaf.style", "arc: 15");
         jbaceptar.putClientProperty("FlatLaf.style", "arc: 15");
@@ -55,15 +49,14 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h1");
         jlemail.putClientProperty("FlatLaf.styleClass", "h2");
-        
-        if (ingles  == false){
+
+        if (ingles == false) {  // cambia idoma segun seleccion
             cambiarIdiomaEs();
             System.out.println("CAMBIAR IDIOMA " + ingles);
         } else {
             cambiarIdiomaEn();
-             System.out.println("CAMBIAR IDIOMA " + ingles);
+            System.out.println("CAMBIAR IDIOMA " + ingles);
         }
-        
 
     }
 
@@ -227,37 +220,40 @@ public class RecuperarContrasena extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
-     * 
-     * @param evt 
+     * Evento cierra el panel al puls cancelar
+     * @param evt
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-     dispose();  //salir
+        dispose();  //salir
     }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
         mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
-    /** Evento comprueba que el correo sea valido , enviado un correo electronico para la recuperacion de la contraseña al usuario*/
+    /**
+     * Evento comprueba que el correo sea valido , enviado un correo electronico
+     * para la recuperacion de la contraseña al usuario
+     */
     private void jbaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbaceptarMouseClicked
-       
+
         String correoElectronico = jtemail.getText();
         MetodosContrasena metodo = new MetodosContrasena();
         // comprobaciones correo no sea nulo o este vacio o si no existe en la base de datos
-        if (correoElectronico != null || !correoElectronico.isEmpty() || MetodosRecuperarContrasena.existeEmail(correoElectronico) != false ) {
+        if (correoElectronico != null || !correoElectronico.isEmpty() || MetodosRecuperarContrasena.existeEmail(correoElectronico) != false) {
             if (metodo.esCorreoElectronicoValido(correoElectronico)) {
                 JOptionPane.showMessageDialog(null, "La dirección de correo electrónico es válida.");
-               
+
                 String nuevaContrasena = MetodosRecuperarContrasena.generarContrasenaAleatoria(); // genera una contreaseña nueva aleatoria
-                
+
                 String nuevoHash = MetodosContrasena.crearHashContrasena(nuevaContrasena, nuevaContrasena); // Genera un hash con la contraseña nueva
-                
+
                 MetodosRecuperarContrasena.guardarHashContraseña(correoElectronico, nuevoHash);
-                
+
                 EmailUtil.enviarCorreoRecuperacionContrasena(correoElectronico, nuevaContrasena);  //envia email con la nueva contraseña
-               
-                jtemail.setText("Email"); 
+
+                jtemail.setText("Email");
                 jtemail.setForeground(Color.gray);
-                
+
                 dispose();  //salir ;
             } else {
                 JOptionPane.showMessageDialog(null, "La dirección de correo electrónico no es válida o no existe.");
@@ -265,14 +261,14 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null, "No ha introducido ninguna dirección de correo electrónico.");
-             jtemail.setText("Email"); 
-             jtemail.setForeground(Color.gray);
+            jtemail.setText("Email");
+            jtemail.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jbaceptarMouseClicked
 
     private void jtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtemailActionPerformed
         mrc.comportamientoCampos(jtemail, "Email");
-        
+
     }//GEN-LAST:event_jtemailActionPerformed
 
     /**
@@ -310,46 +306,43 @@ public class RecuperarContrasena extends javax.swing.JFrame {
             }
         });
     }
-    
- 
+
     /**
-     * 
+     * Metodo crean la variables para que al leer el  archivo de texto traducido lo identifique
      */
     public void cambiarIdiomaEn() {
-       
-            Locale locale = new Locale("en");
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", locale);
-            String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
-            String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
-            String aceptar = resourceBundle.getString("Aceptar");
-            String cancelar = resourceBundle.getString("Cancelar");
-            jltitulo1.setText(titulo1);
-            jltitulo2.setText(titulo2);
-            jbaceptar.setText(aceptar);
-            jbcancelar.setText(cancelar);
-        
-    }
-    
-    /**
-     * 
-     */
-      private void cambiarIdiomaEs() {
-          
-           Locale locale = new Locale("en");
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", locale);
-            String titulo1 = resourceBundle.getString("EnterYourEmail");
-            String titulo2 = resourceBundle.getString("ToRecoverYourPassword");
-            String aceptar = resourceBundle.getString("Accept");
-            String cancelar = resourceBundle.getString("Cancel");
-            jltitulo1.setText(titulo1);
-            jltitulo2.setText(titulo2);
-            jbaceptar.setText(aceptar);
-            jbcancelar.setText(cancelar);
-            
 
-       
+        Locale locale = new Locale("en");
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_en", locale);
+        String titulo1 = resourceBundle.getString("IntroduzcaSuEmail");
+        String titulo2 = resourceBundle.getString("paraRecuperarLacontrasena");
+        String aceptar = resourceBundle.getString("Aceptar");
+        String cancelar = resourceBundle.getString("Cancelar");
+        jltitulo1.setText(titulo1);
+        jltitulo2.setText(titulo2);
+        jbaceptar.setText(aceptar);
+        jbcancelar.setText(cancelar);
+
     }
-    
+
+      /**
+     * Metodo crean la variables para que al leer el  archivo de texto traducido lo identifique
+     */
+    private void cambiarIdiomaEs() {
+
+        Locale locale = new Locale("en");
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages_es", locale);
+        String titulo1 = resourceBundle.getString("EnterYourEmail");
+        String titulo2 = resourceBundle.getString("ToRecoverYourPassword");
+        String aceptar = resourceBundle.getString("Accept");
+        String cancelar = resourceBundle.getString("Cancel");
+        jltitulo1.setText(titulo1);
+        jltitulo2.setText(titulo2);
+        jbaceptar.setText(aceptar);
+        jbcancelar.setText(cancelar);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelContaseña;
     private javax.swing.JButton jbaceptar;
@@ -361,5 +354,4 @@ public class RecuperarContrasena extends javax.swing.JFrame {
     private vista.PanelRound panelRound;
     // End of variables declaration//GEN-END:variables
 
-  
 }

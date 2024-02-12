@@ -21,10 +21,10 @@ import modelo.Vehiculos;
  * @author Javier Sanchez Gonzalez
  */
 public class Reserva extends javax.swing.JPanel {
-    
+
     MetodosInicio mi = new MetodosInicio();
     MetodosReservar mr = new MetodosReservar();
-    
+
     private final double precioPorHora = 0.25;
     private LocalDate fecha;
     private int horas;
@@ -48,19 +48,20 @@ public class Reserva extends javax.swing.JPanel {
         jbConfirmar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcalendario.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
+        jPdatosReserva.putClientProperty("FlatLaf.style", "arc: 15");
 
         // añadir a los jTextField iconos
         jtcoche.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtmatricula.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtplaza.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
-        
+
         jtplaza.setText(plaza);
         jtplaza.setForeground(Color.black);
         System.out.print(plaza);
 
         // Obtener información del vehículo asociado al usuario
         mi.devolverIdusuario(nombre, contrasena);
-        
+
         Vehiculos vehiculo = mr.devuelveDatosVehiculo(nombre, contrasena);
         if (vehiculo != null) {
             jtmatricula.setText(vehiculo.getMatricula());
@@ -70,7 +71,7 @@ public class Reserva extends javax.swing.JPanel {
             jtmatricula.setText("");
             jtcoche.setText("");
         }
-        
+
     }
 
     /**
@@ -389,7 +390,11 @@ public class Reserva extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Evento al pulsar el boton del calendario muestra la fecha actual
+     *
+     * @param evt
+     */
     private void jbcalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcalendarioActionPerformed
 
         // Obtener la fecha actual
@@ -399,12 +404,21 @@ public class Reserva extends javax.swing.JPanel {
         jbcalendario.setText(fechaFormateada);
 
     }//GEN-LAST:event_jbcalendarioActionPerformed
-
+    /**
+     * Evento se le pasa el metodo MostrarPanel eliminando el actual y mostrando
+     * el que se le pasa calculo de el tiempo de estacionamiento
+     *
+     * @param evt
+     */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
         Parking parking = new Parking();
         mostrarPanel(parking);
     }//GEN-LAST:event_jbcancelarActionPerformed
-
+    /**
+     * Evento comprobacion que los campos no este vacios para cofirmar y pagar
+     *
+     * @param evt
+     */
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
         // Verificar si los campos están vacíos
@@ -412,7 +426,7 @@ public class Reserva extends javax.swing.JPanel {
         jtmatricula.setForeground(Color.black);
         String coche = jtcoche.getText().trim();
         String matricula = jtmatricula.getText().trim();
-        
+
         String plaza = jtplaza.getText().trim();
         String fechaTexto = jbcalendario.getText().trim();
 
@@ -439,7 +453,7 @@ public class Reserva extends javax.swing.JPanel {
 
             // Realizar la reserva del aparcamiento
             // Calcular el total
-            double precioHora = 0.25;
+            double precioHora = 0.25f;
             double total = precioHora * horasSeleccionadas;
 
             // Mostrar el total en el campo correspondiente
@@ -448,10 +462,14 @@ public class Reserva extends javax.swing.JPanel {
             // Mostrar mensaje de reserva completada
             JOptionPane.showMessageDialog(this, "La reserva del aparcamiento se ha completado.", "Reserva completada", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
 
     }//GEN-LAST:event_jbConfirmarActionPerformed
-
+    /**
+     * Evento muestra en el campo texto horas segun la selecion del slider
+     *
+     * @param evt
+     */
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         horas = jSlider1.getValue();
         jTexthora.setText(String.valueOf(horas));
@@ -460,7 +478,11 @@ public class Reserva extends javax.swing.JPanel {
         total = precio + (precioPorHora * horas);
         jttotal.setText(String.valueOf(total));
     }//GEN-LAST:event_jSlider1StateChanged
-    
+    /**
+     * Metodo elimna el panel actual y muestra el que se le pasa
+     *
+     * @param panel
+     */
     private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
@@ -469,7 +491,7 @@ public class Reserva extends javax.swing.JPanel {
         jPanelTiket.revalidate();
         jPanelTiket.repaint();
     }
-    
+
     public void setPlazaSeleccionada(String plazaSeleccionada) {
         this.plaza = plazaSeleccionada;
     }

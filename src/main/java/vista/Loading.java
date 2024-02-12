@@ -4,9 +4,7 @@
  */
 package vista;
 
-
 import com.formdev.flatlaf.FlatDarkLaf;
-import controlador.MetodosBarra;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -14,20 +12,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.swing.SwingUtilities;
-
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez González
  */
 public class Loading extends javax.swing.JFrame {
+
     // Inicio de la variables
     int xMouse, yMouse;
-     private int nivelBateria = 101;
-    
-    
+    private int nivelBateria = 101;
 
     /**
      * Creates new form Loading
@@ -35,23 +29,21 @@ public class Loading extends javax.swing.JFrame {
     public Loading() {
         initComponents();
         setLocationRelativeTo(null);
-        
-        
+
         //jLTitulo.setFont(new java.awt.Font("Monoton", 1, 32));
         jLTitulo.putClientProperty("FlatLaf.styleClass", "h0");
-        jPBarraProgreso.putClientProperty("FlatLaf.style","arc: 15");
-        
+        jPBarraProgreso.putClientProperty("FlatLaf.style", "arc: 15");
+
         // Poner bordes redondos JFrame
         Shape forma = new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30);
         setShape(forma);
-        
+
         //Configuracion reloj 
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String horaActual = sdf.format(new Date());
         jLtime.setText(horaActual);
-        
-       
-         // Inicia una tarea programada para actualizar el nivel de la batería y el JLabel
+
+        // Inicia una tarea programada para actualizar el nivel de la batería y el JLabel
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -59,31 +51,30 @@ public class Loading extends javax.swing.JFrame {
                 updateBatteryLevel();
             }
         }, 0, 600000); // Actualiza cada segundo (1000 ms)
-        
+
     }
-    
-    
-    
-       private void updateBatteryLevel() {
+
+    private void updateBatteryLevel() {
         // Lógica para obtener el nivel de la batería (simulado aquí)
         int batteryLevel = obtenerNivelBateria();
 
-       // Actualiza el JLabel con el nivel de la batería
-        jLporcentajeBateria.setText( batteryLevel + "%");
-        
+        // Actualiza el JLabel con el nivel de la batería
+        jLporcentajeBateria.setText(batteryLevel + "%");
+
     }
 
-    // Método de ejemplo para obtener el nivel de la batería (simulado)
+    /**
+     * Método de ejemplo para obtener el nivel de la batería (simulado)
+     * @return 
+     */
     private int obtenerNivelBateria() {
-         //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
-      //  return atomicBatteryLevel.get();
-            if (nivelBateria > 0) {
-              nivelBateria--; // Disminuimos el nivel de batería en 1
-             }
-            return nivelBateria;
+        //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
+        //  return atomicBatteryLevel.get();
+        if (nivelBateria > 0) {
+            nivelBateria--; // Disminuimos el nivel de batería en 1
+        }
+        return nivelBateria;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -247,7 +238,7 @@ public class Loading extends javax.swing.JFrame {
     private void panelRoundBarraFondoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRoundBarraFondoMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse,y-yMouse);
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_panelRoundBarraFondoMouseDragged
 
     private void panelRoundBarraFondoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRoundBarraFondoMousePressed

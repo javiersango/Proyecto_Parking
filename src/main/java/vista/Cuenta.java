@@ -42,10 +42,12 @@ public class Cuenta extends javax.swing.JPanel {
 
         // Poner jTexfield y jBotton el radio
         jtmatricula.putClientProperty("FlatLaf.style", "arc: 15");
-
+        jtcontrasena.putClientProperty("FlatLaf.style", "arc: 15");
+        jtemail.putClientProperty("FlatLaf.style", "arc: 15");
         jbmodificar.putClientProperty("FlatLaf.style", "arc: 15");
         jbborrar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbcontrasena.putClientProperty("FlatLaf.style", "arc: 15");
 
         //jlcuentausuario.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
