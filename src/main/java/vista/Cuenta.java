@@ -11,7 +11,6 @@ import controlador.MetodosCuenta;
 import java.awt.Color;
 import controlador.MetodosRegistroCuenta;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 
 /**
  *
@@ -29,6 +28,7 @@ public class Cuenta extends javax.swing.JPanel {
     private boolean contrasenaValida;
     private String hashContrasena;
 
+
     // Metodos utilizados
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
     MetodosCuenta cuenta = new MetodosCuenta();
@@ -39,6 +39,8 @@ public class Cuenta extends javax.swing.JPanel {
      */
     public Cuenta() {
         initComponents();
+
+       
 
         // Poner jTexfield y jBotton el radio
         jtmatricula.putClientProperty("FlatLaf.style", "arc: 15");
@@ -635,8 +637,11 @@ public class Cuenta extends javax.swing.JPanel {
 
         if (contrasenaValida) {
             hashContrasena = mc.crearHashContrasena(nuevaContrasena, nuevaContrasena);
-            cuenta.modificarContraseña(email, hashContrasena);
-            JOptionPane.showMessageDialog(null, "Contraseña modificada correctamente.", "Modificación de contraseña", JOptionPane.INFORMATION_MESSAGE);
+            System.out.print(hashContrasena);
+            if (cuenta.modificarContraseña(email, hashContrasena)) {
+                JOptionPane.showMessageDialog(null, "Contraseña modificada correctamente.", "Modificación de contraseña", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "La contraseña no cumple con los requisitos mínimos.", "Contraseña no valida", JOptionPane.WARNING_MESSAGE);
         }

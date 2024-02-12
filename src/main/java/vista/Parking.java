@@ -964,6 +964,7 @@ public class Parking extends javax.swing.JPanel {
      * @param evt
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
+
         // Crea una instancia de InicioCuenta
         InicioCuenta ic = new InicioCuenta();
         // Muestra la ventana InicioCuenta

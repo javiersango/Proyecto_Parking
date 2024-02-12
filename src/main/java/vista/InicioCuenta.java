@@ -14,9 +14,15 @@ public class InicioCuenta extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistroCuenta
+     *
+     * @param ingles
+     */
+    /**
+     * Creates new form RegistroCuenta
      */
     public InicioCuenta() {
         initComponents();
+
         // Poner los jbonton  bordes redondeados
         jbcuenta.putClientProperty("FlatLaf.style", "arc: 15");
         jbreserva.putClientProperty("FlatLaf.style", "arc: 15");
@@ -185,6 +191,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         panelInicioCuenta.revalidate();
         panelInicioCuenta.repaint();
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

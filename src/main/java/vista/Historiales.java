@@ -10,6 +10,7 @@ import controlador.MetodosRegistroCuenta;
 import controlador.MetodosHistorial;
 import modelo.Historial;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Javier Sánchez Gonzalez
  */
 public class Historiales extends javax.swing.JPanel {
+
     // Clases utilizadas
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
 
@@ -29,7 +31,7 @@ public class Historiales extends javax.swing.JPanel {
 
         // Poner jTexfield y jBotton el radio
         jtmatricula.putClientProperty("FlatLaf.style", "arc: 15");
-        jtabla.putClientProperty("FlatLaf.style", "arc: 15");
+        // jtabla.putClientProperty("FlatLaf.style", "arc: 15");
 
         jbmostrar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
@@ -160,6 +162,8 @@ public class Historiales extends javax.swing.JPanel {
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jtabla.setBackground(new java.awt.Color(198, 212, 255));
+        jtabla.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        jtabla.setForeground(new java.awt.Color(0, 0, 0));
         jtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -273,15 +277,19 @@ public class Historiales extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jbcancelarActionPerformed
     /**
-     * Evento se le paa el metodo comportamientoCampos para que actue sobre los campos
-     * @param evt 
+     * Evento se le paa el metodo comportamientoCampos para que actue sobre los
+     * campos
+     *
+     * @param evt
      */
     private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
         mrc.comportamientoCampos(jtmatricula, "Matricula");
     }//GEN-LAST:event_jtmatriculaMouseClicked
     /**
-     * Metodo se le pasa el panel IncioCuenta  para que elmine el actual y muestre este.
-     * @param panel 
+     * Metodo se le pasa el panel IncioCuenta para que elmine el actual y
+     * muestre este.
+     *
+     * @param panel
      */
     private void mostrarPanel(InicioCuenta panel) {
         panel.setSize(428, 800);
@@ -294,6 +302,10 @@ public class Historiales extends javax.swing.JPanel {
 
     }
 
+    /**
+     * Metodo crean la variables para que al leer el archivo de texto traducido
+     * lo identifique
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgeleccion;

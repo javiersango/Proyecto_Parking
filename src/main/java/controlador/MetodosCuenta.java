@@ -21,34 +21,32 @@ public class MetodosCuenta {
      * de datos
      *
      * @param email String
-     * @param nuevaContrasena String
+     * @param hashContraseña String
      */
-    public void modificarContraseña(String email, String nuevaContrasena) {
-
+    public boolean modificarContraseña(String email, String contrasena) {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
+        try (SessionFactory sessionFactory = configuration.buildSessionFactory(); Session session = sessionFactory.openSession()) {
 
-        try {
-            transaction = session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
 
-            // Crear y ejecutar la consulta HQL para actualizar la contraseña del usuario
-            int rowCount = session.createQuery("UPDATE Usuarios SET contrasena = :nuevaContrasena WHERE email = :email")
-                    .setParameter("nuevaContrasena", nuevaContrasena)
+            int rowCount = session.createQuery("UPDATE Usuarios SET contrasena = :contrasena WHERE email = :email")
+                    .setParameter("contrasena", contrasena)
                     .setParameter("email", email)
                     .executeUpdate();
 
+            transaction.commit();
+
             if (rowCount > 0) {
-                transaction.commit();
                 System.out.println("Contraseña actualizada correctamente.");
+                return true;
             } else {
                 System.out.println("No se encontró ningún usuario con el correo electrónico especificado.");
+                return false;
             }
-        } catch (HibernateException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Error al intentar modificar la contraseña: " + e.getMessage());
+            return false;
         }
     }
-
 }

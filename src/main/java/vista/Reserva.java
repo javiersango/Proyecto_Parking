@@ -11,10 +11,9 @@ import controlador.MetodosReservar;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import modelo.Vehiculos;
 
 /**
  *
@@ -29,10 +28,16 @@ public class Reserva extends javax.swing.JPanel {
     private LocalDate fecha;
     private int horas;
     private double precio;
-    private double total;
     private String plaza;
     private final String nombre;
     private final String contrasena;
+    private String coche;
+    private String matricula;
+    private String fechaTexto;
+    private DateTimeFormatter formatter;
+    private String fechaFormateada;
+    private final float precioHora = 0.75f;
+    private double total = 0.0f;
 
     /**
      * Creates new form RegistroCuenta
@@ -44,6 +49,12 @@ public class Reserva extends javax.swing.JPanel {
         this.nombre = "";
         this.contrasena = "";
 
+        /*
+        coche = jtcoche.getText().trim();
+        matricula = jtmatricula.getText().trim();
+        plaza = jtplaza.getText().trim();
+        fechaTexto = jbcalendario.getText().trim();
+         */
         // Poner jTexfield y jBotton el radio
         jbConfirmar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcalendario.putClientProperty("FlatLaf.style", "arc: 15");
@@ -58,10 +69,9 @@ public class Reserva extends javax.swing.JPanel {
         jtplaza.setText(plaza);
         jtplaza.setForeground(Color.black);
         System.out.print(plaza);
-
+        /*
         // Obtener información del vehículo asociado al usuario
-       // mi.devolverIdusuario(nombre, contrasena);
-
+        // mi.devolverIdusuario(nombre, contrasena);
         Vehiculos vehiculo = mr.devuelveDatosVehiculo(nombre, contrasena);
         if (vehiculo != null) {
             jtmatricula.setText(vehiculo.getMatricula());
@@ -71,7 +81,7 @@ public class Reserva extends javax.swing.JPanel {
             jtmatricula.setText("");
             jtcoche.setText("");
         }
-
+         */
     }
 
     /**
@@ -110,7 +120,7 @@ public class Reserva extends javax.swing.JPanel {
 
         jPanelTiket.setBackground(new java.awt.Color(249, 251, 255));
         jPanelTiket.setMaximumSize(null);
-        jPanelTiket.setPreferredSize(new java.awt.Dimension(428, 800));
+        jPanelTiket.setPreferredSize(new java.awt.Dimension(430, 800));
 
         jltitulo2.setBackground(new java.awt.Color(249, 251, 255));
         jltitulo2.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
@@ -297,7 +307,7 @@ public class Reserva extends javax.swing.JPanel {
         jbConfirmar.setBackground(new java.awt.Color(43, 220, 61));
         jbConfirmar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbConfirmar.setForeground(new java.awt.Color(255, 255, 255));
-        jbConfirmar.setText("Confirmar y pagar");
+        jbConfirmar.setText("Confirmar");
         jbConfirmar.setToolTipText("Boton cofirmar el pago");
         jbConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbConfirmar.setPreferredSize(new java.awt.Dimension(124, 49));
@@ -347,7 +357,7 @@ public class Reserva extends javax.swing.JPanel {
                             .addGap(47, 47, 47)
                             .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanelTiketLayout.setVerticalGroup(
             jPanelTiketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +383,7 @@ public class Reserva extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 428, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -399,8 +409,8 @@ public class Reserva extends javax.swing.JPanel {
 
         // Obtener la fecha actual
         fecha = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); //  formato deseado
-        String fechaFormateada = fecha.format(formatter); // Formato fecha
+        formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); //  formato deseado
+        fechaFormateada = fecha.format(formatter); // Formato fecha
         jbcalendario.setText(fechaFormateada);
 
     }//GEN-LAST:event_jbcalendarioActionPerformed
@@ -421,48 +431,7 @@ public class Reserva extends javax.swing.JPanel {
      */
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
-        // Verificar si los campos están vacíos
-        jtcoche.setForeground(Color.black);
-        jtmatricula.setForeground(Color.black);
-        String coche = jtcoche.getText().trim();
-        String matricula = jtmatricula.getText().trim();
-
-        String plaza = jtplaza.getText().trim();
-        String fechaTexto = jbcalendario.getText().trim();
-
-        // Obtener la hora seleccionada del slider
-        int horasSeleccionadas = jSlider1.getValue();
-        jTexthora.setText(Integer.toString(horasSeleccionadas));
-
-        // Verificar si los campos y el total no están vacíos
-        if (coche.isEmpty() || matricula.isEmpty() || plaza.isEmpty() || fechaTexto.isEmpty()) {
-            // Mostrar mensaje de advertencia si algún campo está vacío
-            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-        } else if (horasSeleccionadas <= 0) {
-            // Mostrar mensaje de advertencia si no se ha seleccionado ninguna hora en el slider
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione al menos una hora.", "Horas no seleccionadas", JOptionPane.WARNING_MESSAGE);
-        } else {
-            // Verificar si la fecha tiene el formato correcto
-            try {
-                LocalDate.parse(fechaTexto, DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-            } catch (DateTimeParseException ex) {
-                // Mostrar mensaje de advertencia si la fecha no tiene el formato correcto
-                JOptionPane.showMessageDialog(this, "El formato de fecha es incorrecto. Utilice el formato yyyy/MM/dd.", "Formato de fecha incorrecto", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-
-            // Realizar la reserva del aparcamiento
-            // Calcular el total
-            double precioHora = 0.25f;
-            double total = precioHora * horasSeleccionadas;
-
-            // Mostrar el total en el campo correspondiente
-            jttotal.setText(String.format("%.2f", total));
-
-            // Mostrar mensaje de reserva completada
-            JOptionPane.showMessageDialog(this, "La reserva del aparcamiento se ha completado.", "Reserva completada", JOptionPane.INFORMATION_MESSAGE);
-        }
-
+        JOptionPane.showMessageDialog(this, "La reserva del aparcamiento se ha completado.", "Reserva completada", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_jbConfirmarActionPerformed
     /**
@@ -474,9 +443,16 @@ public class Reserva extends javax.swing.JPanel {
         horas = jSlider1.getValue();
         jTexthora.setText(String.valueOf(horas));
         jTexthora.setForeground(Color.black);
-        precio = Double.parseDouble(jttotal.getText());
-        total = precio + (precioPorHora * horas);
+        total = (precioPorHora * horas);
         jttotal.setText(String.valueOf(total));
+
+        jtcoche.setText("Coche");
+        jtmatricula.setText("1234ABD");
+        jtplaza.setText("P01");
+        jtcoche.setForeground(Color.black);
+        jtmatricula.setForeground(Color.black);
+        jtplaza.setForeground(Color.black);
+
     }//GEN-LAST:event_jSlider1StateChanged
     /**
      * Metodo elimna el panel actual y muestra el que se le pasa

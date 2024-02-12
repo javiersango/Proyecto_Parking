@@ -18,7 +18,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import controlador.MetodosContrasena;
 import controlador.MetodosInicio;
 
 /**
@@ -152,7 +151,7 @@ public class InicioSesion extends javax.swing.JFrame {
         panelRoundBarraFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelRoundBarraFondo.setForeground(new java.awt.Color(255, 255, 255));
         panelRoundBarraFondo.setMaximumSize(null);
-        panelRoundBarraFondo.setPreferredSize(new java.awt.Dimension(428, 44));
+        panelRoundBarraFondo.setPreferredSize(new java.awt.Dimension(430, 44));
         panelRoundBarraFondo.setRoundTopLeft(30);
         panelRoundBarraFondo.setRoundTopRight(30);
         panelRoundBarraFondo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -246,7 +245,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addComponent(jlespana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlingles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,7 +280,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         panelRound1.setBackground(new java.awt.Color(249, 251, 255));
         panelRound1.setMaximumSize(null);
-        panelRound1.setMinimumSize(new java.awt.Dimension(428, 44));
+        panelRound1.setMinimumSize(new java.awt.Dimension(430, 44));
         panelRound1.setRoundBottomLeft(30);
         panelRound1.setRoundBottomRight(30);
 
@@ -300,7 +299,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jPanelFondo.setBackground(new java.awt.Color(249, 251, 255));
         jPanelFondo.setMaximumSize(null);
-        jPanelFondo.setPreferredSize(new java.awt.Dimension(428, 740));
+        jPanelFondo.setPreferredSize(new java.awt.Dimension(430, 740));
 
         jLlogoParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
         jLlogoParking.setText("jLabel1");
@@ -501,7 +500,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        getContentPane().add(jPanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 430, 740));
+        getContentPane().add(jPanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -647,7 +646,7 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
 
-        RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
+        RegistroCuenta panelRegistroCuenta = new RegistroCuenta(ingles);
         mostrarPanel(panelRegistroCuenta);
 
     }//GEN-LAST:event_jbregistrarseActionPerformed

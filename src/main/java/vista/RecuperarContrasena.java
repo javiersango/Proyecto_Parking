@@ -16,7 +16,6 @@ import controlador.MetodosRecuperarContrasena;
 import controlador.MetodosContrasena;
 import controlador.MetodosRegistroCuenta;
 import controlador.EmailUtil;
-import javax.swing.JRootPane;
 
 /**
  *
@@ -24,7 +23,7 @@ import javax.swing.JRootPane;
  */
 public class RecuperarContrasena extends javax.swing.JFrame {
 
-    private boolean inglesRecuperarContrasena;
+    private final boolean inglesRecuperarContrasena;
 
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
 
