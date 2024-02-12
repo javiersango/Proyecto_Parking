@@ -19,7 +19,7 @@ public class MetodosReservar {
         HibernateUtil conexion = new HibernateUtil();  // instanciación de la conexión con la base de datos
         conexion.conectar();
         try (Session session = conexion.getSessionFactory().openSession()) {
-            // Creamos la consulta HQL para obtener el vehículo asociado al usuario por nombre y contraseña
+            // Consulta para  obtener el vehículo asociado al usuario por nombre y contraseña
             String hql = "SELECT v FROM Vehiculos v WHERE v.usuarios.nombre = :nombre AND v.usuarios.contrasena = :contrasena";
             Query<Vehiculos> query = session.createQuery(hql, Vehiculos.class);
             query.setParameter("nombre", nombre);
@@ -30,11 +30,10 @@ public class MetodosReservar {
             if (vehiculo != null) {
                 return vehiculo;
             } else {
-                return null; // No se encontró ningún vehículo para el usuario
+                return null;
             }
         } catch (Exception e) {
-            // Manejo de excepciones
-            e.printStackTrace();
+
             return null;
         }
     }

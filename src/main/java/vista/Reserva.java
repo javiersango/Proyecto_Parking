@@ -60,7 +60,7 @@ public class Reserva extends javax.swing.JPanel {
         System.out.print(plaza);
 
         // Obtener información del vehículo asociado al usuario
-        mi.devolverIdusuario(nombre, contrasena);
+       // mi.devolverIdusuario(nombre, contrasena);
 
         Vehiculos vehiculo = mr.devuelveDatosVehiculo(nombre, contrasena);
         if (vehiculo != null) {

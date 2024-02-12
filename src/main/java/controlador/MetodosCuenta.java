@@ -4,10 +4,8 @@
  */
 package controlador;
 
-import modelo.Usuarios;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -18,6 +16,13 @@ import org.hibernate.cfg.Configuration;
  */
 public class MetodosCuenta {
 
+    /**
+     * Metodo se le pasa el email y la contraseña para actualizarla en la pase
+     * de datos
+     *
+     * @param email String
+     * @param nuevaContrasena String
+     */
     public void modificarContraseña(String email, String nuevaContrasena) {
 
         Configuration configuration = new Configuration();
@@ -36,7 +41,6 @@ public class MetodosCuenta {
                     .executeUpdate();
 
             if (rowCount > 0) {
-                // Si se actualizó al menos una fila, confirmar la transacción
                 transaction.commit();
                 System.out.println("Contraseña actualizada correctamente.");
             } else {
@@ -45,7 +49,6 @@ public class MetodosCuenta {
         } catch (HibernateException e) {
             e.printStackTrace();
         }
-        } 
-        
-
     }
+
+}

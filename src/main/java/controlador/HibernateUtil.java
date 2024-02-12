@@ -3,11 +3,17 @@ package controlador;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ *
+ * @author Javier Sánchez González
+ */
 public class HibernateUtil {
 
     private final SessionFactory sessionFactory;
-// Contructor conexion hibernate
 
+    /**
+     * Contructor conexion hibernate
+     */
     public HibernateUtil() {
         // Crea una instancia de la configuración de Hibernate
         Configuration configuration = new Configuration();

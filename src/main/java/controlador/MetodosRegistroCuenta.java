@@ -19,13 +19,21 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez González
  */
 public class MetodosRegistroCuenta {
 
     /**
      * Metodo se le le pasan los datos de vehiculo y uuario para registra la
      * cuenta en la base de datos parking
+     *
+     * @param nombre String
+     * @param apellidos String
+     * @param email String
+     * @param matricula String
+     * @param contrasena password
+     * @param esCoche boolean
+     * @return
      */
     public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
@@ -38,18 +46,16 @@ public class MetodosRegistroCuenta {
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
 
-            // Crear una fábrica de sesiones de Hibernate
+            // Crea sesion 
             SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-            // Si la conexión es exitosa
+            // cimprobacion en terminal
             System.out.println("La conexión a la base de datos ad_parking ha sido exitosa.");
 
-            // Abrir una sesión de Hibernate
             Session sesion = sessionFactory.openSession();
             Transaction transaction = null;
 
             try {
-                // Comenzar una transacción
+
                 transaction = sesion.beginTransaction();
 
                 // Crear una instancia de Usuarios y configurar los datos
@@ -64,7 +70,7 @@ public class MetodosRegistroCuenta {
 
                 // Crear una instancia de Vehiculos y configurar los datos
                 Vehiculos vehiculo = new Vehiculos();
-                vehiculo.setUsuarios(usuario); // Establecer la relación con el usuario
+                vehiculo.setUsuarios(usuario); // Establece la relacion con el usuario
                 vehiculo.setMatricula(matricula);
                 vehiculo.setEsCoche(esCoche);
 
@@ -76,14 +82,14 @@ public class MetodosRegistroCuenta {
 
                 return true; // El registro se ha guardado correctamente
             } catch (Exception e) {
-                if (transaction != null) {  // El registro no se ha guardado porque el email ya existe.
+                if (transaction != null) {
                     transaction.rollback();
                     JOptionPane.showMessageDialog(null, "Error, el correo ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 e.printStackTrace();
                 return false;
             } finally {
-                // Cerrar la sesion de Hibernate
+                // Cerrar la sesion 
                 sesion.close();
             }
         }
@@ -92,9 +98,13 @@ public class MetodosRegistroCuenta {
     /**
      * Metodo para comprobar si ya existe un usuario con el mismo nombre,
      * matricula y contraseña
+     *
+     * @param nombre String
+     * @param email String
+     * @return
      */
     public static boolean usuarioExistente(String nombre, String email) {
-        // Configurar la conexión a la base de datos utilizando Hibernate
+        // Configurar la conexión 
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
@@ -103,10 +113,10 @@ public class MetodosRegistroCuenta {
         Transaction transaction = null;
 
         try {
-            // Comenzar una transacción
+
             transaction = session.beginTransaction();
 
-            // Consulta Hibernate para buscar un usuario con los mismos datos
+            // Consulta  buscar un usuario con los mismos datos
             String hql = "FROM Usuarios WHERE  email = :email";
             Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
             query.setParameter("email", email);
@@ -128,18 +138,27 @@ public class MetodosRegistroCuenta {
         }
     }
 
+    /**
+     * Metodo para modifica los datos del vehiculo simpre que exsita el email,
+     * se actualizara la matricula y si es coche o moto
+     *
+     * @param email String
+     * @param nuevaMatricula String
+     * @param nuevoEsCoche String
+     * @return devuelve true / false
+     */
     public static boolean modificarDatosVehiculo(String email, String nuevaMatricula, boolean nuevoEsCoche) {
-        // Configurar la conexión a la base de datos utilizando Hibernate
+        // Configurar la conexión 
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
         try {
-            // Comenzar una transacción
+
             transaction = session.beginTransaction();
 
-            // Consultar Hibernate para buscar un usuario con el antiguo correo electrónico
+            // Consultar  buscar un usuario con el correo electronico
             String hql = "FROM Usuarios WHERE email = :email";
             Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
             query.setParameter("email", email);
@@ -156,7 +175,7 @@ public class MetodosRegistroCuenta {
                 vehiculosQuery.setParameter("userId", userId);
                 List<Vehiculos> vehiculos = vehiculosQuery.getResultList();
 
-                // Actualizar cada vehículo asociado al usuario
+                // Actualizar  vehículo asociado al usuario
                 for (Vehiculos vehiculo : vehiculos) {
                     vehiculo.setMatricula(nuevaMatricula);
                     vehiculo.setEsCoche(nuevoEsCoche);
@@ -166,7 +185,7 @@ public class MetodosRegistroCuenta {
 
             // Commit de la transacción
             transaction.commit();
-            return true; // Los datos del vehículo se han actualizado correctamente
+            return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -179,9 +198,15 @@ public class MetodosRegistroCuenta {
         }
     }
 
+    /**
+     * Metodo se le pasa el correo electronico del usario, si existe se elimnara
+     *
+     * @param email String
+     * @return devuelve true / false
+     */
     public static boolean eliminarUsuario(String email) {
 
-        // Configurar la conexión a la base de datos utilizando Hibernate
+        // Configurar la conexión 
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         SessionFactory sessionFactory = configuration.buildSessionFactory();
@@ -190,10 +215,10 @@ public class MetodosRegistroCuenta {
         Transaction transaction = null;
 
         try {
-            // Comenzar una transacción
+
             transaction = session.beginTransaction();
 
-            // Consulta Hibernate para buscar un usuario con el mismo correo electrónico
+            // Consulta para buscar un usuario con el mismo correo electronico
             String hql = "FROM Usuarios WHERE email = :email";
             Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
             query.setParameter("email", email);
@@ -219,7 +244,11 @@ public class MetodosRegistroCuenta {
     }
 
     /**
-     * Metodo para manejar la visualización de los campos de texto
+     * Metodo para manejar la visualización de los campos de texto al introducir
+     * el texto o seleccinarlo
+     *
+     * @param textField
+     * @param placeholder
      */
     public void comportamientoCampos(JTextField textField, String placeholder) {
         if (textField.getText().equals(placeholder)) {
@@ -232,7 +261,10 @@ public class MetodosRegistroCuenta {
     }
 
     /**
-     * Metodo para validar si una matricula
+     * Metodo para validar si la matricula introducida es valida
+     *
+     * @param matricula String
+     * @return devuelve true / false
      */
     public static boolean validarMatricula(String matricula) {
         String regex = "^[0-9]{4}[A-Z]{3}$";

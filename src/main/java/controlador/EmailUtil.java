@@ -7,23 +7,27 @@ package controlador;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.Authenticator;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import vista.RecuperarContrasena;
 
 /**
  *
- * @author Alumno
+ * @author Javier Sánchez González
  */
 public class EmailUtil {
     
-    /** Metodo se utiliza para enviar un correo electronico utilizando seision JavaMail toma la direcciondel 
-     * correo electronico que lo envia , el asunto del correo y el cuerpo del correo  */
+    /**
+     * Metodo se utiliza para enviar un correo electronico utilizando seision JavaMail toma la direcciondel 
+     * correo electronico que lo envia , el asunto del correo y el cuerpo del correo
+     * @param session   se incia la sesion con la bse de datos
+     * @param toEmail   se le pasa el email
+     * @param subject
+     * @param body 
+     */
     public static void sendEmail(Session session, String toEmail, String subject, String body) {
    
         try {
@@ -47,7 +51,11 @@ public class EmailUtil {
       e.printStackTrace();
     }
   }
-    /** Metodo envia correo electronico con la nueva contraseña al correo electronico introducido */
+    /**
+     * Metodo envia correo electronico con la nueva contraseña al correo electronico introducido
+     * @param correoElectronico   se le el correo electronico para enviar la nueva contraseña
+     * @param nuevaContraseña   nueva contraseña generada
+     */
     public static void enviarCorreoRecuperacionContrasena(String correoElectronico, String nuevaContraseña) {
         final String fromEmail = "reservarparking@gmail.com";
         final String password = "unlwlfrrsfmcnumu";

@@ -574,7 +574,7 @@ public class InicioSesion extends javax.swing.JFrame {
             // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
             if (mi.comprobarInicioUsuario(nombre, contrasena)) {
 
-                mi.devolverIdusuario(nombre, contrasena);
+                
                 InicioCuenta panelInicioCuenta = new InicioCuenta();
                 mostrarPanel(panelInicioCuenta);
             } else {
