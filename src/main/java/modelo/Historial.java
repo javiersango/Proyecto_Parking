@@ -8,70 +8,70 @@ import java.sql.Date;
  */
 public class Historial implements java.io.Serializable {
 
-	private Integer id;
-	private Usuarios usuarios;
-	private String matricula;
-	private Date dia;
-	private Integer tiempoReservado;
-	private Double precio;
+    private Integer id;
+    private Usuarios usuarios;
+    private String matricula;
+    private Date dia;
+    private Integer tiempoReservado;
+    private Double precio;
 
-	public Historial() {
-	}
+    public Historial() {
+    }
 
-	public Historial(Usuarios usuarios, String matricula, Date dia, Integer tiempoReservado, Double precio) {
-		this.usuarios = usuarios;
-		this.matricula = matricula;
-		this.dia = dia;
-		this.tiempoReservado = tiempoReservado;
-		this.precio = precio;
-	}
+    public Historial(Usuarios usuarios, String matricula, Date dia, Integer tiempoReservado, Double precio) {
+        this.usuarios = usuarios;
+        this.matricula = matricula;
+        this.dia = dia;
+        this.tiempoReservado = tiempoReservado;
+        this.precio = precio;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Usuarios getUsuarios() {
-		return this.usuarios;
-	}
+    public Usuarios getUsuarios() {
+        return this.usuarios;
+    }
 
-	public void setUsuarios(Usuarios usuarios) {
-		this.usuarios = usuarios;
-	}
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
-	public String getMatricula() {
-		return this.matricula;
-	}
+    public String getMatricula() {
+        return this.matricula;
+    }
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
 
-	public Date getDia() {
-		return this.dia;
-	}
+    public Date getDia() {
+        return this.dia;
+    }
 
-	public void setDia(Date dia) {
-		this.dia = dia;
-	}
+    public void setDia(Date dia) {
+        this.dia = dia;
+    }
 
-	public Integer getTiempoReservado() {
-		return this.tiempoReservado;
-	}
+    public Integer getTiempoReservado() {
+        return this.tiempoReservado;
+    }
 
-	public void setTiempoReservado(Integer tiempoReservado) {
-		this.tiempoReservado = tiempoReservado;
-	}
+    public void setTiempoReservado(Integer tiempoReservado) {
+        this.tiempoReservado = tiempoReservado;
+    }
 
-	public Double getPrecio() {
-		return this.precio;
-	}
+    public Double getPrecio() {
+        return this.precio;
+    }
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
 
 }

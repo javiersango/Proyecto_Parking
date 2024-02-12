@@ -8,91 +8,91 @@ import java.sql.Date;
  */
 public class Reservas implements java.io.Serializable {
 
-	private Integer id;
-	private Vehiculos vehiculos;
-	private Integer numeroPlaza;
-	private Boolean reservada;
-	private Date fechaReservada;
-	private Integer horasReserva;
-	private Double precioPorMinuto;
-	private Double precioTotal;
+    private Integer id;
+    private Vehiculos vehiculos;
+    private Integer numeroPlaza;
+    private Boolean reservada;
+    private Date fechaReservada;
+    private Integer horasReserva;
+    private Double precioPorMinuto;
+    private Double precioTotal;
 
-	public Reservas() {
-	}
+    public Reservas() {
+    }
 
-	public Reservas(Vehiculos vehiculos, Integer numeroPlaza, Boolean reservada, Date fechaReservada,
-			Integer horasReserva, Double precioPorMinuto, Double precioTotal) {
-		this.vehiculos = vehiculos;
-		this.numeroPlaza = numeroPlaza;
-		this.reservada = reservada;
-		this.fechaReservada = fechaReservada;
-		this.horasReserva = horasReserva;
-		this.precioPorMinuto = precioPorMinuto;
-		this.precioTotal = precioTotal;
-	}
+    public Reservas(Vehiculos vehiculos, Integer numeroPlaza, Boolean reservada, Date fechaReservada,
+            Integer horasReserva, Double precioPorMinuto, Double precioTotal) {
+        this.vehiculos = vehiculos;
+        this.numeroPlaza = numeroPlaza;
+        this.reservada = reservada;
+        this.fechaReservada = fechaReservada;
+        this.horasReserva = horasReserva;
+        this.precioPorMinuto = precioPorMinuto;
+        this.precioTotal = precioTotal;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Vehiculos getVehiculos() {
-		return this.vehiculos;
-	}
+    public Vehiculos getVehiculos() {
+        return this.vehiculos;
+    }
 
-	public void setVehiculos(Vehiculos vehiculos) {
-		this.vehiculos = vehiculos;
-	}
+    public void setVehiculos(Vehiculos vehiculos) {
+        this.vehiculos = vehiculos;
+    }
 
-	public Integer getNumeroPlaza() {
-		return this.numeroPlaza;
-	}
+    public Integer getNumeroPlaza() {
+        return this.numeroPlaza;
+    }
 
-	public void setNumeroPlaza(Integer numeroPlaza) {
-		this.numeroPlaza = numeroPlaza;
-	}
+    public void setNumeroPlaza(Integer numeroPlaza) {
+        this.numeroPlaza = numeroPlaza;
+    }
 
-	public Boolean getReservada() {
-		return this.reservada;
-	}
+    public Boolean getReservada() {
+        return this.reservada;
+    }
 
-	public void setReservada(Boolean reservada) {
-		this.reservada = reservada;
-	}
+    public void setReservada(Boolean reservada) {
+        this.reservada = reservada;
+    }
 
-	public Date getFechaReservada() {
-		return this.fechaReservada;
-	}
+    public Date getFechaReservada() {
+        return this.fechaReservada;
+    }
 
-	public void setFechaReservada(Date fechaReservada) {
-		this.fechaReservada = fechaReservada;
-	}
+    public void setFechaReservada(Date fechaReservada) {
+        this.fechaReservada = fechaReservada;
+    }
 
-	public Integer getHorasReserva() {
-		return this.horasReserva;
-	}
+    public Integer getHorasReserva() {
+        return this.horasReserva;
+    }
 
-	public void setHorasReserva(Integer horasReserva) {
-		this.horasReserva = horasReserva;
-	}
+    public void setHorasReserva(Integer horasReserva) {
+        this.horasReserva = horasReserva;
+    }
 
-	public Double getPrecioPorMinuto() {
-		return this.precioPorMinuto;
-	}
+    public Double getPrecioPorMinuto() {
+        return this.precioPorMinuto;
+    }
 
-	public void setPrecioPorMinuto(Double precioPorMinuto) {
-		this.precioPorMinuto = precioPorMinuto;
-	}
+    public void setPrecioPorMinuto(Double precioPorMinuto) {
+        this.precioPorMinuto = precioPorMinuto;
+    }
 
-	public Double getPrecioTotal() {
-		return this.precioTotal;
-	}
+    public Double getPrecioTotal() {
+        return this.precioTotal;
+    }
 
-	public void setPrecioTotal(Double precioTotal) {
-		this.precioTotal = precioTotal;
-	}
+    public void setPrecioTotal(Double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
 
 }

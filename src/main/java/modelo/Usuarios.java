@@ -9,91 +9,91 @@ import java.util.Set;
  */
 public class Usuarios implements java.io.Serializable {
 
-	private Integer id;
-	private String nombre;
-	private String apellidos;
-	private String email;
-	private String contrasena;
-	private Set historials = new HashSet(0);
-	private Set historials_1 = new HashSet(0);
-	private Set vehiculoses = new HashSet(0);
+    private Integer id;
+    private String nombre;
+    private String apellidos;
+    private String email;
+    private String contrasena;
+    private Set historials = new HashSet(0);
+    private Set historials_1 = new HashSet(0);
+    private Set vehiculoses = new HashSet(0);
 
-	public Usuarios() {
-	}
+    public Usuarios() {
+    }
 
-	public Usuarios(String nombre, String apellidos, String email, String contrasena, Set historials, Set historials_1,
-			Set vehiculoses) {
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.email = email;
-		this.contrasena = contrasena;
-		this.historials = historials;
-		this.historials_1 = historials_1;
-		this.vehiculoses = vehiculoses;
-	}
+    public Usuarios(String nombre, String apellidos, String email, String contrasena, Set historials, Set historials_1,
+            Set vehiculoses) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.contrasena = contrasena;
+        this.historials = historials;
+        this.historials_1 = historials_1;
+        this.vehiculoses = vehiculoses;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getNombre() {
-		return this.nombre;
-	}
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getApellidos() {
-		return this.apellidos;
-	}
+    public String getApellidos() {
+        return this.apellidos;
+    }
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
 
-	public String getEmail() {
-		return this.email;
-	}
+    public String getEmail() {
+        return this.email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getContrasena() {
-		return this.contrasena;
-	}
+    public String getContrasena() {
+        return this.contrasena;
+    }
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 
-	public Set getHistorials() {
-		return this.historials;
-	}
+    public Set getHistorials() {
+        return this.historials;
+    }
 
-	public void setHistorials(Set historials) {
-		this.historials = historials;
-	}
+    public void setHistorials(Set historials) {
+        this.historials = historials;
+    }
 
-	public Set getHistorials_1() {
-		return this.historials_1;
-	}
+    public Set getHistorials_1() {
+        return this.historials_1;
+    }
 
-	public void setHistorials_1(Set historials_1) {
-		this.historials_1 = historials_1;
-	}
+    public void setHistorials_1(Set historials_1) {
+        this.historials_1 = historials_1;
+    }
 
-	public Set getVehiculoses() {
-		return this.vehiculoses;
-	}
+    public Set getVehiculoses() {
+        return this.vehiculoses;
+    }
 
-	public void setVehiculoses(Set vehiculoses) {
-		this.vehiculoses = vehiculoses;
-	}
+    public void setVehiculoses(Set vehiculoses) {
+        this.vehiculoses = vehiculoses;
+    }
 
 }

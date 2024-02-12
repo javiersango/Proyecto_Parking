@@ -20,7 +20,7 @@ import javax.swing.JRootPane;
 public class Cuenta extends javax.swing.JPanel {
 
     /**
-     * Variables
+     * Inicilizacion variables
      */
     private String email;
     private String matricula;
@@ -29,6 +29,7 @@ public class Cuenta extends javax.swing.JPanel {
     private boolean contrasenaValida;
     private String hashContrasena;
 
+    // Metodos utilizados
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
     MetodosCuenta cuenta = new MetodosCuenta();
     MetodosContrasena mc = new MetodosContrasena();
@@ -56,8 +57,7 @@ public class Cuenta extends javax.swing.JPanel {
         // añadir a los jTextField iconos
         jtemail.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/email.svg"));
         jtmatricula.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/matricula.svg"));
-        /*  String matricula = jtmatricula.setText();
-        matricula.LineReader.CAPITALIZE_WORD*/
+
     }
 
     /**
@@ -475,7 +475,10 @@ public class Cuenta extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     /**
-     * Evento nos lleva a la pantalla de incio de la cuenta
+     * Metodo verifica que los campos no esten vacios, llama al metodo
+     * modifcarVehiculo.
+     *
+     * @param evt
      */
     private void jbmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmodificarActionPerformed
 
@@ -498,13 +501,13 @@ public class Cuenta extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El vehículo no ha sido modificado", "Modificado", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-
     }//GEN-LAST:event_jbmodificarActionPerformed
 
     /**
-     * Evento si al introducir los datos son erroneos, al cancelar vuelven a
-     * incilizarse los campos
+     * Metodo comprueba que el campo no este vacio, le pasamos el email al
+     * metodo elimnarUsuario si eiste lo eliminara de la base de datos.
+     *
+     * @param evt
      */
     private void jbborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbborrarActionPerformed
 
@@ -527,7 +530,12 @@ public class Cuenta extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jbborrarActionPerformed
-
+    /**
+     * Metodo le pasa la accion de campo cuando se introducen los datos se
+     * comporte de una cierta manera del comportamientoCampos.
+     *
+     * @param evt
+     */
     private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
         mrc.comportamientoCampos(jtmatricula, "Matricula");
     }//GEN-LAST:event_jtmatriculaMouseClicked
@@ -540,11 +548,21 @@ public class Cuenta extends javax.swing.JPanel {
         mostrarPanel(ic);
 
     }//GEN-LAST:event_jbcancelarActionPerformed
-
+    /**
+     * Metodo le pasa la accion de campo cuando se introducen los datos se
+     * comporte de una cierta manera del comportamientoCampos.
+     *
+     * @param evt
+     */
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
         mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
-
+    /**
+     * Metodo en el que al seleccionar el checbox activa o desactiva las
+     * acciones necesarias para ese mentodo
+     *
+     * @param evt
+     */
     private void jCheckBoxEliminarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEliminarCuentaActionPerformed
         boolean seleciondoEliminar = jCheckBoxEliminarCuenta.isSelected();
 
@@ -571,7 +589,12 @@ public class Cuenta extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jCheckBoxEliminarCuentaActionPerformed
-
+    /**
+     * Metodo en el que al seleccionar el checbox activa o desactiva las
+     * acciones necesarias para ese mentodo
+     *
+     * @param evt
+     */
     private void jCheckBoxContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxContraseñaActionPerformed
         boolean seleciondoContrasena = jCheckBoxContraseña.isSelected();
 
@@ -595,7 +618,13 @@ public class Cuenta extends javax.swing.JPanel {
             jCheckBoxModificar.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBoxContraseñaActionPerformed
-
+    /**
+     * Metodo se le pasa la contraseña la al metodo ValdiarContraseña, nos
+     * devuelve y se la pasamos al metodo crearHasContraseña, genera un hash y
+     * lo pasarmos al metodo modificarContraseña para actualizarla.
+     *
+     * @param evt
+     */
     private void jbcontrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcontrasenaActionPerformed
 
         nuevaContrasena = String.valueOf(jtcontrasena.getPassword());
@@ -616,7 +645,12 @@ public class Cuenta extends javax.swing.JPanel {
     private void jtcontrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMouseClicked
         mrc.comportamientoCampos(jtcontrasena, "********");
     }//GEN-LAST:event_jtcontrasenaMouseClicked
-
+    /**
+     * Metodo en el que al seleccionar el checbox activa o desactiva las
+     * acciones necesarias para ese mentodo
+     *
+     * @param evt
+     */
     private void jCheckBoxModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxModificarActionPerformed
         boolean seleciondoModicar = jCheckBoxModificar.isSelected();
 
@@ -638,6 +672,12 @@ public class Cuenta extends javax.swing.JPanel {
             jCheckBoxContraseña.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBoxModificarActionPerformed
+    /**
+     * Metodo al que se le pase el panel de IncioCuenta, elimnanco el anterior y
+     * mostrando el nuevo panel
+     *
+     * @param panel
+     */
     private void mostrarPanel(InicioCuenta panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);

@@ -60,8 +60,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jbrecuperar.putClientProperty("FlatLaf.style", "arc: 15");
         jbregistrarse.putClientProperty("FlatLaf.style", "arc: 15");
 
-        //jltitulo1.setFont(new java.awt.Font("Stencyl",Font.PLAIN, 23)); // NOI18N
-        //jltitulo1.putClientProperty("FlatLaf.styleClass", "h0");
+
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
         jlo.putClientProperty("FlatLaf.styleClass", "h2");
 
@@ -84,7 +83,9 @@ public class InicioSesion extends javax.swing.JFrame {
         }, 0, 60000); // Actualiza cada segundo (1000 ms)
 
     }
-
+    /**
+     * Metodo  actuliza el nivel de la bateria
+     */
     private void updateBatteryLevel() {
         // Lógica para obtener el nivel de la batería (simulado aquí)
         int batteryLevel = obtenerNivelBateria();
@@ -94,7 +95,10 @@ public class InicioSesion extends javax.swing.JFrame {
 
     }
 
-    // Método de ejemplo para obtener el nivel de la batería (simulado)
+    /**
+     * Método de ejemplo para obtener el nivel de la batería (simulado)
+     * @return 
+     */
     private int obtenerNivelBateria() {
         //  AtomicInteger atomicBatteryLevel = new AtomicInteger((int) (Math.random() * 100));
         //  return atomicBatteryLevel.get();
@@ -543,10 +547,11 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jtnombreMousePressed
 
     /**
-     * Metodo comprobacion que no estan vacios los campos datos nombre y contraseña
+     * Metodo comprobacion que no estan vacios los campos datos nombre y contraseña, validar que los datos son correctos, incia sesion y muestra posibles 
+     * errores o los pasos que se van siguiendo.
      */
     private void jbiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiniciarActionPerformed
-        MetodosContrasena mc = new MetodosContrasena();
+       
         String nombre = jtnombre.getText();
         String contraseña = String.valueOf(jtcontrasena.getPassword());
 
@@ -595,20 +600,29 @@ public class InicioSesion extends javax.swing.JFrame {
             jtnombre.setForeground(new Color(0, 0, 0));
         }
     }//GEN-LAST:event_jtcontrasenaMousePressed
-
+    /**
+     * Evento se le pasa true / false si esta esta  en ingles o no , llama al metodo cambiar el idiomaIngles para cambiar el texto a ingles
+     * @param evt 
+     */
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
         ingles = true; // Cambia el estado a español
         cambiarIdiomaIngles();
 
 
     }//GEN-LAST:event_jlinglesMouseClicked
-
+     /**
+     * Evento se le pasa true / false si esta esta  en españo o no , llama al metodo cambiar el idiomaEspañol para cambiar el texto a español
+     * @param evt 
+     */
     private void jlespanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlespanaMouseClicked
         ingles = false; // Cambia el estado a ingles
         cambiarIdiomaEspanol();
 
     }//GEN-LAST:event_jlespanaMouseClicked
-
+    /**
+     * Evento se le pasa el metodo recuperarContraseña para que ponga el idioma seleccinado
+     * @param evt 
+     */
     private void jbrecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrecuperarActionPerformed
 
         // Crear una nueva instancia de RecuperarContraseña
@@ -617,7 +631,10 @@ public class InicioSesion extends javax.swing.JFrame {
         recuperarContrasena.setVisible(true);
 
     }//GEN-LAST:event_jbrecuperarActionPerformed
-
+    /**
+     * Evento se le pasa el metodo mostrarPanel para que muestre el panel de RegistroCuenta
+     * @param evt 
+     */
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
 
         RegistroCuenta panelRegistroCuenta = new RegistroCuenta();
@@ -653,7 +670,7 @@ public class InicioSesion extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         // FlatDarkLaf.setup();
-        FlatLightLaf.setup();
+        FlatLightLaf.setup();   // FlatLap utilizado
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -678,7 +695,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanelFondo.revalidate();
         jPanelFondo.repaint();
     }
-
+    /**
+     * Metodo llamamos a Locale y resourceBundle dode estan los archivos de traducion , con las variables creadas en este metodo
+     */
     public void cambiarIdiomaEspanol() {
         Locale.setDefault(new Locale("en"));
         // Cargar el idioma ingles
@@ -703,7 +722,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jbrecuperar.setText(bRecuperar);
 
     }
-
+ /**
+     * Metodo llamamos a Locale y resourceBundle dode estan los archivos de traducion , con las variables creadas en este metodo
+     */
     private void cambiarIdiomaIngles() {
         Locale.setDefault(new Locale("en"));
         ResourceBundle resourceBundle = ResourceBundle.getBundle("mensajes/messages");

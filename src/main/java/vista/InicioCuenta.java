@@ -4,15 +4,11 @@
  */
 package vista;
 
-import vista.InicioSesion;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
-
-
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez Gonzalez
  */
 public class InicioCuenta extends javax.swing.JPanel {
 
@@ -21,13 +17,11 @@ public class InicioCuenta extends javax.swing.JPanel {
      */
     public InicioCuenta() {
         initComponents();
-        
- 
+        // Poner los jbonton  bordes redondeados
+        jbcuenta.putClientProperty("FlatLaf.style", "arc: 15");
+        jbreserva.putClientProperty("FlatLaf.style", "arc: 15");
+        jbhistorial.putClientProperty("FlatLaf.style", "arc: 15");
 
-        jbcuenta.putClientProperty("FlatLaf.style","arc: 15");
-        jbreserva.putClientProperty("FlatLaf.style","arc: 15");
-        jbhistorial.putClientProperty("FlatLaf.style","arc: 15");
-        
     }
 
     /**
@@ -150,26 +144,42 @@ public class InicioCuenta extends javax.swing.JPanel {
             .addComponent(panelInicioCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Evento se le pasa el panel a mostrarPanel
+     *
+     * @param evt
+     */
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
-     Historiales panelHistorial = new Historiales();
+        Historiales panelHistorial = new Historiales();
         mostrarPanel(panelHistorial);
     }//GEN-LAST:event_jbhistorialActionPerformed
-
+    /**
+     * Evento se le pasa el panel a mostrarPanel
+     *
+     * @param evt
+     */
     private void jbcuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcuentaActionPerformed
-         Cuenta panelCuenta = new Cuenta();
-         mostrarPanel(panelCuenta );
+        Cuenta panelCuenta = new Cuenta();
+        mostrarPanel(panelCuenta);
     }//GEN-LAST:event_jbcuentaActionPerformed
-
+    /**
+     * Evento se le pasa el panel a mostrarPanel
+     *
+     * @param evt
+     */
     private void jbreservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservaActionPerformed
         Parking panelReserva = new Parking();
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbreservaActionPerformed
-
-     private void mostrarPanel(JPanel panel) {
+    /**
+     * Metodo elimna el panel actual y lo sustitulle con el que se le pase
+     *
+     * @param evt
+     */
+    private void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
-        panel.setLocation(0,0);  
-       
+        panel.setLocation(0, 0);
+
         panelInicioCuenta.removeAll();
         panelInicioCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         panelInicioCuenta.revalidate();

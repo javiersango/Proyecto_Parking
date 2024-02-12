@@ -9,60 +9,60 @@ import java.util.Set;
  */
 public class Vehiculos implements java.io.Serializable {
 
-	private Integer id;
-	private Usuarios usuarios;
-	private String matricula;
-	private Boolean esCoche;
-	private Set reservases = new HashSet(0);
+    private Integer id;
+    private Usuarios usuarios;
+    private String matricula;
+    private Boolean esCoche;
+    private Set reservases = new HashSet(0);
 
-	public Vehiculos() {
-	}
+    public Vehiculos() {
+    }
 
-	public Vehiculos(Usuarios usuarios, String matricula, Boolean esCoche, Set reservases) {
-		this.usuarios = usuarios;
-		this.matricula = matricula;
-		this.esCoche = esCoche;
-		this.reservases = reservases;
-	}
+    public Vehiculos(Usuarios usuarios, String matricula, Boolean esCoche, Set reservases) {
+        this.usuarios = usuarios;
+        this.matricula = matricula;
+        this.esCoche = esCoche;
+        this.reservases = reservases;
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Usuarios getUsuarios() {
-		return this.usuarios;
-	}
+    public Usuarios getUsuarios() {
+        return this.usuarios;
+    }
 
-	public void setUsuarios(Usuarios usuarios) {
-		this.usuarios = usuarios;
-	}
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
 
-	public String getMatricula() {
-		return this.matricula;
-	}
+    public String getMatricula() {
+        return this.matricula;
+    }
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
 
-	public Boolean getEsCoche() {
-		return this.esCoche;
-	}
+    public Boolean getEsCoche() {
+        return this.esCoche;
+    }
 
-	public void setEsCoche(Boolean esCoche) {
-		this.esCoche = esCoche;
-	}
+    public void setEsCoche(Boolean esCoche) {
+        this.esCoche = esCoche;
+    }
 
-	public Set getReservases() {
-		return this.reservases;
-	}
+    public Set getReservases() {
+        return this.reservases;
+    }
 
-	public void setReservases(Set reservases) {
-		this.reservases = reservases;
-	}
+    public void setReservases(Set reservases) {
+        this.reservases = reservases;
+    }
 
 }
