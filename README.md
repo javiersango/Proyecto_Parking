@@ -1,4 +1,4 @@
-# PROYECTO PARKING
+#  PARKING APP
 
 <div align="center">
   <h2>Javier Sánchez González</h2>
