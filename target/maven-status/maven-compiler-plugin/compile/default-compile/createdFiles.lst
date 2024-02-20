@@ -38,7 +38,6 @@ vista\RecuperarContrasena.class
 vista\Loading$4.class
 vista\PanelRound.class
 vista\RegistroCuenta$3.class
-vista\Historiales$4.class
 controlador\MetodosCuenta.class
 vista\InicioSesion$6.class
 vista\Historiales$1.class
@@ -63,11 +62,9 @@ vista\RegistroCuenta$8.class
 vista\RegistroCuenta$5.class
 vista\Loading$1.class
 modelo\Reservas.class
-vista\Cuenta$10.class
 vista\RecuperarContrasena$2.class
 modelo\Usuarios.class
 vista\InicioSesion$4.class
-vista\Cuenta$9.class
 vista\InicioCuenta$2.class
 vista\Reserva$4.class
 vista\Historiales$3.class

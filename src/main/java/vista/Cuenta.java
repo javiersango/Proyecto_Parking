@@ -47,7 +47,6 @@ public class Cuenta extends javax.swing.JPanel {
         jtcontrasena.putClientProperty("FlatLaf.style", "arc: 15");
         jtemail.putClientProperty("FlatLaf.style", "arc: 15");
         jbmodificar.putClientProperty("FlatLaf.style", "arc: 15");
-        jbborrar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcontrasena.putClientProperty("FlatLaf.style", "arc: 15");
 
@@ -55,6 +54,7 @@ public class Cuenta extends javax.swing.JPanel {
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h2");
         jltcontrasena.putClientProperty("FlatLaf.styleClass", "h0");
         jltitulo5.putClientProperty("FlatLaf.styleClass", "h0");
+        jltdatosNuevos.putClientProperty("FlatLaf.styleClass", "h0");
 
         jlmatricula.putClientProperty("FlatLaf.styleClass", "h3");
 
@@ -87,16 +87,14 @@ public class Cuenta extends javax.swing.JPanel {
         jCheckBoxMoto = new javax.swing.JCheckBox();
         jLiconMoto = new javax.swing.JLabel();
         jLiconCoche = new javax.swing.JLabel();
-        jbborrar = new javax.swing.JButton();
         jbcancelar = new javax.swing.JButton();
         jPanelEmail = new javax.swing.JPanel();
         jlemail = new javax.swing.JLabel();
         jtemail = new javax.swing.JTextField();
         jltitulo5 = new javax.swing.JLabel();
-        jCheckBoxEliminarCuenta = new javax.swing.JCheckBox();
         jCheckBoxContraseña = new javax.swing.JCheckBox();
         jbcontrasena = new javax.swing.JButton();
-        jltitulo6 = new javax.swing.JLabel();
+        jltdatosNuevos = new javax.swing.JLabel();
         jPanelContrasena = new javax.swing.JPanel();
         jlcontrasena = new javax.swing.JLabel();
         jtcontrasena = new javax.swing.JPasswordField();
@@ -209,18 +207,6 @@ public class Cuenta extends javax.swing.JPanel {
         jLiconCoche.setMinimumSize(null);
         jLiconCoche.setPreferredSize(new java.awt.Dimension(25, 19));
 
-        jbborrar.setBackground(new java.awt.Color(255, 0, 153));
-        jbborrar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbborrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbborrar.setText("Borrar cuenta");
-        jbborrar.setToolTipText("Botón borra la cuenta del usuario");
-        jbborrar.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbborrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbborrarActionPerformed(evt);
-            }
-        });
-
         jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
         jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,16 +265,6 @@ public class Cuenta extends javax.swing.JPanel {
         jltitulo5.setText("Introduce tu email");
         jltitulo5.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        buttonGroup1.add(jCheckBoxEliminarCuenta);
-        jCheckBoxEliminarCuenta.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jCheckBoxEliminarCuenta.setForeground(new java.awt.Color(0, 0, 0));
-        jCheckBoxEliminarCuenta.setText("Eliminar Cuenta?");
-        jCheckBoxEliminarCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxEliminarCuentaActionPerformed(evt);
-            }
-        });
-
         buttonGroup1.add(jCheckBoxContraseña);
         jCheckBoxContraseña.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jCheckBoxContraseña.setForeground(new java.awt.Color(0, 0, 0));
@@ -311,11 +287,11 @@ public class Cuenta extends javax.swing.JPanel {
             }
         });
 
-        jltitulo6.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
-        jltitulo6.setForeground(new java.awt.Color(25, 35, 66));
-        jltitulo6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo6.setText("Introduce los datos nuevos");
-        jltitulo6.setPreferredSize(new java.awt.Dimension(273, 30));
+        jltdatosNuevos.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
+        jltdatosNuevos.setForeground(new java.awt.Color(25, 35, 66));
+        jltdatosNuevos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltdatosNuevos.setText("Introduce los datos nuevos");
+        jltdatosNuevos.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jPanelContrasena.setBackground(new java.awt.Color(249, 251, 255));
         jPanelContrasena.setPreferredSize(new java.awt.Dimension(335, 82));
@@ -370,56 +346,49 @@ public class Cuenta extends javax.swing.JPanel {
         panelCuentaLayout.setHorizontalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCuentaLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jPanelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelCuentaLayout.createSequentialGroup()
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCuentaLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jlcuentausuario, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelCuentaLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
                                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jbborrar, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-                                        .addComponent(jbmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jbcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jPanelContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                                        .addGroup(panelCuentaLayout.createSequentialGroup()
-                                            .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLiconCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jCheckBoxCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(27, 27, 27)
-                                            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jltitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCuentaLayout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jCheckBoxEliminarCuenta)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBoxContraseña)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBoxModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jltcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jlcuentausuario, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelCuentaLayout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jPanelContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
+                                                .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLiconCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jCheckBoxCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(27, 27, 27)
+                                                .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jbcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jbmodificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jltitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(panelCuentaLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jCheckBoxContraseña)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47))))
+                    .addComponent(jltcontrasena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jltdatosNuevos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(panelCuentaLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jPanelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCuentaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jltitulo6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         panelCuentaLayout.setVerticalGroup(
             panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,17 +400,18 @@ public class Cuenta extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxContraseña)
-                    .addComponent(jCheckBoxEliminarCuenta)
                     .addComponent(jCheckBoxModificar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jltitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jPanelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jPanelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(jltdatosNuevos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelCuentaLayout.createSequentialGroup()
@@ -452,20 +422,13 @@ public class Cuenta extends javax.swing.JPanel {
                         .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBoxCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jbcontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(jbmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbborrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-            .addGroup(panelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCuentaLayout.createSequentialGroup()
-                    .addContainerGap(388, Short.MAX_VALUE)
-                    .addComponent(jltitulo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(382, 382, 382)))
+                .addGap(82, 82, 82))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -508,34 +471,7 @@ public class Cuenta extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jbmodificarActionPerformed
 
-    /**
-     * Metodo comprueba que el campo no este vacio, le pasamos el email al
-     * metodo elimnarUsuario si eiste lo eliminara de la base de datos.
-     *
-     * @param evt
-     */
-    private void jbborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbborrarActionPerformed
-
-        email = jtemail.getText();
-
-        if (jtemail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (MetodosRegistroCuenta.eliminarUsuario(email)) {
-                JOptionPane.showMessageDialog(null, "Usuario eliminado", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario no ha sido eliminado", "Eliminado", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-        jtmatricula.setText("Matricula");
-        jtmatricula.setForeground(Color.gray);
-        jtemail.setText("Email");
-        jtemail.setForeground(Color.gray);
-
-
-    }//GEN-LAST:event_jbborrarActionPerformed
-    /**
+   /**
      * Metodo le pasa la accion de campo cuando se introducen los datos se
      * comporte de una cierta manera del comportamientoCampos.
      *
@@ -562,39 +498,8 @@ public class Cuenta extends javax.swing.JPanel {
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
         mrc.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
-    /**
-     * Metodo en el que al seleccionar el checbox activa o desactiva las
-     * acciones necesarias para ese mentodo
-     *
-     * @param evt
-     */
-    private void jCheckBoxEliminarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEliminarCuentaActionPerformed
-        boolean seleciondoEliminar = jCheckBoxEliminarCuenta.isSelected();
 
-        if (seleciondoEliminar) {
-            jtmatricula.setEnabled(false);
-            jCheckBoxMoto.setEnabled(false);
-            jCheckBoxCoche.setEnabled(false);
-            jbmodificar.setEnabled(false);
-            jbcontrasena.setEnabled(false);
-            jtcontrasena.setEnabled(false);
-
-            // Desactivar los otros checkbox
-            jCheckBoxContraseña.setEnabled(false);
-            jCheckBoxModificar.setEnabled(false);
-        } else {
-            jtmatricula.setEnabled(true);
-            jCheckBoxMoto.setEnabled(true);
-            jCheckBoxCoche.setEnabled(true);
-            jbmodificar.setEnabled(true);
-            // Habilitar solo el checkbox correspondiente a la acción seleccionada
-            jCheckBoxContraseña.setEnabled(true);
-            jCheckBoxModificar.setEnabled(true);
-        }
-
-
-    }//GEN-LAST:event_jCheckBoxEliminarCuentaActionPerformed
-    /**
+   /**
      * Metodo en el que al seleccionar el checbox activa o desactiva las
      * acciones necesarias para ese mentodo
      *
@@ -608,10 +513,9 @@ public class Cuenta extends javax.swing.JPanel {
             jCheckBoxMoto.setEnabled(false);
             jCheckBoxCoche.setEnabled(false);
             jbmodificar.setEnabled(false);
-            jbborrar.setEnabled(false);
+          
 
             // Desactivar los otros checkbox
-            jCheckBoxEliminarCuenta.setEnabled(false);
             jCheckBoxModificar.setEnabled(false);
         } else {
             jtmatricula.setEnabled(true);
@@ -619,7 +523,6 @@ public class Cuenta extends javax.swing.JPanel {
             jCheckBoxCoche.setEnabled(true);
             jbmodificar.setEnabled(true);
             // Habilitar solo el checkbox correspondiente a la acción seleccionada
-            jCheckBoxEliminarCuenta.setEnabled(true);
             jCheckBoxModificar.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBoxContraseñaActionPerformed
@@ -665,18 +568,14 @@ public class Cuenta extends javax.swing.JPanel {
         if (seleciondoModicar) {
             jbcontrasena.setEnabled(false);
             jtcontrasena.setEnabled(false);
-            jbborrar.setEnabled(false);
 
             // Desactivar los otros checkbox
-            jCheckBoxEliminarCuenta.setEnabled(false);
             jCheckBoxContraseña.setEnabled(false);
         } else {
-            jbborrar.setEnabled(true);
             jbcontrasena.setEnabled(true);
             jtcontrasena.setEnabled(true);
 
             // Habilitar solo el checkbox correspondiente a la acción seleccionada
-            jCheckBoxEliminarCuenta.setEnabled(true);
             jCheckBoxContraseña.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBoxModificarActionPerformed
@@ -703,7 +602,6 @@ public class Cuenta extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox jCheckBoxCoche;
     private javax.swing.JCheckBox jCheckBoxContraseña;
-    private javax.swing.JCheckBox jCheckBoxEliminarCuenta;
     private javax.swing.JCheckBox jCheckBoxModificar;
     private javax.swing.JCheckBox jCheckBoxMoto;
     private javax.swing.JLabel jLiconCoche;
@@ -711,7 +609,6 @@ public class Cuenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelContrasena;
     private javax.swing.JPanel jPanelEmail;
     private javax.swing.JPanel jPanelMatricula;
-    private javax.swing.JButton jbborrar;
     private javax.swing.JButton jbcancelar;
     private javax.swing.JButton jbcontrasena;
     private javax.swing.JButton jbmodificar;
@@ -720,9 +617,9 @@ public class Cuenta extends javax.swing.JPanel {
     private javax.swing.JLabel jlemail;
     private javax.swing.JLabel jlmatricula;
     private javax.swing.JLabel jltcontrasena;
+    private javax.swing.JLabel jltdatosNuevos;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo5;
-    private javax.swing.JLabel jltitulo6;
     private javax.swing.JPasswordField jtcontrasena;
     private javax.swing.JTextField jtemail;
     private javax.swing.JTextField jtmatricula;

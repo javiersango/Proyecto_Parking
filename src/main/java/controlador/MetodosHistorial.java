@@ -22,14 +22,13 @@ public class MetodosHistorial {
      * @param matricula  String  se pasa la matricula del vehiculo
      * @return un listado con los datos fecha, duracion, precio del aparcamiento
      */
-    public static List<Historial> buscarMatricula(String matricula) {
+    public static List<Historial> buscarMatricula() {
         HibernateUtil conexion = new HibernateUtil();  // Instanciación de la conexion con la base de datos
         conexion.conectar();
         Session sesion = conexion.getSessionFactory().openSession();  // Generamos una conexionn o sesion
 
         try {
-            Query<Historial> query = sesion.createQuery("FROM Historial WHERE matricula = :matri", Historial.class);
-            query.setParameter("matri", matricula);
+            Query<Historial> query = sesion.createQuery("FROM Historial ", Historial.class);
             List<Historial> historiales = query.list();
             return historiales;
         } catch (Exception e) {
