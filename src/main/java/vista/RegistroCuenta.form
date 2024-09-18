@@ -502,7 +502,7 @@
               <Color blue="42" green="23" red="19" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Inicie sesi&#xf3;n o reg&#xed;strese"/>
+            <Property name="text" type="java.lang.String" value="Reg&#xed;strese"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[273, 30]"/>
             </Property>

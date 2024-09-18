@@ -6,7 +6,6 @@ package controlador;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -20,9 +19,12 @@ public class MetodosCuenta {
      * Metodo se le pasa el email y la contraseña para actualizarla en la pase
      * de datos
      *
-     * @param email String
-     * @param hashContraseña String
+     * @param email
+     * @param contrasena
+     * @return  boolean
      */
+    
+
     public boolean modificarContraseña(String email, String contrasena) {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");

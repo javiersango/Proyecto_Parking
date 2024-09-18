@@ -104,7 +104,9 @@ public class Loading extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRoundFondo.setBackground(new java.awt.Color(249, 251, 255));
-        panelRoundFondo.setPreferredSize(new java.awt.Dimension(428, 800));
+        panelRoundFondo.setMaximumSize(null);
+        panelRoundFondo.setMinimumSize(null);
+        panelRoundFondo.setPreferredSize(new java.awt.Dimension(428, 760));
         panelRoundFondo.setRoundBottomLeft(30);
         panelRoundFondo.setRoundBottomRight(30);
         panelRoundFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,7 +129,7 @@ public class Loading extends javax.swing.JFrame {
         jLTitulo.setPreferredSize(new java.awt.Dimension(273, 30));
         panelRoundFondo.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 506, -1, 34));
 
-        getContentPane().add(panelRoundFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, -1, 850));
+        getContentPane().add(panelRoundFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, -1, -1));
 
         panelRoundBarraFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelRoundBarraFondo.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,10 +153,12 @@ public class Loading extends javax.swing.JFrame {
 
         jLsignal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/Mobile Signal.png"))); // NOI18N
         jLsignal.setText("jLabel2");
+        jLsignal.setToolTipText("Cobertura");
         jLsignal.setPreferredSize(new java.awt.Dimension(17, 13));
 
         jLwifi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/Wifi.png"))); // NOI18N
         jLwifi.setText("jLabel2");
+        jLwifi.setToolTipText("Wifi");
         jLwifi.setPreferredSize(new java.awt.Dimension(17, 13));
 
         jLiconoBateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/Battery.png"))); // NOI18N
@@ -169,6 +173,7 @@ public class Loading extends javax.swing.JFrame {
         jLcierre.setForeground(new java.awt.Color(0, 0, 0));
         jLcierre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLcierre.setText("X");
+        jLcierre.setToolTipText("Cerrar");
         jLcierre.setPreferredSize(new java.awt.Dimension(17, 17));
         jLcierre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -195,6 +200,7 @@ public class Loading extends javax.swing.JFrame {
             .addComponent(jLcierre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLtime.setToolTipText("Hora");
         jLtime.setPreferredSize(new java.awt.Dimension(17, 13));
 
         javax.swing.GroupLayout panelRoundBarraFondoLayout = new javax.swing.GroupLayout(panelRoundBarraFondo);

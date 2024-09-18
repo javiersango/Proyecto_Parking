@@ -312,7 +312,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo3.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo3.setForeground(new java.awt.Color(25, 35, 66));
         jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo3.setText("Inicie sesión o regístrese");
+        jltitulo3.setText("Regístrese");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jCheckBoxCoche.setBackground(new java.awt.Color(249, 251, 255));
