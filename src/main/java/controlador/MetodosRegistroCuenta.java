@@ -64,6 +64,7 @@ public class MetodosRegistroCuenta {
                 usuario.setApellidos(apellidos);
                 usuario.setEmail(email);
                 usuario.setContrasena(contrasena);
+                
 
                 // Guardar el usuario en la base de datos
                 sesion.save(usuario);

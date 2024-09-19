@@ -117,6 +117,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jLiconMoto = new javax.swing.JLabel();
         jLiconCoche = new javax.swing.JLabel();
         jbborrarDatos = new javax.swing.JButton();
+        jltvolver = new javax.swing.JLabel();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -133,10 +134,10 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jltitulo1.setText("REGISTRA TU CUENTA");
         jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jltitulo2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
+        jltitulo2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jltitulo2.setForeground(new java.awt.Color(39, 59, 244));
         jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo2.setText("ya registraste tu cuenta?");
+        jltitulo2.setText("volver");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
 
         jbregistro.setBackground(new java.awt.Color(43, 220, 61));
@@ -431,6 +432,14 @@ public class RegistroCuenta extends javax.swing.JPanel {
             }
         });
 
+        jltvolver.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jltvolver.setForeground(new java.awt.Color(51, 51, 51));
+        jltvolver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltvolver.setText("ya registraste tu cuenta? ");
+        jltvolver.setToolTipText("Volver pantalla anterior");
+        jltvolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jltvolver.setPreferredSize(new java.awt.Dimension(273, 30));
+
         javax.swing.GroupLayout panelRegistroCuentaLayout = new javax.swing.GroupLayout(panelRegistroCuenta);
         panelRegistroCuenta.setLayout(panelRegistroCuentaLayout);
         panelRegistroCuentaLayout.setHorizontalGroup(
@@ -438,51 +447,53 @@ public class RegistroCuenta extends javax.swing.JPanel {
             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
                 .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                                .addGap(34, 34, 34)
                                 .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistroCuentaLayout.createSequentialGroup()
+                                            .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLiconCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jCheckBoxCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(27, 27, 27)
+                                            .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jPanelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                        .addComponent(jPanelContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                        .addComponent(jPanelContrasena1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                        .addComponent(jPanelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                        .addComponent(jPanelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                                     .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistroCuentaLayout.createSequentialGroup()
-                                                    .addComponent(jPanelMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLiconCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jCheckBoxCoche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(27, 27, 27)
-                                                    .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jCheckBoxMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLiconMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addComponent(jPanelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                                .addComponent(jPanelContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                                .addComponent(jPanelContrasena1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                                .addComponent(jPanelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                                                .addComponent(jPanelApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
-                                            .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
-                                                .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jbborrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistroCuentaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jltitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                                        .addComponent(jbregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbborrarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistroCuentaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jltvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
         );
         panelRegistroCuentaLayout.setVerticalGroup(
             panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(4, 4, 4)
+                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jltvolver, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jltitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -702,6 +713,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
     private javax.swing.JLabel jltitulo1;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
+    private javax.swing.JLabel jltvolver;
     private javax.swing.JTextField jtapellidos;
     private javax.swing.JPasswordField jtcontrasena;
     private javax.swing.JTextField jtemail;

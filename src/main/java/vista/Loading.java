@@ -104,8 +104,6 @@ public class Loading extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelRoundFondo.setBackground(new java.awt.Color(249, 251, 255));
-        panelRoundFondo.setMaximumSize(null);
-        panelRoundFondo.setMinimumSize(null);
         panelRoundFondo.setPreferredSize(new java.awt.Dimension(428, 760));
         panelRoundFondo.setRoundBottomLeft(30);
         panelRoundFondo.setRoundBottomRight(30);
