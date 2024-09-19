@@ -128,7 +128,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jLtime = new javax.swing.JLabel();
         jlingles = new javax.swing.JLabel();
         jlespana = new javax.swing.JLabel();
-        panelRound1 = new vista.PanelRound();
         jPanelFondo = new javax.swing.JPanel();
         jLlogoParking = new javax.swing.JLabel();
         jltitulo1 = new javax.swing.JLabel();
@@ -277,25 +276,6 @@ public class InicioSesion extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelRoundBarraFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 41));
-
-        panelRound1.setBackground(new java.awt.Color(249, 251, 255));
-        panelRound1.setMaximumSize(null);
-        panelRound1.setMinimumSize(new java.awt.Dimension(430, 44));
-        panelRound1.setRoundBottomLeft(30);
-        panelRound1.setRoundBottomRight(30);
-
-        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
-        panelRound1.setLayout(panelRound1Layout);
-        panelRound1Layout.setHorizontalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
-        panelRound1Layout.setVerticalGroup(
-            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 780, 430, 20));
 
         jPanelFondo.setBackground(new java.awt.Color(249, 251, 255));
         jPanelFondo.setMaximumSize(null);
@@ -792,7 +772,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JPanel jpanelContrasena;
     private javax.swing.JPasswordField jtcontrasena;
     private javax.swing.JTextField jtnombre;
-    private vista.PanelRound panelRound1;
     private vista.PanelRound panelRoundBarraFondo;
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables

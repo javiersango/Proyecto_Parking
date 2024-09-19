@@ -25,6 +25,7 @@ vista\Cuenta$6.class
 vista\Parking$2.class
 controlador\MetodosRegistroCuenta.class
 vista\RegistroCuenta$2.class
+vista\RegistroCuenta$9.class
 vista\InicioSesion$7.class
 controlador\Load.class
 vista\RecuperarContrasena$5.class
