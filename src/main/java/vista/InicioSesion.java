@@ -169,10 +169,12 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jLsignal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/Mobile Signal.png"))); // NOI18N
         jLsignal.setText("jLabel2");
+        jLsignal.setToolTipText("Cobertura");
         jLsignal.setPreferredSize(new java.awt.Dimension(17, 13));
 
         jLwifi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/Wifi.png"))); // NOI18N
         jLwifi.setText("jLabel2");
+        jLwifi.setToolTipText("Wifi");
         jLwifi.setPreferredSize(new java.awt.Dimension(17, 13));
 
         jLiconoBateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/Battery.png"))); // NOI18N
@@ -187,6 +189,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jLcierre.setForeground(new java.awt.Color(0, 0, 0));
         jLcierre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLcierre.setText("X");
+        jLcierre.setToolTipText("Cerrar");
         jLcierre.setPreferredSize(new java.awt.Dimension(17, 17));
         jLcierre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -219,6 +222,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jlingles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlingles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/ingles.png"))); // NOI18N
+        jlingles.setToolTipText("Ingles");
         jlingles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlinglesMouseClicked(evt);
@@ -227,6 +231,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         jlespana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlespana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/espana.png"))); // NOI18N
+        jlespana.setToolTipText("Español");
         jlespana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlespanaMouseClicked(evt);
@@ -272,14 +277,13 @@ public class InicioSesion extends javax.swing.JFrame {
                                 .addComponent(jLwifi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLsignal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelRoundBarraFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 41));
 
         jPanelFondo.setBackground(new java.awt.Color(249, 251, 255));
-        jPanelFondo.setMaximumSize(null);
-        jPanelFondo.setPreferredSize(new java.awt.Dimension(430, 740));
+        jPanelFondo.setPreferredSize(new java.awt.Dimension(430, 800));
 
         jLlogoParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
         jLlogoParking.setText("jLabel1");
@@ -429,58 +433,55 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanelFondo.setLayout(jPanelFondoLayout);
         jPanelFondoLayout.setHorizontalGroup(
             jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
-                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelFondoLayout.createSequentialGroup()
-                        .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jpanelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                        .addGap(47, 47, 47)
-                                        .addComponent(jbrecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(jbiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jbregistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLlogoParking, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 19, Short.MAX_VALUE))
-                    .addComponent(jltitulo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(37, 37, 37)
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelFondoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLlogoParking, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelFondoLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelFondoLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jpanelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelFondoLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jbiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jbregistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelFondoLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jbrecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelFondoLayout.setVerticalGroup(
             jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLlogoParking, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
+                .addComponent(jLlogoParking, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jPanelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jpanelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbregistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbregistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jbrecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addComponent(jbrecuperar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(jPanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, 740));
+        getContentPane().add(jPanelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -747,6 +748,10 @@ public class InicioSesion extends javax.swing.JFrame {
         String contrasena = jtcontrasena.getText();
         return contrasena;
     }
+    
+      JPanel getPanelfondo() {
+       return jPanelFondo;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -775,5 +780,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private vista.PanelRound panelRoundBarraFondo;
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables
+
+  
 
 }

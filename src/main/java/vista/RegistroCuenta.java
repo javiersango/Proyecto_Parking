@@ -441,6 +441,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jbCancelar.setForeground(new java.awt.Color(255, 3, 3));
         jbCancelar.setText("Cancelar");
         jbCancelar.setToolTipText("Vovler pantalla anterior");
+        jbCancelar.setBorderPainted(false);
         jbCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbCancelar.setPreferredSize(new java.awt.Dimension(124, 49));
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -648,7 +649,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         InicioSesion is = new InicioSesion();
-        //mostrarPanel(is);
+        mostrarPanel(is.getPanelfondo());
     }//GEN-LAST:event_jbCancelarActionPerformed
     /**
      * Metodo elimina el panel actual y nos muestra el panel que se le pase
