@@ -280,7 +280,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtmatricula.setForeground(new java.awt.Color(153, 153, 153));
         jtmatricula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtmatricula.setText("Matricula");
-        jtmatricula.setToolTipText("Introduce una matricula valida 4 numeros y 3 letras en mayusculas");
+        jtmatricula.setToolTipText("Formato matriculo 0000 XXX");
         jtmatricula.setPreferredSize(new java.awt.Dimension(335, 50));
         jtmatricula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -379,7 +379,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtrepetirContrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jtrepetirContrasena.setForeground(new java.awt.Color(153, 153, 153));
         jtrepetirContrasena.setText("********");
-        jtrepetirContrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
+        jtrepetirContrasena.setToolTipText("Repetir contraseña introducida");
         jtrepetirContrasena.setPreferredSize(new java.awt.Dimension(335, 50));
         jtrepetirContrasena.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -588,8 +588,8 @@ public class RegistroCuenta extends javax.swing.JPanel {
                 if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, jtemail.getText(), jtmatricula.getText(), hash, esCoche)) {
                     JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
 
-                    InicioCuenta inicio = new InicioCuenta();
-                    mostrarPanel(inicio);
+                    InicioSesion is = new InicioSesion();
+                    mostrarPanel(is.getPanelfondo());
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Error en la contraseña. " + nombre, "Error", JOptionPane.WARNING_MESSAGE);

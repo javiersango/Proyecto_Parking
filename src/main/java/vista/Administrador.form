@@ -28,17 +28,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelHistorial" min="-2" max="-2" attributes="0"/>
+          <Component id="panelAdministrador" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panelHistorial" alignment="0" max="32767" attributes="0"/>
+          <Component id="panelAdministrador" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="vista.PanelRound" name="panelHistorial">
+    <Container class="vista.PanelRound" name="panelAdministrador">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="fb" red="f9" type="rgb"/>
@@ -169,7 +169,7 @@
               <Color blue="42" green="23" red="19" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Historial vehiculos "/>
+            <Property name="text" type="java.lang.String" value="Administrador"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[273, 30]"/>
             </Property>

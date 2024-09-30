@@ -32,6 +32,11 @@ public class Usuarios implements java.io.Serializable {
         this.vehiculoses = vehiculoses;
     }
 
+    public Usuarios(String nombre, String contrasena) {
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+    }
+
     public Integer getId() {
         return this.id;
     }

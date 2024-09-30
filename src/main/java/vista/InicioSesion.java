@@ -19,6 +19,10 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosInicio;
+import controlador.MetodosContrasena;
+import vista.Historial;
+import vista.Administrador;
+import modelo.Usuarios;
 
 /**
  *
@@ -26,8 +30,18 @@ import controlador.MetodosInicio;
  */
 public class InicioSesion extends javax.swing.JFrame {
 
+    /**
+     * Variables
+     */
     int xMouse, yMouse;
-
+    private String nombre;
+    private String contrasena;
+    private String hashContrasena;
+    private Usuarios usuarioActual;
+    private Administrador administrador;
+    private Historial historial;
+    private MetodosContrasena metodosContrasena;
+    private MetodosInicio metodosInicio;
     private RecuperarContrasena recuperarContrasena;
     private boolean ingles; // Inicia el idioma en ingles
     private int nivelBateria = 100;
@@ -37,6 +51,7 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public InicioSesion() {
         initComponents();
+
         setLocationRelativeTo(null);
 
         recuperarContrasena = new RecuperarContrasena(ingles);
@@ -534,33 +549,44 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     private void jbiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiniciarActionPerformed
 
-        String nombre = jtnombre.getText();
-        String contraseña = String.valueOf(jtcontrasena.getPassword());
+        nombre = jtnombre.getText();
+        contrasena = String.valueOf(jtcontrasena.getPassword());
 
         if (nombre.isEmpty() || nombre.equals("Nombre")) {
             JOptionPane.showMessageDialog(null, "El campo nombre esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
         } else if (nombre.length() < 3) {
             JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
-        } else if (contraseña.isEmpty()) {
+        } else if (contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo contraseña esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
-        } else if (contraseña.length() < 8 || contraseña.length() > 12) {
+        } else if (contrasena.length() < 8 || contrasena.length() > 12) {
             JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
         } else {
-            //String hashContrasena = mc.crearHashContrasena(contraseña, contraseña); // Generar hash de la contraseña
-            // System.out.println("Hash contraseña : " + hashContrasena);
-            MetodosInicio mi = new MetodosInicio();
-            String contrasena = String.valueOf(jtcontrasena.getPassword());
+            metodosContrasena = new MetodosContrasena();
+            hashContrasena = metodosContrasena.crearHashContrasena(contrasena, contrasena); // Generar hash de la contraseña
 
-            // String generarContrasena = mc.crearHashContrasena(contrasena, contrasena);
-            if (mi.comprobarInicioUsuario(nombre, contrasena)) {
+            System.out.println("Inicio Sesion: Nombre  " + nombre + ",    hashContrasena   " + hashContrasena);
 
-                
-                InicioCuenta panelInicioCuenta = new InicioCuenta();
-                mostrarPanel(panelInicioCuenta);
+            usuarioActual = new Usuarios(nombre, hashContrasena);
+            historial = new Historial(usuarioActual);
+            administrador = new Administrador(usuarioActual);
+
+            metodosInicio = new MetodosInicio();
+
+            if (metodosInicio.comprobarInicioUsuario(nombre, contrasena)) {
+                System.out.println("Inicio Sesion: Nombre  " + nombre + ",    Contrasena   " + contrasena);
+                if (nombre.equalsIgnoreCase("Administrador") && contrasena.equals("ADmin0000")) {
+
+                    mostrarPanel(administrador);
+                } else {
+                    InicioCuenta panelInicioCuenta = new InicioCuenta();
+                    mostrarPanel(panelInicioCuenta);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
             }
+
         }
+
     }//GEN-LAST:event_jbiniciarActionPerformed
     /**
      * Evento cuanto se selecciona el texto se pone en negrita y si no esta
@@ -668,6 +694,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 new InicioSesion().setVisible(true);
             }
         });
+
     }
 
     /**
@@ -739,18 +766,8 @@ public class InicioSesion extends javax.swing.JFrame {
         jbrecuperar.setText(bRecuperar);
     }
 
-    public String getNombre() {
-        String nombre = jtnombre.getText();
-        return nombre;
-    }
-
-    public String getContrasena() {
-        String contrasena = jtcontrasena.getText();
-        return contrasena;
-    }
-    
-      JPanel getPanelfondo() {
-       return jPanelFondo;
+    JPanel getPanelfondo() {
+        return jPanelFondo;
     }
 
 
@@ -780,7 +797,5 @@ public class InicioSesion extends javax.swing.JFrame {
     private vista.PanelRound panelRoundBarraFondo;
     private vista.PanelRound panelRoundFondoCierre;
     // End of variables declaration//GEN-END:variables
-
-  
 
 }

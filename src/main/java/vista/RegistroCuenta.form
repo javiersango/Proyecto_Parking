@@ -468,7 +468,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="Matricula"/>
-                <Property name="toolTipText" type="java.lang.String" value="Introduce una matricula valida 4 numeros y 3 letras en mayusculas"/>
+                <Property name="toolTipText" type="java.lang.String" value="Formato matriculo 0000 XXX"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[335, 50]"/>
                 </Property>
@@ -667,7 +667,7 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="********"/>
-                <Property name="toolTipText" type="java.lang.String" value="Introduce una contrase&#xf1;a entre 8 y 10 caracteres"/>
+                <Property name="toolTipText" type="java.lang.String" value="Repetir contrase&#xf1;a introducida"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[335, 50]"/>
                 </Property>

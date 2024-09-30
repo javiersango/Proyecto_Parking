@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
  * @author Javier Sánchez González
  */
 public class MetodosInicio {
+   
 
     /**
      * Metodo se le pasa el nombre y la contraseña , que hara las comprobaciones
@@ -42,7 +43,7 @@ public class MetodosInicio {
                 if (comprobarContrasena(contrasena, usuario.getContrasena())) {
                     System.out.println("Inicio de sesión exitoso para: " + nombre);
                     ImageIcon icono = new ImageIcon("img/P.png");
-                    JOptionPane.showMessageDialog(null, "¡¡Bienvendio a la aplicación!! " + nombre, "APP PARKING", JOptionPane.INFORMATION_MESSAGE, icono);
+                    JOptionPane.showMessageDialog(null, "¡¡Bienvenido/a!!  " + nombre.toUpperCase(), "CLICKPARK", JOptionPane.INFORMATION_MESSAGE, icono);
                     return true; // La contraseña coincide
                 } else {
                     // Si la contraseña no coincide, buscar otro usuario con el mismo nombre
@@ -77,5 +78,17 @@ public class MetodosInicio {
             conexion.desconectar();
         }
     }
+   public void iniciarSesion(String nombre, String contrasena) {
+    if (comprobarInicioUsuario(nombre, contrasena)) {
+        // Si el inicio de sesión es exitoso
+        System.out.println("Inicio de sesión exitoso.");
+        // Aquí puedes continuar con la lógica para manejar el usuario
+    } else {
+        // Si el inicio de sesión falla
+        System.out.println("Error en el inicio de sesión.");
+    }
+}
 
+       
+   
 }

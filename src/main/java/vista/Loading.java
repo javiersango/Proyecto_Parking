@@ -88,7 +88,6 @@ public class Loading extends javax.swing.JFrame {
         panelRoundFondo = new vista.PanelRound();
         jLPorciento = new javax.swing.JLabel();
         jPBarraProgreso = new javax.swing.JProgressBar();
-        jLcoche = new javax.swing.JLabel();
         jLTitulo = new javax.swing.JLabel();
         panelRoundBarraFondo = new vista.PanelRound();
         jLporcentajeBateria = new javax.swing.JLabel();
@@ -112,22 +111,19 @@ public class Loading extends javax.swing.JFrame {
         jLPorciento.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLPorciento.setForeground(new java.awt.Color(86, 125, 244));
         jLPorciento.setText("0%");
-        panelRoundFondo.add(jLPorciento, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 383, -1, -1));
+        panelRoundFondo.add(jLPorciento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
         jPBarraProgreso.setForeground(new java.awt.Color(86, 125, 244));
-        panelRoundFondo.add(jPBarraProgreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 433, 337, 22));
-
-        jLcoche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoCar.png"))); // NOI18N
-        panelRoundFondo.add(jLcoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 430, 319));
+        panelRoundFondo.add(jPBarraProgreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 337, 22));
 
         jLTitulo.setFont(new java.awt.Font("Stencil", 1, 32)); // NOI18N
         jLTitulo.setForeground(new java.awt.Color(0, 0, 0));
         jLTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLTitulo.setText(" APP PARKING");
+        jLTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/2Logo- ClickPark_1.png"))); // NOI18N
         jLTitulo.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelRoundFondo.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 506, -1, 34));
+        panelRoundFondo.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 360, 290));
 
-        getContentPane().add(panelRoundFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 38, -1, -1));
+        getContentPane().add(panelRoundFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
 
         panelRoundBarraFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelRoundBarraFondo.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,7 +298,6 @@ public class Loading extends javax.swing.JFrame {
     public static javax.swing.JLabel jLPorciento;
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLcierre;
-    private javax.swing.JLabel jLcoche;
     private javax.swing.JLabel jLiconoBateria;
     private javax.swing.JLabel jLporcentajeBateria;
     private javax.swing.JLabel jLsignal;

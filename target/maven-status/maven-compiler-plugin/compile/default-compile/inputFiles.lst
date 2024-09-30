@@ -1,4 +1,5 @@
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\Reservas.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Administrador.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\Load.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Cuenta.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosReservar.java
@@ -13,11 +14,12 @@ C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Loading.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosRegistroCuenta.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\PanelRound.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosAdministrador.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\HibernateUtil.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Reserva.java
-C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Historiales.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\EmailUtil.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\RecuperarContrasena.java
+C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\vista\Historial.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosContrasena.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\modelo\Usuarios.java
 C:\Users\Javier\Documents\NetBeansProjects\Proyecto_Parking\src\main\java\controlador\MetodosInicio.java

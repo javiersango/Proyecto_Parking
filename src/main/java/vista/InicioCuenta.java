@@ -5,6 +5,7 @@
 package vista;
 
 import javax.swing.JPanel;
+import modelo.Usuarios;
 
 /**
  *
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
  */
 public class InicioCuenta extends javax.swing.JPanel {
 
+    private Usuarios usuarioActual;
     /**
      * Creates new form RegistroCuenta
      *
@@ -156,7 +158,8 @@ public class InicioCuenta extends javax.swing.JPanel {
      * @param evt
      */
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
-        Historiales panelHistorial = new Historiales();
+
+        Historial panelHistorial = new Historial(usuarioActual);
         mostrarPanel(panelHistorial);
     }//GEN-LAST:event_jbhistorialActionPerformed
     /**

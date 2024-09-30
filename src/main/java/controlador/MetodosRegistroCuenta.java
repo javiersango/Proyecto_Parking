@@ -268,7 +268,9 @@ public class MetodosRegistroCuenta {
      * @return devuelve true / false
      */
     public static boolean validarMatricula(String matricula) {
-        String regex = "^[0-9]{4}[A-Z]{3}$";
-        return Pattern.matches(regex, matricula);
-    }
+    // Modificación para aceptar 4 dígitos seguidos de un espacio y 3 letras mayúsculas
+    String regex = "^[0-9]{4} [A-Z]{3}$";
+    return Pattern.matches(regex, matricula);
+}
+
 }

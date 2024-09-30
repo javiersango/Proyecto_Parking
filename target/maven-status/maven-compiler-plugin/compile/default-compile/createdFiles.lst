@@ -1,7 +1,6 @@
 modelo\Historial.class
 vista\Loading$6.class
 controlador\EmailUtil.class
-vista\Historiales.class
 vista\RecuperarContrasena$4.class
 vista\InicioSesion.class
 controlador\MetodosHistorial.class
@@ -15,9 +14,9 @@ vista\RegistroCuenta$4.class
 vista\Cuenta$4.class
 vista\Loading$3.class
 vista\InicioSesion$5.class
+vista\Administrador$1.class
 vista\Cuenta$7.class
 vista\RegistroCuenta$1.class
-vista\Historiales$2.class
 controlador\MetodosInicio.class
 vista\InicioSesion$8.class
 vista\InicioSesion$1.class
@@ -31,6 +30,7 @@ controlador\Load.class
 vista\RecuperarContrasena$5.class
 controlador\MetodosRecuperarContrasena.class
 vista\Cuenta$5.class
+vista\Historial$1.class
 controlador\EmailUtil$1.class
 vista\Parking$1.class
 controlador\MetodosReservar.class
@@ -39,9 +39,11 @@ vista\RecuperarContrasena.class
 vista\Loading$4.class
 vista\PanelRound.class
 vista\RegistroCuenta$3.class
+vista\Administrador.class
+vista\Historial$2.class
 controlador\MetodosCuenta.class
 vista\InicioSesion$6.class
-vista\Historiales$1.class
+vista\Administrador$2.class
 vista\Parking.class
 vista\Reserva.class
 vista\InicioSesion$9.class
@@ -63,12 +65,15 @@ vista\RegistroCuenta$8.class
 vista\RegistroCuenta$5.class
 vista\Loading$1.class
 modelo\Reservas.class
+controlador\MetodosAdministrador.class
+vista\Historial.class
 vista\RecuperarContrasena$2.class
 modelo\Usuarios.class
 vista\InicioSesion$4.class
+vista\Historial$3.class
 vista\InicioCuenta$2.class
 vista\Reserva$4.class
-vista\Historiales$3.class
+vista\Administrador$3.class
 vista\RegistroCuenta$6.class
 vista\Cuenta$2.class
 vista\Cuenta$8.class

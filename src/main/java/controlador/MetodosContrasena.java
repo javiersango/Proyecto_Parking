@@ -71,7 +71,7 @@ public class MetodosContrasena {
 
             // Si la validación de contraseña es exitosa, procedemos a generar el hash
             String hashedPassword = BCrypt.hashpw(contrasena, BCrypt.gensalt());
-            JOptionPane.showMessageDialog(null, "Generado hash correctamente", "Correcto", JOptionPane.QUESTION_MESSAGE);
+           // JOptionPane.showMessageDialog(null, "Generado hash correctamente", "Correcto", JOptionPane.QUESTION_MESSAGE);
 
             return hashedPassword; // Devuelve el hash generado
         }
