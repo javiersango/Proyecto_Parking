@@ -10,6 +10,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuarios;
+import controlador.MetodosAdministrador;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import modelo.Vehiculos;
+import vista.InicioSesion;
 
 /**
  *
@@ -20,9 +26,10 @@ public class Administrador extends javax.swing.JPanel {
     /**
      * Variables historial
      */
-    private Usuarios usuarioActual;
-    private String nombre;
-    private String contrasena;
+    private Usuarios usuarios;
+    private MetodosAdministrador metodosAdministrador;
+    private InicioSesion inicioSesion;
+    private Vehiculos vehiculos;
 
     /**
      * Creates new form RegistroCuenta
@@ -38,14 +45,10 @@ public class Administrador extends javax.swing.JPanel {
     public Administrador(Usuarios usuario) {
 
         initComponents();
-        this.usuarioActual = usuario;
-
-        nombre = usuarioActual.getNombre();
-        contrasena = usuarioActual.getContrasena();
-        System.out.println(usuarioActual.getNombre() + "  " + usuarioActual.getContrasena());
+        metodosAdministrador = new MetodosAdministrador();
 
         // Poner jTexfield y jBotton el radio
-        jbmostrar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbmostrarDatosUsuarios.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
         // jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
         jlhistorial.putClientProperty("Flatlaf.styleClass", "");
@@ -58,11 +61,14 @@ public class Administrador extends javax.swing.JPanel {
         bgeleccion = new javax.swing.ButtonGroup();
         panelAdministrador = new vista.PanelRound();
         jlhistorial = new javax.swing.JLabel();
-        jbmostrar = new javax.swing.JButton();
+        jbmostrarDatosUsuarios = new javax.swing.JButton();
         jbcancelar = new javax.swing.JButton();
         jltitulo2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtabla = new javax.swing.JTable();
+        jbmostrarHistorialReservas = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtabla1 = new javax.swing.JTable();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -79,23 +85,23 @@ public class Administrador extends javax.swing.JPanel {
         jlhistorial.setText("HISTORIAL APARCAMIENTO");
         jlhistorial.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jbmostrar.setBackground(new java.awt.Color(43, 220, 61));
-        jbmostrar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbmostrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbmostrar.setText("Mostrar");
-        jbmostrar.setToolTipText("Muestra el historial por nombre o por matricula");
-        jbmostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbmostrar.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbmostrar.addActionListener(new java.awt.event.ActionListener() {
+        jbmostrarDatosUsuarios.setBackground(new java.awt.Color(43, 220, 61));
+        jbmostrarDatosUsuarios.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbmostrarDatosUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        jbmostrarDatosUsuarios.setText("Mostrar usuarios");
+        jbmostrarDatosUsuarios.setToolTipText("Muestra el historial por nombre o por matricula");
+        jbmostrarDatosUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbmostrarDatosUsuarios.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbmostrarDatosUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbmostrarActionPerformed(evt);
+                jbmostrarDatosUsuariosActionPerformed(evt);
             }
         });
 
-        jbcancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jbcancelar.setBackground(new java.awt.Color(43, 220, 61));
         jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
-        jbcancelar.setText("Cancelar");
+        jbcancelar.setText("Mostrar Aparcamiento");
         jbcancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
         jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
@@ -116,23 +122,48 @@ public class Administrador extends javax.swing.JPanel {
         jtabla.setForeground(new java.awt.Color(0, 0, 0));
         jtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Fecha", "Duración", "Precio", "Matricula"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.Long.class, java.lang.Double.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            }
+        ));
+        jScrollPane1.setViewportView(jtabla);
+
+        jbmostrarHistorialReservas.setBackground(new java.awt.Color(43, 220, 61));
+        jbmostrarHistorialReservas.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbmostrarHistorialReservas.setForeground(new java.awt.Color(255, 255, 255));
+        jbmostrarHistorialReservas.setText("Historial reservas");
+        jbmostrarHistorialReservas.setToolTipText("Muestra el historial por nombre o por matricula");
+        jbmostrarHistorialReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbmostrarHistorialReservas.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbmostrarHistorialReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbmostrarHistorialReservasActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jtabla);
+
+        jtabla1.setBackground(new java.awt.Color(198, 212, 255));
+        jtabla1.setFont(new java.awt.Font("Lucida Sans", 0, 12)); // NOI18N
+        jtabla1.setForeground(new java.awt.Color(0, 0, 0));
+        jtabla1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jtabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtabla1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtabla1);
 
         javax.swing.GroupLayout panelAdministradorLayout = new javax.swing.GroupLayout(panelAdministrador);
         panelAdministrador.setLayout(panelAdministradorLayout);
@@ -145,26 +176,35 @@ public class Administrador extends javax.swing.JPanel {
                         .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                                .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                                .addComponent(jbmostrarDatosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbmostrarHistorialReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAdministradorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         panelAdministradorLayout.setVerticalGroup(
             panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAdministradorLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jbmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbmostrarDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbmostrarHistorialReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -186,22 +226,35 @@ public class Administrador extends javax.swing.JPanel {
      * devuelve un arrayList del historial
      */
 
-    private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
+    private void jbmostrarDatosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarDatosUsuariosActionPerformed
+        // Llamar al método para obtener la lista de usuarios
+        List<Usuarios> usuarios = MetodosAdministrador.buscarUsuarios();
 
-        List<modelo.Historial> historia = MetodosHistorial.buscarMatricula();
+        // Obtener el modelo de la tabla y limpiar las filas antes de añadir nuevos datos
+        DefaultTableModel model = (DefaultTableModel) jtabla1.getModel();
+        model.setRowCount(0); // Limpiar la tabla
 
-        if (!historia.isEmpty()) {
-            DefaultTableModel model = (DefaultTableModel) jtabla.getModel();
-            model.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
+        // Títulos de las columnas para los usuarios (solo es necesario si no se establecen en el diseño de la tabla)
+        String[] columnTitles = {"ID", "Nombre", "Apellidos", "Email"};
+        model.setColumnIdentifiers(columnTitles); // Establecer títulos de columnas
 
-            for (modelo.Historial his : historia) {
-                model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), his.getPrecio(), his.getMatricula()});
+        // Verificar si la lista de usuarios no está vacía
+        if (!usuarios.isEmpty()) {
+            // Agregar los datos de los usuarios a la tabla
+            for (Usuarios usu : usuarios) {
+                model.addRow(new Object[]{
+                    usu.getId(),
+                    usu.getNombre(),
+                    usu.getApellidos(),
+                    usu.getEmail()
+                });
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No hay registros en el historial: ", "Historial", JOptionPane.INFORMATION_MESSAGE);
+            // Mostrar mensaje si no hay registros
+            JOptionPane.showMessageDialog(null, "No hay registros de usuarios.", "Usuarios", JOptionPane.INFORMATION_MESSAGE);
         }
 
-    }//GEN-LAST:event_jbmostrarActionPerformed
+    }//GEN-LAST:event_jbmostrarDatosUsuariosActionPerformed
 
     /**
      * Evento si al introducir los datos son erroneos, al cancelar vuelven a
@@ -209,16 +262,80 @@ public class Administrador extends javax.swing.JPanel {
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
-        // Crea una instancia de InicioCuenta
-        InicioCuenta ic = new InicioCuenta();
-        // Muestra la ventana InicioCuenta
-        mostrarPanel(ic);
+        int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que deseas cerrar la sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
+
+        if (confirmar == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
 
     }//GEN-LAST:event_jbcancelarActionPerformed
 
+    private void jbmostrarHistorialReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarHistorialReservasActionPerformed
+        // Obtener la lista de reservas desde MetodosHistorial
+        List<modelo.Historial> historia = MetodosHistorial.buscarMatricula();
+
+        // Limpiar la tabla antes de añadir nuevos datos
+        DefaultTableModel model = (DefaultTableModel) jtabla.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        if (!historia.isEmpty()) {
+            // Títulos de las columnas para el historial
+            String[] columnTitles = {"Día", "Duración", "Precio", "Matrícula"};
+            model.setColumnIdentifiers(columnTitles); // Establecer títulos de columnas
+
+            for (modelo.Historial his : historia) {
+                Double precio = his.getPrecio() != null ? his.getPrecio() : 0.0;
+                model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), precio, his.getMatricula()});
+
+            }
+
+            // Crear y asignar el renderer centrado
+            DefaultTableCellRenderer centeredRenderer = new DefaultTableCellRenderer();
+            centeredRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay registros en el historial.", "Historial", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jbmostrarHistorialReservasActionPerformed
+
+    private void jtabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabla1MouseClicked
+         int selectedRow = jtabla1.getSelectedRow();
+        
+        // Verificar si hay una fila seleccionada
+        if (selectedRow >= 0) {
+            // Obtener el ID del usuario desde la tabla
+            int idUsuario = (int) jtabla1.getValueAt(selectedRow, 0);
+            String nombreUsuario = (String) jtabla1.getValueAt(selectedRow, 1);
+            
+            // Mostrar mensaje de confirmación
+            int confirm = JOptionPane.showConfirmDialog(null, 
+                "¿Desea eliminar al usuario " + nombreUsuario + " con ID " + idUsuario + "?", 
+                "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+            
+            // Si el usuario confirma, eliminar el registro
+            if (confirm == JOptionPane.YES_OPTION) {
+                boolean eliminado = metodosAdministrador.eliminarUsuario(idUsuario);
+                
+                if (eliminado) {
+                    JOptionPane.showMessageDialog(null, 
+                        "Usuario eliminado correctamente.", 
+                        "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    // Actualizar la tabla después de la eliminación
+                    DefaultTableModel model = (DefaultTableModel) jtabla1.getModel();
+                    model.removeRow(selectedRow);
+                } else {
+                    JOptionPane.showMessageDialog(null, 
+                        "Error al eliminar el usuario.", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    
+
+    }//GEN-LAST:event_jtabla1MouseClicked
+
     /**
-     * Metodo se le pasa el panel IncioCuenta para que elmine el actual y
-     * muestre este.
+     * Metodo se le pasa el panel InicioSesion para que se muestre
      *
      * @param panel
      */
@@ -240,11 +357,14 @@ public class Administrador extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgeleccion;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbcancelar;
-    private javax.swing.JButton jbmostrar;
+    private javax.swing.JButton jbmostrarDatosUsuarios;
+    private javax.swing.JButton jbmostrarHistorialReservas;
     private javax.swing.JLabel jlhistorial;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JTable jtabla;
+    private javax.swing.JTable jtabla1;
     private vista.PanelRound panelAdministrador;
     // End of variables declaration//GEN-END:variables
 

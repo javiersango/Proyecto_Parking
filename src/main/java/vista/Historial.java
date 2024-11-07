@@ -5,25 +5,19 @@
 package vista;
 
 import controlador.MetodosHistorial;
-import controlador.MetodosRegistroCuenta;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Usuarios;
-
-
 
 /**
  *
  * @author Javier Sánchez Gonzalez
  */
 public class Historial extends javax.swing.JPanel {
+
     /**
      * Variables historial
      */
-    private Usuarios usuarioActual;
-    private String nombre;
-    private String contrasena;
 
     /**
      * Creates new form RegistroCuenta
@@ -36,30 +30,18 @@ public class Historial extends javax.swing.JPanel {
     /**
      * Creates new form RegistroCuenta
      */
-    
- 
-    
-     public Historial(Usuarios usuario) {
-          
+    public Historial() {
+
         initComponents();
-        this.usuarioActual = usuario;
-        
-        nombre = usuarioActual.getNombre();
-        contrasena = usuarioActual.getContrasena();
-        System.out.println(usuarioActual.getNombre() + "  " + usuarioActual.getContrasena());
-        
-        
+
         // Poner jTexfield y jBotton el radio
         jbmostrar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
         // jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
         jlhistorial.putClientProperty("Flatlaf.styleClass", "");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
-        
-       
-    }
 
-   
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,22 +107,14 @@ public class Historial extends javax.swing.JPanel {
         jtabla.setForeground(new java.awt.Color(0, 0, 0));
         jtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Fecha", "Duración", "Precio", "Matricula"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.Long.class, java.lang.Double.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(jtabla);
 
         javax.swing.GroupLayout panelHistorialLayout = new javax.swing.GroupLayout(panelHistorial);
@@ -194,44 +168,28 @@ public class Historial extends javax.swing.JPanel {
      * @param evt Metodo buscarMatricula var matricula = se pasa al metodo y nos
      * devuelve un arrayList del historial
      */
-    
-   
+
+
     private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
-        
-            
-    // Devuelve el ID del usuario
-    int usuarioId = MetodosHistorial.obtenerUsuarioId(nombre,contrasena); // Método que te devuelve el ID del usuario (por ejemplo, después de iniciar sesión)
 
-    // Busca el historial de ese usuario
-    List<modelo.Historial> historia = MetodosHistorial.buscarPorUsuario(usuarioId);
+        // Primero, asegúrate de definir los títulos de las columnas al crear el modelo de la tabla.
+        String[] columnNames = {"Día", "Duración", "Precio", "Matrícula"};
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        jtabla.setModel(model); // Asigna el modelo a la tabla
 
-    if (historia != null && !historia.isEmpty()) {
-        DefaultTableModel model = (DefaultTableModel) jtabla.getModel();
-        model.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
-
-        // Añadir las filas con el historial del usuario
-        for (modelo.Historial his : historia) {
-            model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), his.getPrecio(), his.getMatricula()});
-        }
-    } else {
-        // Mostrar un mensaje si no hay registros
-        JOptionPane.showMessageDialog(null, "No hay registros en el historial para este usuario.", "Historial", JOptionPane.INFORMATION_MESSAGE);
-    }
-       
-        /*
+// Luego, en tu método para mostrar los datos:
         List<modelo.Historial> historia = MetodosHistorial.buscarMatricula();
 
         if (!historia.isEmpty()) {
-            DefaultTableModel model = (DefaultTableModel) jtabla.getModel();
             model.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
 
             for (modelo.Historial his : historia) {
                 model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), his.getPrecio(), his.getMatricula()});
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No hay registros en el historial: " , "Historial", JOptionPane.INFORMATION_MESSAGE);
-           
-        }*/
+            JOptionPane.showMessageDialog(null, "No hay registros en el historial: ", "Historial", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_jbmostrarActionPerformed
 
     /**
@@ -263,18 +221,6 @@ public class Historial extends javax.swing.JPanel {
         panelHistorial.repaint();
 
     }
- /*   
-    private void mostrarDatos() {
-         if (usuarioActual != null) {
-            System.out.println("Mostrando datos del usuario: Nombre " + usuarioActual.getNombre() + " , HashContraseña " + usuarioActual.getContrasena());
-            // Aquí puedes poner el código para mostrar los datos en un JLabel, por ejemplo.
-            // jLabelNombre.setText(usuarioActual.getNombre());
-        } else {
-            System.out.println("El usuarioActual es null");
-        }
-   
-    }
-    */
 
     /**
      * Metodo crean la variables para que al leer el archivo de texto traducido

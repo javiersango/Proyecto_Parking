@@ -159,7 +159,7 @@ public class InicioCuenta extends javax.swing.JPanel {
      */
     private void jbhistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhistorialActionPerformed
 
-        Historial panelHistorial = new Historial(usuarioActual);
+        Historial panelHistorial = new Historial();
         mostrarPanel(panelHistorial);
     }//GEN-LAST:event_jbhistorialActionPerformed
     /**

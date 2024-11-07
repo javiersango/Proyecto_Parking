@@ -43,7 +43,7 @@ public class MetodosInicio {
                 if (comprobarContrasena(contrasena, usuario.getContrasena())) {
                     System.out.println("Inicio de sesión exitoso para: " + nombre);
                     ImageIcon icono = new ImageIcon("img/P.png");
-                    JOptionPane.showMessageDialog(null, "¡¡Bienvenido/a!!  " + nombre.toUpperCase(), "CLICKPARK", JOptionPane.INFORMATION_MESSAGE, icono);
+                    JOptionPane.showMessageDialog(null, "¡¡Bienvenido/a!!  " + nombre, "ParkArea", JOptionPane.INFORMATION_MESSAGE, icono);
                     return true; // La contraseña coincide
                 } else {
                     // Si la contraseña no coincide, buscar otro usuario con el mismo nombre

@@ -506,7 +506,11 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jLcierreMouseMoved
 
     private void jLcierreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseClicked
+        int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que deseas cerrar la sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
+
+    if (confirmar == JOptionPane.YES_OPTION) {
         System.exit(0);
+    }
     }//GEN-LAST:event_jLcierreMouseClicked
 
     private void jLcierreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseExited
@@ -567,17 +571,20 @@ public class InicioSesion extends javax.swing.JFrame {
             System.out.println("Inicio Sesion: Nombre  " + nombre + ",    hashContrasena   " + hashContrasena);
 
             usuarioActual = new Usuarios(nombre, hashContrasena);
-            historial = new Historial(usuarioActual);
+         
             administrador = new Administrador(usuarioActual);
 
             metodosInicio = new MetodosInicio();
 
             if (metodosInicio.comprobarInicioUsuario(nombre, contrasena)) {
-                System.out.println("Inicio Sesion: Nombre  " + nombre + ",    Contrasena   " + contrasena);
-                if (nombre.equalsIgnoreCase("Administrador") && contrasena.equals("ADmin0000")) {
-
+                System.out.println(" Comprobar Administrador : " + nombre + "  " + contrasena );
+                if (nombre.equalsIgnoreCase("Admin") && contrasena.equals("Admin@0000")) {
+                    JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.ERROR_MESSAGE);
+                    // Inicializar el objeto administrador
+                    administrador = new Administrador(usuarioActual); // Asegúrate de que usuarioActual esté correctamente inicializado
                     mostrarPanel(administrador);
                 } else {
+                    // Crear el objeto Historial pasando usuarioActual
                     InicioCuenta panelInicioCuenta = new InicioCuenta();
                     mostrarPanel(panelInicioCuenta);
                 }
