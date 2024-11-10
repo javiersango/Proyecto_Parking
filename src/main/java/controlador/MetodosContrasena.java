@@ -24,8 +24,9 @@ public class MetodosContrasena {
 
     /**
      * Metodo verifica si una direccion de correo electronico es valida
-     * @param correo    se pasa el corrego electronico
-     * @return 
+     *
+     * @param correo se pasa el corrego electronico
+     * @return
      */
     public static boolean esCorreoElectronicoValido(String correo) {
         String regex = "^[A-Za-z0-9+_.-]+@([A-Za-z0-9.-]+).(es|com)$";
@@ -37,9 +38,10 @@ public class MetodosContrasena {
     /**
      * Metodos comprueba que la contraseña y repetircontraseña sea la misma,
      * genera el hash de la contraseña introducida
-     * @param contrasena    String 
-     * @param repetircontrasena  String 
-     * @return 
+     *
+     * @param contrasena String
+     * @param repetircontrasena String
+     * @return
      */
     public static String crearHashContrasena(String contrasena, String repetircontrasena) {
         // Verificar si las contraseñas coinciden
@@ -71,17 +73,18 @@ public class MetodosContrasena {
 
             // Si la validación de contraseña es exitosa, procedemos a generar el hash
             String hashedPassword = BCrypt.hashpw(contrasena, BCrypt.gensalt());
-           // JOptionPane.showMessageDialog(null, "Generado hash correctamente", "Correcto", JOptionPane.QUESTION_MESSAGE);
+            // JOptionPane.showMessageDialog(null, "Generado hash correctamente", "Correcto", JOptionPane.QUESTION_MESSAGE);
 
             return hashedPassword; // Devuelve el hash generado
         }
     }
 
-   /**
-    * Metodo que valida contraseña segun lo parametros permitidos
-    * @param contrasena
-    * @return 
-    */
+    /**
+     * Metodo que valida contraseña segun lo parametros permitidos
+     *
+     * @param contrasena
+     * @return
+     */
     public static boolean validarContrasena(String contrasena) {
         // Validar la contraseña introcducida
         PasswordValidator validator = new PasswordValidator(
@@ -98,13 +101,14 @@ public class MetodosContrasena {
         return result.isValid(); // si es valida devuelve true, si no false
     }
 
-  /**
-   * Metodo se le pasa la contraseña y el hash guardado comprueba que la
-     encriptacion sea correcta
-   * @param contrasena
-   * @param hashGuardado
-   * @return 
-   */
+    /**
+     * Metodo se le pasa la contraseña y el hash guardado comprueba que la
+     * encriptacion sea correcta
+     *
+     * @param contrasena
+     * @param hashGuardado
+     * @return
+     */
     public static boolean comprobarContrasena(String contrasena, String hashGuardado) {
         return BCrypt.checkpw(contrasena, hashGuardado);
     }

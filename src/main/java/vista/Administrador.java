@@ -4,18 +4,16 @@
  */
 package vista;
 
-import controlador.MetodosHistorial;
-import controlador.MetodosRegistroCuenta;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuarios;
 import controlador.MetodosAdministrador;
+import controlador.MetodosHistorial;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 import modelo.Vehiculos;
-import vista.InicioSesion;
+import modelo.Historial;
 
 /**
  *
@@ -272,7 +270,8 @@ public class Administrador extends javax.swing.JPanel {
 
     private void jbmostrarHistorialReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarHistorialReservasActionPerformed
         // Obtener la lista de reservas desde MetodosHistorial
-        List<modelo.Historial> historia = MetodosHistorial.buscarMatricula();
+
+        List<Historial> historia = MetodosHistorial.mostrarHistorial();
 
         // Limpiar la tabla antes de añadir nuevos datos
         DefaultTableModel model = (DefaultTableModel) jtabla.getModel();
@@ -288,49 +287,45 @@ public class Administrador extends javax.swing.JPanel {
                 model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), precio, his.getMatricula()});
 
             }
-
-            // Crear y asignar el renderer centrado
-            DefaultTableCellRenderer centeredRenderer = new DefaultTableCellRenderer();
-            centeredRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         } else {
             JOptionPane.showMessageDialog(null, "No hay registros en el historial.", "Historial", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jbmostrarHistorialReservasActionPerformed
 
     private void jtabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabla1MouseClicked
-         int selectedRow = jtabla1.getSelectedRow();
-        
+        int selectedRow = jtabla1.getSelectedRow();
+
         // Verificar si hay una fila seleccionada
         if (selectedRow >= 0) {
             // Obtener el ID del usuario desde la tabla
             int idUsuario = (int) jtabla1.getValueAt(selectedRow, 0);
             String nombreUsuario = (String) jtabla1.getValueAt(selectedRow, 1);
-            
+
             // Mostrar mensaje de confirmación
-            int confirm = JOptionPane.showConfirmDialog(null, 
-                "¿Desea eliminar al usuario " + nombreUsuario + " con ID " + idUsuario + "?", 
-                "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-            
+            int confirm = JOptionPane.showConfirmDialog(null,
+                    "¿Desea eliminar al usuario " + nombreUsuario + " con ID " + idUsuario + "?",
+                    "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
             // Si el usuario confirma, eliminar el registro
             if (confirm == JOptionPane.YES_OPTION) {
                 boolean eliminado = metodosAdministrador.eliminarUsuario(idUsuario);
-                
+
                 if (eliminado) {
-                    JOptionPane.showMessageDialog(null, 
-                        "Usuario eliminado correctamente.", 
-                        "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
-                    
+                    JOptionPane.showMessageDialog(null,
+                            "Usuario eliminado correctamente.",
+                            "Eliminación exitosa", JOptionPane.INFORMATION_MESSAGE);
+
                     // Actualizar la tabla después de la eliminación
                     DefaultTableModel model = (DefaultTableModel) jtabla1.getModel();
                     model.removeRow(selectedRow);
                 } else {
-                    JOptionPane.showMessageDialog(null, 
-                        "Error al eliminar el usuario.", 
-                        "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,
+                            "Error al eliminar el usuario.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
-    
+
 
     }//GEN-LAST:event_jtabla1MouseClicked
 

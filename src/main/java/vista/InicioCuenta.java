@@ -4,14 +4,17 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import controlador.MetodosCuenta;
 
 /**
  *
  * @author Javier Sánchez Gonzalez
  */
 public class InicioCuenta extends javax.swing.JPanel {
+
+    private String nombre;
 
     /**
      * Creates new form RegistroCuenta
@@ -24,11 +27,11 @@ public class InicioCuenta extends javax.swing.JPanel {
     public InicioCuenta() {
         initComponents();
 
-
         // Poner los jbonton  bordes redondeados
         jbModificarCuenta.putClientProperty("FlatLaf.style", "arc: 15");
         jbReservarPlaza.putClientProperty("FlatLaf.style", "arc: 15");
         jbHistoiralAparcamiento.putClientProperty("FlatLaf.style", "arc: 15");
+        jbEliminarCuenta.putClientProperty("FlatLaf.style", "arc: 15");
 
     }
 
@@ -43,15 +46,12 @@ public class InicioCuenta extends javax.swing.JPanel {
 
         panelInicioCuenta = new vista.PanelRound();
         jltitulo1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLImagen = new javax.swing.JLabel();
         jbModificarCuenta = new javax.swing.JButton();
         jbHistoiralAparcamiento = new javax.swing.JButton();
         jbReservarPlaza = new javax.swing.JButton();
         jbEliminarCuenta = new javax.swing.JButton();
-        jTId = new javax.swing.JTextField();
-        jTNombre = new javax.swing.JTextField();
-        jlId = new javax.swing.JLabel();
-        jlnombre = new javax.swing.JLabel();
+        jTNombre = new javax.swing.JLabel();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -68,8 +68,8 @@ public class InicioCuenta extends javax.swing.JPanel {
         jltitulo1.setText("¿Que desea hacer?");
         jltitulo1.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/LogoParking.png"))); // NOI18N
+        jLImagen.setText("jLabel1");
 
         jbModificarCuenta.setBackground(new java.awt.Color(43, 220, 61));
         jbModificarCuenta.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
@@ -110,7 +110,7 @@ public class InicioCuenta extends javax.swing.JPanel {
             }
         });
 
-        jbEliminarCuenta.setBackground(new java.awt.Color(43, 220, 61));
+        jbEliminarCuenta.setBackground(new java.awt.Color(255, 3, 3));
         jbEliminarCuenta.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbEliminarCuenta.setForeground(new java.awt.Color(255, 255, 255));
         jbEliminarCuenta.setText("Eliminar Cuenta");
@@ -123,23 +123,9 @@ public class InicioCuenta extends javax.swing.JPanel {
             }
         });
 
-        jTId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTIdActionPerformed(evt);
-            }
-        });
-
-        jlId.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlId.setForeground(new java.awt.Color(25, 35, 66));
-        jlId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlId.setText("ID");
-        jlId.setPreferredSize(new java.awt.Dimension(51, 17));
-
-        jlnombre.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlnombre.setForeground(new java.awt.Color(25, 35, 66));
-        jlnombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlnombre.setText("Nombre");
-        jlnombre.setPreferredSize(new java.awt.Dimension(51, 17));
+        jTNombre.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
+        jTNombre.setForeground(new java.awt.Color(39, 59, 244));
+        jTNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout panelInicioCuentaLayout = new javax.swing.GroupLayout(panelInicioCuenta);
         panelInicioCuenta.setLayout(panelInicioCuentaLayout);
@@ -153,26 +139,21 @@ public class InicioCuenta extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioCuentaLayout.createSequentialGroup()
                         .addGap(0, 28, Short.MAX_VALUE)
+                        .addComponent(jLImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
+            .addGroup(panelInicioCuentaLayout.createSequentialGroup()
+                .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInicioCuentaLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
                         .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioCuentaLayout.createSequentialGroup()
-                                    .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jbHistoiralAparcamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jbReservarPlaza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jbModificarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jbEliminarCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(45, 45, 45))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInicioCuentaLayout.createSequentialGroup()
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)))
-                            .addGroup(panelInicioCuentaLayout.createSequentialGroup()
-                                .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTId, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43)
-                                .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                            .addComponent(jbEliminarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbHistoiralAparcamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbModificarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbReservarPlaza, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelInicioCuentaLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelInicioCuentaLayout.setVerticalGroup(
             panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,24 +161,18 @@ public class InicioCuenta extends javax.swing.JPanel {
                 .addGap(51, 51, 51)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelInicioCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addComponent(jTNombre)
+                .addGap(36, 36, 36)
+                .addComponent(jLImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(jbReservarPlaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbModificarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jbHistoiralAparcamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jbEliminarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -211,25 +186,50 @@ public class InicioCuenta extends javax.swing.JPanel {
             .addComponent(panelInicioCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Evento se le pasa el panel a mostrarPanel
-     *
-     * @param evt
-     */
-    private void jbHistoiralAparcamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbHistoiralAparcamientoActionPerformed
 
-        Historial panelHistorial = new Historial();
-        mostrarPanel(panelHistorial);
-    }//GEN-LAST:event_jbHistoiralAparcamientoActionPerformed
-    /**
-     * Evento se le pasa el panel a mostrarPanel
-     *
-     * @param evt
-     */
-    private void jbModificarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarCuentaActionPerformed
-        Cuenta panelCuenta = new Cuenta();
-        mostrarPanel(panelCuenta);
-    }//GEN-LAST:event_jbModificarCuentaActionPerformed
+    private void jbEliminarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarCuentaActionPerformed
+        // Solicitar al usuario que ingrese su correo electrónico
+        String emailIngresado = JOptionPane.showInputDialog(null,
+                "Por favor, ingresa tu correo electrónico para confirmar la eliminación de tu cuenta:",
+                "Confirmación de eliminación",
+                JOptionPane.QUESTION_MESSAGE);
+
+        // Verificar si el usuario ingresó un correo electrónico
+        if (emailIngresado != null && !emailIngresado.trim().isEmpty()) {
+            // Si el correo ingresado coincide con el email de la cuenta
+
+            int confirmacion = JOptionPane.showConfirmDialog(null,
+                    "¿Estás seguro de que quieres eliminar tu cuenta?",
+                    "Confirmar Eliminación",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                MetodosCuenta mc = new MetodosCuenta();
+                boolean eliminada = mc.eliminarCuentaUsuario(nombre, emailIngresado); // Pasamos el email ingresado
+
+                if (eliminada) {
+                    JOptionPane.showMessageDialog(null,
+                            "Cuenta eliminada correctamente.",
+                            "Eliminación Exitosa",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    // Regresar a la pantalla de inicio de sesión o cerrar la aplicación
+                    System.exit(0);
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Error al eliminar la cuenta. Inténtelo de nuevo.",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "El correo electrónico es obligatorio para confirmar la eliminación.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbEliminarCuentaActionPerformed
+
     /**
      * Evento se le pasa el panel a mostrarPanel
      *
@@ -240,13 +240,21 @@ public class InicioCuenta extends javax.swing.JPanel {
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbReservarPlazaActionPerformed
 
-    private void jbEliminarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarCuentaActionPerformed
+    /**
+     * Evento se le pasa el panel a mostrarPanel
+     *
+     * @param evt
+     */
+    private void jbHistoiralAparcamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbHistoiralAparcamientoActionPerformed
 
-    }//GEN-LAST:event_jbEliminarCuentaActionPerformed
+        Historial panelHistorial = new Historial();
+        mostrarPanel(panelHistorial);
+    }//GEN-LAST:event_jbHistoiralAparcamientoActionPerformed
 
-    private void jTIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTIdActionPerformed
+    private void jbModificarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarCuentaActionPerformed
+       ModificarCuenta modificarCuenta = new ModificarCuenta(false);
+        mostrarPanel(modificarCuenta);
+    }//GEN-LAST:event_jbModificarCuentaActionPerformed
     /**
      * Metodo elimna el panel actual y lo sustitulle con el que se le pase
      *
@@ -264,16 +272,20 @@ public class InicioCuenta extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTId;
-    private javax.swing.JTextField jTNombre;
+    private javax.swing.JLabel jLImagen;
+    private javax.swing.JLabel jTNombre;
     private javax.swing.JButton jbEliminarCuenta;
     private javax.swing.JButton jbHistoiralAparcamiento;
     private javax.swing.JButton jbModificarCuenta;
     private javax.swing.JButton jbReservarPlaza;
-    private javax.swing.JLabel jlId;
-    private javax.swing.JLabel jlnombre;
     private javax.swing.JLabel jltitulo1;
     private vista.PanelRound panelInicioCuenta;
     // End of variables declaration//GEN-END:variables
+
+    void inicializarDatosUsuario(String nombre) {
+
+        this.nombre = nombre;
+        jTNombre.setText(nombre);
+
+    }
 }

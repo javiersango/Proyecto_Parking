@@ -19,9 +19,6 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosInicio;
-import controlador.MetodosContrasena;
-import vista.Historial;
-import vista.Administrador;
 import modelo.Usuarios;
 
 /**
@@ -36,12 +33,8 @@ public class InicioSesion extends javax.swing.JFrame {
     int xMouse, yMouse;
     private String nombre;
     private String contrasena;
-    private String hashContrasena;
     private Usuarios usuarioActual;
     private Administrador administrador;
-    private Historial historial;
-    private MetodosContrasena metodosContrasena;
-    private MetodosInicio metodosInicio;
     private RecuperarContrasena recuperarContrasena;
     private boolean ingles; // Inicia el idioma en ingles
     private int nivelBateria = 100;
@@ -51,7 +44,6 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public InicioSesion() {
         initComponents();
-
         setLocationRelativeTo(null);
 
         recuperarContrasena = new RecuperarContrasena(ingles);
@@ -508,9 +500,9 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jLcierreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseClicked
         int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que deseas cerrar la sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
 
-    if (confirmar == JOptionPane.YES_OPTION) {
-        System.exit(0);
-    }
+        if (confirmar == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jLcierreMouseClicked
 
     private void jLcierreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcierreMouseExited
@@ -565,28 +557,33 @@ public class InicioSesion extends javax.swing.JFrame {
         } else if (contrasena.length() < 8 || contrasena.length() > 12) {
             JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
         } else {
-            metodosContrasena = new MetodosContrasena();
-            hashContrasena = metodosContrasena.crearHashContrasena(contrasena, contrasena); // Generar hash de la contraseña
 
-            System.out.println("Inicio Sesion: Nombre  " + nombre + ",    hashContrasena   " + hashContrasena);
+            System.out.println("Inicio Sesion: Nombre  " + nombre + ",    Contrasena   " + contrasena);
 
-            usuarioActual = new Usuarios(nombre, hashContrasena);
-         
-            administrador = new Administrador(usuarioActual);
-
-            metodosInicio = new MetodosInicio();
-
-            if (metodosInicio.comprobarInicioUsuario(nombre, contrasena)) {
-                System.out.println(" Comprobar Administrador : " + nombre + "  " + contrasena );
-                if (nombre.equalsIgnoreCase("Admin") && contrasena.equals("Admin@0000")) {
+            if (MetodosInicio.comprobarInicioUsuario(nombre, contrasena)) {
+                System.out.println(" Comprobar Administrador : " + nombre + "  " + contrasena);
+                if (nombre.equalsIgnoreCase("Administrador") && contrasena.equals("Admin@0000")) {
                     JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.ERROR_MESSAGE);
                     // Inicializar el objeto administrador
-                    administrador = new Administrador(usuarioActual); // Asegúrate de que usuarioActual esté correctamente inicializado
+                    administrador = new Administrador(usuarioActual);
                     mostrarPanel(administrador);
                 } else {
-                    // Crear el objeto Historial pasando usuarioActual
-                    InicioCuenta panelInicioCuenta = new InicioCuenta();
-                    mostrarPanel(panelInicioCuenta);
+
+                    InicioCuenta inicioCuenta = new InicioCuenta();
+                    inicioCuenta.inicializarDatosUsuario(nombre);
+                    mostrarPanel(inicioCuenta);
+                    
+                    
+                    int idUsuario = MetodosInicio.devuelveIdUsuario(nombre, contrasena);
+                    System.out.println("ID usuario   " + idUsuario);
+                    
+                    Historial historial = new Historial();
+                    historial.inicializarDatosUsuario(nombre, idUsuario);
+                    
+                    
+                    ModificarCuenta modificarCuenta = new ModificarCuenta(ingles);
+                    modificarCuenta.inicializarDatosUsuario(nombre, idUsuario);
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -696,10 +693,8 @@ public class InicioSesion extends javax.swing.JFrame {
         FlatLightLaf.setup();   // FlatLap utilizado
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InicioSesion().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new InicioSesion().setVisible(true);
         });
 
     }
@@ -707,6 +702,8 @@ public class InicioSesion extends javax.swing.JFrame {
     /**
      * Metodo verifica que la contraseña tenga al menos 8 caracteres y como
      * máximo 10 caracteres
+     *
+     * @param panel
      */
     // private boolean validarContraseña(String contraseña) {
     // return contraseña.length() >= 8 && contraseña.length() <= 10;

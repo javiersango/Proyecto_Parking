@@ -6,8 +6,7 @@ package controlador;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -16,29 +15,31 @@ import org.hibernate.cfg.Configuration;
 public class MetodosCuenta {
 
     /**
-     * Metodo se le pasa el email y la contraseña para actualizarla en la pase
-     * de datos
+     * Método para modificar la contraseña de un usuario en la base de datos.
      *
-     * @param email
-     * @param contrasena
-     * @return  boolean
+     * @param email Correo electrónico del usuario.
+     * @param contrasena Nueva contraseña del usuario.
+     * @return boolean Indicador de éxito o fracaso.
      */
-    
-
     public boolean modificarContraseña(String email, String contrasena) {
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
-        try (SessionFactory sessionFactory = configuration.buildSessionFactory(); Session session = sessionFactory.openSession()) {
+        
+        HibernateUtil conexion = new HibernateUtil();  // instaciacion a la conexion con la base de datos
+        conexion.conectar();
+        Session sesion = conexion.getSessionFactory().openSession();  // generamos una conexion o sesison
+        try  {
+            // Iniciar la transacción
+            Transaction transaction = sesion.beginTransaction();
 
-            Transaction transaction = session.beginTransaction();
-
-            int rowCount = session.createQuery("UPDATE Usuarios SET contrasena = :contrasena WHERE email = :email")
+            // Crear la consulta HQL para actualizar la contraseña
+            int rowCount = sesion.createQuery("UPDATE Usuario SET contrasena = :contrasena WHERE email = :email")
                     .setParameter("contrasena", contrasena)
                     .setParameter("email", email)
                     .executeUpdate();
 
+            // Confirmar la transacción
             transaction.commit();
 
+            // Verificamos si se actualizó alguna fila
             if (rowCount > 0) {
                 System.out.println("Contraseña actualizada correctamente.");
                 return true;
@@ -48,6 +49,45 @@ public class MetodosCuenta {
             }
         } catch (Exception e) {
             System.err.println("Error al intentar modificar la contraseña: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Método para eliminar una cuenta de usuario en la base de datos.
+     *
+     * @param nombre Nombre del usuario.
+     * @param hashContrasena Contraseña en formato hash del usuario.
+     * @return boolean Indicador de éxito o fracaso.
+     */
+    public boolean eliminarCuentaUsuario(String nombre, String email) {
+        System.out.println("eliminar cuenta usuario " + nombre + " " + email);
+        HibernateUtil conexion = new HibernateUtil();  // instaciacion a la conexion con la base de datos
+        conexion.conectar();
+        Session sesion = conexion.getSessionFactory().openSession();  // generamos una conexion o sesison
+
+        try {
+            // Iniciar la transacción
+            Transaction transaction = sesion.beginTransaction();
+
+            // Crear la consulta HQL para eliminar el usuario
+            Query query = sesion.createQuery("DELETE FROM Usuarios WHERE nombre = :nombre AND email = :email");
+            query.setParameter("nombre", nombre);
+            query.setParameter("email", email);
+            
+
+            // Ejecutar la consulta de eliminación
+            int lineas = query.executeUpdate();
+            System.out.println("Lineas encontradas " + lineas);
+            // Confirmar la transacción
+            transaction.commit();
+
+            // Si lineas es mayor que 0, significa que se eliminó al menos un registro
+            return lineas > 0;
+            
+        } catch (Exception e) {
+            // Imprimir error si ocurre una excepción
+            System.err.println("Error al intentar eliminar el usuario: " + e.getMessage());
             return false;
         }
     }

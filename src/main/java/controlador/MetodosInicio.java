@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
  * @author Javier Sánchez González
  */
 public class MetodosInicio {
-   
 
     /**
      * Metodo se le pasa el nombre y la contraseña , que hara las comprobaciones
@@ -43,7 +42,7 @@ public class MetodosInicio {
                 if (comprobarContrasena(contrasena, usuario.getContrasena())) {
                     System.out.println("Inicio de sesión exitoso para: " + nombre);
                     ImageIcon icono = new ImageIcon("img/P.png");
-                    JOptionPane.showMessageDialog(null, "¡¡Bienvenido/a!!  " + nombre, "ParkArea", JOptionPane.INFORMATION_MESSAGE, icono);
+                    JOptionPane.showMessageDialog(null, "¡¡  Bienvenido/a  !!  " + nombre, "ParkArea", JOptionPane.INFORMATION_MESSAGE, icono);
                     return true; // La contraseña coincide
                 } else {
                     // Si la contraseña no coincide, buscar otro usuario con el mismo nombre
@@ -78,17 +77,56 @@ public class MetodosInicio {
             conexion.desconectar();
         }
     }
-   public void iniciarSesion(String nombre, String contrasena) {
-    if (comprobarInicioUsuario(nombre, contrasena)) {
-        // Si el inicio de sesión es exitoso
-        System.out.println("Inicio de sesión exitoso.");
-        // Aquí puedes continuar con la lógica para manejar el usuario
-    } else {
-        // Si el inicio de sesión falla
-        System.out.println("Error en el inicio de sesión.");
-    }
-}
 
-       
-   
+    public static int devuelveIdUsuario(String nombre, String contrasena) {
+        HibernateUtil conexion = new HibernateUtil();  // Instancia la conexión a la base de datos
+        conexion.conectar();
+        Session sesion = conexion.getSessionFactory().openSession();  // Abre la sesión de Hibernate
+
+        int usuarioId = -1;  // Variable para almacenar el ID del usuario
+
+        try {
+            // Comprobar si existe un usuario con el nombre proporcionado
+            Query query = sesion.createQuery("FROM Usuarios WHERE nombre = :nombre");
+            query.setParameter("nombre", nombre);
+            Usuarios usuario = (Usuarios) query.uniqueResult();
+
+            if (usuario != null) {
+                // Si el usuario existe, comprobar si la contraseña coincide
+                if (comprobarContrasena(contrasena, usuario.getContrasena())) {
+                    // Si la contraseña es correcta, devolver el ID del usuario
+                    usuarioId = usuario.getId();
+                    System.out.println("Inicio de sesión exitoso para: " + nombre);
+                } else {
+                    // Si la contraseña no coincide, mostrar mensaje de error
+                    System.out.println("Contraseña incorrecta para: " + nombre);
+                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                // Si el usuario no existe
+                System.out.println("El usuario no existe: " + nombre);
+                JOptionPane.showMessageDialog(null, "El usuario no existe", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            // Cerrar la sesión de Hibernate
+            conexion.desconectar();
+        }
+
+        return usuarioId;  // Devolver el ID del usuario (o -1 si no se encuentra o hay error)
+    }
+
+    public void iniciarSesion(String nombre, String contrasena) {
+        if (comprobarInicioUsuario(nombre, contrasena)) {
+            // Si el inicio de sesión es exitoso
+            System.out.println("Inicio de sesión exitoso.");
+            // Aquí puedes continuar con la lógica para manejar el usuario
+        } else {
+            // Si el inicio de sesión falla
+            System.out.println("Error en el inicio de sesión.");
+        }
+    }
+
 }
