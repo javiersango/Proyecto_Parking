@@ -247,6 +247,13 @@ public class Administrador extends javax.swing.JPanel {
                     usu.getEmail()
                 });
             }
+
+            // Centrar el contenido de las celdas
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            for (int i = 0; i < jtabla1.getColumnCount(); i++) {
+                jtabla1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
         } else {
             // Mostrar mensaje si no hay registros
             JOptionPane.showMessageDialog(null, "No hay registros de usuarios.", "Usuarios", JOptionPane.INFORMATION_MESSAGE);
@@ -286,6 +293,13 @@ public class Administrador extends javax.swing.JPanel {
                 Double precio = his.getPrecio() != null ? his.getPrecio() : 0.0;
                 model.addRow(new Object[]{his.getDia(), his.getTiempoReservado(), precio, his.getMatricula()});
 
+            }
+
+            // Centrar el contenido de las celdas
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            for (int i = 0; i < jtabla.getColumnCount(); i++) {
+                jtabla.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
             }
         } else {
             JOptionPane.showMessageDialog(null, "No hay registros en el historial.", "Historial", JOptionPane.INFORMATION_MESSAGE);

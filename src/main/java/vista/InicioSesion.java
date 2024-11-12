@@ -547,6 +547,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
         nombre = jtnombre.getText();
         contrasena = String.valueOf(jtcontrasena.getPassword());
+        
 
         if (nombre.isEmpty() || nombre.equals("Nombre")) {
             JOptionPane.showMessageDialog(null, "El campo nombre esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
@@ -572,18 +573,17 @@ public class InicioSesion extends javax.swing.JFrame {
                     InicioCuenta inicioCuenta = new InicioCuenta();
                     inicioCuenta.inicializarDatosUsuario(nombre);
                     mostrarPanel(inicioCuenta);
-                    
-                    
+                                        
                     int idUsuario = MetodosInicio.devuelveIdUsuario(nombre, contrasena);
-                    System.out.println("ID usuario   " + idUsuario);
-                    
+                           
                     Historial historial = new Historial();
                     historial.inicializarDatosUsuario(nombre, idUsuario);
+                    historial.setVisible(true);
                     
-                    
+                   /*
                     ModificarCuenta modificarCuenta = new ModificarCuenta(ingles);
                     modificarCuenta.inicializarDatosUsuario(nombre, idUsuario);
-
+*/
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -803,3 +803,5 @@ public class InicioSesion extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

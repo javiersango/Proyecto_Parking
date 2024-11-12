@@ -15,6 +15,7 @@ import controlador.MetodosCuenta;
 public class InicioCuenta extends javax.swing.JPanel {
 
     private String nombre;
+    private int idUsuario;
 
     /**
      * Creates new form RegistroCuenta
@@ -34,7 +35,6 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbEliminarCuenta.putClientProperty("FlatLaf.style", "arc: 15");
 
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,8 +161,8 @@ public class InicioCuenta extends javax.swing.JPanel {
                 .addGap(51, 51, 51)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTNombre)
-                .addGap(36, 36, 36)
+                .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jbReservarPlaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,7 +252,7 @@ public class InicioCuenta extends javax.swing.JPanel {
     }//GEN-LAST:event_jbHistoiralAparcamientoActionPerformed
 
     private void jbModificarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarCuentaActionPerformed
-       ModificarCuenta modificarCuenta = new ModificarCuenta(false);
+        ModificarCuenta modificarCuenta = new ModificarCuenta(false);
         mostrarPanel(modificarCuenta);
     }//GEN-LAST:event_jbModificarCuentaActionPerformed
     /**
@@ -269,7 +269,13 @@ public class InicioCuenta extends javax.swing.JPanel {
         panelInicioCuenta.revalidate();
         panelInicioCuenta.repaint();
     }
+    
+    void inicializarDatosUsuario(String nombre) {
 
+        this.nombre = nombre;
+        jTNombre.setText(nombre);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLImagen;
@@ -282,10 +288,5 @@ public class InicioCuenta extends javax.swing.JPanel {
     private vista.PanelRound panelInicioCuenta;
     // End of variables declaration//GEN-END:variables
 
-    void inicializarDatosUsuario(String nombre) {
-
-        this.nombre = nombre;
-        jTNombre.setText(nombre);
-
-    }
 }
+

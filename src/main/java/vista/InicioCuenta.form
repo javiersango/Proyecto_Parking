@@ -92,8 +92,8 @@
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jltitulo1" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTNombre" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="jTNombre" min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLImagen" min="-2" pref="282" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jbReservarPlaza" min="-2" max="-2" attributes="0"/>
