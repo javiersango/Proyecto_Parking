@@ -341,7 +341,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
         jtcontrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jtcontrasena.setForeground(new java.awt.Color(153, 153, 153));
         jtcontrasena.setText("********");
-        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
+        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 30 caracteres");
         jtcontrasena.setPreferredSize(new java.awt.Dimension(335, 50));
         jtcontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

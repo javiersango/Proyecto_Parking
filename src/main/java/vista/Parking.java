@@ -10,6 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import modelo.Usuarios;
+import modelo.Vehiculos;
+
+
+
+
 
 /**
  *
@@ -22,11 +28,14 @@ public class Parking extends javax.swing.JPanel {
     private Map<String, JCheckBox> plazasCheckBoxes;
     private Map<String, Boolean> estadoPlazas;
     private String textoPlazaSeleccionada;
+    private final Usuarios usuarios;
+
 
     /**
      * Creates new form RegistroCuenta
      */
-    public Parking() {
+    public Parking(Usuarios usuarios) {
+        this.usuarios = usuarios;
         initComponents();
 
         // Poner jTexfield y jBotton el radio
@@ -966,7 +975,7 @@ public class Parking extends javax.swing.JPanel {
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
         // Crea una instancia de InicioCuenta
-        InicioCuenta ic = new InicioCuenta();
+        InicioCuenta ic = new InicioCuenta(usuarios);
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
     }//GEN-LAST:event_jbcancelarActionPerformed
@@ -977,7 +986,7 @@ public class Parking extends javax.swing.JPanel {
      */
     private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
 
-        Reserva reserva = new Reserva();
+        Reserva reserva = new Reserva(usuarios);
         mostrarPanel2(reserva);
     }//GEN-LAST:event_jbreservarActionPerformed
     /**

@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import modelo.Usuarios;
 
 /**
  *
@@ -38,11 +39,13 @@ public class Reserva extends javax.swing.JPanel {
     private String fechaFormateada;
     private final float precioHora = 0.75f;
     private double total = 0.0f;
+    private final Usuarios usuarios;
 
     /**
      * Creates new form RegistroCuenta
      */
-    public Reserva() {
+    public Reserva(Usuarios usuarios) {
+        this.usuarios = usuarios;
         initComponents();
 
         // Asignar valores predeterminados a los atributos nombre y contrasena
@@ -421,7 +424,7 @@ public class Reserva extends javax.swing.JPanel {
      * @param evt
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-        Parking parking = new Parking();
+        Parking parking = new Parking(usuarios);
         mostrarPanel(parking);
     }//GEN-LAST:event_jbcancelarActionPerformed
     /**

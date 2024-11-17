@@ -8,14 +8,13 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import javax.swing.JOptionPane;
 import controlador.MetodosContrasena;
-import controlador.MetodosRegistroCuenta;
 import controlador.MetodosModificar;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JPanel;
 import modelo.Usuarios;
 import modelo.Vehiculos;
+import controlador.MetodosRegistroCuenta;
 
 /**
  *
@@ -32,22 +31,28 @@ public class ModificarCuenta extends javax.swing.JPanel {
     private String contrasena;
     private String repetirContrasena;
     private int idUsuario;
+    private final Usuarios usuario;
+    private final Vehiculos vehiculos;
 
     MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
-    private final boolean inglesRegistroCuenta;
+    private final boolean inglesRegistroCuenta = false;
 
     /**
      * Creates new form RegistroCuenta
      *
      * @param ingles
+     * @param usuario
      */
-    public ModificarCuenta(boolean ingles) {
-
+    public ModificarCuenta(boolean ingles, Usuarios usuario, Vehiculos vehiculos) {
         initComponents();
-  
 
-        this.inglesRegistroCuenta = ingles;
+        this.usuario = usuario;
+        this.vehiculos = vehiculos;
 
+        // Llamada para mostrar los datos en los campos de texto
+        mostrarDatos();
+
+        // this.inglesRegistroCuenta = ingles;
         // Poner jTexfield y jBotton el radio
         jtnombre.putClientProperty("FlatLaf.style", "arc: 15");
         jtapellidos.putClientProperty("FlatLaf.style", "arc: 15");
@@ -57,10 +62,8 @@ public class ModificarCuenta extends javax.swing.JPanel {
         jtrepetirContrasena.putClientProperty("FlatLaf.style", "arc: 15");
 
         jbModificar.putClientProperty("FlatLaf.style", "arc: 15");
+        jbCancelar.putClientProperty("FlatLaf.style", "arc: 15");
 
-        // jltitulo1.putClientProperty("FlatLaf.styleClass", "h1");
-        jbCancelar.putClientProperty("FlatLaf.styleClass", "h3");
-        //jlvolver.putClientProperty("FlatLaf.styleClass", "h3");
         jlnombre.putClientProperty("FlatLaf.styleClass", "h3");
         jlapellidos.putClientProperty("FlatLaf.styleClass", "h3");
         jlemail.putClientProperty("FlatLaf.styleClass", "h3");
@@ -84,6 +87,49 @@ public class ModificarCuenta extends javax.swing.JPanel {
             cambiarIdiomaEn();
             System.out.println("CAMBIAR IDIOMA " + ingles);
         }
+    }
+
+    // Método para mostrar los datos en la interfaz
+    public void mostrarDatos() {
+        idUsuario = usuario.getId();
+        nombre = usuario.getNombre();
+        jtnombre.setText(nombre);
+        apellidos = usuario.getApellidos();
+        jtapellidos.setText(apellidos);
+        email = usuario.getEmail();
+        jtemail.setText(email);
+        
+
+        matricula = vehiculos.getMatricula();
+        
+        contrasena = nombre + "@" + matricula.substring(0, Math.min(4, matricula.length()));
+        jtcontrasena.setText(contrasena);
+        repetirContrasena = nombre + "@" + matricula.substring(0, Math.min(4, matricula.length()));
+        jtrepetirContrasena.setText(contrasena);
+        
+        jtmatricula.setText(matricula);
+        esCoche = vehiculos.getEsCoche();
+        Boolean esCocheVehiculo = vehiculos.getEsCoche();
+        if (esCocheVehiculo != null) {
+            esCoche = esCocheVehiculo;
+            jCheckBoxCoche.setSelected(esCocheVehiculo);
+            jCheckBoxMoto.setSelected(!esCocheVehiculo);
+        } else {
+            // Opcional: Manejar el caso donde esCoche es null
+            esCoche = false; // o un valor por defecto
+            jCheckBoxCoche.setSelected(false);
+            jCheckBoxMoto.setSelected(false);
+            System.out.println("Advertencia: el tipo de vehículo es null.");
+        }
+
+        System.out.println("ID Usuario: " + usuario.getId());
+        System.out.println("Nombre: " + usuario.getNombre());
+        System.out.println("Apellidos: " + usuario.getApellidos());
+        System.out.println("Email: " + usuario.getEmail());
+        System.out.println("Matrícula Vehículo: " + vehiculos.getMatricula());
+        System.out.println("Es coche: " + vehiculos.getEsCoche());
+        System.out.println("matricula: " + contrasena);
+        System.out.println("repetir matricula: " + repetirContrasena);
     }
 
     /**
@@ -346,7 +392,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
         jtcontrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jtcontrasena.setForeground(new java.awt.Color(153, 153, 153));
         jtcontrasena.setText("********");
-        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
+        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 30 caracteres");
         jtcontrasena.setPreferredSize(new java.awt.Dimension(335, 50));
         jtcontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -423,7 +469,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
         jltitulo2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
         jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo2.setText("que quiere modificar de  tu cuenta? ");
+        jltitulo2.setText("que quieres modificar de  tu cuenta? ");
         jltitulo2.setToolTipText("Volver pantalla anterior");
         jltitulo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
@@ -484,8 +530,9 @@ public class ModificarCuenta extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(jbCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(panelRegistroCuentaLayout.createSequentialGroup()
+                                .addGap(72, 72, 72)
                                 .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -495,7 +542,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jltitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelRegistroCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
@@ -549,8 +596,6 @@ public class ModificarCuenta extends javax.swing.JPanel {
      * @param evt
      */
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        nombre = jtnombre.getText();
-        apellidos = jtapellidos.getText();
 
         if (jCheckBoxCoche.isSelected()) {
             esCoche = true;
@@ -593,6 +638,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jbModificarActionPerformed
 
+    /*
     /**
      * Evento compotamiento de los campos al seleccionar
      */
@@ -623,9 +669,10 @@ public class ModificarCuenta extends javax.swing.JPanel {
     }//GEN-LAST:event_jtemailMouseClicked
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-       InicioCuenta inicioCuenta = new InicioCuenta();
+        InicioCuenta inicioCuenta = new InicioCuenta(usuario);
         mostrarPanel(inicioCuenta);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
     /**
      * Metodo elimina el panel actual y nos muestra el panel que se le pase
      *
@@ -713,46 +760,4 @@ public class ModificarCuenta extends javax.swing.JPanel {
     private vista.PanelRound panelRegistroCuenta;
     // End of variables declaration//GEN-END:variables
 
-  void inicializarDatosUsuario(String nombre, int idUsuario) {
-      this.nombre = nombre;
-      jNombre.setText(nombre);
-      
-      this.idUsuario = idUsuario;  // Asigna el ID del usuario a la variable de clase
-        System.out.println("Iniciar id usuario modificar: " + idUsuario);
-        
-        // Llamar al método de controlador para obtener el usuario con el ID dado
-        MetodosModificar metodosModificar = new MetodosModificar();
-        List<Usuarios> usuariosList = metodosModificar.MetodosModificar(idUsuario);  // Correcto: Llamar al método
-        
-        // Verifica si la lista no está vacía
-        if (usuariosList != null && !usuariosList.isEmpty()) {
-            // Asumiendo que el método devuelve una lista de usuarios, seleccionamos el primero
-            Usuarios usuario = usuariosList.get(0);
-            
-            // Rellenar los campos con la información del usuario
-            jtnombre.setText(usuario.getNombre());  // Usa getNombre() para obtener el nombre del usuario
-            jtapellidos.setText(usuario.getApellidos());  // Usa getApellidos()
-            jtemail.setText(usuario.getEmail());  // Usa getEmail()
-            
-            // Verificar si el usuario tiene vehículos
-            if (usuario.getVehiculoses() != null && !usuario.getVehiculoses().isEmpty()) {
-                // Obtener el primer vehículo asociado
-                Vehiculos vehiculo = (Vehiculos) usuario.getVehiculoses();
-                jtmatricula.setText(vehiculo.getMatricula());  // Asumiendo que el vehículo está relacionado con el usuario
-                
-                // Verificar si el vehículo es un coche o moto
-                if (vehiculo.getEsCoche() == true) {  // Si es coche
-                    jCheckBoxCoche.setSelected(true);  // Marcar coche si es un coche
-                    jCheckBoxMoto.setSelected(false); // Desmarcar moto
-                } else {  // Si no es coche, es moto
-                    jCheckBoxMoto.setSelected(true);  // Marcar moto
-                    jCheckBoxCoche.setSelected(false); // Desmarcar coche
-                }
-            }
-        } else {
-            System.out.println("No se encontró el usuario con ID: " + idUsuario);
-        }
-      
-      
-    }
 }

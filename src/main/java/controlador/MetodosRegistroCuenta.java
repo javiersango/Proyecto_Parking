@@ -5,7 +5,6 @@
 package controlador;
 
 import java.awt.Color;
-import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -17,11 +16,18 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
+
 /**
  *
  * @author Javier Sánchez González
  */
 public class MetodosRegistroCuenta {
+
+
+
+
+    
+   
 
     /**
      * Metodo se le le pasan los datos de vehiculo y uuario para registra la
@@ -37,6 +43,8 @@ public class MetodosRegistroCuenta {
      */
     public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
+        
+        
         if (usuarioExistente(nombre, email)) {
             JOptionPane.showMessageDialog(null, nombre + " ya existe " + email + " Introduca otro email ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -64,7 +72,6 @@ public class MetodosRegistroCuenta {
                 usuario.setApellidos(apellidos);
                 usuario.setEmail(email);
                 usuario.setContrasena(contrasena);
-                
 
                 // Guardar el usuario en la base de datos
                 sesion.save(usuario);
@@ -97,6 +104,97 @@ public class MetodosRegistroCuenta {
     }
 
     /**
+     * Metodo para modifica los datos del vehiculo simpre que exsita el email,
+     * se actualizara la matricula y si es coche o moto
+     *
+     * @param idUsuario
+     * @param nombre
+     * @param apellidos
+     * @param email String
+     * @param matricula
+     * @param contrasena
+     * @param esCoche
+     * @param nuevoEsCoche String
+     * @return devuelve true / false
+     */
+    public static boolean modificarCuentaUsuario(int idUsuario, String nombre, String apellidos, String email, String matricula, String contrasena, Boolean esCoche) {
+        // Configurar la conexión a la base de datos utilizando Hibernate
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml");
+
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        System.out.println("Conexión a la base de datos exitosa para modificar usuario.");
+
+        Session sesion = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        try {
+            transaction = sesion.beginTransaction();
+
+            // Recuperar el usuario existente por ID
+            Usuarios usuario = sesion.get(Usuarios.class, idUsuario);
+
+            if (usuario == null) {
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                System.exit(1); // Salir del programa
+            }
+
+            // Modificar los datos del usuario (excepto el ID)
+            if (nombre != null) {
+                usuario.setNombre(nombre);
+            }
+            if (apellidos != null) {
+                usuario.setApellidos(apellidos);
+            }
+            if (email != null && !email.equals(usuario.getEmail())) {
+                usuario.setEmail(email);
+            }
+            if (contrasena != null) {
+                usuario.setContrasena(contrasena); // Asegúrate de cifrar la contraseña si es necesario
+            }
+
+            // Actualizar el usuario
+            sesion.update(usuario);
+
+            // Recuperar el vehículo asociado al usuario
+            String hql = "FROM Vehiculos WHERE usuarios.id = :idUsuario";
+            Vehiculos vehiculo = sesion.createQuery(hql, Vehiculos.class)
+                    .setParameter("idUsuario", idUsuario)
+                    .uniqueResult();
+
+            if (vehiculo != null) {
+                // Modificar los datos del vehículo (excepto el ID)
+                if (matricula != null) {
+                    vehiculo.setMatricula(matricula);
+                }
+                if (esCoche != null) {
+                    vehiculo.setEsCoche(esCoche);
+                }
+
+                // Actualizar el vehículo
+                sesion.update(vehiculo);
+            }
+
+            // Confirmar la transacción
+            transaction.commit();
+
+            JOptionPane.showMessageDialog(null, "Datos actualizados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            JOptionPane.showMessageDialog(null, "Error al modificar los datos. El programa se cerrará.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            System.exit(1); // Salir del programa
+            return false; // Esta línea es redundante porque el programa se cerrará
+        } finally {
+            sesion.close();
+        }
+    }
+
+    /**
      * Metodo para comprobar si ya existe un usuario con el mismo nombre,
      * matricula y contraseña
      *
@@ -114,19 +212,22 @@ public class MetodosRegistroCuenta {
         Transaction transaction = null;
 
         try {
-
             transaction = session.beginTransaction();
 
-            // Consulta  buscar un usuario con los mismos datos
-            String hql = "FROM Usuarios WHERE  email = :email";
+            // Consulta para buscar un usuario con los mismos datos (excluyendo al usuario actual)
+            String hql = "FROM Usuarios WHERE (email = :email OR nombre = :nombre) AND id != :idUsuario";
             Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
             query.setParameter("email", email);
+            query.setParameter("nombre", nombre);
 
+
+            // Obtener el usuario
             Usuarios usuario = query.uniqueResult();
 
             // Commit de la transacción
             transaction.commit();
 
+            // Si el usuario existe, devuelve true (pero no es el mismo que está actualizando los datos)
             return usuario != null;
         } catch (Exception e) {
             if (transaction != null) {
@@ -135,66 +236,6 @@ public class MetodosRegistroCuenta {
             e.printStackTrace();
             return false;
         } finally {
-            session.close();
-        }
-    }
-
-    /**
-     * Metodo para modifica los datos del vehiculo simpre que exsita el email,
-     * se actualizara la matricula y si es coche o moto
-     *
-     * @param email String
-     * @param nuevaMatricula String
-     * @param nuevoEsCoche String
-     * @return devuelve true / false
-     */
-    public static boolean modificarDatosVehiculo(String email, String nuevaMatricula, boolean nuevoEsCoche) {
-        // Configurar la conexión 
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml");
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
-        try {
-
-            transaction = session.beginTransaction();
-
-            // Consultar  buscar un usuario con el correo electronico
-            String hql = "FROM Usuarios WHERE email = :email";
-            Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
-            query.setParameter("email", email);
-            Usuarios usuario = query.uniqueResult();
-
-            // Verificar si se encontró el usuario
-            if (usuario != null) {
-                // Obtener el ID del usuario
-                int userId = usuario.getId();
-
-                // Consultar los vehículos asociados al usuario por su ID
-                String vehiculosHql = "FROM Vehiculos WHERE usuarios.id = :userId";
-                Query<Vehiculos> vehiculosQuery = session.createQuery(vehiculosHql, Vehiculos.class);
-                vehiculosQuery.setParameter("userId", userId);
-                List<Vehiculos> vehiculos = vehiculosQuery.getResultList();
-
-                // Actualizar  vehículo asociado al usuario
-                for (Vehiculos vehiculo : vehiculos) {
-                    vehiculo.setMatricula(nuevaMatricula);
-                    vehiculo.setEsCoche(nuevoEsCoche);
-                    session.update(vehiculo);
-                }
-            }
-
-            // Commit de la transacción
-            transaction.commit();
-            return true;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-            return false;
-        } finally {
-            // Cerrar la sesión de Hibernate
             session.close();
         }
     }
@@ -268,9 +309,9 @@ public class MetodosRegistroCuenta {
      * @return devuelve true / false
      */
     public static boolean validarMatricula(String matricula) {
-    // Modificación para aceptar 4 dígitos seguidos de un espacio y 3 letras mayúsculas
-    String regex = "^[0-9]{4} [A-Z]{3}$";
-    return Pattern.matches(regex, matricula);
-}
+        // Modificación para aceptar 4 dígitos seguidos de un espacio y 3 letras mayúsculas
+        String regex = "^[0-9]{4} [A-Z]{3}$";
+        return Pattern.matches(regex, matricula);
+    }
 
 }

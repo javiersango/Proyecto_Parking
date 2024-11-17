@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import static controlador.MetodosContrasena.comprobarContrasena;
 import javax.swing.ImageIcon;
+import modelo.Vehiculos;
 
 /**
  *
@@ -127,6 +128,43 @@ public class MetodosInicio {
             // Si el inicio de sesión falla
             System.out.println("Error en el inicio de sesión.");
         }
+    }
+
+    public static Usuarios obtenerUsuario(int idUsuario) {
+        HibernateUtil conexion = new HibernateUtil();  // Instancia la conexión a la base de datos
+        conexion.conectar();
+        Session sesion = conexion.getSessionFactory().openSession();  // Abre la sesión de Hibernate
+        Usuarios usuario = null;
+
+        try {
+            // Método para cargar el usuario desde la base de datos utilizando el idUsuario
+            String hql = "FROM Usuarios u WHERE u.id = :idUsuario";
+            Query query = sesion.createQuery(hql);
+            query.setParameter("idUsuario", idUsuario);
+            usuario = (Usuarios) query.uniqueResult();
+        } finally {
+            if (sesion != null) {
+                sesion.close();  // Cierra la sesión de Hibernate para liberar recursos
+            }
+        }
+
+        return usuario;
+    }
+
+    public static Vehiculos obtenerVehiculoPorUsuarioId(Integer usuarioId) {
+        HibernateUtil conexion = new HibernateUtil();  // Instancia la conexión a la base de datos
+        conexion.conectar();
+        Session sesion = conexion.getSessionFactory().openSession();  // Abre la sesión de Hibernate
+        Vehiculos vehiculo = null;
+        try {
+            String hql = "FROM Vehiculos v WHERE v.usuarios.id = :usuarioId";
+            Query query = sesion.createQuery(hql);
+            query.setParameter("usuarioId", usuarioId);
+            vehiculo = (Vehiculos) query.uniqueResult();
+        } finally {
+            sesion.close();
+        }
+        return vehiculo;
     }
 
 }

@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import modelo.Usuarios;
+import modelo.Vehiculos;
+
 
 /**
  *
@@ -20,9 +23,10 @@ public class Historial extends javax.swing.JPanel {
     /**
      * Variables historial
      */
-    private int idUsuarioHistorial;
-    private String matriculaHistorial;
-    double totalPrecio = 0.0;
+     private final Usuarios usuarios;
+    private final Vehiculos vehiculos;
+    public double totalPrecio = 0.0;
+
 
     /**
      * Creates new form RegistroCuenta
@@ -35,16 +39,23 @@ public class Historial extends javax.swing.JPanel {
     /**
      * Creates new form RegistroCuenta
      */
-    public Historial() {
+    public Historial(Usuarios usuarios, Vehiculos vehiculos) {
+        this.usuarios = usuarios;
+        this.vehiculos = vehiculos;
+      
         initComponents();
+   ;
+        String  matricula = vehiculos.getMatricula();
+        jlMatricula.setText(matricula);
 
         // Poner jTexfield y jBotton el radio
         jbmostrar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
         jlhistorial.putClientProperty("Flatlaf.styleClass", "");
         jlHistorialVehiculo.putClientProperty("FlatLaf.styleClass", "h0");
-        jlMatricula.putClientProperty("FlatLaf.styleClass", "h0");
+        jlMatricula.putClientProperty("FlatLaf.styleClass", "");
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,15 +146,15 @@ public class Historial extends javax.swing.JPanel {
             .addGroup(panelHistorialLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelHistorialLayout.createSequentialGroup()
-                        .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlHistorialVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                                .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jlHistorialVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                        .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbmostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(panelHistorialLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelHistorialLayout.setVerticalGroup(
@@ -153,9 +164,9 @@ public class Historial extends javax.swing.JPanel {
                 .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jlHistorialVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
                 .addComponent(jbmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,10 +195,10 @@ public class Historial extends javax.swing.JPanel {
 
     private void jbmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarActionPerformed
 
-        System.out.println("Buscar listado de historial para el usuario con ID: " + 43);
+        System.out.println("Buscar listado de historial para el usuario con ID: " + usuarios.getId());
 
         // Obtener la lista de historiales desde MetodosHistorial
-        List<modelo.Historial> historia = MetodosHistorial.buscarMatriculaUsuario(43);
+        List<modelo.Historial> historia = MetodosHistorial.buscarMatriculaUsuario(usuarios.getId());
 
         // Limpiar la tabla antes de añadir nuevos datos
         DefaultTableModel model = (DefaultTableModel) jtablaHistorial.getModel();
@@ -215,19 +226,19 @@ public class Historial extends javax.swing.JPanel {
             for (int i = 0; i < jtablaHistorial.getColumnCount(); i++) {
                 jtablaHistorial.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
             }
-            }else {
+        } else {
             JOptionPane.showMessageDialog(null, "No hay registros en el historial.", "Historial", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jbmostrarActionPerformed
 
     /**
-         * Evento si al introducir los datos son erroneos, al cancelar vuelven a
-         * incilizarse los campos
-         */
+     * Evento si al introducir los datos son erroneos, al cancelar vuelven a
+     * incilizarse los campos
+     */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
         // Crea una instancia de InicioCuenta
-        InicioCuenta ic = new InicioCuenta();
+        InicioCuenta ic = new InicioCuenta(usuarios);
         // Muestra la ventana InicioCuenta
         mostrarPanel(ic);
 
@@ -251,21 +262,8 @@ public class Historial extends javax.swing.JPanel {
     }
 
     // Método para inicializar datos del usuario
-    void inicializarDatosUsuario(String nombre, int idUsuario) {
-        this.idUsuarioHistorial = idUsuario;
-
-        // Obtener matrícula asociada al usuario
-        this.matriculaHistorial = MetodosHistorial.buscarMatricula(idUsuario);
-
-        System.out.println("Id usuario pasada: " + nombre + ", ID: " + idUsuario);
-        System.out.println("Matrícula obtenida: " + this.matriculaHistorial);
-
-        if (this.matriculaHistorial != null && !this.matriculaHistorial.isEmpty()) {
-            jlMatricula.setText("Matrícula: " + this.matriculaHistorial);
-        } else {
-            jlMatricula.setText("Matrícula no encontrada");
-            System.out.println("No se encontró matrícula para el ID: " + idUsuario);
-        }
+    public void inicializarDatosUsuario(String nombre, int idUsuario) {
+        
     }
 
     /**

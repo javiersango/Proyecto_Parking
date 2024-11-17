@@ -19,7 +19,10 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosInicio;
+import controlador.MetodosRegistroCuenta;
 import modelo.Usuarios;
+import modelo.Vehiculos;
+
 
 /**
  *
@@ -38,6 +41,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private RecuperarContrasena recuperarContrasena;
     private boolean ingles; // Inicia el idioma en ingles
     private int nivelBateria = 100;
+
 
     /**
      * Creates new form Incio
@@ -547,7 +551,6 @@ public class InicioSesion extends javax.swing.JFrame {
 
         nombre = jtnombre.getText();
         contrasena = String.valueOf(jtcontrasena.getPassword());
-        
 
         if (nombre.isEmpty() || nombre.equals("Nombre")) {
             JOptionPane.showMessageDialog(null, "El campo nombre esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
@@ -563,39 +566,73 @@ public class InicioSesion extends javax.swing.JFrame {
 
             if (MetodosInicio.comprobarInicioUsuario(nombre, contrasena)) {
                 System.out.println(" Comprobar Administrador : " + nombre + "  " + contrasena);
+
+                // Verifica si el usuario es un administrador
                 if (nombre.equalsIgnoreCase("Administrador") && contrasena.equals("Admin@0000")) {
-                    JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.INFORMATION_MESSAGE);
                     // Inicializar el objeto administrador
                     administrador = new Administrador(usuarioActual);
                     mostrarPanel(administrador);
                 } else {
 
-                    InicioCuenta inicioCuenta = new InicioCuenta();
-                    inicioCuenta.inicializarDatosUsuario(nombre);
-                    mostrarPanel(inicioCuenta);
-                                        
-                    int idUsuario = MetodosInicio.devuelveIdUsuario(nombre, contrasena);
-                           
-                    Historial historial = new Historial();
-                    historial.inicializarDatosUsuario(nombre, idUsuario);
-                    historial.setVisible(true);
+                    // Usuario normal
+                    Integer idUsuario = MetodosInicio.devuelveIdUsuario(nombre, contrasena);
                     
-                   /*
-                    ModificarCuenta modificarCuenta = new ModificarCuenta(ingles);
-                    modificarCuenta.inicializarDatosUsuario(nombre, idUsuario);
-*/
+                    Usuarios usuario = MetodosInicio.obtenerUsuario(idUsuario);
+                    InicioCuenta inicioCuenta = new InicioCuenta(usuario);
+                    Parking parking = new Parking(usuario);
+
+                    
+                    Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
+                    
+                    inicioCuenta.inicializarDatosUsuario(usuario,vehiculos);
+                    mostrarPanel(inicioCuenta);
+                    
+                    
+                   
+                
+
+                    System.out.println("InicioSesion nombre: " + nombre + " contraseña: " + contrasena + " matricula "+  vehiculos.getMatricula());
+                    
+                    
+               
+                    
+                    
+
+     /*                       if (idUsuario != null) {
+                        // Asegúrate de que este método obtenga el usuario por ID
+
+                        if (usuario != null) {
+                            Vehiculos vehiculo = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
+                            System.out.println(vehiculo.getMatricula());
+                            if (vehiculo != null) {
+
+                                 ModificarCuenta modificarCuenta = new ModificarCuenta(ingles, usuario, vehiculo);
+                                 modificarCuenta.mostrarDatos();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No se encontró un vehículo asociado", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    //  Historial historial = new Historial();
+                    //  historial.inicializarDatosUsuario(nombre, idUsuario);
+                    //   historial.setVisible(true);  */
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
-        }
+                }
 
     }//GEN-LAST:event_jbiniciarActionPerformed
     /**
-     * Evento cuanto se selecciona el texto se pone en negrita y si no esta
-     * selecciado lo deja como estaba al inicio
-     */
+             * Evento cuanto se selecciona el texto se pone en negrita y si no
+             * esta selecciado lo deja como estaba al inicio
+             */
     private void jtcontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMousePressed
         if (String.valueOf(jtcontrasena.getPassword()).equals("********")) {
             jtcontrasena.setText("");
@@ -676,16 +713,24 @@ public class InicioSesion extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioSesion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -803,5 +848,3 @@ public class InicioSesion extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-
-
