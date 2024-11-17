@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Usuarios;
 import modelo.Vehiculos;
 
-
 /**
  *
  * @author Javier Sánchez Gonzalez
@@ -23,10 +22,9 @@ public class Historial extends javax.swing.JPanel {
     /**
      * Variables historial
      */
-     private final Usuarios usuarios;
+    private final Usuarios usuarios;
     private final Vehiculos vehiculos;
     public double totalPrecio = 0.0;
-
 
     /**
      * Creates new form RegistroCuenta
@@ -42,10 +40,10 @@ public class Historial extends javax.swing.JPanel {
     public Historial(Usuarios usuarios, Vehiculos vehiculos) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
-      
+
         initComponents();
-   ;
-        String  matricula = vehiculos.getMatricula();
+        ;
+        String matricula = vehiculos.getMatricula();
         jlMatricula.setText(matricula);
 
         // Poner jTexfield y jBotton el radio
@@ -263,7 +261,7 @@ public class Historial extends javax.swing.JPanel {
 
     // Método para inicializar datos del usuario
     public void inicializarDatosUsuario(String nombre, int idUsuario) {
-        
+
     }
 
     /**

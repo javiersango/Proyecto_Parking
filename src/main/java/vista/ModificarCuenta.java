@@ -8,7 +8,6 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import javax.swing.JOptionPane;
 import controlador.MetodosContrasena;
-import controlador.MetodosModificar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JPanel;
@@ -98,15 +97,14 @@ public class ModificarCuenta extends javax.swing.JPanel {
         jtapellidos.setText(apellidos);
         email = usuario.getEmail();
         jtemail.setText(email);
-        
 
         matricula = vehiculos.getMatricula();
-        
+
         contrasena = nombre + "@" + matricula.substring(0, Math.min(4, matricula.length()));
         jtcontrasena.setText(contrasena);
         repetirContrasena = nombre + "@" + matricula.substring(0, Math.min(4, matricula.length()));
         jtrepetirContrasena.setText(contrasena);
-        
+
         jtmatricula.setText(matricula);
         esCoche = vehiculos.getEsCoche();
         Boolean esCocheVehiculo = vehiculos.getEsCoche();
@@ -128,8 +126,8 @@ public class ModificarCuenta extends javax.swing.JPanel {
         System.out.println("Email: " + usuario.getEmail());
         System.out.println("Matrícula Vehículo: " + vehiculos.getMatricula());
         System.out.println("Es coche: " + vehiculos.getEsCoche());
-        System.out.println("matricula: " + contrasena);
-        System.out.println("repetir matricula: " + repetirContrasena);
+        System.out.println("Contrasena: " + contrasena);
+        System.out.println("contrasena: " + repetirContrasena);
     }
 
     /**
@@ -597,44 +595,58 @@ public class ModificarCuenta extends javax.swing.JPanel {
      */
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
 
-        if (jCheckBoxCoche.isSelected()) {
-            esCoche = true;
-        } else if (jCheckBoxMoto.isSelected()) {
-            esCoche = false;
-        }
+        // Obtener los datos ingresados en la interfaz
+        String nombre = jtnombre.getText();
+        String apellidos = jtapellidos.getText();
+        String email = jtemail.getText();
+        String matricula = jtmatricula.getText();
+        String contrasena = jtcontrasena.getText();
+        String repetirContrasena = jtrepetirContrasena.getText();
 
-        if (jtnombre.getText().isEmpty() || jtapellidos.getText().isEmpty() || jtemail.getText().isEmpty()
-                || jtmatricula.getText().isEmpty() || jtcontrasena.getText().isEmpty() || jtrepetirContrasena.getText().isEmpty()) {
+        // Determinar el tipo de vehículo
+        boolean esCoche = jCheckBoxCoche.isSelected();
+
+        // Validaciones de los campos
+        if (nombre.isEmpty() || apellidos.isEmpty() || email.isEmpty() || matricula.isEmpty() || contrasena.isEmpty() || repetirContrasena.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos antes de continuar", "Campos Incompletos", JOptionPane.ERROR_MESSAGE);
-        } else if (jtnombre.getText().length() < 3) {
+        } else if (nombre.length() < 3) {
             JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres caracteres", "Nombre incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else if (!MetodosContrasena.esCorreoElectronicoValido(jtemail.getText())) {
-            JOptionPane.showMessageDialog(null, "El correo electronico no es valido", "Correo Electrnico Incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else if (!MetodosRegistroCuenta.validarMatricula(jtmatricula.getText())) {
-            JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matricula Incorrecta", JOptionPane.ERROR_MESSAGE);
+        } else if (!MetodosContrasena.esCorreoElectronicoValido(email)) {
+            JOptionPane.showMessageDialog(null, "El correo electrónico no es válido", "Correo Incorrecto", JOptionPane.ERROR_MESSAGE);
+        } else if (!MetodosRegistroCuenta.validarMatricula(matricula)) {
+            JOptionPane.showMessageDialog(null, "La matrícula no es válida", "Matrícula Incorrecta", JOptionPane.ERROR_MESSAGE);
         } else if (!jCheckBoxCoche.isSelected() && !jCheckBoxMoto.isSelected()) {
-            JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehiculo", "Vehiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No ha seleccionado tipo de vehículo", "Vehículo", JOptionPane.ERROR_MESSAGE);
         } else if (jCheckBoxCoche.isSelected() && jCheckBoxMoto.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Solo puedes seleccionar un vehiculo", "Vehiculo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Solo puedes seleccionar un vehículo", "Vehículo", JOptionPane.ERROR_MESSAGE);
         } else {
-            contrasena = jtcontrasena.getText();
-            repetirContrasena = jtrepetirContrasena.getText();
-
-            MetodosContrasena metodos = new MetodosContrasena();
-            String hash = metodos.crearHashContrasena(contrasena, repetirContrasena);
+            // Generar el hash de la contraseña
+            String hash = MetodosContrasena.crearHashContrasena(contrasena, repetirContrasena);
 
             if (hash != null) {
-                // Llamar al método guardar cuenta usuario
-                if (MetodosRegistroCuenta.guardarCuentaUsuario(nombre, apellidos, jtemail.getText(), jtmatricula.getText(), hash, esCoche)) {
-                    JOptionPane.showMessageDialog(null, "Se acaba de registrar el usuario " + nombre, "Correcto", JOptionPane.INFORMATION_MESSAGE);
+                // Llamar al método para modificar la cuenta del usuario
+                boolean resultado = MetodosRegistroCuenta.modificarCuentaUsuario(idUsuario, nombre, apellidos, email, matricula, hash, esCoche);
 
+                if (resultado) {
+                    JOptionPane.showMessageDialog(null, "Datos de usuario actualizados correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Actualizar los campos de la interfaz con los nuevos datos
+                    jtnombre.setText(nombre);
+                    jtapellidos.setText(apellidos);
+                    jtemail.setText(email);
+                    jtmatricula.setText(matricula);
+                    jCheckBoxCoche.setSelected(esCoche);
+                    jCheckBoxMoto.setSelected(!esCoche);
+
+                    // Opcional: Volver al panel de inicio de sesión o mostrar mensaje de éxito
                     InicioSesion is = new InicioSesion();
                     mostrarPanel(is.getPanelfondo());
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Error en la contraseña. " + nombre, "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la contraseña. No se pudo crear el hash.", "Error", JOptionPane.WARNING_MESSAGE);
             }
         }
+
 
     }//GEN-LAST:event_jbModificarActionPerformed
 

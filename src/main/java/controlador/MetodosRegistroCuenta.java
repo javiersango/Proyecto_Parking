@@ -16,18 +16,11 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-
 /**
  *
  * @author Javier Sánchez González
  */
 public class MetodosRegistroCuenta {
-
-
-
-
-    
-   
 
     /**
      * Metodo se le le pasan los datos de vehiculo y uuario para registra la
@@ -43,8 +36,7 @@ public class MetodosRegistroCuenta {
      */
     public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
-        
-        
+
         if (usuarioExistente(nombre, email)) {
             JOptionPane.showMessageDialog(null, nombre + " ya existe " + email + " Introduca otro email ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
@@ -118,10 +110,9 @@ public class MetodosRegistroCuenta {
      * @return devuelve true / false
      */
     public static boolean modificarCuentaUsuario(int idUsuario, String nombre, String apellidos, String email, String matricula, String contrasena, Boolean esCoche) {
-        // Configurar la conexión a la base de datos utilizando Hibernate
+        // Configuración de Hibernate
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
-
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         System.out.println("Conexión a la base de datos exitosa para modificar usuario.");
 
@@ -130,67 +121,78 @@ public class MetodosRegistroCuenta {
 
         try {
             transaction = sesion.beginTransaction();
+            System.out.println("Transacción iniciada.");
 
             // Recuperar el usuario existente por ID
             Usuarios usuario = sesion.get(Usuarios.class, idUsuario);
 
             if (usuario == null) {
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
-                System.exit(1); // Salir del programa
+                return false; // No continuar si no se encuentra el usuario
             }
 
-            // Modificar los datos del usuario (excepto el ID)
-            if (nombre != null) {
+            // Modificar los datos del usuario
+            if (nombre != null && !nombre.isEmpty()) {
                 usuario.setNombre(nombre);
+                System.out.println("Nombre modificado: " + nombre);
             }
-            if (apellidos != null) {
+            if (apellidos != null && !apellidos.isEmpty()) {
                 usuario.setApellidos(apellidos);
+                System.out.println("Apellidos modificados: " + apellidos);
             }
             if (email != null && !email.equals(usuario.getEmail())) {
                 usuario.setEmail(email);
+                System.out.println("Email modificado: " + email);
             }
-            if (contrasena != null) {
-                usuario.setContrasena(contrasena); // Asegúrate de cifrar la contraseña si es necesario
+            if (contrasena != null && !contrasena.isEmpty()) {
+                usuario.setContrasena(contrasena);
+                System.out.println("Contraseña modificada.");
             }
 
-            // Actualizar el usuario
+            // Actualizar usuario
             sesion.update(usuario);
+            System.out.println("Usuario actualizado.");
 
-            // Recuperar el vehículo asociado al usuario
+            // Recuperar y actualizar el vehículo
             String hql = "FROM Vehiculos WHERE usuarios.id = :idUsuario";
             Vehiculos vehiculo = sesion.createQuery(hql, Vehiculos.class)
                     .setParameter("idUsuario", idUsuario)
                     .uniqueResult();
 
             if (vehiculo != null) {
-                // Modificar los datos del vehículo (excepto el ID)
-                if (matricula != null) {
+                if (matricula != null && !matricula.isEmpty()) {
                     vehiculo.setMatricula(matricula);
+                    System.out.println("Matrícula del vehículo modificada: " + matricula);
                 }
                 if (esCoche != null) {
                     vehiculo.setEsCoche(esCoche);
+                    System.out.println("Tipo de vehículo modificado: " + esCoche);
                 }
-
-                // Actualizar el vehículo
                 sesion.update(vehiculo);
+                System.out.println("Vehículo actualizado.");
             }
+
+            // Realizar un flush para asegurar que las modificaciones se escriban
+            sesion.flush();
+            System.out.println("Flush ejecutado.");
 
             // Confirmar la transacción
             transaction.commit();
+            System.out.println("Transacción confirmada.");
 
             JOptionPane.showMessageDialog(null, "Datos actualizados correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+                System.out.println("Transacción revertida.");
             }
-
             JOptionPane.showMessageDialog(null, "Error al modificar los datos. El programa se cerrará.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
-            System.exit(1); // Salir del programa
-            return false; // Esta línea es redundante porque el programa se cerrará
+            return false;
         } finally {
             sesion.close();
+            System.out.println("Sesión cerrada.");
         }
     }
 
@@ -219,7 +221,6 @@ public class MetodosRegistroCuenta {
             Query<Usuarios> query = session.createQuery(hql, Usuarios.class);
             query.setParameter("email", email);
             query.setParameter("nombre", nombre);
-
 
             // Obtener el usuario
             Usuarios usuario = query.uniqueResult();

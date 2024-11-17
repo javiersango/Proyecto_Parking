@@ -277,10 +277,9 @@ public class Reserva extends javax.swing.JPanel {
                             .addComponent(jltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTexthora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPdatosReservaLayout.createSequentialGroup()
+            .addGroup(jPdatosReservaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jbcalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jbcalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPdatosReservaLayout.setVerticalGroup(
             jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
