@@ -4,9 +4,13 @@
  */
 package controlador;
 
+import java.util.ArrayList;
+import java.util.List;
 import modelo.Vehiculos;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import modelo.Reservas;
+import vista.Reserva;
 
 /**
  *
@@ -37,5 +41,19 @@ public class MetodosReservar {
             return null;
         }
     }
+/*
+    private List<Reserva> obtenerReservasPorFecha(String fecha) {
+        // Este es un ejemplo simple, deberías ajustarlo a tu implementación
+        List<Reserva> reservas = new ArrayList<>();
 
+        // Imaginemos que tienes un listado de todas las reservas
+        for (Reserva reserva : todasLasReservas) {
+            if (reserva.getFecha().equals(fecha)) {
+                reservas.add(reserva);
+            }
+        }
+
+        return reservas;
+    }
+*/
 }

@@ -36,13 +36,15 @@ public class Historial extends javax.swing.JPanel {
      */
     /**
      * Creates new form RegistroCuenta
+     * @param usuarios
+     * @param vehiculos
      */
     public Historial(Usuarios usuarios, Vehiculos vehiculos) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
 
         initComponents();
-        ;
+        
         String matricula = vehiculos.getMatricula();
         jlMatricula.setText(matricula);
 
@@ -235,10 +237,9 @@ public class Historial extends javax.swing.JPanel {
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
-        // Crea una instancia de InicioCuenta
-        InicioCuenta ic = new InicioCuenta(usuarios);
-        // Muestra la ventana InicioCuenta
-        mostrarPanel(ic);
+        InicioCuenta inicioCuenta = new InicioCuenta(usuarios, vehiculos);
+        mostrarPanel(inicioCuenta);
+
 
     }//GEN-LAST:event_jbcancelarActionPerformed
 
@@ -249,6 +250,7 @@ public class Historial extends javax.swing.JPanel {
      * @param panel
      */
     private void mostrarPanel(InicioCuenta panel) {
+
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
 

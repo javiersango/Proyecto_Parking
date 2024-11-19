@@ -24,11 +24,6 @@ public class MetodosHistorial {
      *
      * @return un listado con los datos fecha, duracion, precio del aparcamiento
      */
-    /**
-     * Metodo busca la matricula en la base de datos
-     *
-     * @return un listado con los datos fecha, duracion, precio del aparcamiento
-     */
     public static List<Historial> mostrarHistorial() {
         HibernateUtil conexion = new HibernateUtil();  // Instanciación de la conexion con la base de datos
         conexion.conectar();

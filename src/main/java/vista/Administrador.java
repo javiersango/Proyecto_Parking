@@ -5,15 +5,17 @@
 package vista;
 
 import java.util.List;
+import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Usuarios;
-import controlador.MetodosAdministrador;
-import controlador.MetodosHistorial;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import modelo.Usuarios;
 import modelo.Vehiculos;
 import modelo.Historial;
+import controlador.MetodosAdministrador;
+import controlador.MetodosHistorial;
+
 
 /**
  *
@@ -24,10 +26,9 @@ public class Administrador extends javax.swing.JPanel {
     /**
      * Variables historial
      */
-    private Usuarios usuarios;
+    private final Usuarios usuarios;
+    private final Vehiculos vehiculos;
     private MetodosAdministrador metodosAdministrador;
-    private InicioSesion inicioSesion;
-    private Vehiculos vehiculos;
 
     /**
      * Creates new form RegistroCuenta
@@ -39,18 +40,13 @@ public class Administrador extends javax.swing.JPanel {
      */
     /**
      * Creates new form RegistroCuenta
+     *
+     * @param usuarios
+     * @param vehiculos
      */
-    public Administrador(Usuarios usuario) {
-
-        initComponents();
-        metodosAdministrador = new MetodosAdministrador();
-
-        // Poner jTexfield y jBotton el radio
-        jbmostrarDatosUsuarios.putClientProperty("FlatLaf.style", "arc: 15");
-        jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
-        // jlhistorial.putClientProperty("FlatLaf.styleClass", "h2");
-        jlhistorial.putClientProperty("Flatlaf.styleClass", "");
-        jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
+    public Administrador(Usuarios usuarios, Vehiculos vehiculos) {
+        this.usuarios = usuarios;
+        this.vehiculos = vehiculos;
 
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,7 +56,7 @@ public class Administrador extends javax.swing.JPanel {
         panelAdministrador = new vista.PanelRound();
         jlhistorial = new javax.swing.JLabel();
         jbmostrarDatosUsuarios = new javax.swing.JButton();
-        jbcancelar = new javax.swing.JButton();
+        jbMostrarAparcamientos = new javax.swing.JButton();
         jltitulo2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtabla = new javax.swing.JTable();
@@ -96,16 +92,16 @@ public class Administrador extends javax.swing.JPanel {
             }
         });
 
-        jbcancelar.setBackground(new java.awt.Color(43, 220, 61));
-        jbcancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbcancelar.setForeground(new java.awt.Color(255, 255, 255));
-        jbcancelar.setText("Mostrar Aparcamiento");
-        jbcancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
-        jbcancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbcancelar.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
+        jbMostrarAparcamientos.setBackground(new java.awt.Color(43, 220, 61));
+        jbMostrarAparcamientos.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbMostrarAparcamientos.setForeground(new java.awt.Color(255, 255, 255));
+        jbMostrarAparcamientos.setText("Mostrar Aparcamiento");
+        jbMostrarAparcamientos.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
+        jbMostrarAparcamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbMostrarAparcamientos.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbMostrarAparcamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbcancelarActionPerformed(evt);
+                jbMostrarAparcamientosActionPerformed(evt);
             }
         });
 
@@ -177,7 +173,7 @@ public class Administrador extends javax.swing.JPanel {
                         .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jbcancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                                .addComponent(jbMostrarAparcamientos, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                                 .addComponent(jbmostrarDatosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbmostrarHistorialReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
@@ -203,7 +199,7 @@ public class Administrador extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbMostrarAparcamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -265,15 +261,11 @@ public class Administrador extends javax.swing.JPanel {
      * Evento si al introducir los datos son erroneos, al cancelar vuelven a
      * incilizarse los campos
      */
-    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
+    private void jbMostrarAparcamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarAparcamientosActionPerformed
+        ParkingAdministrador parkingAdministrador = new ParkingAdministrador(usuarios, vehiculos);
+        mostrarPanel(parkingAdministrador);
 
-        int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que deseas cerrar la sesión?", "Cerrar sesión", JOptionPane.YES_NO_OPTION);
-
-        if (confirmar == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-
-    }//GEN-LAST:event_jbcancelarActionPerformed
+    }//GEN-LAST:event_jbMostrarAparcamientosActionPerformed
 
     private void jbmostrarHistorialReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmostrarHistorialReservasActionPerformed
         // Obtener la lista de reservas desde MetodosHistorial
@@ -339,16 +331,8 @@ public class Administrador extends javax.swing.JPanel {
                 }
             }
         }
-
-
     }//GEN-LAST:event_jtabla1MouseClicked
-
-    /**
-     * Metodo se le pasa el panel InicioSesion para que se muestre
-     *
-     * @param panel
-     */
-    private void mostrarPanel(InicioCuenta panel) {
+    public void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
 
@@ -356,18 +340,12 @@ public class Administrador extends javax.swing.JPanel {
         panelAdministrador.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         panelAdministrador.revalidate();
         panelAdministrador.repaint();
-
     }
-    /**
-     * Metodo crean la variables para que al leer el archivo de texto traducido
-     * lo identifique
-     */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgeleccion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton jbcancelar;
+    private javax.swing.JButton jbMostrarAparcamientos;
     private javax.swing.JButton jbmostrarDatosUsuarios;
     private javax.swing.JButton jbmostrarHistorialReservas;
     private javax.swing.JLabel jlhistorial;

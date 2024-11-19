@@ -19,7 +19,7 @@ import controlador.MetodosRegistroCuenta;
  *
  * @author Javier Sánchez González
  */
-public class ModificarCuenta extends javax.swing.JPanel {
+public final class ModificarCuenta extends javax.swing.JPanel {
 
     // Inicializacin variables
     private boolean esCoche;
@@ -33,7 +33,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
     private final Usuarios usuario;
     private final Vehiculos vehiculos;
 
-    MetodosRegistroCuenta mrc = new MetodosRegistroCuenta();
+    MetodosRegistroCuenta metodosRegistroCuenta = new MetodosRegistroCuenta();
     private final boolean inglesRegistroCuenta = false;
 
     /**
@@ -41,6 +41,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
      *
      * @param ingles
      * @param usuario
+     * @param vehiculos
      */
     public ModificarCuenta(boolean ingles, Usuarios usuario, Vehiculos vehiculos) {
         initComponents();
@@ -638,7 +639,7 @@ public class ModificarCuenta extends javax.swing.JPanel {
                     jCheckBoxCoche.setSelected(esCoche);
                     jCheckBoxMoto.setSelected(!esCoche);
 
-                    // Opcional: Volver al panel de inicio de sesión o mostrar mensaje de éxito
+                    //Volver al panel de inicio de sesión o mostrar mensaje de éxito
                     InicioSesion is = new InicioSesion();
                     mostrarPanel(is.getPanelfondo());
                 }
@@ -656,32 +657,32 @@ public class ModificarCuenta extends javax.swing.JPanel {
      */
     private void jtnombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtnombreMouseClicked
 
-        mrc.comportamientoCampos(jtnombre, "Nombre");
+        metodosRegistroCuenta.comportamientoCampos(jtnombre, "Nombre");
 
     }//GEN-LAST:event_jtnombreMouseClicked
 
     private void jtapellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtapellidosMouseClicked
-        mrc.comportamientoCampos(jtapellidos, "Apellidos");
+        metodosRegistroCuenta.comportamientoCampos(jtapellidos, "Apellidos");
     }//GEN-LAST:event_jtapellidosMouseClicked
 
     private void jtmatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtmatriculaMouseClicked
-        mrc.comportamientoCampos(jtmatricula, "Matricula");
+        metodosRegistroCuenta.comportamientoCampos(jtmatricula, "Matricula");
     }//GEN-LAST:event_jtmatriculaMouseClicked
 
     private void jtcontrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMouseClicked
-        mrc.comportamientoCampos(jtcontrasena, "********");
+        metodosRegistroCuenta.comportamientoCampos(jtcontrasena, "********");
     }//GEN-LAST:event_jtcontrasenaMouseClicked
 
     private void jtrepetirContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtrepetirContrasenaMouseClicked
-        mrc.comportamientoCampos(jtrepetirContrasena, "********");
+        metodosRegistroCuenta.comportamientoCampos(jtrepetirContrasena, "********");
     }//GEN-LAST:event_jtrepetirContrasenaMouseClicked
 
     private void jtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtemailMouseClicked
-        mrc.comportamientoCampos(jtemail, "Email");
+        metodosRegistroCuenta.comportamientoCampos(jtemail, "Email");
     }//GEN-LAST:event_jtemailMouseClicked
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        InicioCuenta inicioCuenta = new InicioCuenta(usuario);
+        InicioCuenta inicioCuenta = new InicioCuenta(usuario, vehiculos);
         mostrarPanel(inicioCuenta);
     }//GEN-LAST:event_jbCancelarActionPerformed
 

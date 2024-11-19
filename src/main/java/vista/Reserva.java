@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Usuarios;
+import modelo.Vehiculos;
 
 /**
  *
@@ -40,12 +41,14 @@ public class Reserva extends javax.swing.JPanel {
     private final float precioHora = 0.75f;
     private double total = 0.0f;
     private final Usuarios usuarios;
+    private final Vehiculos vehiculos;
 
     /**
      * Creates new form RegistroCuenta
      */
-    public Reserva(Usuarios usuarios) {
+    public Reserva(Usuarios usuarios, Vehiculos vehiculos) {
         this.usuarios = usuarios;
+        this.vehiculos = vehiculos;
         initComponents();
 
         // Asignar valores predeterminados a los atributos nombre y contrasena
@@ -60,7 +63,7 @@ public class Reserva extends javax.swing.JPanel {
          */
         // Poner jTexfield y jBotton el radio
         jbConfirmar.putClientProperty("FlatLaf.style", "arc: 15");
-        jbcalendario.putClientProperty("FlatLaf.style", "arc: 15");
+       // jbcalendario.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
         jPdatosReserva.putClientProperty("FlatLaf.style", "arc: 15");
 
@@ -72,19 +75,7 @@ public class Reserva extends javax.swing.JPanel {
         jtplaza.setText(plaza);
         jtplaza.setForeground(Color.black);
         System.out.print(plaza);
-        /*
-        // Obtener información del vehículo asociado al usuario
-        // mi.devolverIdusuario(nombre, contrasena);
-        Vehiculos vehiculo = mr.devuelveDatosVehiculo(nombre, contrasena);
-        if (vehiculo != null) {
-            jtmatricula.setText(vehiculo.getMatricula());
-            jtcoche.setText(vehiculo.getEsCoche().toString());
-        } else {
-            // Si no se encontró ningún vehículo para el usuario, puedes mostrar un mensaje o dejar los campos vacíos
-            jtmatricula.setText("");
-            jtcoche.setText("");
-        }
-         */
+       
     }
 
     /**
@@ -111,7 +102,6 @@ public class Reserva extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jlnombre5 = new javax.swing.JLabel();
         jttotal = new javax.swing.JTextField();
-        jbcalendario = new javax.swing.JButton();
         jTexthora = new javax.swing.JTextField();
         jlnombre6 = new javax.swing.JLabel();
         jbConfirmar = new javax.swing.JButton();
@@ -225,18 +215,6 @@ public class Reserva extends javax.swing.JPanel {
         jttotal.setPreferredSize(new java.awt.Dimension(335, 50));
         jPanel1.add(jttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 130, 40));
 
-        jbcalendario.setBackground(new java.awt.Color(39, 59, 244));
-        jbcalendario.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbcalendario.setForeground(new java.awt.Color(255, 255, 255));
-        jbcalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/calendario.png"))); // NOI18N
-        jbcalendario.setToolTipText("Boton muesetra el calendario para selecicionar fecha");
-        jbcalendario.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbcalendario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbcalendarioActionPerformed(evt);
-            }
-        });
-
         jTexthora.setBackground(new java.awt.Color(198, 212, 255));
         jTexthora.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jTexthora.setForeground(new java.awt.Color(153, 153, 153));
@@ -277,9 +255,6 @@ public class Reserva extends javax.swing.JPanel {
                             .addComponent(jltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTexthora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24))))
-            .addGroup(jPdatosReservaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jbcalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPdatosReservaLayout.setVerticalGroup(
             jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,9 +275,7 @@ public class Reserva extends javax.swing.JPanel {
                 .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtplaza, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTexthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbcalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(55, 55, 55)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -402,28 +375,15 @@ public class Reserva extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-    /**
-     * Evento al pulsar el boton del calendario muestra la fecha actual
-     *
-     * @param evt
-     */
-    private void jbcalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcalendarioActionPerformed
 
-        // Obtener la fecha actual
-        fecha = LocalDate.now();
-        formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); //  formato deseado
-        fechaFormateada = fecha.format(formatter); // Formato fecha
-        jbcalendario.setText(fechaFormateada);
-
-    }//GEN-LAST:event_jbcalendarioActionPerformed
-    /**
+   /**
      * Evento se le pasa el metodo MostrarPanel eliminando el actual y mostrando
      * el que se le pasa calculo de el tiempo de estacionamiento
      *
      * @param evt
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-        Parking parking = new Parking(usuarios);
+        Parking parking = new Parking(usuarios, vehiculos);
         mostrarPanel(parking);
     }//GEN-LAST:event_jbcancelarActionPerformed
     /**
@@ -483,7 +443,6 @@ public class Reserva extends javax.swing.JPanel {
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTextField jTexthora;
     private javax.swing.JButton jbConfirmar;
-    private javax.swing.JButton jbcalendario;
     private javax.swing.JButton jbcancelar;
     private javax.swing.JLabel jlnombre1;
     private javax.swing.JLabel jlnombre2;

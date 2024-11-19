@@ -16,9 +16,11 @@ vista\RegistroCuenta$4.class
 vista\Loading$3.class
 vista\ModificarCuenta$1.class
 vista\InicioSesion$5.class
+vista\ParkingAdministrador.class
 vista\Administrador$1.class
 vista\RegistroCuenta$1.class
 vista\ModificarCuenta$4.class
+vista\ParkingAdministrador$3.class
 controlador\MetodosInicio.class
 vista\InicioSesion$8.class
 vista\InicioSesion$1.class
@@ -34,6 +36,7 @@ controlador\MetodosRecuperarContrasena.class
 vista\Historial$1.class
 controlador\EmailUtil$1.class
 vista\ModificarCuenta$8.class
+vista\ParkingAdministrador$1.class
 vista\Parking$1.class
 controlador\MetodosReservar.class
 vista\Loading.class
@@ -51,6 +54,7 @@ vista\Administrador$2.class
 vista\Parking.class
 vista\Reserva.class
 vista\InicioSesion$9.class
+vista\ParkingAdministrador$2.class
 vista\InicioCuenta$3.class
 vista\Reserva$1.class
 vista\InicioSesion$10.class
@@ -75,7 +79,6 @@ modelo\Usuarios.class
 vista\InicioSesion$4.class
 vista\Administrador$4.class
 vista\InicioCuenta$2.class
-vista\Reserva$4.class
 vista\ModificarCuenta$6.class
 vista\Administrador$3.class
 vista\RegistroCuenta$6.class

@@ -22,15 +22,15 @@ public class InicioCuenta extends javax.swing.JPanel {
     /**
      * Creates new form RegistroCuenta
      *
-     * @param ingles
+     * @param usuarios
+     * @param vehiculos
      */
-    /**
-     * Creates new form RegistroCuenta
-     */
-    public InicioCuenta(Usuarios usuarios) {
-        this.usuario = usuarios;
-        initComponents();
+    public InicioCuenta(Usuarios usuarios, Vehiculos vehiculos) {
         
+        this.usuario = usuarios;
+        this.vehiculos = vehiculos;
+        initComponents();
+         jlNombre.setText(usuario.getNombre());
         // Poner los jbonton  bordes redondeados
         jbModificarCuenta.putClientProperty("FlatLaf.style", "arc: 15");
         jbReservarPlaza.putClientProperty("FlatLaf.style", "arc: 15");
@@ -117,7 +117,7 @@ public class InicioCuenta extends javax.swing.JPanel {
         jbEliminarCuenta.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbEliminarCuenta.setForeground(new java.awt.Color(255, 255, 255));
         jbEliminarCuenta.setText("Eliminar Cuenta");
-        jbEliminarCuenta.setToolTipText("Boton muestra historial de aparcamiento del usuario");
+        jbEliminarCuenta.setToolTipText("Elimina la cuenta del usuario");
         jbEliminarCuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminarCuenta.setPreferredSize(new java.awt.Dimension(124, 49));
         jbEliminarCuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +239,7 @@ public class InicioCuenta extends javax.swing.JPanel {
      * @param evt
      */
     private void jbReservarPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReservarPlazaActionPerformed
-        Parking panelReserva = new Parking(usuario);
+        Parking panelReserva = new Parking(usuario, vehiculos);
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbReservarPlazaActionPerformed
 
@@ -256,8 +256,7 @@ public class InicioCuenta extends javax.swing.JPanel {
 
     private void jbModificarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarCuentaActionPerformed
 
-        
-        ModificarCuenta modificarCuenta = new ModificarCuenta(false, usuario,vehiculos);
+        ModificarCuenta modificarCuenta = new ModificarCuenta(false, usuario, vehiculos);
         mostrarPanel(modificarCuenta);
     }//GEN-LAST:event_jbModificarCuentaActionPerformed
     /**
@@ -272,15 +271,13 @@ public class InicioCuenta extends javax.swing.JPanel {
         panelInicioCuenta.removeAll();
         panelInicioCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         panelInicioCuenta.revalidate();
-        panelInicioCuenta.repaint();
+        // panelInicioCuenta.repaint();
     }
 
-  
-
     void inicializarDatosUsuario(Usuarios usuario, Vehiculos vehiculos) {
-        this.usuario = usuario;   
+        this.usuario = usuario;
         this.vehiculos = vehiculos;
-        jlNombre.setText(usuario.getNombre());
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,13 +17,14 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JPanel;
 import modelo.Vehiculos;
 
 /**
  *
  * @author Javier Sánchez González
  */
-public class Parking extends javax.swing.JPanel {
+public class ParkingAdministrador extends javax.swing.JPanel {
 
     // Inicializacion variables
     private Map<String, JTextField> plazasTextFields;
@@ -36,14 +37,16 @@ public class Parking extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistroCuenta
+     *
+     * @param usuarios
+     * @param vehiculos
      */
-    public Parking(Usuarios usuarios,Vehiculos vehiculos) {
+    public ParkingAdministrador(Usuarios usuarios, Vehiculos vehiculos) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
         initComponents();
 
         // Poner jTexfield y jBotton el radio
-        jbreservar.putClientProperty("FlatLaf.style", "arc: 15");
         jbCancelar.putClientProperty("FlatLaf.style", "arc: 15");
         panelRoundP1.putClientProperty("FlatLaf.style", "arc: 15");
 
@@ -93,13 +96,12 @@ public class Parking extends javax.swing.JPanel {
         estadoPlazas = new HashMap<>();
 
 // Supongamos que tienes una lista de reservas
-   //     List<Reserva> reservas = obtenerReservasPorFecha("2024-11-17");  // Ajusta la fecha o el método según tu implementación
-
+        //     List<Reserva> reservas = obtenerReservasPorFecha("2024-11-17");  // Ajusta la fecha o el método según tu implementación
 // Inicializamos el estado de las plazas como no ocupadas
         for (String plaza : plazasTextFields.keySet()) {
             // Buscamos si la plaza está reservada
             boolean estaOcupada = false;
-/*
+            /*
             // Verificar si la plaza está reservada según las reservas
             for (Reserva reserva : reservas) {
                 if (reserva.getNumeroPlaza().equals(plaza)) {
@@ -107,7 +109,7 @@ public class Parking extends javax.swing.JPanel {
                     break;  // Si encontramos la reserva, no necesitamos seguir buscando
                 }
             }
-*/
+             */
             // Establecer el estado de la plaza
             estadoPlazas.put(plaza, estaOcupada);  // true si está ocupada, false si no
         }
@@ -131,7 +133,7 @@ public class Parking extends javax.swing.JPanel {
             // Agregar ActionListener a cada checkbox
             for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
                 String numeroPlaza = entry.getKey();
-              //  JCheckBox checkBox = entry.getValue();
+                //  JCheckBox checkBox = entry.getValue();
 
                 checkBox.addActionListener(new ActionListener() {
                     @Override
@@ -177,10 +179,9 @@ public class Parking extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup = new javax.swing.ButtonGroup();
-        panelCuenta = new vista.PanelRound();
+        panelParking = new vista.PanelRound();
         jlreservar = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
-        jbreservar = new javax.swing.JButton();
         jltitulo3 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -250,53 +251,39 @@ public class Parking extends javax.swing.JPanel {
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
-        panelCuenta.setBackground(new java.awt.Color(249, 251, 255));
-        panelCuenta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
-        panelCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
-        panelCuenta.setRoundBottomLeft(30);
-        panelCuenta.setRoundBottomRight(30);
-        panelCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelParking.setBackground(new java.awt.Color(249, 251, 255));
+        panelParking.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
+        panelParking.setPreferredSize(new java.awt.Dimension(428, 800));
+        panelParking.setRoundBottomLeft(30);
+        panelParking.setRoundBottomRight(30);
+        panelParking.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlreservar.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jlreservar.setForeground(new java.awt.Color(39, 59, 244));
         jlreservar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlreservar.setText("RESERVAR PLAZA");
+        jlreservar.setText("plazas reservadas");
         jlreservar.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelCuenta.add(jlreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 220, 34));
+        panelParking.add(jlreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 220, 34));
 
         jltitulo2.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
         jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo2.setText("Que dia?");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelCuenta.add(jltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 130, 19));
-
-        jbreservar.setBackground(new java.awt.Color(43, 220, 61));
-        jbreservar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbreservar.setForeground(new java.awt.Color(255, 255, 255));
-        jbreservar.setText("Reservar");
-        jbreservar.setToolTipText("Boton hace la reserva");
-        jbreservar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbreservar.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbreservar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbreservarActionPerformed(evt);
-            }
-        });
-        panelCuenta.add(jbreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
+        panelParking.add(jltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 130, 19));
 
         jltitulo3.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo3.setForeground(new java.awt.Color(25, 35, 66));
         jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo3.setText(" Seleccione una plaza ");
+        jltitulo3.setText("Ocupación");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelCuenta.add(jltitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 356, -1));
+        panelParking.add(jltitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 356, -1));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 665, 193, 10));
+        panelParking.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 665, 193, 10));
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 384, 10));
+        panelParking.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 384, 10));
 
         panelRoundP1.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -324,7 +311,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 163, -1, -1));
+        panelParking.add(panelRoundP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 163, -1, -1));
 
         panelRoundP2.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -352,7 +339,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 237, -1, -1));
+        panelParking.add(panelRoundP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 237, -1, -1));
 
         panelRoundP3.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -380,7 +367,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 311, -1, -1));
+        panelParking.add(panelRoundP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 311, -1, -1));
 
         panelRoundP4.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -408,7 +395,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 385, -1, -1));
+        panelParking.add(panelRoundP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 385, -1, -1));
 
         panelRoundP5.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -436,7 +423,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 459, -1, -1));
+        panelParking.add(panelRoundP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 459, -1, -1));
 
         panelRoundP6.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -464,7 +451,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 533, -1, -1));
+        panelParking.add(panelRoundP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 533, -1, -1));
 
         panelRoundP7.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -492,7 +479,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 607, -1, -1));
+        panelParking.add(panelRoundP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 607, -1, -1));
 
         panelRoundP8.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -520,7 +507,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, -1, -1));
+        panelParking.add(panelRoundP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, -1, -1));
 
         panelRoundP9.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -548,7 +535,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 237, -1, -1));
+        panelParking.add(panelRoundP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 237, -1, -1));
 
         panelRoundP10.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -576,7 +563,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 311, -1, -1));
+        panelParking.add(panelRoundP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 311, -1, -1));
 
         panelRoundP11.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -604,7 +591,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 385, -1, -1));
+        panelParking.add(panelRoundP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 385, -1, -1));
 
         panelRoundP12.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -632,7 +619,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 459, -1, -1));
+        panelParking.add(panelRoundP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 459, -1, -1));
 
         panelRoundP13.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -660,7 +647,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 533, -1, -1));
+        panelParking.add(panelRoundP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 533, -1, -1));
 
         panelRoundP14.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -688,78 +675,78 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 607, -1, -1));
+        panelParking.add(panelRoundP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 607, -1, -1));
 
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 171, 20));
+        panelParking.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 171, 20));
 
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 150, 171, 10));
+        panelParking.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 150, 171, 10));
 
         jlentrada.setForeground(new java.awt.Color(0, 0, 0));
         jlentrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlentrada.setText("ENTRADA");
-        panelCuenta.add(jlentrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 144, 76, -1));
+        panelParking.add(jlentrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 144, 76, -1));
 
         jlsalida.setForeground(new java.awt.Color(0, 0, 0));
         jlsalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlsalida.setText("SALIDA");
-        panelCuenta.add(jlsalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 659, 76, -1));
+        panelParking.add(jlsalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 659, 76, -1));
 
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 517, 124, 10));
+        panelParking.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 517, 124, 10));
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 369, 124, 10));
+        panelParking.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 369, 124, 10));
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 295, 124, 10));
+        panelParking.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 295, 124, 10));
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 221, 124, 10));
+        panelParking.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 221, 124, 10));
 
         buttonGroup.add(jCheckBoxP1);
-        panelCuenta.add(jCheckBoxP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 178, -1, -1));
+        panelParking.add(jCheckBoxP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 178, -1, -1));
 
         buttonGroup.add(jCheckBoxP2);
         jCheckBoxP2.setSelected(true);
-        panelCuenta.add(jCheckBoxP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 252, -1, -1));
+        panelParking.add(jCheckBoxP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 252, -1, -1));
 
         buttonGroup.add(jCheckBoxP3);
-        panelCuenta.add(jCheckBoxP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 321, -1, -1));
+        panelParking.add(jCheckBoxP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 321, -1, -1));
 
         buttonGroup.add(jCheckBoxP4);
-        panelCuenta.add(jCheckBoxP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 396, -1, -1));
+        panelParking.add(jCheckBoxP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 396, -1, -1));
 
         buttonGroup.add(jCheckBoxP5);
-        panelCuenta.add(jCheckBoxP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 475, -1, -1));
+        panelParking.add(jCheckBoxP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 475, -1, -1));
 
         buttonGroup.add(jCheckBoxP6);
-        panelCuenta.add(jCheckBoxP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 545, -1, -1));
+        panelParking.add(jCheckBoxP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 545, -1, -1));
 
         buttonGroup.add(jCheckBoxP7);
-        panelCuenta.add(jCheckBoxP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 618, -1, -1));
+        panelParking.add(jCheckBoxP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 618, -1, -1));
 
         buttonGroup.add(jCheckBoxP8);
-        panelCuenta.add(jCheckBoxP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 178, -1, -1));
+        panelParking.add(jCheckBoxP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 178, -1, -1));
 
         buttonGroup.add(jCheckBoxP9);
-        panelCuenta.add(jCheckBoxP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 249, -1, -1));
+        panelParking.add(jCheckBoxP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 249, -1, -1));
 
         buttonGroup.add(jCheckBoxP10);
-        panelCuenta.add(jCheckBoxP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 323, -1, -1));
+        panelParking.add(jCheckBoxP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 323, -1, -1));
 
         buttonGroup.add(jCheckBoxP11);
-        panelCuenta.add(jCheckBoxP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 397, -1, -1));
+        panelParking.add(jCheckBoxP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 397, -1, -1));
 
         buttonGroup.add(jCheckBoxP12);
-        panelCuenta.add(jCheckBoxP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 471, -1, -1));
+        panelParking.add(jCheckBoxP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 471, -1, -1));
 
         buttonGroup.add(jCheckBoxP13);
-        panelCuenta.add(jCheckBoxP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 545, -1, -1));
+        panelParking.add(jCheckBoxP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 545, -1, -1));
 
         buttonGroup.add(jCheckBoxP14);
-        panelCuenta.add(jCheckBoxP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 618, -1, -1));
+        panelParking.add(jCheckBoxP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 618, -1, -1));
 
         jBCalendario.setBackground(new java.awt.Color(249, 251, 255));
         jBCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/calendario.png"))); // NOI18N
@@ -769,12 +756,12 @@ public class Parking extends javax.swing.JPanel {
                 jBCalendarioActionPerformed(evt);
             }
         });
-        panelCuenta.add(jBCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 40));
+        panelParking.add(jBCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 40));
 
         jtFecha.setBackground(new java.awt.Color(249, 251, 255));
         jtFecha.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jtFecha.setForeground(new java.awt.Color(39, 59, 244));
-        panelCuenta.add(jtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 150, -1));
+        panelParking.add(jtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 150, -1));
 
         jbCancelar.setBackground(new java.awt.Color(255, 3, 3));
         jbCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
@@ -788,57 +775,46 @@ public class Parking extends javax.swing.JPanel {
                 jbCancelarActionPerformed(evt);
             }
         });
-        panelCuenta.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 690, -1, -1));
+        panelParking.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 690, 380, -1));
 
         jSeparator19.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 668, 171, 20));
+        panelParking.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 668, 171, 20));
 
         jSeparator20.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 591, 124, 10));
+        panelParking.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 591, 124, 10));
 
         jSeparator21.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 124, 10));
+        panelParking.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 124, 10));
 
         jSeparator23.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 124, 10));
+        panelParking.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 124, 10));
 
         jSeparator22.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 443, 124, 10));
+        panelParking.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 443, 124, 10));
 
         jSeparator25.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 447, 124, -1));
+        panelParking.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 447, 124, -1));
 
         jSeparator26.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 124, 10));
+        panelParking.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 124, 10));
 
         jSeparator24.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 124, 10));
+        panelParking.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 124, 10));
 
         jSeparator27.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator27, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 124, 10));
+        panelParking.add(jSeparator27, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 124, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelParking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelParking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * Evento se le pasa el panel de Reserva para mostralo.
-     *
-     * @param evt
-     */
-    private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
-
-        Reserva reserva = new Reserva(usuarios, vehiculos);
-        mostrarPanel2(reserva);
-    }//GEN-LAST:event_jbreservarActionPerformed
 
     private void jBCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalendarioActionPerformed
         // Crear un JDateChooser
@@ -860,10 +836,8 @@ public class Parking extends javax.swing.JPanel {
     }//GEN-LAST:event_jBCalendarioActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        // Crea una instancia de InicioCuenta
-        InicioCuenta ic = new InicioCuenta(usuarios, vehiculos);
-        // Muestra la ventana InicioCuenta
-        mostrarPanel(ic);
+        Administrador administrador = new Administrador(usuarios, vehiculos);
+        mostrarPanel(administrador);
 
     }//GEN-LAST:event_jbCancelarActionPerformed
 
@@ -872,31 +846,16 @@ public class Parking extends javax.swing.JPanel {
      *
      * @param panel
      */
-    private void mostrarPanel(InicioCuenta panel) {
+    public void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
 
-        panelCuenta.removeAll();
-        panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        panelCuenta.revalidate();
-        panelCuenta.repaint();
-
+        panelParking.removeAll();
+        panelParking.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelParking.revalidate();
+        panelParking.repaint();
     }
 
-    /**
-     * Metodo elimna el panel actual y muestra el que se le pasa
-     *
-     * @param panel
-     */
-    private void mostrarPanel2(Reserva panel) {
-        panel.setSize(428, 800);
-        panel.setLocation(0, 0);
-
-        panelCuenta.removeAll();
-        panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        panelCuenta.revalidate();
-        panelCuenta.repaint();
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -948,14 +907,13 @@ public class Parking extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbreservar;
     private javax.swing.JLabel jlentrada;
     private javax.swing.JLabel jlreservar;
     private javax.swing.JLabel jlsalida;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JTextField jtFecha;
-    private vista.PanelRound panelCuenta;
+    private vista.PanelRound panelParking;
     private vista.PanelRound panelRoundP1;
     private vista.PanelRound panelRoundP10;
     private vista.PanelRound panelRoundP11;

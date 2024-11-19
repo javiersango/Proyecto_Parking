@@ -22,6 +22,8 @@ import controlador.MetodosInicio;
 import controlador.MetodosRegistroCuenta;
 import modelo.Usuarios;
 import modelo.Vehiculos;
+import modelo.Historial;
+import modelo.Reservas;
 
 
 /**
@@ -36,8 +38,10 @@ public class InicioSesion extends javax.swing.JFrame {
     int xMouse, yMouse;
     private String nombre;
     private String contrasena;
-    private Usuarios usuarioActual;
-    private Administrador administrador;
+    private Usuarios usuarios;
+    private Vehiculos vehiculos;
+    private Historial historial;
+    private Reservas reservas;
     private RecuperarContrasena recuperarContrasena;
     private boolean ingles; // Inicia el idioma en ingles
     private int nivelBateria = 100;
@@ -363,7 +367,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jtcontrasena.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
         jtcontrasena.setForeground(new java.awt.Color(153, 153, 153));
         jtcontrasena.setText("********");
-        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 10 caracteres");
+        jtcontrasena.setToolTipText("Introduce una contraseña entre 8 y 30 caracteres");
         jtcontrasena.setPreferredSize(new java.awt.Dimension(335, 50));
         jtcontrasena.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -558,8 +562,8 @@ public class InicioSesion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El nombre debe contener al menos tres letras", "Error", JOptionPane.WARNING_MESSAGE);
         } else if (contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo contraseña esta vacio", "Error", JOptionPane.WARNING_MESSAGE);
-        } else if (contrasena.length() < 8 || contrasena.length() > 12) {
-            JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 12 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (contrasena.length() < 8 || contrasena.length() > 30) {
+            JOptionPane.showMessageDialog(null, "La contraseña debe tener entre 8 y 30 caracteres", "Error", JOptionPane.WARNING_MESSAGE);
         } else {
 
             System.out.println("Inicio Sesion: Nombre  " + nombre + ",    Contrasena   " + contrasena);
@@ -568,60 +572,29 @@ public class InicioSesion extends javax.swing.JFrame {
                 System.out.println(" Comprobar Administrador : " + nombre + "  " + contrasena);
 
                 // Verifica si el usuario es un administrador
-                if (nombre.equalsIgnoreCase("Administrador") && contrasena.equals("Admin@0000")) {
+                if (nombre.equalsIgnoreCase("Administrador") && contrasena.equals("Administrador@0000")) {
                     JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.INFORMATION_MESSAGE);
                     // Inicializar el objeto administrador
-                    administrador = new Administrador(usuarioActual);
+                    Vehiculos vehiculos = new Vehiculos();
+                    Administrador administrador = new Administrador(usuarios, vehiculos);
                     mostrarPanel(administrador);
+                    
                 } else {
 
                     // Usuario normal
                     Integer idUsuario = MetodosInicio.devuelveIdUsuario(nombre, contrasena);
                     
-                    Usuarios usuario = MetodosInicio.obtenerUsuario(idUsuario);
-                    InicioCuenta inicioCuenta = new InicioCuenta(usuario);
-                    Parking parking = new Parking(usuario);
+                    Usuarios usuarios = MetodosInicio.obtenerUsuario(idUsuario);
+                    InicioCuenta inicioCuenta = new InicioCuenta(usuarios,vehiculos);
+                    Parking parking = new Parking(usuarios, vehiculos);
 
-                    
                     Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
                     
-                    inicioCuenta.inicializarDatosUsuario(usuario,vehiculos);
+                    inicioCuenta.inicializarDatosUsuario(usuarios,vehiculos);
                     mostrarPanel(inicioCuenta);
-                    
-                    
-                   
-                
 
                     System.out.println("InicioSesion nombre: " + nombre + " contraseña: " + contrasena + " matricula "+  vehiculos.getMatricula());
                     
-                    
-               
-                    
-                    
-
-     /*                       if (idUsuario != null) {
-                        // Asegúrate de que este método obtenga el usuario por ID
-
-                        if (usuario != null) {
-                            Vehiculos vehiculo = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
-                            System.out.println(vehiculo.getMatricula());
-                            if (vehiculo != null) {
-
-                                 ModificarCuenta modificarCuenta = new ModificarCuenta(ingles, usuario, vehiculo);
-                                 modificarCuenta.mostrarDatos();
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No se encontró un vehículo asociado", "Error", JOptionPane.ERROR_MESSAGE);
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                    //  Historial historial = new Historial();
-                    //  historial.inicializarDatosUsuario(nombre, idUsuario);
-                    //   historial.setVisible(true);  */
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
@@ -658,8 +631,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private void jlinglesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlinglesMouseClicked
         ingles = true; // Cambia el estado a español
         cambiarIdiomaIngles();
-
-
     }//GEN-LAST:event_jlinglesMouseClicked
     /**
      * Evento se le pasa true / false si esta esta en españo o no , llama al
@@ -694,8 +665,8 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
 
-        RegistroCuenta panelRegistroCuenta = new RegistroCuenta(ingles);
-        mostrarPanel(panelRegistroCuenta);
+        RegistroCuenta registroCuenta = new RegistroCuenta(ingles);
+        mostrarPanel(registroCuenta);
 
     }//GEN-LAST:event_jbregistrarseActionPerformed
 
@@ -815,7 +786,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jbrecuperar.setText(bRecuperar);
     }
 
-    JPanel getPanelfondo() {
+   JPanel getPanelfondo() {
         return jPanelFondo;
     }
 
