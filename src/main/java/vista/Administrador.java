@@ -16,7 +16,6 @@ import modelo.Historial;
 import controlador.MetodosAdministrador;
 import controlador.MetodosHistorial;
 
-
 /**
  *
  * @author Javier Sánchez Gonzalez
@@ -47,6 +46,14 @@ public class Administrador extends javax.swing.JPanel {
     public Administrador(Usuarios usuarios, Vehiculos vehiculos) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
+
+        initComponents();
+
+        jbMostrarAparcamientos.putClientProperty("FlatLaf.style", "arc: 15");
+        jbmostrarDatosUsuarios.putClientProperty("FlatLaf.style", "arc: 15");
+        jbmostrarHistorialReservas.putClientProperty("FlatLaf.style", "arc: 15");
+
+        jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
 
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
