@@ -12,6 +12,8 @@ import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import modelo.Usuarios;
+import modelo.Vehiculos;
+import modelo.Reservas;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -32,14 +34,16 @@ public class Parking extends javax.swing.JPanel {
     private String textoPlazaSeleccionada;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
+    private final Reservas reservas;
     private JDateChooser dateChooser;
 
     /**
      * Creates new form RegistroCuenta
      */
-    public Parking(Usuarios usuarios,Vehiculos vehiculos) {
+    public Parking(Usuarios usuarios,Vehiculos vehiculos,Reservas reservas) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
+        this.reservas = reservas;
         initComponents();
 
         // Poner jTexfield y jBotton el radio
@@ -836,7 +840,7 @@ public class Parking extends javax.swing.JPanel {
      */
     private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
 
-        Reserva reserva = new Reserva(usuarios, vehiculos);
+        Reserva reserva = new Reserva(usuarios, vehiculos, reservas);
         mostrarPanel2(reserva);
     }//GEN-LAST:event_jbreservarActionPerformed
 

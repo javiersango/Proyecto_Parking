@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import modelo.Usuarios;
 import modelo.Vehiculos;
 import modelo.Historial;
+import modelo.Reservas;
 import controlador.MetodosAdministrador;
 import controlador.MetodosHistorial;
 
@@ -27,6 +28,7 @@ public class Administrador extends javax.swing.JPanel {
      */
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
+    private final Reservas reservas;
     private MetodosAdministrador metodosAdministrador;
 
     /**
@@ -43,9 +45,10 @@ public class Administrador extends javax.swing.JPanel {
      * @param usuarios
      * @param vehiculos
      */
-    public Administrador(Usuarios usuarios, Vehiculos vehiculos) {
+    public Administrador(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
+        this.reservas = reservas;
 
         initComponents();
 
@@ -269,7 +272,7 @@ public class Administrador extends javax.swing.JPanel {
      * incilizarse los campos
      */
     private void jbMostrarAparcamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarAparcamientosActionPerformed
-        ParkingAdministrador parkingAdministrador = new ParkingAdministrador(usuarios, vehiculos);
+        ParkingAdministrador parkingAdministrador = new ParkingAdministrador(usuarios, vehiculos, reservas);
         mostrarPanel(parkingAdministrador);
 
     }//GEN-LAST:event_jbMostrarAparcamientosActionPerformed

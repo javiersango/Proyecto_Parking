@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JPanel;
+import modelo.Reservas;
 import modelo.Vehiculos;
 
 /**
@@ -33,6 +34,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     private String textoPlazaSeleccionada;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
+    private final Reservas reservas;
     private JDateChooser dateChooser;
 
     /**
@@ -41,9 +43,10 @@ public class ParkingAdministrador extends javax.swing.JPanel {
      * @param usuarios
      * @param vehiculos
      */
-    public ParkingAdministrador(Usuarios usuarios, Vehiculos vehiculos) {
+    public ParkingAdministrador(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
+        this.reservas = reservas;
         initComponents();
 
         // Poner jTexfield y jBotton el radio
@@ -95,15 +98,15 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         // Inicialización de todas las plazas según las reservas
         estadoPlazas = new HashMap<>();
 
-// Supongamos que tienes una lista de reservas
-        //     List<Reserva> reservas = obtenerReservasPorFecha("2024-11-17");  // Ajusta la fecha o el método según tu implementación
-// Inicializamos el estado de las plazas como no ocupadas
+        // Supongamos que tienes una lista de reservas
+          //  List<Reservas> reservas = obtenerReservasPorFecha(jtFecha.getText());  
+        // Inicializamos el estado de las plazas como no ocupadas
         for (String plaza : plazasTextFields.keySet()) {
             // Buscamos si la plaza está reservada
             boolean estaOcupada = false;
-            /*
+            
             // Verificar si la plaza está reservada según las reservas
-            for (Reserva reserva : reservas) {
+        /*    for (Reservas reserva : reservas) {
                 if (reserva.getNumeroPlaza().equals(plaza)) {
                     estaOcupada = true;
                     break;  // Si encontramos la reserva, no necesitamos seguir buscando
@@ -114,7 +117,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
             estadoPlazas.put(plaza, estaOcupada);  // true si está ocupada, false si no
         }
 
-// Ahora, actualizamos la vista para reflejar el estado de las plazas
+        // Ahora, actualizamos la vista para reflejar el estado de las plazas
         for (String plaza : plazasTextFields.keySet()) {
             JTextField textField = plazasTextFields.get(plaza);
             JCheckBox checkBox = plazasCheckBoxes.get(plaza);
@@ -125,7 +128,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
                 checkBox.setEnabled(false);  // Deshabilitar el checkbox
                 checkBox.setSelected(true);  // Marcar la plaza como seleccionada
             } else {
-                textField.setText(plaza);  // Mostrar el nombre de la plaza
+                textField.setText("Reservada");  // Mostrar el nombre de la plaza
                 checkBox.setEnabled(true);  // Habilitar el checkbox
                 checkBox.setSelected(false);  // Desmarcar el checkbox
             }
@@ -277,7 +280,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo3.setText("Ocupación");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelParking.add(jltitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 356, -1));
+        panelParking.add(jltitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 356, -1));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
         panelParking.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 665, 193, 10));
@@ -836,7 +839,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     }//GEN-LAST:event_jBCalendarioActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        Administrador administrador = new Administrador(usuarios, vehiculos);
+        Administrador administrador = new Administrador(usuarios, vehiculos,reservas);
         mostrarPanel(administrador);
 
     }//GEN-LAST:event_jbCancelarActionPerformed

@@ -576,7 +576,7 @@ public class InicioSesion extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.INFORMATION_MESSAGE);
                     // Inicializar el objeto administrador
                     Vehiculos vehiculos = new Vehiculos();
-                    Administrador administrador = new Administrador(usuarios, vehiculos);
+                    Administrador administrador = new Administrador(usuarios, vehiculos,reservas);
                     mostrarPanel(administrador);
                     
                 } else {
@@ -586,7 +586,7 @@ public class InicioSesion extends javax.swing.JFrame {
                     
                     Usuarios usuarios = MetodosInicio.obtenerUsuario(idUsuario);
                     InicioCuenta inicioCuenta = new InicioCuenta(usuarios,vehiculos);
-                    Parking parking = new Parking(usuarios, vehiculos);
+                    Parking parking = new Parking(usuarios, vehiculos,reservas);
 
                     Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
                     

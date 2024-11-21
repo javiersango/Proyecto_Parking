@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import controlador.MetodosCuenta;
 import modelo.Usuarios;
 import modelo.Vehiculos;
+import modelo.Reservas;
 
 /**
  *
@@ -18,6 +19,7 @@ public class InicioCuenta extends javax.swing.JPanel {
 
     private Usuarios usuario;
     private Vehiculos vehiculos;
+    private Reservas reservas;
 
     /**
      * Creates new form RegistroCuenta
@@ -239,7 +241,7 @@ public class InicioCuenta extends javax.swing.JPanel {
      * @param evt
      */
     private void jbReservarPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReservarPlazaActionPerformed
-        Parking panelReserva = new Parking(usuario, vehiculos);
+        Parking panelReserva = new Parking(usuario, vehiculos,reservas);
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbReservarPlazaActionPerformed
 

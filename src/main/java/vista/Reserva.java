@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Usuarios;
 import modelo.Vehiculos;
+import modelo.Reservas;
 
 /**
  *
@@ -42,13 +43,15 @@ public class Reserva extends javax.swing.JPanel {
     private double total = 0.0f;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
+    private final Reservas reservas;
 
     /**
      * Creates new form RegistroCuenta
      */
-    public Reserva(Usuarios usuarios, Vehiculos vehiculos) {
+    public Reserva(Usuarios usuarios, Vehiculos vehiculos,Reservas reservas) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
+        this.reservas = reservas;
         initComponents();
 
         // Asignar valores predeterminados a los atributos nombre y contrasena
@@ -383,7 +386,7 @@ public class Reserva extends javax.swing.JPanel {
      * @param evt
      */
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
-        Parking parking = new Parking(usuarios, vehiculos);
+        Parking parking = new Parking(usuarios, vehiculos, reservas);
         mostrarPanel(parking);
     }//GEN-LAST:event_jbcancelarActionPerformed
     /**
