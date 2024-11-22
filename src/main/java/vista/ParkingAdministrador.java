@@ -4,22 +4,26 @@
  */
 package vista;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import modelo.Usuarios;
-import com.toedter.calendar.JDateChooser;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JPanel;
 import modelo.Reservas;
 import modelo.Vehiculos;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -28,20 +32,20 @@ import modelo.Vehiculos;
 public class ParkingAdministrador extends javax.swing.JPanel {
 
     // Inicializacion variables
-    private Map<String, JTextField> plazasTextFields;
-    private Map<String, JCheckBox> plazasCheckBoxes;
-    private Map<String, Boolean> estadoPlazas;
-    private String textoPlazaSeleccionada;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
     private final Reservas reservas;
-    private JDateChooser dateChooser;
+
+    private final Map<String, JTextField> plazasTextFields = new HashMap<>();
+    private final Map<String, JCheckBox> plazasCheckBoxes = new HashMap<>();
+    private final Map<String, Boolean> estadoPlazas = new HashMap<>();
 
     /**
      * Creates new form RegistroCuenta
      *
      * @param usuarios
      * @param vehiculos
+     * @param reservas
      */
     public ParkingAdministrador(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas) {
         this.usuarios = usuarios;
@@ -49,16 +53,45 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         this.reservas = reservas;
         initComponents();
 
-        // Poner jTexfield y jBotton el radio
+        inicializarPlazas();
+        inicializarListeners();
+
+        // Aplicar estilo a botones y paneles
         jbCancelar.putClientProperty("FlatLaf.style", "arc: 15");
         panelRoundP1.putClientProperty("FlatLaf.style", "arc: 15");
 
-        // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
+        // Estilo de títulos
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
         jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
+    }
 
-        // Inicializar mapas y estructuras de datos
-        plazasTextFields = new HashMap<>();
+    public void actualizarPlazasDesdeBD() {
+        // Configurar la conexión a la base de datos utilizando Hibernate
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
+
+        // Crea sesion 
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+        // Iniciar una sesión
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            List<Reservas> reservas = session.createQuery("FROM Reserva WHERE fechaReservada = CURRENT_DATE", Reservas.class).list();
+            for (Reservas reser : reservas) {
+                String plaza = "P" + String.format("%02d", reser.getNumeroPlaza());
+                boolean reservada = reser.getReservada();
+                estadoPlazas.put(plaza, reservada);
+                actualizarEstadoPlaza(plaza);
+            }
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void inicializarPlazas() {
+        // Añadir JTextField y JCheckBox al mapa
         plazasTextFields.put("P01", P01);
         plazasTextFields.put("P02", P02);
         plazasTextFields.put("P03", P03);
@@ -68,13 +101,12 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         plazasTextFields.put("P07", P07);
         plazasTextFields.put("P08", P08);
         plazasTextFields.put("P09", P09);
-        plazasTextFields.put("P10", P10);
-        plazasTextFields.put("P11", P11);
-        plazasTextFields.put("P12", P12);
-        plazasTextFields.put("P13", P13);
-        plazasTextFields.put("P14", P14);
+        plazasTextFields.put("P010", P10);
+        plazasTextFields.put("P011", P11);
+        plazasTextFields.put("P012", P12);
+        plazasTextFields.put("P013", P13);
+        plazasTextFields.put("P014", P14);
 
-        plazasCheckBoxes = new HashMap<>();
         plazasCheckBoxes.put("P01", jCheckBoxP1);
         plazasCheckBoxes.put("P02", jCheckBoxP2);
         plazasCheckBoxes.put("P03", jCheckBoxP3);
@@ -84,90 +116,63 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         plazasCheckBoxes.put("P07", jCheckBoxP7);
         plazasCheckBoxes.put("P08", jCheckBoxP8);
         plazasCheckBoxes.put("P09", jCheckBoxP9);
-        plazasCheckBoxes.put("P10", jCheckBoxP10);
-        plazasCheckBoxes.put("P11", jCheckBoxP11);
-        plazasCheckBoxes.put("P12", jCheckBoxP12);
-        plazasCheckBoxes.put("P13", jCheckBoxP13);
-        plazasCheckBoxes.put("P14", jCheckBoxP14);
+        plazasCheckBoxes.put("P010", jCheckBoxP10);
+        plazasCheckBoxes.put("P011", jCheckBoxP11);
+        plazasCheckBoxes.put("P012", jCheckBoxP12);
+        plazasCheckBoxes.put("P013", jCheckBoxP13);
+        plazasCheckBoxes.put("P014", jCheckBoxP14);
 
-        /* Inicializacion  de todas las plazas como inicialmente no ocupadas
-        estadoPlazas = new HashMap<>();
+        // Inicializar estados de las plazas como "Disponible"
         for (String plaza : plazasTextFields.keySet()) {
-            estadoPlazas.put(plaza, false);
-        }*/
-        // Inicialización de todas las plazas según las reservas
-        estadoPlazas = new HashMap<>();
-
-        // Supongamos que tienes una lista de reservas
-          //  List<Reservas> reservas = obtenerReservasPorFecha(jtFecha.getText());  
-        // Inicializamos el estado de las plazas como no ocupadas
-        for (String plaza : plazasTextFields.keySet()) {
-            // Buscamos si la plaza está reservada
-            boolean estaOcupada = false;
-            
-            // Verificar si la plaza está reservada según las reservas
-        /*    for (Reservas reserva : reservas) {
-                if (reserva.getNumeroPlaza().equals(plaza)) {
-                    estaOcupada = true;
-                    break;  // Si encontramos la reserva, no necesitamos seguir buscando
-                }
-            }
-             */
-            // Establecer el estado de la plaza
-            estadoPlazas.put(plaza, estaOcupada);  // true si está ocupada, false si no
+            estadoPlazas.put(plaza, false); // Disponible por defecto
+            actualizarEstadoPlaza(plaza);
         }
+    }
 
-        // Ahora, actualizamos la vista para reflejar el estado de las plazas
+    /**
+     * Configura los listeners para los JCheckBox de cada plaza.
+     */
+    public void inicializarListeners() {
         for (String plaza : plazasTextFields.keySet()) {
-            JTextField textField = plazasTextFields.get(plaza);
             JCheckBox checkBox = plazasCheckBoxes.get(plaza);
+            checkBox.addActionListener(e -> {
+                boolean seleccionada = checkBox.isSelected();
+                estadoPlazas.put(plaza, seleccionada);
+                actualizarEstadoPlaza(plaza);
+            });
+        }
+    }
 
-            // Si la plaza está ocupada, cambia el texto y deshabilita el checkbox
-            if (estadoPlazas.get(plaza)) {
-                textField.setText("Ocupada");
-                checkBox.setEnabled(false);  // Deshabilitar el checkbox
-                checkBox.setSelected(true);  // Marcar la plaza como seleccionada
+    /**
+     * Actualiza el estado visual de una plaza en función de su disponibilidad.
+     *
+     * @param plaza Código de la plaza (ejemplo: "P01").
+     */
+    private void actualizarEstadoPlaza(String plaza) {
+        // Obtener los componentes
+        JCheckBox checkBox = plazasCheckBoxes.get(plaza);
+        JTextField plazaTextField = plazasTextFields.get(plaza);
+
+        // Verificar si la plaza existe en el mapa de estadoPlazas
+        if (checkBox != null && plazaTextField != null) {
+            boolean estaReservada = estadoPlazas.getOrDefault(plaza, false); // Devuelve false si la plaza no está en el mapa
+
+            if (estaReservada) {
+                // Si la plaza está reservada
+                plazaTextField.setText("Reservada");
+                plazaTextField.setEditable(false);
+                plazaTextField.setBackground(Color.RED); // Color rojo para reservado
+                plazaTextField.setForeground(Color.BLACK);
+                checkBox.setSelected(true); // Marca el checkbox
+                checkBox.setEnabled(false); // Deshabilita el checkbox
             } else {
-                textField.setText("Reservada");  // Mostrar el nombre de la plaza
-                checkBox.setEnabled(true);  // Habilitar el checkbox
-                checkBox.setSelected(false);  // Desmarcar el checkbox
-            }
-
-            // Agregar ActionListener a cada checkbox
-            for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
-                String numeroPlaza = entry.getKey();
-                //  JCheckBox checkBox = entry.getValue();
-
-                checkBox.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Iterar sobre todos los JCheckBoxes
-                        for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
-                            String plaza = entry.getKey();
-                            JCheckBox cb = entry.getValue();
-                            JTextField textField = plazasTextFields.get(plaza);
-
-                            // Verificar si el checkBox seleccionado
-                            if (cb == checkBox) {
-                                // establece su texto como "Reservado"
-                                textField.setText("Reservado");
-                            } else {
-                                // Si no es el seleccionado, deja la posición de la plaza 
-                                textField.setText(plaza);
-                                // Desmarcar el JCheckBox
-                                cb.setSelected(false);
-                            }
-                        }
-
-                        // Actualizar el estado de la plaza en la estructura de datos
-                        estadoPlazas.put(numeroPlaza, checkBox.isSelected());
-                        estadoPlazas.put(numeroPlaza, checkBox.isSelected());
-
-                        // Obtener el texto de la plaza seleccionada Pasar el texto de la plaza seleccionada a la clase Reserva
-                        textoPlazaSeleccionada = checkBox.isSelected() ? "Reservado" : numeroPlaza;
-
-                    }
-                });
+                // Si la plaza está disponible
+                plazaTextField.setText("Disponible");
+                plazaTextField.setEditable(true);
+                plazaTextField.setBackground(Color.GREEN); // Color verde para disponible
+                plazaTextField.setForeground(Color.BLACK);
+                checkBox.setSelected(false); // Desmarca el checkbox
+                checkBox.setEnabled(true); // Habilita el checkbox
             }
         }
     }
@@ -181,7 +186,6 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup = new javax.swing.ButtonGroup();
         panelParking = new vista.PanelRound();
         jlreservar = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
@@ -708,47 +712,33 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
         panelParking.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 221, 124, 10));
 
-        buttonGroup.add(jCheckBoxP1);
         panelParking.add(jCheckBoxP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 178, -1, -1));
 
-        buttonGroup.add(jCheckBoxP2);
         jCheckBoxP2.setSelected(true);
         panelParking.add(jCheckBoxP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 252, -1, -1));
 
-        buttonGroup.add(jCheckBoxP3);
         panelParking.add(jCheckBoxP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 321, -1, -1));
 
-        buttonGroup.add(jCheckBoxP4);
         panelParking.add(jCheckBoxP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 396, -1, -1));
 
-        buttonGroup.add(jCheckBoxP5);
         panelParking.add(jCheckBoxP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 475, -1, -1));
 
-        buttonGroup.add(jCheckBoxP6);
         panelParking.add(jCheckBoxP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 545, -1, -1));
 
-        buttonGroup.add(jCheckBoxP7);
         panelParking.add(jCheckBoxP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 618, -1, -1));
 
-        buttonGroup.add(jCheckBoxP8);
         panelParking.add(jCheckBoxP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 178, -1, -1));
 
-        buttonGroup.add(jCheckBoxP9);
         panelParking.add(jCheckBoxP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 249, -1, -1));
 
-        buttonGroup.add(jCheckBoxP10);
         panelParking.add(jCheckBoxP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 323, -1, -1));
 
-        buttonGroup.add(jCheckBoxP11);
         panelParking.add(jCheckBoxP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 397, -1, -1));
 
-        buttonGroup.add(jCheckBoxP12);
         panelParking.add(jCheckBoxP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 471, -1, -1));
 
-        buttonGroup.add(jCheckBoxP13);
         panelParking.add(jCheckBoxP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 545, -1, -1));
 
-        buttonGroup.add(jCheckBoxP14);
         panelParking.add(jCheckBoxP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 618, -1, -1));
 
         jBCalendario.setBackground(new java.awt.Color(249, 251, 255));
@@ -764,6 +754,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
         jtFecha.setBackground(new java.awt.Color(249, 251, 255));
         jtFecha.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jtFecha.setForeground(new java.awt.Color(39, 59, 244));
+        jtFecha.setBorder(null);
         panelParking.add(jtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 150, -1));
 
         jbCancelar.setBackground(new java.awt.Color(255, 3, 3));
@@ -820,28 +811,70 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalendarioActionPerformed
-        // Crear un JDateChooser
+        // Crear un JDateChooser para seleccionar la fecha
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDate(new Date()); // Fecha inicial
+        dateChooser.setDate(new Date()); // Fecha actual
 
-        // Mostrar el calendario en un cuadro de diálogo
+        // Mostrar el diálogo para seleccionar una fecha
         int opcion = JOptionPane.showConfirmDialog(this, dateChooser, "Selecciona una fecha",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-        // Procesar la fecha seleccionada
+        // Si el usuario hace clic en OK
         if (opcion == JOptionPane.OK_OPTION) {
             Date fecha = dateChooser.getDate();
             if (fecha != null) {
+                // Mostrar la fecha seleccionada en el campo de texto
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 jtFecha.setText(sdf.format(fecha));
+
+                // Limpiar el estado de las plazas antes de actualizarlo con la nueva fecha
+                inicializarPlazas();
+
+                // Llamar al método que actualiza el estado de las plazas basado en la fecha seleccionada
+                actualizarPlazasPorFecha(fecha);
             }
         }
     }//GEN-LAST:event_jBCalendarioActionPerformed
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        Administrador administrador = new Administrador(usuarios, vehiculos,reservas);
-        mostrarPanel(administrador);
+    private void actualizarPlazasPorFecha(Date fecha) {
+        // Configurar la conexión a la base de datos utilizando Hibernate
+        try {
+            // Crear la sesión de Hibernate
+            Configuration configuration = new Configuration();
+            configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
 
+            // Crear la sesión factory
+            SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+            // Iniciar una sesión
+            try (Session sesion = sessionFactory.openSession()) {
+                Transaction transaction = sesion.beginTransaction();
+
+                // Crear la consulta para obtener las reservas para la fecha seleccionada
+                String hql = "FROM Reservas WHERE fechaReservada = :fecha";
+                Query<Reservas> query = sesion.createQuery(hql, Reservas.class);
+                query.setParameter("fecha", fecha); // Establecer la fecha seleccionada en la consulta
+
+                List<Reservas> reservas = query.list();
+                for (Reservas reser : reservas) {
+                    String plaza = "P" + String.format("%02d", reser.getNumeroPlaza());
+                    boolean reservada = reser.getReservada();
+                    estadoPlazas.put(plaza, reservada);
+                    actualizarEstadoPlaza(plaza);
+                }
+
+                // Confirmar la transacción
+                transaction.commit();
+            } catch (HibernateException e) {
+                e.printStackTrace();
+            }
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+    }
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        Administrador administrador = new Administrador(usuarios, vehiculos, reservas);
+        mostrarPanel(administrador);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
@@ -860,7 +893,6 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField P01;
     private javax.swing.JTextField P02;
@@ -876,7 +908,6 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     private javax.swing.JTextField P12;
     private javax.swing.JTextField P13;
     private javax.swing.JTextField P14;
-    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jBCalendario;
     private javax.swing.JCheckBox jCheckBoxP1;
     private javax.swing.JCheckBox jCheckBoxP10;

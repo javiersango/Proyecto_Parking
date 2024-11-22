@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup">
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="null"/>
@@ -1060,7 +1056,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP1">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1072,7 +1068,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP2">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
             <Property name="selected" type="boolean" value="true"/>
           </Properties>
@@ -1085,7 +1081,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP3">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1097,7 +1093,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP4">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1109,7 +1105,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP5">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1121,7 +1117,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP6">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1133,7 +1129,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP7">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1145,7 +1141,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP8">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1157,7 +1153,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP9">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1169,7 +1165,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP10">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1181,7 +1177,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP11">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1193,7 +1189,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP12">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1205,7 +1201,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP13">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1217,7 +1213,7 @@
         <Component class="javax.swing.JCheckBox" name="jCheckBoxP14">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroup"/>
+              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Constraints>
@@ -1255,6 +1251,9 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f4" green="3b" red="27" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
             </Property>
           </Properties>
           <Constraints>

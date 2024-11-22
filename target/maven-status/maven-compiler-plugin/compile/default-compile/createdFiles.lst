@@ -10,6 +10,7 @@ modelo\Vehiculos.class
 vista\Reserva$2.class
 vista\InicioSesion$2.class
 vista\RegistroCuenta$7.class
+controlador\Plaza.class
 vista\InicioSesion$12.class
 vista\Parking$4.class
 vista\RegistroCuenta$4.class
@@ -20,7 +21,6 @@ vista\ParkingAdministrador.class
 vista\Administrador$1.class
 vista\RegistroCuenta$1.class
 vista\ModificarCuenta$4.class
-vista\ParkingAdministrador$3.class
 controlador\MetodosInicio.class
 vista\InicioSesion$8.class
 vista\InicioSesion$1.class

@@ -7,13 +7,17 @@ package controlador;
 import com.toedter.calendar.JCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Javier
  */
 public class MetodosParking {
+
+    // Mapa para almacenar el estado de las plazas
+    private Map<String, Boolean> estadoPlazas = new HashMap<>();
 
     // Método para mostrar el calendario
     private void mostrarCalendario() {
@@ -43,4 +47,5 @@ public class MetodosParking {
         // Ejecutar el método mostrarCalendario
         SwingUtilities.invokeLater(() -> metodosParking.mostrarCalendario());
     }
+
 }
