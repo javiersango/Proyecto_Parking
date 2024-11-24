@@ -44,6 +44,7 @@ public class Administrador extends javax.swing.JPanel {
      *
      * @param usuarios
      * @param vehiculos
+     * @param reservas
      */
     public Administrador(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas) {
         this.usuarios = usuarios;
@@ -55,6 +56,7 @@ public class Administrador extends javax.swing.JPanel {
         jbMostrarAparcamientos.putClientProperty("FlatLaf.style", "arc: 15");
         jbmostrarDatosUsuarios.putClientProperty("FlatLaf.style", "arc: 15");
         jbmostrarHistorialReservas.putClientProperty("FlatLaf.style", "arc: 15");
+         jbCancelar.putClientProperty("FlatLaf.style", "arc: 15");
 
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h0");
 
@@ -73,6 +75,7 @@ public class Administrador extends javax.swing.JPanel {
         jbmostrarHistorialReservas = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtabla1 = new javax.swing.JTable();
+        jbCancelar = new javax.swing.JButton();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
@@ -93,7 +96,7 @@ public class Administrador extends javax.swing.JPanel {
         jbmostrarDatosUsuarios.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbmostrarDatosUsuarios.setForeground(new java.awt.Color(255, 255, 255));
         jbmostrarDatosUsuarios.setText("Mostrar usuarios");
-        jbmostrarDatosUsuarios.setToolTipText("Muestra el historial por nombre o por matricula");
+        jbmostrarDatosUsuarios.setToolTipText("Muestra el historial por nombre de usuarios");
         jbmostrarDatosUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbmostrarDatosUsuarios.setPreferredSize(new java.awt.Dimension(124, 49));
         jbmostrarDatosUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +109,7 @@ public class Administrador extends javax.swing.JPanel {
         jbMostrarAparcamientos.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbMostrarAparcamientos.setForeground(new java.awt.Color(255, 255, 255));
         jbMostrarAparcamientos.setText("Mostrar Aparcamiento");
-        jbMostrarAparcamientos.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
+        jbMostrarAparcamientos.setToolTipText("Boton muestra el estado del aparcamiento");
         jbMostrarAparcamientos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrarAparcamientos.setPreferredSize(new java.awt.Dimension(124, 49));
         jbMostrarAparcamientos.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +143,7 @@ public class Administrador extends javax.swing.JPanel {
         jbmostrarHistorialReservas.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jbmostrarHistorialReservas.setForeground(new java.awt.Color(255, 255, 255));
         jbmostrarHistorialReservas.setText("Historial reservas");
-        jbmostrarHistorialReservas.setToolTipText("Muestra el historial por nombre o por matricula");
+        jbmostrarHistorialReservas.setToolTipText("Muestra el historial  de reservas");
         jbmostrarHistorialReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbmostrarHistorialReservas.setPreferredSize(new java.awt.Dimension(124, 49));
         jbmostrarHistorialReservas.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +172,19 @@ public class Administrador extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jtabla1);
 
+        jbCancelar.setBackground(new java.awt.Color(255, 3, 3));
+        jbCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCancelar.setText("Cancelar");
+        jbCancelar.setToolTipText("Boton cancela operacion y regresa a la pantalla anterior");
+        jbCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCancelar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelAdministradorLayout = new javax.swing.GroupLayout(panelAdministrador);
         panelAdministrador.setLayout(panelAdministradorLayout);
         panelAdministradorLayout.setHorizontalGroup(
@@ -181,12 +197,13 @@ public class Administrador extends javax.swing.JPanel {
                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jbMostrarAparcamientos, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                                 .addComponent(jbmostrarDatosUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbmostrarHistorialReservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(jbCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAdministradorLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -196,20 +213,22 @@ public class Administrador extends javax.swing.JPanel {
         panelAdministradorLayout.setVerticalGroup(
             panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAdministradorLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(jlhistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbmostrarDatosUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbmostrarHistorialReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbMostrarAparcamientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -342,6 +361,11 @@ public class Administrador extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jtabla1MouseClicked
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        InicioSesion inicioSesion = new InicioSesion();
+        mostrarPanel(inicioSesion.getPanelfondo());
+    }//GEN-LAST:event_jbCancelarActionPerformed
     public void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
@@ -355,6 +379,7 @@ public class Administrador extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bgeleccion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbMostrarAparcamientos;
     private javax.swing.JButton jbmostrarDatosUsuarios;
     private javax.swing.JButton jbmostrarHistorialReservas;

@@ -4,47 +4,63 @@
  */
 package vista;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import modelo.Usuarios;
-import modelo.Vehiculos;
 import modelo.Reservas;
 import com.toedter.calendar.JDateChooser;
+import controlador.HibernateUtil;
+import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
 import modelo.Vehiculos;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  *
  * @author Javier Sánchez González
  */
-public class Parking extends javax.swing.JPanel {
+public final class Parking extends javax.swing.JPanel {
 
     // Inicializacion variables
-    private Map<String, JTextField> plazasTextFields;
-    private Map<String, JCheckBox> plazasCheckBoxes;
-    private Map<String, Boolean> estadoPlazas;
-    private String textoPlazaSeleccionada;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
     private final Reservas reservas;
-    private JDateChooser dateChooser;
+    private final int idVehiculo;
+
+    private final Map<String, JTextField> plazasTextFields = new HashMap<>();
+    private final Map<String, JCheckBox> plazasCheckBoxes = new HashMap<>();
+    private final Map<String, Boolean> estadoPlazas = new HashMap<>();
 
     /**
      * Creates new form RegistroCuenta
+     *
+     * @param usuarios
+     * @param vehiculos
+     * @param reservas
      */
-    public Parking(Usuarios usuarios,Vehiculos vehiculos,Reservas reservas) {
+    public Parking(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
         this.reservas = reservas;
         initComponents();
+
+        inicializarPlazas();
+        inicializarListeners();
 
         // Poner jTexfield y jBotton el radio
         jbreservar.putClientProperty("FlatLaf.style", "arc: 15");
@@ -53,10 +69,42 @@ public class Parking extends javax.swing.JPanel {
 
         // jlreservar.putClientProperty("FlatLaf.styleClass", "h1");
         jltitulo2.putClientProperty("FlatLaf.styleClass", "h3");
-        jltitulo3.putClientProperty("FlatLaf.styleClass", "h0");
+        jltitulo3.putClientProperty("FlatLaf.styleClass", "h1");
 
-        // Inicializar mapas y estructuras de datos
-        plazasTextFields = new HashMap<>();
+        jlNombre.setText(usuarios.getNombre());
+
+        idVehiculo = vehiculos.getId();
+        System.out.println("id vehiculo " + idVehiculo);
+
+    }
+
+    public void actualizarPlazasDesdeBD() {
+        // Configurar la conexión a la base de datos utilizando Hibernate
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
+
+        // Crea sesion 
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+        // Iniciar una sesión
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            List<Reservas> reservas = session.createQuery("FROM Reserva WHERE fechaReservada = CURRENT_DATE", Reservas.class).list();
+            for (Reservas reser : reservas) {
+                String plaza = "P" + String.format("%02d", reser.getNumeroPlaza());
+                boolean reservada = reser.getReservada();
+                estadoPlazas.put(plaza, reservada);
+                actualizarEstadoPlaza(plaza);
+            }
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void inicializarPlazas() {
+        // Añadir JTextField y JCheckBox al mapa
         plazasTextFields.put("P01", P01);
         plazasTextFields.put("P02", P02);
         plazasTextFields.put("P03", P03);
@@ -66,13 +114,12 @@ public class Parking extends javax.swing.JPanel {
         plazasTextFields.put("P07", P07);
         plazasTextFields.put("P08", P08);
         plazasTextFields.put("P09", P09);
-        plazasTextFields.put("P10", P10);
-        plazasTextFields.put("P11", P11);
-        plazasTextFields.put("P12", P12);
-        plazasTextFields.put("P13", P13);
-        plazasTextFields.put("P14", P14);
+        plazasTextFields.put("P010", P10);
+        plazasTextFields.put("P011", P11);
+        plazasTextFields.put("P012", P12);
+        plazasTextFields.put("P013", P13);
+        plazasTextFields.put("P014", P14);
 
-        plazasCheckBoxes = new HashMap<>();
         plazasCheckBoxes.put("P01", jCheckBoxP1);
         plazasCheckBoxes.put("P02", jCheckBoxP2);
         plazasCheckBoxes.put("P03", jCheckBoxP3);
@@ -82,92 +129,65 @@ public class Parking extends javax.swing.JPanel {
         plazasCheckBoxes.put("P07", jCheckBoxP7);
         plazasCheckBoxes.put("P08", jCheckBoxP8);
         plazasCheckBoxes.put("P09", jCheckBoxP9);
-        plazasCheckBoxes.put("P10", jCheckBoxP10);
-        plazasCheckBoxes.put("P11", jCheckBoxP11);
-        plazasCheckBoxes.put("P12", jCheckBoxP12);
-        plazasCheckBoxes.put("P13", jCheckBoxP13);
-        plazasCheckBoxes.put("P14", jCheckBoxP14);
+        plazasCheckBoxes.put("P010", jCheckBoxP10);
+        plazasCheckBoxes.put("P011", jCheckBoxP11);
+        plazasCheckBoxes.put("P012", jCheckBoxP12);
+        plazasCheckBoxes.put("P013", jCheckBoxP13);
+        plazasCheckBoxes.put("P014", jCheckBoxP14);
 
-        /* Inicializacion  de todas las plazas como inicialmente no ocupadas
-        estadoPlazas = new HashMap<>();
+        // Inicializar estados de las plazas como "Disponible"
         for (String plaza : plazasTextFields.keySet()) {
-            estadoPlazas.put(plaza, false);
-        }*/
-        // Inicialización de todas las plazas según las reservas
-        estadoPlazas = new HashMap<>();
-
-// Supongamos que tienes una lista de reservas
-   //     List<Reserva> reservas = obtenerReservasPorFecha("2024-11-17");  // Ajusta la fecha o el método según tu implementación
-
-// Inicializamos el estado de las plazas como no ocupadas
-        for (String plaza : plazasTextFields.keySet()) {
-            // Buscamos si la plaza está reservada
-            boolean estaOcupada = false;
-/*
-            // Verificar si la plaza está reservada según las reservas
-            for (Reserva reserva : reservas) {
-                if (reserva.getNumeroPlaza().equals(plaza)) {
-                    estaOcupada = true;
-                    break;  // Si encontramos la reserva, no necesitamos seguir buscando
-                }
-            }
-*/
-            // Establecer el estado de la plaza
-            estadoPlazas.put(plaza, estaOcupada);  // true si está ocupada, false si no
+            estadoPlazas.put(plaza, false); // Disponible por defecto
+            actualizarEstadoPlaza(plaza);
         }
+    }
 
-// Ahora, actualizamos la vista para reflejar el estado de las plazas
+    /**
+     * Configura los listeners para los JCheckBox de cada plaza.
+     */
+    public void inicializarListeners() {
         for (String plaza : plazasTextFields.keySet()) {
-            JTextField textField = plazasTextFields.get(plaza);
             JCheckBox checkBox = plazasCheckBoxes.get(plaza);
+            checkBox.addActionListener(e -> {
+                boolean seleccionada = checkBox.isSelected();
+                estadoPlazas.put(plaza, seleccionada);
+                actualizarEstadoPlaza(plaza);
+            });
+        }
+    }
 
-            // Si la plaza está ocupada, cambia el texto y deshabilita el checkbox
-            if (estadoPlazas.get(plaza)) {
-                textField.setText("Ocupada");
-                checkBox.setEnabled(false);  // Deshabilitar el checkbox
-                checkBox.setSelected(true);  // Marcar la plaza como seleccionada
+    /**
+     * Actualiza el estado visual de una plaza en función de su disponibilidad.
+     *
+     * @param plaza Código de la plaza (ejemplo: "P01").
+     */
+    private void actualizarEstadoPlaza(String plaza) {
+        // Obtener los componentes
+        JCheckBox checkBox = plazasCheckBoxes.get(plaza);
+        JTextField plazaTextField = plazasTextFields.get(plaza);
+
+        // Verificar si la plaza existe en el mapa de estadoPlazas
+        if (checkBox != null && plazaTextField != null) {
+            boolean estaReservada = estadoPlazas.getOrDefault(plaza, false); // Devuelve false si la plaza no está en el mapa
+
+            if (estaReservada) {
+                // Si la plaza está reservada
+                plazaTextField.setText("Reservada");
+                plazaTextField.setEditable(false);
+                plazaTextField.setBackground(Color.RED); // Color rojo para reservado
+                plazaTextField.setForeground(Color.BLACK);
+                checkBox.setSelected(true); // Marca el checkbox
+                checkBox.setEnabled(false); // Deshabilita el checkbox
             } else {
-                textField.setText(plaza);  // Mostrar el nombre de la plaza
-                checkBox.setEnabled(true);  // Habilitar el checkbox
-                checkBox.setSelected(false);  // Desmarcar el checkbox
+                // Si la plaza está disponible
+                plazaTextField.setText("Disponible");
+                plazaTextField.setEditable(true);
+                plazaTextField.setBackground(Color.GREEN); // Color verde para disponible
+                plazaTextField.setForeground(Color.BLACK);
+                checkBox.setSelected(false); // Desmarca el checkbox
+                checkBox.setEnabled(true); // Habilita el checkbox
             }
 
-            // Agregar ActionListener a cada checkbox
-            for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
-                String numeroPlaza = entry.getKey();
-              //  JCheckBox checkBox = entry.getValue();
-
-                checkBox.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Iterar sobre todos los JCheckBoxes
-                        for (Map.Entry<String, JCheckBox> entry : plazasCheckBoxes.entrySet()) {
-                            String plaza = entry.getKey();
-                            JCheckBox cb = entry.getValue();
-                            JTextField textField = plazasTextFields.get(plaza);
-
-                            // Verificar si el checkBox seleccionado
-                            if (cb == checkBox) {
-                                // establece su texto como "Reservado"
-                                textField.setText("Reservado");
-                            } else {
-                                // Si no es el seleccionado, deja la posición de la plaza 
-                                textField.setText(plaza);
-                                // Desmarcar el JCheckBox
-                                cb.setSelected(false);
-                            }
-                        }
-
-                        // Actualizar el estado de la plaza en la estructura de datos
-                        estadoPlazas.put(numeroPlaza, checkBox.isSelected());
-                        estadoPlazas.put(numeroPlaza, checkBox.isSelected());
-
-                        // Obtener el texto de la plaza seleccionada Pasar el texto de la plaza seleccionada a la clase Reserva
-                        textoPlazaSeleccionada = checkBox.isSelected() ? "Reservado" : numeroPlaza;
-
-                    }
-                });
-            }
         }
     }
 
@@ -181,7 +201,7 @@ public class Parking extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup = new javax.swing.ButtonGroup();
-        panelCuenta = new vista.PanelRound();
+        panelParking = new vista.PanelRound();
         jlreservar = new javax.swing.JLabel();
         jltitulo2 = new javax.swing.JLabel();
         jbreservar = new javax.swing.JButton();
@@ -250,30 +270,31 @@ public class Parking extends javax.swing.JPanel {
         jSeparator26 = new javax.swing.JSeparator();
         jSeparator24 = new javax.swing.JSeparator();
         jSeparator27 = new javax.swing.JSeparator();
+        jlNombre = new javax.swing.JLabel();
 
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(428, 800));
 
-        panelCuenta.setBackground(new java.awt.Color(249, 251, 255));
-        panelCuenta.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
-        panelCuenta.setPreferredSize(new java.awt.Dimension(428, 800));
-        panelCuenta.setRoundBottomLeft(30);
-        panelCuenta.setRoundBottomRight(30);
-        panelCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelParking.setBackground(new java.awt.Color(249, 251, 255));
+        panelParking.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 153))); // NOI18N
+        panelParking.setPreferredSize(new java.awt.Dimension(428, 800));
+        panelParking.setRoundBottomLeft(30);
+        panelParking.setRoundBottomRight(30);
+        panelParking.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlreservar.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jlreservar.setForeground(new java.awt.Color(39, 59, 244));
         jlreservar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlreservar.setText("RESERVAR PLAZA");
         jlreservar.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelCuenta.add(jlreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 220, 34));
+        panelParking.add(jlreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 220, 34));
 
         jltitulo2.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo2.setForeground(new java.awt.Color(51, 51, 51));
         jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo2.setText("Que dia?");
         jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelCuenta.add(jltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 130, 19));
+        panelParking.add(jltitulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 130, 19));
 
         jbreservar.setBackground(new java.awt.Color(43, 220, 61));
         jbreservar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
@@ -287,20 +308,20 @@ public class Parking extends javax.swing.JPanel {
                 jbreservarActionPerformed(evt);
             }
         });
-        panelCuenta.add(jbreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
+        panelParking.add(jbreservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
 
         jltitulo3.setFont(new java.awt.Font("Lucida Sans", 0, 20)); // NOI18N
         jltitulo3.setForeground(new java.awt.Color(25, 35, 66));
         jltitulo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jltitulo3.setText(" Seleccione una plaza ");
         jltitulo3.setPreferredSize(new java.awt.Dimension(273, 30));
-        panelCuenta.add(jltitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 356, -1));
+        panelParking.add(jltitulo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 250, -1));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 665, 193, 10));
+        panelParking.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 665, 193, 10));
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 384, 10));
+        panelParking.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 384, 10));
 
         panelRoundP1.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -328,7 +349,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 163, -1, -1));
+        panelParking.add(panelRoundP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 163, -1, -1));
 
         panelRoundP2.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -356,7 +377,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 237, -1, -1));
+        panelParking.add(panelRoundP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 237, -1, -1));
 
         panelRoundP3.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -384,7 +405,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 311, -1, -1));
+        panelParking.add(panelRoundP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 311, -1, -1));
 
         panelRoundP4.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -412,7 +433,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 385, -1, -1));
+        panelParking.add(panelRoundP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 385, -1, -1));
 
         panelRoundP5.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -440,7 +461,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 459, -1, -1));
+        panelParking.add(panelRoundP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 459, -1, -1));
 
         panelRoundP6.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -468,7 +489,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 533, -1, -1));
+        panelParking.add(panelRoundP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 533, -1, -1));
 
         panelRoundP7.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -496,7 +517,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 607, -1, -1));
+        panelParking.add(panelRoundP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 607, -1, -1));
 
         panelRoundP8.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -524,7 +545,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, -1, -1));
+        panelParking.add(panelRoundP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, -1, -1));
 
         panelRoundP9.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -552,7 +573,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 237, -1, -1));
+        panelParking.add(panelRoundP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 237, -1, -1));
 
         panelRoundP10.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -580,7 +601,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 311, -1, -1));
+        panelParking.add(panelRoundP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 311, -1, -1));
 
         panelRoundP11.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -608,7 +629,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 385, -1, -1));
+        panelParking.add(panelRoundP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 385, -1, -1));
 
         panelRoundP12.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -636,7 +657,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 459, -1, -1));
+        panelParking.add(panelRoundP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 459, -1, -1));
 
         panelRoundP13.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -664,7 +685,7 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 533, -1, -1));
+        panelParking.add(panelRoundP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 533, -1, -1));
 
         panelRoundP14.setBackground(new java.awt.Color(39, 59, 244));
         panelRoundP14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 7, 244), 1, true));
@@ -692,78 +713,78 @@ public class Parking extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelCuenta.add(panelRoundP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 607, -1, -1));
+        panelParking.add(panelRoundP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 607, -1, -1));
 
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 171, 20));
+        panelParking.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 670, 171, 20));
 
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 150, 171, 10));
+        panelParking.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 150, 171, 10));
 
         jlentrada.setForeground(new java.awt.Color(0, 0, 0));
         jlentrada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlentrada.setText("ENTRADA");
-        panelCuenta.add(jlentrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 144, 76, -1));
+        panelParking.add(jlentrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 144, 76, -1));
 
         jlsalida.setForeground(new java.awt.Color(0, 0, 0));
         jlsalida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlsalida.setText("SALIDA");
-        panelCuenta.add(jlsalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 659, 76, -1));
+        panelParking.add(jlsalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 659, 76, -1));
 
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 517, 124, 10));
+        panelParking.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 517, 124, 10));
 
         jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 369, 124, 10));
+        panelParking.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 369, 124, 10));
 
         jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 295, 124, 10));
+        panelParking.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 295, 124, 10));
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 221, 124, 10));
+        panelParking.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 221, 124, 10));
 
         buttonGroup.add(jCheckBoxP1);
-        panelCuenta.add(jCheckBoxP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 178, -1, -1));
+        panelParking.add(jCheckBoxP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 178, -1, -1));
 
         buttonGroup.add(jCheckBoxP2);
         jCheckBoxP2.setSelected(true);
-        panelCuenta.add(jCheckBoxP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 252, -1, -1));
+        panelParking.add(jCheckBoxP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 252, -1, -1));
 
         buttonGroup.add(jCheckBoxP3);
-        panelCuenta.add(jCheckBoxP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 321, -1, -1));
+        panelParking.add(jCheckBoxP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 321, -1, -1));
 
         buttonGroup.add(jCheckBoxP4);
-        panelCuenta.add(jCheckBoxP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 396, -1, -1));
+        panelParking.add(jCheckBoxP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 396, -1, -1));
 
         buttonGroup.add(jCheckBoxP5);
-        panelCuenta.add(jCheckBoxP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 475, -1, -1));
+        panelParking.add(jCheckBoxP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 475, -1, -1));
 
         buttonGroup.add(jCheckBoxP6);
-        panelCuenta.add(jCheckBoxP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 545, -1, -1));
+        panelParking.add(jCheckBoxP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 545, -1, -1));
 
         buttonGroup.add(jCheckBoxP7);
-        panelCuenta.add(jCheckBoxP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 618, -1, -1));
+        panelParking.add(jCheckBoxP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 618, -1, -1));
 
         buttonGroup.add(jCheckBoxP8);
-        panelCuenta.add(jCheckBoxP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 178, -1, -1));
+        panelParking.add(jCheckBoxP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 178, -1, -1));
 
         buttonGroup.add(jCheckBoxP9);
-        panelCuenta.add(jCheckBoxP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 249, -1, -1));
+        panelParking.add(jCheckBoxP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 249, -1, -1));
 
         buttonGroup.add(jCheckBoxP10);
-        panelCuenta.add(jCheckBoxP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 323, -1, -1));
+        panelParking.add(jCheckBoxP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 323, -1, -1));
 
         buttonGroup.add(jCheckBoxP11);
-        panelCuenta.add(jCheckBoxP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 397, -1, -1));
+        panelParking.add(jCheckBoxP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 397, -1, -1));
 
         buttonGroup.add(jCheckBoxP12);
-        panelCuenta.add(jCheckBoxP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 471, -1, -1));
+        panelParking.add(jCheckBoxP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 471, -1, -1));
 
         buttonGroup.add(jCheckBoxP13);
-        panelCuenta.add(jCheckBoxP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 545, -1, -1));
+        panelParking.add(jCheckBoxP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 545, -1, -1));
 
         buttonGroup.add(jCheckBoxP14);
-        panelCuenta.add(jCheckBoxP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 618, -1, -1));
+        panelParking.add(jCheckBoxP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 618, -1, -1));
 
         jBCalendario.setBackground(new java.awt.Color(249, 251, 255));
         jBCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/calendario.png"))); // NOI18N
@@ -773,12 +794,14 @@ public class Parking extends javax.swing.JPanel {
                 jBCalendarioActionPerformed(evt);
             }
         });
-        panelCuenta.add(jBCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 40));
+        panelParking.add(jBCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, 40));
 
         jtFecha.setBackground(new java.awt.Color(249, 251, 255));
         jtFecha.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
         jtFecha.setForeground(new java.awt.Color(39, 59, 244));
-        panelCuenta.add(jtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 150, -1));
+        jtFecha.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jtFecha.setBorder(null);
+        panelParking.add(jtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 150, -1));
 
         jbCancelar.setBackground(new java.awt.Color(255, 3, 3));
         jbCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
@@ -792,44 +815,51 @@ public class Parking extends javax.swing.JPanel {
                 jbCancelarActionPerformed(evt);
             }
         });
-        panelCuenta.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 690, -1, -1));
+        panelParking.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 690, -1, -1));
 
         jSeparator19.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 668, 171, 20));
+        panelParking.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 668, 171, 20));
 
         jSeparator20.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 591, 124, 10));
+        panelParking.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 591, 124, 10));
 
         jSeparator21.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 124, 10));
+        panelParking.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, 124, 10));
 
         jSeparator23.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 124, 10));
+        panelParking.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 124, 10));
 
         jSeparator22.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 443, 124, 10));
+        panelParking.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 443, 124, 10));
 
         jSeparator25.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 447, 124, -1));
+        panelParking.add(jSeparator25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 447, 124, -1));
 
         jSeparator26.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 124, 10));
+        panelParking.add(jSeparator26, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 124, 10));
 
         jSeparator24.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 124, 10));
+        panelParking.add(jSeparator24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 124, 10));
 
         jSeparator27.setForeground(new java.awt.Color(0, 0, 0));
-        panelCuenta.add(jSeparator27, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 124, 10));
+        panelParking.add(jSeparator27, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 124, 10));
+
+        jlNombre.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
+        jlNombre.setForeground(new java.awt.Color(39, 59, 244));
+        jlNombre.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jlNombre.setToolTipText("");
+        jlNombre.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        panelParking.add(jlNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 150, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelParking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelParking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -840,28 +870,261 @@ public class Parking extends javax.swing.JPanel {
      */
     private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
 
+       // Obtener la plaza seleccionada por el usuario
+    String plazaSeleccionada = obtenerPlazaSeleccionada();
+
+    // Verificar si se ha seleccionado una plaza
+    if (plazaSeleccionada == null || plazaSeleccionada.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, seleccione una plaza antes de continuar.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si no se ha seleccionado una plaza
+    }
+
+    // Desmarcar la plaza previamente seleccionada y restaurar su color
+    for (String plaza : plazasCheckBoxes.keySet()) {
+        JCheckBox checkBox = plazasCheckBoxes.get(plaza);
+        JTextField plazaTextField = plazasTextFields.get(plaza);
+
+        if (checkBox.isSelected() && !plaza.equals(plazaSeleccionada)) {
+            checkBox.setSelected(true); // Desmarcar plazas no seleccionadas
+            plazaTextField.setBackground(Color.GREEN); // Restaurar color de fondo
+        }
+    }
+
+    // Marcar la nueva plaza seleccionada y cambiar su color
+    JCheckBox selectedCheckBox = plazasCheckBoxes.get(plazaSeleccionada);
+    JTextField selectedTextField = plazasTextFields.get(plazaSeleccionada);
+
+    selectedCheckBox.setSelected(true); // Marcar el JCheckBox
+    selectedTextField.setBackground(Color.GREEN); // Cambiar el fondo a verde para indicar selección
+
+    // Continuar con la lógica de reserva
+    String fechaTexto = jtFecha.getText();
+    if (fechaTexto == null || fechaTexto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha antes de continuar.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si la fecha no se ha ingresado
+    }
+
+    // Verificar si la plaza está disponible
+    Boolean plazaOcupada = estadoPlazas.get(plazaSeleccionada);
+    if (plazaOcupada == null) {
+        plazaOcupada = false; // Se considera disponible por defecto
+    }
+
+    if (!plazaOcupada) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha;
+
+        try {
+            fecha = sdf.parse(fechaTexto);
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha válida en formato 'yyyy-MM-dd'.", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            return;
+        }
+
+        guardarOActualizarReservaEnBD(plazaSeleccionada, fecha, idVehiculo);
+        estadoPlazas.put(plazaSeleccionada, true); // Actualizar estado
+        actualizarEstadoPlaza(plazaSeleccionada); // Reflejar cambios en la interfaz
+
         Reserva reserva = new Reserva(usuarios, vehiculos, reservas);
-        mostrarPanel2(reserva);
+        mostrarPanel(reserva); // Cambiar al panel de reservas
+        JOptionPane.showMessageDialog(this, "La plaza seleccionada ha sido reservada correctamente.", "Reserva Exitosa", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "La plaza ya está reservada. Por favor, seleccione otra.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jbreservarActionPerformed
 
     private void jBCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalendarioActionPerformed
-        // Crear un JDateChooser
+        // Crear un JDateChooser para seleccionar la fecha
         JDateChooser dateChooser = new JDateChooser();
-        dateChooser.setDate(new Date()); // Fecha inicial
+        dateChooser.setDate(new Date()); // Fecha actual
 
-        // Mostrar el calendario en un cuadro de diálogo
+        // Mostrar el diálogo para seleccionar una fecha
         int opcion = JOptionPane.showConfirmDialog(this, dateChooser, "Selecciona una fecha",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-        // Procesar la fecha seleccionada
+        // Si el usuario hace clic en OK
         if (opcion == JOptionPane.OK_OPTION) {
             Date fecha = dateChooser.getDate();
+
             if (fecha != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                jtFecha.setText(sdf.format(fecha));
+                // Validar que la fecha no sea futura
+                if (fecha.before(new Date())) {
+                    JOptionPane.showMessageDialog(this, "La fecha seleccionada no puede anterior a la fecha.",
+                            "Fecha no válida", JOptionPane.WARNING_MESSAGE);
+                    return;  // Salir sin hacer nada si la fecha es futura
+                }
+
+                // Mostrar la fecha seleccionada en el campo de texto
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                jtFecha.setText(formato.format(fecha));
+
+                // Limpiar el estado de las plazas antes de actualizarlo con la nueva fecha
+                inicializarPlazas();
+
+                // Llamar al método que actualiza el estado de las plazas basado en la fecha seleccionada
+                try {
+                    actualizarPlazasPorFecha(fecha);
+                } catch (Exception e) {
+                    System.out.println("Error al actualizar las plazas: " + e.getMessage());
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Hubo un error al actualizar las plazas. Inténtalo de nuevo.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor, selecciona una fecha válida.",
+                        "Fecha no válida", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_jBCalendarioActionPerformed
+
+    private String obtenerPlazaSeleccionada() {
+        // Iterar sobre las claves del mapa (nombres de plazas)
+        for (String plaza : plazasTextFields.keySet()) {
+            JTextField plazaTextField = plazasTextFields.get(plaza);
+            JCheckBox plazaCheckBox = plazasCheckBoxes.get(plaza);  // Suponiendo que tienes un mapa de JCheckBox con la misma clave
+
+            // Verificar si el campo es editable, su fondo es verde y el JCheckBox está marcado
+            if (plazaTextField.isEditable() && plazaTextField.getBackground() == Color.GREEN && plazaCheckBox.isSelected()) {
+                return plaza;  // Retornar la primera plaza seleccionada
+            }
+        }
+
+        return null;  // Si no se encuentra ninguna plaza seleccionada, retornar null
+    }
+
+    private void actualizarPlazasPorFecha(Date fecha) {
+        // Configurar la conexión a la base de datos utilizando Hibernate
+        try {
+            // Crear la sesión de Hibernate
+            Configuration configuration = new Configuration();
+            configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
+
+            // Crear la sesión factory
+            SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+            // Iniciar una sesión
+            try (Session sesion = sessionFactory.openSession()) {
+                Transaction transaction = sesion.beginTransaction();
+
+                // Crear la consulta para obtener las reservas para la fecha seleccionada
+                String hql = "FROM Reservas WHERE fechaReservada = :fecha";
+                Query<Reservas> query = sesion.createQuery(hql, Reservas.class);
+                query.setParameter("fecha", fecha); // Establecer la fecha seleccionada en la consulta
+
+                List<Reservas> reservas = query.list();
+                for (Reservas reser : reservas) {
+                    String plaza = "P" + String.format("%02d", reser.getNumeroPlaza());
+                    boolean reservada = reser.getReservada();
+                    estadoPlazas.put(plaza, reservada);
+                    actualizarEstadoPlaza(plaza);
+                }
+
+                // Confirmar la transacción
+                transaction.commit();
+            } catch (HibernateException e) {
+                e.printStackTrace();
+            }
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void guardarOActualizarReservaEnBD(String plaza, Date fecha, int idVehiculo) {
+        SessionFactory sessionFactory = null;
+
+        // Crear la configuración y la sesión de Hibernate
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml"); // Archivo de configuración de Hibernate
+        sessionFactory = configuration.buildSessionFactory();
+
+        try (Session session = sessionFactory.openSession()) {
+            // Iniciar una transacción
+            Transaction transaction = session.beginTransaction();
+
+            try {
+                // Convertir el número de plaza (Ejemplo: "P01" -> 1)
+                int numeroPlaza = Integer.parseInt(plaza.substring(1));
+
+                // Comprobar si ya existe una reserva para la plaza y el vehículo
+                String hql = "FROM Reservas r WHERE r.numeroPlaza = :numeroPlaza AND r.vehiculos.id = :idVehiculo";
+                Query<Reservas> checkQuery = session.createQuery(hql, Reservas.class);
+                checkQuery.setParameter("numeroPlaza", numeroPlaza);
+                checkQuery.setParameter("idVehiculo", idVehiculo);
+
+                List<Reservas> reservasExistentes = checkQuery.list();
+
+                if (!reservasExistentes.isEmpty()) {
+                    // Actualizar reserva existente
+                    Reservas reservaExistente = reservasExistentes.get(0);
+                    reservaExistente.setReservada(true);
+                    reservaExistente.setFechaReservada(new java.sql.Date(fecha.getTime()));
+                    session.update(reservaExistente);
+                    System.out.println("Reserva de la plaza " + plaza + " actualizada con éxito.");
+                } else {
+                    // Crear nueva reserva
+                    Reservas nuevaReserva = new Reservas();
+                    nuevaReserva.setNumeroPlaza(numeroPlaza);
+                    nuevaReserva.setReservada(true);
+                    nuevaReserva.setFechaReservada(new java.sql.Date(fecha.getTime()));
+
+                    // Vincular el vehículo existente
+                    Vehiculos vehiculo = session.get(Vehiculos.class, idVehiculo);
+                    if (vehiculo == null) {
+                        throw new IllegalArgumentException("El vehículo con ID " + idVehiculo + " no existe.");
+                    }
+                    nuevaReserva.setVehiculos(vehiculo);
+                    session.save(nuevaReserva);
+                    System.out.println("Reserva de la plaza " + plaza + " creada con éxito.");
+                }
+
+                // Confirmar la transacción
+                transaction.commit();
+            } catch (IllegalArgumentException e) {
+                // En caso de error, revertir la transacción
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+                throw e; // Relanzar la excepción para manejarla externamente
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error de formato en el número de plaza: " + plaza);
+            e.printStackTrace();
+        } catch (HibernateException e) {
+            System.out.println("Error con Hibernate: " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error inesperado: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public boolean existeReserva(String numeroPlaza, Date fecha) {
+
+        SessionFactory sessionFactory = null;
+
+        // Crear la configuración y la sesión de Hibernate
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml"); // Archivo de configuración de Hibernate
+        sessionFactory = configuration.buildSessionFactory();
+
+        // Abrir sesión de Hibernate
+        try (Session session = sessionFactory.openSession()) {
+            // Iniciar la transacción
+
+            try {
+                String hql = "SELECT COUNT(r) FROM Reserva r WHERE r.numeroPlaza = :numeroPlaza AND r.fecha = :fecha";
+                Query query = session.createQuery(hql);
+                query.setParameter("numeroPlaza", numeroPlaza);
+                query.setParameter("fecha", fecha);
+                Long count = (Long) query.uniqueResult();
+                return count > 0; // Retorna true si ya existe un registro
+            } finally {
+                session.close();
+            }
+        }
+
+    }
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // Crea una instancia de InicioCuenta
@@ -876,30 +1139,14 @@ public class Parking extends javax.swing.JPanel {
      *
      * @param panel
      */
-    private void mostrarPanel(InicioCuenta panel) {
+    public void mostrarPanel(JPanel panel) {
         panel.setSize(428, 800);
         panel.setLocation(0, 0);
 
-        panelCuenta.removeAll();
-        panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        panelCuenta.revalidate();
-        panelCuenta.repaint();
-
-    }
-
-    /**
-     * Metodo elimna el panel actual y muestra el que se le pasa
-     *
-     * @param panel
-     */
-    private void mostrarPanel2(Reserva panel) {
-        panel.setSize(428, 800);
-        panel.setLocation(0, 0);
-
-        panelCuenta.removeAll();
-        panelCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        panelCuenta.revalidate();
-        panelCuenta.repaint();
+        panelParking.removeAll();
+        panelParking.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelParking.revalidate();
+        panelParking.repaint();
     }
 
 
@@ -953,13 +1200,14 @@ public class Parking extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbreservar;
+    private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlentrada;
     private javax.swing.JLabel jlreservar;
     private javax.swing.JLabel jlsalida;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo3;
     private javax.swing.JTextField jtFecha;
-    private vista.PanelRound panelCuenta;
+    private vista.PanelRound panelParking;
     private vista.PanelRound panelRoundP1;
     private vista.PanelRound panelRoundP10;
     private vista.PanelRound panelRoundP11;

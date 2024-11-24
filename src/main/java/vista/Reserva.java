@@ -6,12 +6,11 @@ package vista;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import controlador.MetodosInicio;
-import controlador.MetodosReservar;
 import java.awt.Color;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
+import java.awt.Font;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Usuarios;
@@ -24,22 +23,10 @@ import modelo.Reservas;
  */
 public class Reserva extends javax.swing.JPanel {
 
-    MetodosInicio mi = new MetodosInicio();
-    MetodosReservar mr = new MetodosReservar();
-
     private final double precioPorHora = 0.25;
-    private LocalDate fecha;
     private int horas;
-    private double precio;
-    private String plaza;
-    private final String nombre;
-    private final String contrasena;
-    private String coche;
-    private String matricula;
-    private String fechaTexto;
-    private DateTimeFormatter formatter;
-    private String fechaFormateada;
-    private final float precioHora = 0.75f;
+    private int plaza;
+    private boolean coche;
     private double total = 0.0f;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
@@ -47,26 +34,19 @@ public class Reserva extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistroCuenta
+     *
+     * @param usuarios
+     * @param vehiculos
+     * @param reservas
      */
-    public Reserva(Usuarios usuarios, Vehiculos vehiculos,Reservas reservas) {
+    public Reserva(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
         this.reservas = reservas;
         initComponents();
 
-        // Asignar valores predeterminados a los atributos nombre y contrasena
-        this.nombre = "";
-        this.contrasena = "";
-
-        /*
-        coche = jtcoche.getText().trim();
-        matricula = jtmatricula.getText().trim();
-        plaza = jtplaza.getText().trim();
-        fechaTexto = jbcalendario.getText().trim();
-         */
         // Poner jTexfield y jBotton el radio
-        jbConfirmar.putClientProperty("FlatLaf.style", "arc: 15");
-       // jbcalendario.putClientProperty("FlatLaf.style", "arc: 15");
+        jbPagar.putClientProperty("FlatLaf.style", "arc: 15");
         jbcancelar.putClientProperty("FlatLaf.style", "arc: 15");
         jPdatosReserva.putClientProperty("FlatLaf.style", "arc: 15");
 
@@ -74,11 +54,29 @@ public class Reserva extends javax.swing.JPanel {
         jtcoche.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtmatricula.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
         jtplaza.putClientProperty(FlatClientProperties.TEXT_FIELD_LEADING_ICON, new FlatSVGIcon("img/apellidos.svg"));
+        
+          coche = vehiculos.getEsCoche();
+        if (coche) {
+            jtcoche.setText("Coche");
+        } else {
+            jtcoche.setText("Moto");
+        }
 
-        jtplaza.setText(plaza);
-        jtplaza.setForeground(Color.black);
-        System.out.print(plaza);
-       
+        jtmatricula.setText(vehiculos.getMatricula());
+
+        plaza = reservas.getNumeroPlaza();
+        jtplaza.setText("P" + plaza);
+
+        // Obtener la fecha reservada
+        Date fechaReserva = reservas.getFechaReservada();
+        System.out.println("fecha " + fechaReserva.toString());
+        SimpleDateFormat formateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+        String fechaFormateada = formateada.format(fechaReserva);
+        jlFecha.setText(fechaFormateada);
+        
+        
+        
+
     }
 
     /**
@@ -91,9 +89,9 @@ public class Reserva extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanelTiket = new javax.swing.JPanel();
-        jltitulo2 = new javax.swing.JLabel();
-        jlnombre1 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        jltituloReserva = new javax.swing.JLabel();
+        jlTiempo = new javax.swing.JLabel();
+        jSliderTiempo = new javax.swing.JSlider();
         jPdatosReserva = new javax.swing.JPanel();
         jtcoche = new javax.swing.JTextField();
         jtplaza = new javax.swing.JTextField();
@@ -106,8 +104,9 @@ public class Reserva extends javax.swing.JPanel {
         jlnombre5 = new javax.swing.JLabel();
         jttotal = new javax.swing.JTextField();
         jTexthora = new javax.swing.JTextField();
-        jlnombre6 = new javax.swing.JLabel();
-        jbConfirmar = new javax.swing.JButton();
+        jlFecha = new javax.swing.JLabel();
+        jlnombre7 = new javax.swing.JLabel();
+        jbPagar = new javax.swing.JButton();
         jbcancelar = new javax.swing.JButton();
         jltitulo4 = new javax.swing.JLabel();
 
@@ -118,31 +117,31 @@ public class Reserva extends javax.swing.JPanel {
         jPanelTiket.setMaximumSize(null);
         jPanelTiket.setPreferredSize(new java.awt.Dimension(430, 800));
 
-        jltitulo2.setBackground(new java.awt.Color(249, 251, 255));
-        jltitulo2.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
-        jltitulo2.setForeground(new java.awt.Color(39, 59, 244));
-        jltitulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jltitulo2.setText("DETALLE PLAZA RESERVADA");
-        jltitulo2.setPreferredSize(new java.awt.Dimension(273, 30));
+        jltituloReserva.setBackground(new java.awt.Color(249, 251, 255));
+        jltituloReserva.setFont(new java.awt.Font("Stencil", 0, 20)); // NOI18N
+        jltituloReserva.setForeground(new java.awt.Color(39, 59, 244));
+        jltituloReserva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jltituloReserva.setText("DETALLE PLAZA RESERVADA");
+        jltituloReserva.setPreferredSize(new java.awt.Dimension(273, 30));
 
-        jlnombre1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlnombre1.setForeground(new java.awt.Color(0, 0, 0));
-        jlnombre1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlnombre1.setText("Tiempo duración");
-        jlnombre1.setToolTipText("");
-        jlnombre1.setPreferredSize(new java.awt.Dimension(51, 17));
+        jlTiempo.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlTiempo.setForeground(new java.awt.Color(0, 0, 0));
+        jlTiempo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlTiempo.setText("Tiempo duración");
+        jlTiempo.setToolTipText("");
+        jlTiempo.setPreferredSize(new java.awt.Dimension(51, 17));
 
-        jSlider1.setBackground(new java.awt.Color(39, 59, 244));
-        jSlider1.setForeground(new java.awt.Color(0, 0, 0));
-        jSlider1.setMaximum(24);
-        jSlider1.setMinorTickSpacing(1);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setToolTipText("Selecciona la horas que quieres reservar la plaza");
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        jSliderTiempo.setBackground(new java.awt.Color(39, 59, 244));
+        jSliderTiempo.setForeground(new java.awt.Color(0, 0, 0));
+        jSliderTiempo.setMaximum(24);
+        jSliderTiempo.setMinorTickSpacing(1);
+        jSliderTiempo.setPaintLabels(true);
+        jSliderTiempo.setPaintTicks(true);
+        jSliderTiempo.setSnapToTicks(true);
+        jSliderTiempo.setToolTipText("Selecciona la horas que quieres reservar la plaza");
+        jSliderTiempo.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                jSliderTiempoStateChanged(evt);
             }
         });
 
@@ -152,7 +151,7 @@ public class Reserva extends javax.swing.JPanel {
 
         jtcoche.setBackground(new java.awt.Color(198, 212, 255));
         jtcoche.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtcoche.setForeground(new java.awt.Color(153, 153, 153));
+        jtcoche.setForeground(new java.awt.Color(0, 0, 0));
         jtcoche.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtcoche.setText("vehiculo");
         jtcoche.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
@@ -160,15 +159,15 @@ public class Reserva extends javax.swing.JPanel {
 
         jtplaza.setBackground(new java.awt.Color(198, 212, 255));
         jtplaza.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtplaza.setForeground(new java.awt.Color(153, 153, 153));
+        jtplaza.setForeground(new java.awt.Color(0, 0, 0));
         jtplaza.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jtplaza.setText("P01");
+        jtplaza.setText("plaza");
         jtplaza.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
         jtplaza.setPreferredSize(new java.awt.Dimension(335, 50));
 
         jtmatricula.setBackground(new java.awt.Color(198, 212, 255));
         jtmatricula.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jtmatricula.setForeground(new java.awt.Color(153, 153, 153));
+        jtmatricula.setForeground(new java.awt.Color(0, 0, 0));
         jtmatricula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jtmatricula.setText("matricula");
         jtmatricula.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
@@ -210,25 +209,32 @@ public class Reserva extends javax.swing.JPanel {
         jPanel1.add(jlnombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 90, 40));
 
         jttotal.setBackground(new java.awt.Color(153, 204, 255));
-        jttotal.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
+        jttotal.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
         jttotal.setForeground(new java.awt.Color(0, 0, 0));
         jttotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jttotal.setText("00");
         jttotal.setToolTipText("Introduce tu nombre minimo tiene que tener 3 caracteres");
         jttotal.setPreferredSize(new java.awt.Dimension(335, 50));
-        jPanel1.add(jttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 130, 40));
+        jPanel1.add(jttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 80, 40));
 
         jTexthora.setBackground(new java.awt.Color(198, 212, 255));
         jTexthora.setFont(new java.awt.Font("Lucida Sans", 0, 16)); // NOI18N
-        jTexthora.setForeground(new java.awt.Color(153, 153, 153));
+        jTexthora.setForeground(new java.awt.Color(0, 0, 0));
         jTexthora.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTexthora.setText("0");
 
-        jlnombre6.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jlnombre6.setForeground(new java.awt.Color(0, 0, 0));
-        jlnombre6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlnombre6.setText("Plaza de aparcamiento");
-        jlnombre6.setToolTipText("");
-        jlnombre6.setPreferredSize(new java.awt.Dimension(51, 17));
+        jlFecha.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlFecha.setForeground(new java.awt.Color(0, 0, 0));
+        jlFecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlFecha.setToolTipText("");
+        jlFecha.setPreferredSize(new java.awt.Dimension(51, 17));
+
+        jlnombre7.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jlnombre7.setForeground(new java.awt.Color(0, 0, 0));
+        jlnombre7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlnombre7.setText("Plaza de aparcamiento");
+        jlnombre7.setToolTipText("");
+        jlnombre7.setPreferredSize(new java.awt.Dimension(51, 17));
 
         javax.swing.GroupLayout jPdatosReservaLayout = new javax.swing.GroupLayout(jPdatosReserva);
         jPdatosReserva.setLayout(jPdatosReservaLayout);
@@ -236,17 +242,12 @@ public class Reserva extends javax.swing.JPanel {
             jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
             .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPdatosReservaLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtcoche, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtplaza, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPdatosReservaLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jlnombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtcoche, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlnombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtplaza, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPdatosReservaLayout.createSequentialGroup()
                         .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,10 +255,20 @@ public class Reserva extends javax.swing.JPanel {
                             .addComponent(jtmatricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPdatosReservaLayout.createSequentialGroup()
-                        .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTexthora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))))
+                        .addComponent(jTexthora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                        .addComponent(jltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jlnombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(163, Short.MAX_VALUE)))
         );
         jPdatosReservaLayout.setVerticalGroup(
             jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,27 +282,32 @@ public class Reserva extends javax.swing.JPanel {
                     .addComponent(jtcoche, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlnombre6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jltiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtplaza, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTexthora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
+                .addComponent(jlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPdatosReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPdatosReservaLayout.createSequentialGroup()
+                    .addGap(118, 118, 118)
+                    .addComponent(jlnombre7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(129, Short.MAX_VALUE)))
         );
 
-        jbConfirmar.setBackground(new java.awt.Color(43, 220, 61));
-        jbConfirmar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jbConfirmar.setForeground(new java.awt.Color(255, 255, 255));
-        jbConfirmar.setText("Confirmar");
-        jbConfirmar.setToolTipText("Boton cofirmar el pago");
-        jbConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbConfirmar.setPreferredSize(new java.awt.Dimension(124, 49));
-        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
+        jbPagar.setBackground(new java.awt.Color(43, 220, 61));
+        jbPagar.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
+        jbPagar.setForeground(new java.awt.Color(255, 255, 255));
+        jbPagar.setText(" Pagar");
+        jbPagar.setToolTipText("Boton cofirmar el pago");
+        jbPagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbPagar.setPreferredSize(new java.awt.Dimension(124, 49));
+        jbPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfirmarActionPerformed(evt);
+                jbPagarActionPerformed(evt);
             }
         });
 
@@ -318,7 +334,7 @@ public class Reserva extends javax.swing.JPanel {
         jPanelTiket.setLayout(jPanelTiketLayout);
         jPanelTiketLayout.setHorizontalGroup(
             jPanelTiketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jltitulo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jltituloReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTiketLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,32 +342,32 @@ public class Reserva extends javax.swing.JPanel {
             .addGroup(jPanelTiketLayout.createSequentialGroup()
                 .addGroup(jPanelTiketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelTiketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTiketLayout.createSequentialGroup()
                             .addGap(35, 35, 35)
                             .addComponent(jPdatosReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTiketLayout.createSequentialGroup()
                             .addGap(47, 47, 47)
-                            .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSliderTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanelTiketLayout.setVerticalGroup(
             jPanelTiketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTiketLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jltitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jltituloReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jltitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jlnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSliderTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jPdatosReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jbConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -379,7 +395,7 @@ public class Reserva extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-   /**
+    /**
      * Evento se le pasa el metodo MostrarPanel eliminando el actual y mostrando
      * el que se le pasa calculo de el tiempo de estacionamiento
      *
@@ -394,31 +410,50 @@ public class Reserva extends javax.swing.JPanel {
      *
      * @param evt
      */
-    private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
+    private void jbPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPagarActionPerformed
 
-        JOptionPane.showMessageDialog(this, "La reserva del aparcamiento se ha completado.", "Reserva completada", JOptionPane.INFORMATION_MESSAGE);
+        // Crear un JComboBox con los métodos de pago
+        String[] opcionesPago = {"Bizum", "Visa", "PayPal"};
+        JComboBox<String> comboBox = new JComboBox<>(opcionesPago);
 
-    }//GEN-LAST:event_jbConfirmarActionPerformed
+        // Mostrar el cuadro de diálogo con el JComboBox
+        int opcion = JOptionPane.showOptionDialog(
+                this,
+                comboBox,
+                "Selecciona un método de pago",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                new Object[]{"Aceptar", "Cancelar"},
+                "Aceptar"
+        );
+
+        // Si se ha seleccionado "Aceptar"
+        if (opcion == 0) {
+            String metodoPago = (String) comboBox.getSelectedItem(); // Obtén el método de pago seleccionado
+            JOptionPane.showMessageDialog(this, "Método de pago seleccionado: " + metodoPago, "Pago seleccionado", JOptionPane.INFORMATION_MESSAGE);
+
+            // Realiza las acciones correspondientes al método de pago seleccionado
+            // Por ejemplo, podrías redirigir a una pasarela de pagos o proceder con el proceso
+        } else {
+            // Si el usuario seleccionó "Cancelar", mostrar un mensaje
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado un método de pago.", "Cancelado", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jbPagarActionPerformed
     /**
      * Evento muestra en el campo texto horas segun la selecion del slider
      *
      * @param evt
      */
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        horas = jSlider1.getValue();
-        jTexthora.setText(String.valueOf(horas));
+    private void jSliderTiempoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderTiempoStateChanged
+        horas = jSliderTiempo.getValue();
+        jTexthora.setText(String.valueOf(horas + "m"));
         jTexthora.setForeground(Color.black);
         total = (precioPorHora * horas);
-        jttotal.setText(String.valueOf(total));
+        jttotal.setText(String.valueOf(total + "€"));
 
-        jtcoche.setText("Coche");
-        jtmatricula.setText("1234ABD");
-        jtplaza.setText("P01");
-        jtcoche.setForeground(Color.black);
-        jtmatricula.setForeground(Color.black);
-        jtplaza.setForeground(Color.black);
-
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_jSliderTiempoStateChanged
     /**
      * Metodo elimna el panel actual y muestra el que se le pasa
      *
@@ -433,28 +468,25 @@ public class Reserva extends javax.swing.JPanel {
         jPanelTiket.repaint();
     }
 
-    public void setPlazaSeleccionada(String plazaSeleccionada) {
-        this.plaza = plazaSeleccionada;
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelTiket;
     private javax.swing.JPanel jPdatosReserva;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSliderTiempo;
     private javax.swing.JTextField jTexthora;
-    private javax.swing.JButton jbConfirmar;
+    private javax.swing.JButton jbPagar;
     private javax.swing.JButton jbcancelar;
-    private javax.swing.JLabel jlnombre1;
+    private javax.swing.JLabel jlFecha;
+    private javax.swing.JLabel jlTiempo;
     private javax.swing.JLabel jlnombre2;
     private javax.swing.JLabel jlnombre3;
     private javax.swing.JLabel jlnombre5;
-    private javax.swing.JLabel jlnombre6;
+    private javax.swing.JLabel jlnombre7;
     private javax.swing.JLabel jltiempo;
-    private javax.swing.JLabel jltitulo2;
     private javax.swing.JLabel jltitulo4;
+    private javax.swing.JLabel jltituloReserva;
     private javax.swing.JTextField jtcoche;
     private javax.swing.JTextField jtmatricula;
     private javax.swing.JTextField jtplaza;

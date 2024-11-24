@@ -17,7 +17,7 @@ import modelo.Reservas;
  */
 public class InicioCuenta extends javax.swing.JPanel {
 
-    private Usuarios usuario;
+    private Usuarios usuarios;
     private Vehiculos vehiculos;
     private Reservas reservas;
 
@@ -29,10 +29,10 @@ public class InicioCuenta extends javax.swing.JPanel {
      */
     public InicioCuenta(Usuarios usuarios, Vehiculos vehiculos) {
         
-        this.usuario = usuarios;
+        this.usuarios = usuarios;
         this.vehiculos = vehiculos;
         initComponents();
-         jlNombre.setText(usuario.getNombre());
+         jlNombre.setText(usuarios.getNombre());
         // Poner los jbonton  bordes redondeados
         jbModificarCuenta.putClientProperty("FlatLaf.style", "arc: 15");
         jbReservarPlaza.putClientProperty("FlatLaf.style", "arc: 15");
@@ -210,7 +210,7 @@ public class InicioCuenta extends javax.swing.JPanel {
 
             if (confirmacion == JOptionPane.YES_OPTION) {
                 MetodosCuenta mc = new MetodosCuenta();
-                boolean eliminada = mc.eliminarCuentaUsuario(usuario.getNombre(), emailIngresado); // Pasamos el email ingresado
+                boolean eliminada = mc.eliminarCuentaUsuario(usuarios.getNombre(), emailIngresado); // Pasamos el email ingresado
 
                 if (eliminada) {
                     JOptionPane.showMessageDialog(null,
@@ -241,7 +241,7 @@ public class InicioCuenta extends javax.swing.JPanel {
      * @param evt
      */
     private void jbReservarPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReservarPlazaActionPerformed
-        Parking panelReserva = new Parking(usuario, vehiculos,reservas);
+        Parking panelReserva = new Parking(usuarios, vehiculos,reservas);
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbReservarPlazaActionPerformed
 
@@ -252,13 +252,13 @@ public class InicioCuenta extends javax.swing.JPanel {
      */
     private void jbHistoiralAparcamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbHistoiralAparcamientoActionPerformed
 
-        Historial panelHistorial = new Historial(usuario, vehiculos);
+        Historial panelHistorial = new Historial(usuarios, vehiculos);
         mostrarPanel(panelHistorial);
     }//GEN-LAST:event_jbHistoiralAparcamientoActionPerformed
 
     private void jbModificarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarCuentaActionPerformed
 
-        ModificarCuenta modificarCuenta = new ModificarCuenta(false, usuario, vehiculos);
+        ModificarCuenta modificarCuenta = new ModificarCuenta(false, usuarios, vehiculos);
         mostrarPanel(modificarCuenta);
     }//GEN-LAST:event_jbModificarCuentaActionPerformed
     /**
@@ -276,8 +276,8 @@ public class InicioCuenta extends javax.swing.JPanel {
         // panelInicioCuenta.repaint();
     }
 
-    void inicializarDatosUsuario(Usuarios usuario, Vehiculos vehiculos) {
-        this.usuario = usuario;
+    void inicializarDatosUsuario(Usuarios usuarios, Vehiculos vehiculos) {
+        this.usuarios = usuarios;
         this.vehiculos = vehiculos;
 
     }

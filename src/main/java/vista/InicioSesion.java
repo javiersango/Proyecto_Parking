@@ -19,7 +19,6 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosInicio;
-import controlador.MetodosRegistroCuenta;
 import modelo.Usuarios;
 import modelo.Vehiculos;
 import modelo.Historial;
@@ -586,7 +585,7 @@ public class InicioSesion extends javax.swing.JFrame {
                     
                     Usuarios usuarios = MetodosInicio.obtenerUsuario(idUsuario);
                     InicioCuenta inicioCuenta = new InicioCuenta(usuarios,vehiculos);
-                    Parking parking = new Parking(usuarios, vehiculos,reservas);
+                   // Parking parking = new Parking(usuarios, vehiculos,reservas);
 
                     Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
                     

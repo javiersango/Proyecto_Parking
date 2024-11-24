@@ -172,7 +172,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
                 plazaTextField.setBackground(Color.GREEN); // Color verde para disponible
                 plazaTextField.setForeground(Color.BLACK);
                 checkBox.setSelected(false); // Desmarca el checkbox
-                checkBox.setEnabled(true); // Habilita el checkbox
+                checkBox.setEnabled(false); // Habilita el checkbox
             }
         }
     }
@@ -711,38 +711,26 @@ public class ParkingAdministrador extends javax.swing.JPanel {
 
         jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
         panelParking.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 221, 124, 10));
-
         panelParking.add(jCheckBoxP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 178, -1, -1));
 
         jCheckBoxP2.setSelected(true);
         panelParking.add(jCheckBoxP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 252, -1, -1));
-
         panelParking.add(jCheckBoxP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 321, -1, -1));
-
         panelParking.add(jCheckBoxP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 396, -1, -1));
-
         panelParking.add(jCheckBoxP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 475, -1, -1));
-
         panelParking.add(jCheckBoxP6, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 545, -1, -1));
-
         panelParking.add(jCheckBoxP7, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 618, -1, -1));
-
         panelParking.add(jCheckBoxP8, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 178, -1, -1));
-
         panelParking.add(jCheckBoxP9, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 249, -1, -1));
-
         panelParking.add(jCheckBoxP10, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 323, -1, -1));
-
         panelParking.add(jCheckBoxP11, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 397, -1, -1));
-
         panelParking.add(jCheckBoxP12, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 471, -1, -1));
-
         panelParking.add(jCheckBoxP13, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 545, -1, -1));
-
         panelParking.add(jCheckBoxP14, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 618, -1, -1));
 
         jBCalendario.setBackground(new java.awt.Color(249, 251, 255));
         jBCalendario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/png/calendario.png"))); // NOI18N
+        jBCalendario.setToolTipText("Seleccionar fecha para mostrar el estado del aparcamiento");
         jBCalendario.setBorderPainted(false);
         jBCalendario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -837,9 +825,12 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     }//GEN-LAST:event_jBCalendarioActionPerformed
 
     private void actualizarPlazasPorFecha(Date fecha) {
+
+       
+
         // Configurar la conexión a la base de datos utilizando Hibernate
         try {
-            // Crear la sesión de Hibernate
+            // Crear la configuración de Hibernate
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
 
@@ -855,12 +846,16 @@ public class ParkingAdministrador extends javax.swing.JPanel {
                 Query<Reservas> query = sesion.createQuery(hql, Reservas.class);
                 query.setParameter("fecha", fecha); // Establecer la fecha seleccionada en la consulta
 
+                // Obtener las reservas
                 List<Reservas> reservas = query.list();
                 for (Reservas reser : reservas) {
+                    // Construir el identificador de la plaza
                     String plaza = "P" + String.format("%02d", reser.getNumeroPlaza());
                     boolean reservada = reser.getReservada();
+
+                    // Actualizar el estado de la plaza
                     estadoPlazas.put(plaza, reservada);
-                    actualizarEstadoPlaza(plaza);
+                    actualizarEstadoPlaza(plaza); // Reflejar visualmente el estado
                 }
 
                 // Confirmar la transacción
@@ -868,10 +863,17 @@ public class ParkingAdministrador extends javax.swing.JPanel {
             } catch (HibernateException e) {
                 e.printStackTrace();
             }
+
+            // ** Desactivar todos los JCheckBox **
+            for (JCheckBox checkBox : plazasCheckBoxes.values()) {
+                checkBox.setEnabled(false); // Desactivar el JCheckBox
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         }
     }
+
+
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         Administrador administrador = new Administrador(usuarios, vehiculos, reservas);
         mostrarPanel(administrador);

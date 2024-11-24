@@ -10,9 +10,7 @@ modelo\Vehiculos.class
 vista\Reserva$2.class
 vista\InicioSesion$2.class
 vista\RegistroCuenta$7.class
-controlador\Plaza.class
 vista\InicioSesion$12.class
-vista\Parking$4.class
 vista\RegistroCuenta$4.class
 vista\Loading$3.class
 vista\ModificarCuenta$1.class
@@ -60,6 +58,7 @@ vista\Reserva$1.class
 vista\InicioSesion$10.class
 vista\Loading$5.class
 vista\RecuperarContrasena$3.class
+vista\Administrador$5.class
 vista\Parking$3.class
 vista\Loading$2.class
 controlador\MetodosContrasena.class
