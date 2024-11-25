@@ -19,6 +19,7 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.MetodosInicio;
+import controlador.MetodosHistorial;
 import modelo.Usuarios;
 import modelo.Vehiculos;
 import modelo.Historial;
@@ -39,7 +40,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private String contrasena;
     private Usuarios usuarios;
     private Vehiculos vehiculos;
-    private Historial historial;
     private Reservas reservas;
     private RecuperarContrasena recuperarContrasena;
     private boolean ingles; // Inicia el idioma en ingles
@@ -585,9 +585,10 @@ public class InicioSesion extends javax.swing.JFrame {
                     
                     Usuarios usuarios = MetodosInicio.obtenerUsuario(idUsuario);
                     InicioCuenta inicioCuenta = new InicioCuenta(usuarios,vehiculos);
-                   // Parking parking = new Parking(usuarios, vehiculos,reservas);
 
                     Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
+                    
+                    
                     
                     inicioCuenta.inicializarDatosUsuario(usuarios,vehiculos);
                     mostrarPanel(inicioCuenta);

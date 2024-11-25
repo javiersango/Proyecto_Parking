@@ -5,6 +5,7 @@
 package controlador;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
@@ -12,6 +13,11 @@ import org.hibernate.query.Query;
 import modelo.Historial;
 import modelo.Vehiculos;
 import modelo.Usuarios;
+import modelo.Reservas;
+import modelo.Usuarios;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -92,10 +98,64 @@ public class MetodosHistorial {
             e.printStackTrace();
         } finally {
             sesion.close(); // Cerrar la sesión
-              conexion.desconectar(); // Cerrar la conexión
+            conexion.desconectar(); // Cerrar la conexión
         }
 
         return matricula; // Retornar la matrícula del vehículo
     }
 
+ /*   public static boolean guardarEnHistorial(int idUsuario, String matricula, Date dia, int tiempoReservado, double precio) {
+
+        // Configurar la conexión a la base de datos utilizando Hibernate
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
+
+        // Crear una SessionFactory a partir de la configuración
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+        // Iniciar una sesión de Hibernate
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            // Iniciar la sesión y la transacción
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            // Crear un nuevo objeto Historial
+            Historial historial = new Historial();
+            historial.setUsuarios(idUsuario);
+            historial.setMatricula(matricula);
+            historial.setDia(dia);
+            historial.setTiempoReservado(tiempoReservado);
+            historial.setPrecio(precio);
+
+            // Guardar el historial en la base de datos
+            session.save(historial);
+
+            // Commit de la transacción
+            transaction.commit();
+            System.out.println("Historial guardado con éxito.");
+            return true;
+
+        } catch (Exception e) {
+            // En caso de error, hacer rollback
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            // Imprimir detalles del error
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            // Cerrar la sesión de Hibernate
+            if (session != null) {
+                session.close();
+            }
+            if (sessionFactory != null) {
+                sessionFactory.close(); // Cerrar la sesión de la fábrica de sesiones
+            }
+        }
+    }
+*/
 }

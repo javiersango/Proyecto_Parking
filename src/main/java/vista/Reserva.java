@@ -6,6 +6,7 @@ package vista;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
+import controlador.MetodosHistorial;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
@@ -17,6 +18,10 @@ import javax.swing.JPanel;
 import modelo.Usuarios;
 import modelo.Vehiculos;
 import modelo.Reservas;
+import modelo.Historial;
+import controlador.MetodosHistorial;
+import controlador.MetodosPago;
+
 
 /**
  *
@@ -24,30 +29,33 @@ import modelo.Reservas;
  */
 public class Reserva extends javax.swing.JPanel {
 
-    private final double precioPorHora = 0.25;
+    private final double precioPorHora = 1.2;
     private int horas;
-    private int numPlaza;
-    private final Date fecha;
+    private final String numPlaza;
+    private final Date fechaReservada;
     private final boolean coche;
     private double total = 0.0f;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
     private final Reservas reservas;
+   // private final Historial historial;
+    private final int idVehiculo;
 
     /**
      * Creates new form RegistroCuenta
      *
      * @param usuarios
      * @param vehiculos
+     * @param reservas
      * @param plaza
      * @param fecha
      */
-    public Reserva(Usuarios usuarios, Vehiculos vehiculos,Reservas reservas, String plaza, Date fecha) {
+    public Reserva(Usuarios usuarios, Vehiculos vehiculos, Reservas reservas, String plaza, Date fecha) {
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
-        this.reservas = null;
-
-        this.fecha = fecha;
+        this.reservas = reservas;
+        this.fechaReservada = fecha;
+        
 
         initComponents();
         // Poner jTexfield y jBotton el radio
@@ -65,14 +73,17 @@ public class Reserva extends javax.swing.JPanel {
             jtcoche.setText("Moto");
         }
         jtmatricula.setText(vehiculos.getMatricula());
-        numPlaza = reservas.getNumeroPlaza();
-        jtplaza.setText("P" + plaza);
-        //Obtener la fecha reservada
-        Date fechaReserva = reservas.getFechaReservada();
-        System.out.println("fecha " + fechaReserva.toString());
-        SimpleDateFormat formateada = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-        String fechaFormateada = formateada.format(fechaReserva);
+        numPlaza = plaza;
+        jtplaza.setText(numPlaza);
+
+        SimpleDateFormat formateada = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaFormateada = formateada.format(fecha);
         jlFecha.setText(fechaFormateada);
+
+        idVehiculo = vehiculos.getId();
+
+        System.out.println(idVehiculo + " "+ numPlaza + "  " + fecha);
+
     }
 
     /**
@@ -427,8 +438,33 @@ public class Reserva extends javax.swing.JPanel {
             String metodoPago = (String) comboBox.getSelectedItem(); // Obtén el método de pago seleccionado
             JOptionPane.showMessageDialog(this, "Método de pago seleccionado: " + metodoPago, "Pago seleccionado", JOptionPane.INFORMATION_MESSAGE);
 
-            // Realiza las acciones correspondientes al método de pago seleccionado
-            // Por ejemplo, podrías redirigir a una pasarela de pagos o proceder con el proceso
+            // Instancia de la clase MetodosPago
+            MetodosPago metodosPago = new MetodosPago();
+
+            try {
+                // Realizar el pago para la reserva
+                int num = Integer.parseInt(numPlaza);
+                 System.out.println(idVehiculo + " "+ numPlaza + "  " + fechaReservada);
+                boolean metodoPagoExitoso = MetodosPago.realizarPagoReserva(idVehiculo, num,  fechaReservada, horas, precioPorHora, total);
+                
+                MetodosHistorial metodosHistorial= new MetodosHistorial();
+             //   metodosHistorial.guardarEnHistorial(fechaReservada, horas, total);
+                
+
+                if (metodoPagoExitoso) {
+                    // Mostrar mensaje de éxito
+                    JOptionPane.showMessageDialog(this, "Pago realizado con éxito. Reserva confirmada.", "Pago Exitoso", JOptionPane.INFORMATION_MESSAGE);
+                    // Lógica adicional para confirmar la reserva
+                } else {
+                    // Mostrar mensaje de error si el pago falla
+                    JOptionPane.showMessageDialog(this, "El pago no se pudo procesar. Intente nuevamente.", "Error de Pago", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                // Manejo de excepciones
+                JOptionPane.showMessageDialog(this, "Ocurrió un error durante el proceso de pago: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+
         } else {
             // Si el usuario seleccionó "Cancelar", mostrar un mensaje
             JOptionPane.showMessageDialog(this, "No se ha seleccionado un método de pago.", "Cancelado", JOptionPane.WARNING_MESSAGE);
@@ -442,7 +478,7 @@ public class Reserva extends javax.swing.JPanel {
      */
     private void jSliderTiempoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderTiempoStateChanged
         horas = jSliderTiempo.getValue();
-        jTexthora.setText(String.valueOf(horas + "m"));
+        jTexthora.setText(String.valueOf(horas + "h"));
         jTexthora.setForeground(Color.black);
         total = (precioPorHora * horas);
         jttotal.setText(String.valueOf(total + "€"));
