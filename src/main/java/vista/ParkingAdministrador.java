@@ -826,8 +826,6 @@ public class ParkingAdministrador extends javax.swing.JPanel {
 
     private void actualizarPlazasPorFecha(Date fecha) {
 
-       
-
         // Configurar la conexión a la base de datos utilizando Hibernate
         try {
             // Crear la configuración de Hibernate
