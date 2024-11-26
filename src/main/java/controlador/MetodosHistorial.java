@@ -14,6 +14,7 @@ import modelo.Historial;
 import modelo.Vehiculos;
 import modelo.Usuarios;
 import modelo.Reservas;
+import modelo.Historial;
 import modelo.Usuarios;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,12 +25,16 @@ import org.hibernate.cfg.Configuration;
  * @author Javier Sánchez González
  */
 public class MetodosHistorial {
+    
+    private Usuarios usuarios;
+    private Historial historial; 
 
     /**
      * Metodo busca la matricula en la base de datos
      *
      * @return un listado con los datos fecha, duracion, precio del aparcamiento
      */
+
     public static List<Historial> mostrarHistorial() {
         HibernateUtil conexion = new HibernateUtil();  // Instanciación de la conexion con la base de datos
         conexion.conectar();
@@ -45,7 +50,11 @@ public class MetodosHistorial {
             return null;
         }
     }
-
+    /**
+     * 
+     * @param idUsuario
+     * @return 
+     */
     public static List<Historial> buscarMatriculaUsuario(int idUsuario) {
 
         System.out.println("Consulta de historial para el usuario con ID: " + idUsuario);
@@ -70,7 +79,11 @@ public class MetodosHistorial {
         }
 
     }
-
+    /**
+     * 
+     * @param idUsuario
+     * @return 
+     */
     public static String buscarMatricula(int idUsuario) {
 
         System.out.println("Consulta buscar matricula usuario con id usuario " + idUsuario);
@@ -103,59 +116,52 @@ public class MetodosHistorial {
 
         return matricula; // Retornar la matrícula del vehículo
     }
-
- /*   public static boolean guardarEnHistorial(int idUsuario, String matricula, Date dia, int tiempoReservado, double precio) {
-
-        // Configurar la conexión a la base de datos utilizando Hibernate
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml"); // Ubicación de la configuración
-
-        // Crear una SessionFactory a partir de la configuración
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        // Iniciar una sesión de Hibernate
-        Session session = null;
-        Transaction transaction = null;
-
-        try {
-            // Iniciar la sesión y la transacción
-            session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
-
-            // Crear un nuevo objeto Historial
-            Historial historial = new Historial();
-            historial.setUsuarios(idUsuario);
-            historial.setMatricula(matricula);
-            historial.setDia(dia);
-            historial.setTiempoReservado(tiempoReservado);
-            historial.setPrecio(precio);
-
-            // Guardar el historial en la base de datos
-            session.save(historial);
-
-            // Commit de la transacción
-            transaction.commit();
-            System.out.println("Historial guardado con éxito.");
-            return true;
-
-        } catch (Exception e) {
-            // En caso de error, hacer rollback
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            // Imprimir detalles del error
-            e.printStackTrace();
+    /**
+     * 
+     * @param idUsuario
+     * @param matricula
+     * @param dia
+     * @param tiempoReservado
+     * @param precio
+     * @return 
+     */
+   public boolean guardarEnHistorial(int idUsuario, String matricula, Date dia, int tiempoReservado, double precio) {
+    HibernateUtil conexion = new HibernateUtil(); // Instancia la conexión con la base de datos
+    conexion.conectar(); // Conectar a la base de datos
+    Session sesion = conexion.getSessionFactory().openSession(); // Abre la sesión de Hibernate
+    Transaction transaction = null;
+    try {
+        transaction = sesion.beginTransaction();
+        Usuarios usuario = sesion.get(Usuarios.class, idUsuario);
+        if (usuario == null) {
             return false;
+        }
+        
+        // Convertir la fecha de java.util.Date a java.sql.Date si es necesario
+        java.sql.Date sqlDate = new java.sql.Date(dia.getTime());
 
-        } finally {
-            // Cerrar la sesión de Hibernate
-            if (session != null) {
-                session.close();
-            }
-            if (sessionFactory != null) {
-                sessionFactory.close(); // Cerrar la sesión de la fábrica de sesiones
-            }
+        Historial historial = new Historial();
+        historial.setUsuarios(usuario);
+        historial.setMatricula(matricula);
+        historial.setDia(sqlDate);  // Asignar la fecha correctamente
+        historial.setTiempoReservado(tiempoReservado);
+        historial.setPrecio(precio);
+        
+        System.out.println("Guardando historial: " + historial);  // Verificar antes de guardar
+
+        sesion.save(historial);
+        transaction.commit();
+        return true;
+    } catch (Exception e) {
+        if (transaction != null) {
+            transaction.rollback();
+        }
+        e.printStackTrace();
+        return false;
+    } finally {
+        if (sesion != null) {
+            sesion.close();
         }
     }
-*/
+}
 }

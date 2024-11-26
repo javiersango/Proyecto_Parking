@@ -587,6 +587,7 @@ public class InicioSesion extends javax.swing.JFrame {
                     InicioCuenta inicioCuenta = new InicioCuenta(usuarios,vehiculos);
 
                     Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
+                    PanelReservada panelReservada = new  PanelReservada(usuarios);
                     
                     
                     

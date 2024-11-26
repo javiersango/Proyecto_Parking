@@ -910,7 +910,7 @@ public final class Parking extends javax.swing.JPanel {
     boolean plazaOcupada = estadoPlazas.getOrDefault(plazaSeleccionada, false);
 
     if (plazaOcupada) {
-        JOptionPane.showMessageDialog(this, "La plaza seleccionada ya está reservada o no ha seleccionado ninguna, elija otra.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "La plaza seleccionada ya está reservada para este día, elija otro día.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
         return;
     }
 

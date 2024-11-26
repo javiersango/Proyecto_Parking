@@ -22,7 +22,6 @@ import modelo.Historial;
 import controlador.MetodosHistorial;
 import controlador.MetodosPago;
 
-
 /**
  *
  * @author Javier Sanchez Gonzalez
@@ -32,13 +31,15 @@ public class Reserva extends javax.swing.JPanel {
     private final double precioPorHora = 1.2;
     private int horas;
     private final String numPlaza;
+    private String numeroPlaza;
+    private int num;
     private final Date fechaReservada;
     private final boolean coche;
     private double total = 0.0f;
     private final Usuarios usuarios;
     private final Vehiculos vehiculos;
     private final Reservas reservas;
-   // private final Historial historial;
+    // private final Historial historial;
     private final int idVehiculo;
 
     /**
@@ -55,7 +56,6 @@ public class Reserva extends javax.swing.JPanel {
         this.vehiculos = vehiculos;
         this.reservas = reservas;
         this.fechaReservada = fecha;
-        
 
         initComponents();
         // Poner jTexfield y jBotton el radio
@@ -76,13 +76,16 @@ public class Reserva extends javax.swing.JPanel {
         numPlaza = plaza;
         jtplaza.setText(numPlaza);
 
+        numeroPlaza = numPlaza.replaceAll("[^0-9]", "");
+        num = Integer.parseInt(numeroPlaza);
+
         SimpleDateFormat formateada = new SimpleDateFormat("dd/MM/yyyy");
         String fechaFormateada = formateada.format(fecha);
         jlFecha.setText(fechaFormateada);
 
         idVehiculo = vehiculos.getId();
 
-        System.out.println(idVehiculo + " "+ numPlaza + "  " + fecha);
+        System.out.println(idVehiculo + " " + numPlaza + "  " + fecha);
 
     }
 
@@ -140,6 +143,7 @@ public class Reserva extends javax.swing.JPanel {
 
         jSliderTiempo.setBackground(new java.awt.Color(39, 59, 244));
         jSliderTiempo.setForeground(new java.awt.Color(0, 0, 0));
+        jSliderTiempo.setMajorTickSpacing(5);
         jSliderTiempo.setMaximum(24);
         jSliderTiempo.setMinorTickSpacing(1);
         jSliderTiempo.setPaintLabels(true);
@@ -416,59 +420,71 @@ public class Reserva extends javax.swing.JPanel {
      * @param evt
      */
     private void jbPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPagarActionPerformed
+     
+    // Verificar si el tiempo está vacío o es igual a cero
+    if (jlTiempo.getText().isEmpty() || jlTiempo.getText().equals("0")) {
+        JOptionPane.showMessageDialog(this, "El tiempo de reserva no puede estar vacío o ser cero.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si el tiempo no es válido
+    }
 
-        // Crear un JComboBox con los métodos de pago
-        String[] opcionesPago = {"Bizum", "Visa", "PayPal"};
-        JComboBox<String> comboBox = new JComboBox<>(opcionesPago);
+    // Crear un JComboBox con los métodos de pago
+    String[] opcionesPago = {"Bizum", "Visa", "PayPal"};
+    JComboBox<String> comboBox = new JComboBox<>(opcionesPago);
 
-        // Mostrar el cuadro de diálogo con el JComboBox
-        int opcion = JOptionPane.showOptionDialog(
-                this,
-                comboBox,
-                "Selecciona un método de pago",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.INFORMATION_MESSAGE,
-                null,
-                new Object[]{"Aceptar", "Cancelar"},
-                "Aceptar"
-        );
+    // Mostrar el cuadro de diálogo con el JComboBox
+    int opcion = JOptionPane.showOptionDialog(
+            this,
+            comboBox,
+            "Selecciona un método de pago",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.INFORMATION_MESSAGE,
+            null,
+            new Object[]{"Aceptar", "Cancelar"},
+            "Aceptar"
+    );
 
-        // Si se ha seleccionado "Aceptar"
-        if (opcion == 0) {
-            String metodoPago = (String) comboBox.getSelectedItem(); // Obtén el método de pago seleccionado
-            JOptionPane.showMessageDialog(this, "Método de pago seleccionado: " + metodoPago, "Pago seleccionado", JOptionPane.INFORMATION_MESSAGE);
+    // Si se ha seleccionado "Aceptar"
+    if (opcion == 0) {
+        String metodoPago = (String) comboBox.getSelectedItem(); // Obtén el método de pago seleccionado
+        JOptionPane.showMessageDialog(this, "Método de pago seleccionado: " + metodoPago, "Pago seleccionado", JOptionPane.INFORMATION_MESSAGE);
 
-            // Instancia de la clase MetodosPago
-            MetodosPago metodosPago = new MetodosPago();
+        // Instancia de la clase MetodosPago
+        MetodosPago metodosPago = new MetodosPago();
 
-            try {
-                // Realizar el pago para la reserva
-                int num = Integer.parseInt(numPlaza);
-                 System.out.println(idVehiculo + " "+ numPlaza + "  " + fechaReservada);
-                boolean metodoPagoExitoso = MetodosPago.realizarPagoReserva(idVehiculo, num,  fechaReservada, horas, precioPorHora, total);
-                
-                MetodosHistorial metodosHistorial= new MetodosHistorial();
-             //   metodosHistorial.guardarEnHistorial(fechaReservada, horas, total);
-                
-
-                if (metodoPagoExitoso) {
-                    // Mostrar mensaje de éxito
-                    JOptionPane.showMessageDialog(this, "Pago realizado con éxito. Reserva confirmada.", "Pago Exitoso", JOptionPane.INFORMATION_MESSAGE);
-                    // Lógica adicional para confirmar la reserva
-                } else {
-                    // Mostrar mensaje de error si el pago falla
-                    JOptionPane.showMessageDialog(this, "El pago no se pudo procesar. Intente nuevamente.", "Error de Pago", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (Exception e) {
-                // Manejo de excepciones
-                JOptionPane.showMessageDialog(this, "Ocurrió un error durante el proceso de pago: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
+        try {
+            // Realizar el pago para la reserva
+            System.out.println(idVehiculo + " " + numPlaza + " " + num + "  " + fechaReservada + " " + horas + " " + precioPorHora + " " + total);
+            boolean metodoPagoExitoso = MetodosPago.realizarPagoReserva(idVehiculo, num, fechaReservada, horas, precioPorHora, total);
+            
+            MetodosHistorial metodosHistorial = new MetodosHistorial();
+            boolean resultado = metodosHistorial.guardarEnHistorial(usuarios.getId(), vehiculos.getMatricula(), new Date(), horas, total);
+            if (resultado) {
+                System.out.println("Historial guardado correctamente.");
+            } else {
+                System.out.println("Hubo un problema al guardar el historial.");
             }
 
-        } else {
-            // Si el usuario seleccionó "Cancelar", mostrar un mensaje
-            JOptionPane.showMessageDialog(this, "No se ha seleccionado un método de pago.", "Cancelado", JOptionPane.WARNING_MESSAGE);
+            if (metodoPagoExitoso) {
+                // Mostrar mensaje de éxito
+               // JOptionPane.showMessageDialog(this, "Pago realizado con éxito. Reserva confirmada.", "Pago Exitoso", JOptionPane.INFORMATION_MESSAGE);
+                // Lógica adicional para confirmar la reserva
+                
+                PanelReservada panelReservada = new PanelReservada();
+                panelReservada.setVisible(true);
+            } else {
+                // Mostrar mensaje de error si el pago falla
+                JOptionPane.showMessageDialog(this, "El pago no se pudo procesar. Intente nuevamente.", "Error de Pago", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            // Manejo de excepciones
+            JOptionPane.showMessageDialog(this, "Ocurrió un error durante el proceso de pago: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
+    } else {
+        // Si el usuario seleccionó "Cancelar", mostrar un mensaje
+        JOptionPane.showMessageDialog(this, "No se ha seleccionado un método de pago.", "Cancelado", JOptionPane.WARNING_MESSAGE);
+    }
+
 
     }//GEN-LAST:event_jbPagarActionPerformed
     /**
