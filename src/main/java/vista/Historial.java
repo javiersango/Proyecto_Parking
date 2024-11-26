@@ -36,6 +36,7 @@ public class Historial extends javax.swing.JPanel {
      */
     /**
      * Creates new form RegistroCuenta
+     *
      * @param usuarios
      * @param vehiculos
      */
@@ -44,7 +45,7 @@ public class Historial extends javax.swing.JPanel {
         this.vehiculos = vehiculos;
 
         initComponents();
-        
+
         String matricula = vehiculos.getMatricula();
         jlMatricula.setText(matricula);
 

@@ -10,31 +10,25 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import modelo.Historial;
 import modelo.Vehiculos;
-import modelo.Usuarios;
-import modelo.Reservas;
 import modelo.Historial;
 import modelo.Usuarios;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
  * @author Javier Sánchez González
  */
 public class MetodosHistorial {
-    
+
     private Usuarios usuarios;
-    private Historial historial; 
+    private Historial historial;
 
     /**
      * Metodo busca la matricula en la base de datos
      *
      * @return un listado con los datos fecha, duracion, precio del aparcamiento
      */
-
     public static List<Historial> mostrarHistorial() {
         HibernateUtil conexion = new HibernateUtil();  // Instanciación de la conexion con la base de datos
         conexion.conectar();
@@ -50,10 +44,11 @@ public class MetodosHistorial {
             return null;
         }
     }
+
     /**
-     * 
+     *
      * @param idUsuario
-     * @return 
+     * @return  devuelve el historial de la matricula del usuario
      */
     public static List<Historial> buscarMatriculaUsuario(int idUsuario) {
 
@@ -79,10 +74,11 @@ public class MetodosHistorial {
         }
 
     }
+
     /**
-     * 
+     *
      * @param idUsuario
-     * @return 
+     * @return  devuelve la matricula del vehiculo
      */
     public static String buscarMatricula(int idUsuario) {
 
@@ -116,52 +112,53 @@ public class MetodosHistorial {
 
         return matricula; // Retornar la matrícula del vehículo
     }
+
     /**
-     * 
+     *
      * @param idUsuario
      * @param matricula
      * @param dia
      * @param tiempoReservado
      * @param precio
-     * @return 
+     * @return   devuelve si ha guardado en historial la nueva reserva
      */
-   public boolean guardarEnHistorial(int idUsuario, String matricula, Date dia, int tiempoReservado, double precio) {
-    HibernateUtil conexion = new HibernateUtil(); // Instancia la conexión con la base de datos
-    conexion.conectar(); // Conectar a la base de datos
-    Session sesion = conexion.getSessionFactory().openSession(); // Abre la sesión de Hibernate
-    Transaction transaction = null;
-    try {
-        transaction = sesion.beginTransaction();
-        Usuarios usuario = sesion.get(Usuarios.class, idUsuario);
-        if (usuario == null) {
+    public boolean guardarEnHistorial(int idUsuario, String matricula, Date dia, int tiempoReservado, double precio) {
+        HibernateUtil conexion = new HibernateUtil(); // Instancia la conexión con la base de datos
+        conexion.conectar(); // Conectar a la base de datos
+        Session sesion = conexion.getSessionFactory().openSession(); // Abre la sesión de Hibernate
+        Transaction transaction = null;
+        try {
+            transaction = sesion.beginTransaction();
+            Usuarios usuario = sesion.get(Usuarios.class, idUsuario);
+            if (usuario == null) {
+                return false;
+            }
+
+            // Convertir la fecha de java.util.Date a java.sql.Date si es necesario
+            java.sql.Date sqlDate = new java.sql.Date(dia.getTime());
+
+            Historial historial = new Historial();
+            historial.setUsuarios(usuario);
+            historial.setMatricula(matricula);
+            historial.setDia(sqlDate);  // Asignar la fecha correctamente
+            historial.setTiempoReservado(tiempoReservado);
+            historial.setPrecio(precio);
+
+            System.out.println("Guardando historial: " + historial);  // Verificar antes de guardar
+
+            sesion.save(historial);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
             return false;
-        }
-        
-        // Convertir la fecha de java.util.Date a java.sql.Date si es necesario
-        java.sql.Date sqlDate = new java.sql.Date(dia.getTime());
-
-        Historial historial = new Historial();
-        historial.setUsuarios(usuario);
-        historial.setMatricula(matricula);
-        historial.setDia(sqlDate);  // Asignar la fecha correctamente
-        historial.setTiempoReservado(tiempoReservado);
-        historial.setPrecio(precio);
-        
-        System.out.println("Guardando historial: " + historial);  // Verificar antes de guardar
-
-        sesion.save(historial);
-        transaction.commit();
-        return true;
-    } catch (Exception e) {
-        if (transaction != null) {
-            transaction.rollback();
-        }
-        e.printStackTrace();
-        return false;
-    } finally {
-        if (sesion != null) {
-            sesion.close();
+        } finally {
+            if (sesion != null) {
+                sesion.close();
+            }
         }
     }
-}
 }

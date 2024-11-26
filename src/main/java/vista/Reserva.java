@@ -6,19 +6,15 @@ package vista;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
-import controlador.MetodosHistorial;
 import java.awt.Color;
-import java.awt.Font;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Usuarios;
 import modelo.Vehiculos;
 import modelo.Reservas;
-import modelo.Historial;
 import controlador.MetodosHistorial;
 import controlador.MetodosPago;
 

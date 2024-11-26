@@ -32,7 +32,8 @@ public class MetodosRegistroCuenta {
      * @param matricula String
      * @param contrasena password
      * @param esCoche boolean
-     * @return
+     * @return  Devuelve verdadero / falso pasandore los parametros para guarda la cuenta del usuario
+     *
      */
     public static boolean guardarCuentaUsuario(String nombre, String apellidos, String email, String matricula, String contrasena, boolean esCoche) {
         // Comprobar si ya existe un usuario con el mismo nombre y contraseña
@@ -106,8 +107,7 @@ public class MetodosRegistroCuenta {
      * @param matricula
      * @param contrasena
      * @param esCoche
-     * @param nuevoEsCoche String
-     * @return devuelve true / false
+     * @return Devuelve verdader / falso pasandole los parametros para modificar la cuenta del usuario
      */
     public static boolean modificarCuentaUsuario(int idUsuario, String nombre, String apellidos, String email, String matricula, String contrasena, Boolean esCoche) {
         // Configuración de Hibernate
@@ -202,7 +202,7 @@ public class MetodosRegistroCuenta {
      *
      * @param nombre String
      * @param email String
-     * @return
+     * @return Devuelve verdadero / falso pasandole los paramentros para saber si el usuario existe.
      */
     public static boolean usuarioExistente(String nombre, String email) {
         // Configurar la conexión 
@@ -245,7 +245,7 @@ public class MetodosRegistroCuenta {
      * Metodo se le pasa el correo electronico del usario, si existe se elimnara
      *
      * @param email String
-     * @return devuelve true / false
+     * @return Devuelve verdadero / falso pasandole el parametro email para eliminar la cuenta del usuario.
      */
     public static boolean eliminarUsuario(String email) {
 
@@ -307,7 +307,7 @@ public class MetodosRegistroCuenta {
      * Metodo para validar si la matricula introducida es valida
      *
      * @param matricula String
-     * @return devuelve true / false
+     * @return Devuelve verdadero / falso pasandole la matricula para validarla.
      */
     public static boolean validarMatricula(String matricula) {
         // Modificación para aceptar 4 dígitos seguidos de un espacio y 3 letras mayúsculas

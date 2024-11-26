@@ -12,12 +12,12 @@ import java.util.Map;
 
 /**
  *
- * @author Javier
+ * @author Javier Sánchez Gonzalez
  */
 public class MetodosParking {
 
     // Mapa para almacenar el estado de las plazas
-    private Map<String, Boolean> estadoPlazas = new HashMap<>();
+    private final Map<String, Boolean> estadoPlazas = new HashMap<>();
 
     // Método para mostrar el calendario
     private void mostrarCalendario() {

@@ -43,7 +43,7 @@ public class MetodosInicio {
                 if (comprobarContrasena(contrasena, usuario.getContrasena())) {
                     System.out.println("Inicio de sesión exitoso para: " + nombre);
                     ImageIcon icono = new ImageIcon("img/P.png");
-                    JOptionPane.showMessageDialog(null,  nombre.toUpperCase(), "Bienvenido/a a ParkArea", JOptionPane.INFORMATION_MESSAGE, icono);
+                    JOptionPane.showMessageDialog(null, nombre.toUpperCase(), "Bienvenido/a a ParkArea", JOptionPane.INFORMATION_MESSAGE, icono);
                     return true; // La contraseña coincide
                 } else {
                     // Si la contraseña no coincide, buscar otro usuario con el mismo nombre
@@ -78,7 +78,12 @@ public class MetodosInicio {
             conexion.desconectar();
         }
     }
-
+    /**
+     * 
+     * @param nombre
+     * @param contrasena
+     * @return Devuelve el id del usuario por el nombre y contraseña
+     */
     public static int devuelveIdUsuario(String nombre, String contrasena) {
         HibernateUtil conexion = new HibernateUtil();  // Instancia la conexión a la base de datos
         conexion.conectar();
@@ -118,7 +123,11 @@ public class MetodosInicio {
 
         return usuarioId;  // Devolver el ID del usuario (o -1 si no se encuentra o hay error)
     }
-
+    /**
+     * 
+     * @param nombre
+     * @param contrasena 
+     */
     public void iniciarSesion(String nombre, String contrasena) {
         if (comprobarInicioUsuario(nombre, contrasena)) {
             // Si el inicio de sesión es exitoso
@@ -129,7 +138,11 @@ public class MetodosInicio {
             System.out.println("Error en el inicio de sesión.");
         }
     }
-
+    /**
+     * 
+     * @param idUsuario
+     * @return Devuelve los datos del usuario por su id
+     */
     public static Usuarios obtenerUsuario(int idUsuario) {
         HibernateUtil conexion = new HibernateUtil();  // Instancia la conexión a la base de datos
         conexion.conectar();
@@ -150,7 +163,11 @@ public class MetodosInicio {
 
         return usuario;
     }
-
+    /**
+     * 
+     * @param usuarioId
+     * @return  devuelbe el vehiculo del usuario por el id del usario
+     */
     public static Vehiculos obtenerVehiculoPorUsuarioId(Integer usuarioId) {
         HibernateUtil conexion = new HibernateUtil();  // Instancia la conexión a la base de datos
         conexion.conectar();

@@ -28,11 +28,11 @@ public class InicioCuenta extends javax.swing.JPanel {
      * @param vehiculos
      */
     public InicioCuenta(Usuarios usuarios, Vehiculos vehiculos) {
-        
+
         this.usuarios = usuarios;
         this.vehiculos = vehiculos;
         initComponents();
-         jlNombre.setText(usuarios.getNombre());
+        jlNombre.setText(usuarios.getNombre());
         // Poner los jbonton  bordes redondeados
         jbModificarCuenta.putClientProperty("FlatLaf.style", "arc: 15");
         jbReservarPlaza.putClientProperty("FlatLaf.style", "arc: 15");
@@ -201,7 +201,6 @@ public class InicioCuenta extends javax.swing.JPanel {
 
         // Verificar si el usuario ingresó un correo electrónico
         if (emailIngresado != null && !emailIngresado.trim().isEmpty()) {
-            // Si el correo ingresado coincide con el email de la cuenta
 
             int confirmacion = JOptionPane.showConfirmDialog(null,
                     "¿Estás seguro de que quieres eliminar tu cuenta?",
@@ -241,7 +240,7 @@ public class InicioCuenta extends javax.swing.JPanel {
      * @param evt
      */
     private void jbReservarPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReservarPlazaActionPerformed
-        Parking panelReserva = new Parking(usuarios, vehiculos,reservas);
+        Parking panelReserva = new Parking(usuarios, vehiculos, reservas);
         mostrarPanel(panelReserva);
     }//GEN-LAST:event_jbReservarPlazaActionPerformed
 
@@ -273,7 +272,6 @@ public class InicioCuenta extends javax.swing.JPanel {
         panelInicioCuenta.removeAll();
         panelInicioCuenta.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
         panelInicioCuenta.revalidate();
-        // panelInicioCuenta.repaint();
     }
 
     void inicializarDatosUsuario(Usuarios usuarios, Vehiculos vehiculos) {

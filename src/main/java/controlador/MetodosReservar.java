@@ -4,13 +4,9 @@
  */
 package controlador;
 
-import java.util.ArrayList;
-import java.util.List;
 import modelo.Vehiculos;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import modelo.Reservas;
-import vista.Reserva;
 
 /**
  *
@@ -19,6 +15,13 @@ import vista.Reserva;
  */
 public class MetodosReservar {
 
+    /**
+     *
+     * @param nombre
+     * @param contrasena
+     * @return Devuelve los datos del vehiculo por el nombre y la contraseña del
+     * usuario.
+     */
     public Vehiculos devuelveDatosVehiculo(String nombre, String contrasena) {
         HibernateUtil conexion = new HibernateUtil();  // instanciación de la conexión con la base de datos
         conexion.conectar();
@@ -41,19 +44,7 @@ public class MetodosReservar {
             return null;
         }
     }
-/*
-    private List<Reserva> obtenerReservasPorFecha(String fecha) {
-        // Este es un ejemplo simple, deberías ajustarlo a tu implementación
-        List<Reserva> reservas = new ArrayList<>();
 
-        // Imaginemos que tienes un listado de todas las reservas
-        for (Reserva reserva : todasLasReservas) {
-            if (reserva.getFecha().equals(fecha)) {
-                reservas.add(reserva);
-            }
-        }
-
-        return reservas;
-    }
-*/
 }
+
+

@@ -57,7 +57,7 @@ public class MetodosCuenta {
      * Método para eliminar una cuenta de usuario en la base de datos.
      *
      * @param nombre Nombre del usuario.
-     * @param hashContrasena Contraseña en formato hash del usuario.
+     * @param email
      * @return boolean Indicador de éxito o fracaso.
      */
     public boolean eliminarCuentaUsuario(String nombre, String email) {

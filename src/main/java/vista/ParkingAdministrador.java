@@ -146,7 +146,7 @@ public class ParkingAdministrador extends javax.swing.JPanel {
     /**
      * Actualiza el estado visual de una plaza en función de su disponibilidad.
      *
-     * @param plaza Código de la plaza (ejemplo: "P01").
+     * @param plaza 
      */
     private void actualizarEstadoPlaza(String plaza) {
         // Obtener los componentes
@@ -826,7 +826,6 @@ public class ParkingAdministrador extends javax.swing.JPanel {
 
     private void actualizarPlazasPorFecha(Date fecha) {
 
-        // Configurar la conexión a la base de datos utilizando Hibernate
         try {
             // Crear la configuración de Hibernate
             Configuration configuration = new Configuration();

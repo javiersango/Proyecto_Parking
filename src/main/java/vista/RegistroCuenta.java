@@ -35,6 +35,7 @@ public class RegistroCuenta extends javax.swing.JPanel {
 
     /**
      * Creates new form RegistroCuenta
+     * @param ingles
      */
     public RegistroCuenta(boolean ingles) {
 

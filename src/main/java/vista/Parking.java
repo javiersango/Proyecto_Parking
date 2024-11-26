@@ -78,6 +78,9 @@ public final class Parking extends javax.swing.JPanel {
 
     }
 
+    /**
+     * Actualizar las plazas de la base de datos
+     */
     public void actualizarPlazasDesdeBD() {
         // Configurar la conexión a la base de datos utilizando Hibernate
         Configuration configuration = new Configuration();
@@ -103,6 +106,9 @@ public final class Parking extends javax.swing.JPanel {
 
     }
 
+    /**
+     * Inicializar las plazas
+     */
     public void inicializarPlazas() {
         // Añadir JTextField y JCheckBox al mapa
         plazasTextFields.put("P01", P01);
@@ -167,7 +173,7 @@ public final class Parking extends javax.swing.JPanel {
     /**
      * Actualiza el estado visual de una plaza en función de su disponibilidad.
      *
-     * @param plaza Código de la plaza (ejemplo: "P01").
+     * @param plaza
      */
     private void actualizarEstadoPlaza(String plaza) {
         // Obtener los componentes
@@ -878,65 +884,64 @@ public final class Parking extends javax.swing.JPanel {
     private void jbreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbreservarActionPerformed
 
         // Obtener la plaza seleccionada
-    String plazaSeleccionada = obtenerPlazaSeleccionada();
+        String plazaSeleccionada = obtenerPlazaSeleccionada();
 
-    if (plazaSeleccionada == null || plazaSeleccionada.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, seleccione una plaza antes de continuar.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // Validar fecha
-    String fechaTexto = jtFecha.getText();
-    if (fechaTexto == null || fechaTexto.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha antes de continuar.", "Error", JOptionPane.ERROR_MESSAGE);
-        restaurarEstadoPlazas();
-        return;
-    }
-
-    Date fecha;
-    try {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        fecha = sdf.parse(fechaTexto);
-        if (fecha.before(new Date())) {
-            JOptionPane.showMessageDialog(this, "La fecha no puede ser anterior al día actual.", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+        if (plazaSeleccionada == null || plazaSeleccionada.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione una plaza antes de continuar.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-    } catch (ParseException e) {
-        JOptionPane.showMessageDialog(this, "Formato de fecha inválido. Use 'yyyy-MM-dd'.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
 
-    // Comprobar disponibilidad de la plaza
-    boolean plazaOcupada = estadoPlazas.getOrDefault(plazaSeleccionada, false);
+        // Validar fecha
+        String fechaTexto = jtFecha.getText();
+        if (fechaTexto == null || fechaTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese una fecha antes de continuar.", "Error", JOptionPane.ERROR_MESSAGE);
+            restaurarEstadoPlazas();
+            return;
+        }
 
-    if (plazaOcupada) {
-        JOptionPane.showMessageDialog(this, "La plaza seleccionada ya está reservada para este día, elija otro día.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+        Date fecha;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            fecha = sdf.parse(fechaTexto);
+            if (fecha.before(new Date())) {
+                JOptionPane.showMessageDialog(this, "La fecha no puede ser anterior al día actual.", "Error de Fecha", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Formato de fecha inválido. Use 'yyyy-MM-dd'.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    // Reservar plaza en la base de datos
-    try {
-        guardarOActualizarReservaEnBD(fecha, idVehiculo, plazaSeleccionada);
-        estadoPlazas.put(plazaSeleccionada, true); // Actualizar estado
-        actualizarEstadoPlaza(plazaSeleccionada);
-        JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        
-        Reserva reserva = new Reserva(usuarios, vehiculos, reservas, plazaSeleccionada, fecha);
-        mostrarPanel(reserva);
-        
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Error al realizar la reserva. Inténtelo nuevamente.", "Error", JOptionPane.ERROR_MESSAGE);
-        ex.printStackTrace();
-    }
+        // Comprobar disponibilidad de la plaza
+        boolean plazaOcupada = estadoPlazas.getOrDefault(plazaSeleccionada, false);
+
+        if (plazaOcupada) {
+            JOptionPane.showMessageDialog(this, "La plaza seleccionada ya está reservada para este día, elija otro día.", "Plaza Ocupada", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Reservar plaza en la base de datos
+        try {
+            guardarOActualizarReservaEnBD(fecha, idVehiculo, plazaSeleccionada);
+            estadoPlazas.put(plazaSeleccionada, true); // Actualizar estado
+            actualizarEstadoPlaza(plazaSeleccionada);
+            JOptionPane.showMessageDialog(this, "Reserva realizada con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            Reserva reserva = new Reserva(usuarios, vehiculos, reservas, plazaSeleccionada, fecha);
+            mostrarPanel(reserva);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al realizar la reserva. Inténtelo nuevamente.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jbreservarActionPerformed
 
-    
     private void restaurarEstadoPlazas() {
-    for (String plaza : plazasCheckBoxes.keySet()) {
-        plazasCheckBoxes.get(plaza).setSelected(false);
-        plazasTextFields.get(plaza).setBackground(Color.GREEN);
+        for (String plaza : plazasCheckBoxes.keySet()) {
+            plazasCheckBoxes.get(plaza).setSelected(false);
+            plazasTextFields.get(plaza).setBackground(Color.GREEN);
+        }
     }
-}
 
     private void jBCalendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalendarioActionPerformed
         // Crear un JDateChooser para seleccionar la fecha
@@ -999,30 +1004,29 @@ public final class Parking extends javax.swing.JPanel {
     }
 
     private void actualizarPlazaSeleccionada(String plazaSeleccionada) {
-    for (String plaza : plazasTextFields.keySet()) {
-        JTextField plazaTextField = plazasTextFields.get(plaza);
-        JCheckBox checkBox = plazasCheckBoxes.get(plaza);
+        for (String plaza : plazasTextFields.keySet()) {
+            JTextField plazaTextField = plazasTextFields.get(plaza);
+            JCheckBox checkBox = plazasCheckBoxes.get(plaza);
 
-        if (plazaTextField != null && checkBox != null) {
-            if (plaza.equals(plazaSeleccionada)) {
-                // Mantener la plaza seleccionada en rojo (ocupada)
-                plazaTextField.setBackground(Color.RED);
-                checkBox.setSelected(true);
-            } else {
-                // Restaurar el color dependiendo del estado de la plaza
-                if (estadoPlazas.getOrDefault(plaza, false)) {
-                    // Si está ocupada, marcar como roja
+            if (plazaTextField != null && checkBox != null) {
+                if (plaza.equals(plazaSeleccionada)) {
+                    // Mantener la plaza seleccionada en rojo (ocupada)
                     plazaTextField.setBackground(Color.RED);
+                    checkBox.setSelected(true);
                 } else {
-                    // Si está disponible, restaurar como verde
-                    plazaTextField.setBackground(Color.GREEN);
+                    // Restaurar el color dependiendo del estado de la plaza
+                    if (estadoPlazas.getOrDefault(plaza, false)) {
+                        // Si está ocupada, marcar como roja
+                        plazaTextField.setBackground(Color.RED);
+                    } else {
+                        // Si está disponible, restaurar como verde
+                        plazaTextField.setBackground(Color.GREEN);
+                    }
+                    checkBox.setSelected(false);
                 }
-                checkBox.setSelected(false);
             }
         }
     }
-}
-
 
     private void actualizarPlazasPorFecha(Date fecha) {
         // Configurar la conexión a la base de datos utilizando Hibernate
@@ -1061,12 +1065,12 @@ public final class Parking extends javax.swing.JPanel {
         }
     }
 
-    public void guardarOActualizarReservaEnBD( Date fecha, int idVehiculo, String plazaSeleccionada) {
+    public void guardarOActualizarReservaEnBD(Date fecha, int idVehiculo, String plazaSeleccionada) {
         SessionFactory sessionFactory = null;
         System.out.println("numero plaza seleccionada " + plazaSeleccionada);
         // Crear la configuración y la sesión de Hibernate
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml"); // Archivo de configuración de Hibernate
+        configuration.configure("hibernate.cfg.xml"); 
         sessionFactory = configuration.buildSessionFactory();
 
         try (Session session = sessionFactory.openSession()) {
@@ -1074,7 +1078,7 @@ public final class Parking extends javax.swing.JPanel {
             Transaction transaction = session.beginTransaction();
 
             try {
-                // Convertir el número de plaza (Ejemplo: "P01" -> 1)
+                // Convertir el número de plaza 
                 int numeroPlaza = Integer.parseInt(plazaSeleccionada.substring(1));
                 System.out.println("numero plaza seleccionada " + numeroPlaza);
 

@@ -25,7 +25,6 @@ import modelo.Vehiculos;
 import modelo.Historial;
 import modelo.Reservas;
 
-
 /**
  *
  * @author Javier Sánchez González
@@ -44,7 +43,6 @@ public class InicioSesion extends javax.swing.JFrame {
     private RecuperarContrasena recuperarContrasena;
     private boolean ingles; // Inicia el idioma en ingles
     private int nivelBateria = 100;
-
 
     /**
      * Creates new form Incio
@@ -575,38 +573,35 @@ public class InicioSesion extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Has entrado como Administrador", "Modo Administrador", JOptionPane.INFORMATION_MESSAGE);
                     // Inicializar el objeto administrador
                     Vehiculos vehiculos = new Vehiculos();
-                    Administrador administrador = new Administrador(usuarios, vehiculos,reservas);
+                    Administrador administrador = new Administrador(usuarios, vehiculos, reservas);
                     mostrarPanel(administrador);
-                    
+
                 } else {
 
-                    // Usuario normal
+                    // Se le pasan los datos a las clases
                     Integer idUsuario = MetodosInicio.devuelveIdUsuario(nombre, contrasena);
-                    
+
                     Usuarios usuarios = MetodosInicio.obtenerUsuario(idUsuario);
-                    InicioCuenta inicioCuenta = new InicioCuenta(usuarios,vehiculos);
+                    InicioCuenta inicioCuenta = new InicioCuenta(usuarios, vehiculos);
 
                     Vehiculos vehiculos = MetodosInicio.obtenerVehiculoPorUsuarioId(idUsuario);
 
-                    
-                    
-                    
-                    inicioCuenta.inicializarDatosUsuario(usuarios,vehiculos);
+                    inicioCuenta.inicializarDatosUsuario(usuarios, vehiculos);
                     mostrarPanel(inicioCuenta);
 
-                    System.out.println("InicioSesion nombre: " + nombre + " contraseña: " + contrasena + " matricula "+  vehiculos.getMatricula());
-                    
+                    System.out.println("InicioSesion nombre: " + nombre + " contraseña: " + contrasena + " matricula " + vehiculos.getMatricula());
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña no válidos, inténtelo de nuevo", "Error", JOptionPane.ERROR_MESSAGE);
             }
-                }
+        }
 
     }//GEN-LAST:event_jbiniciarActionPerformed
     /**
-             * Evento cuanto se selecciona el texto se pone en negrita y si no
-             * esta selecciado lo deja como estaba al inicio
-             */
+     * Evento cuanto se selecciona el texto se pone en negrita y si no esta
+     * selecciado lo deja como estaba al inicio
+     */
     private void jtcontrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtcontrasenaMousePressed
         if (String.valueOf(jtcontrasena.getPassword()).equals("********")) {
             jtcontrasena.setText("");
@@ -787,7 +782,7 @@ public class InicioSesion extends javax.swing.JFrame {
         jbrecuperar.setText(bRecuperar);
     }
 
-   JPanel getPanelfondo() {
+    JPanel getPanelfondo() {
         return jPanelFondo;
     }
 
